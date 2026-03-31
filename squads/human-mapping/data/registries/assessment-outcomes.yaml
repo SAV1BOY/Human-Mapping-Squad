@@ -1,0 +1,20 @@
+# Registry: Assessment Outcomes
+# Registro dos resultados finais de cada projeto de avaliação concluído,
+# incluindo métricas de qualidade e satisfação do cliente.
+#
+# Schema:
+#   - id: identificador único do outcome (string)
+#   - projeto_id: referência ao projeto (string)
+#   - tipo_projeto: full_persona | leadership | hiring | team | career | development | reassessment (string)
+#   - persona_id: referência à persona principal (string)
+#   - data_inicio: data de início do projeto (date)
+#   - data_conclusao: data de conclusão (date)
+#   - frameworks_utilizados: frameworks aplicados (list)
+#   - confianca_media: nível médio de confiança 0.0 a 1.0 (float)
+#   - contradicoes_encontradas: número de contradições (integer)
+#   - contradicoes_resolvidas: número resolvidas (integer)
+#   - satisfacao_cliente: 1 a 5 (integer)
+#   - feedback_cliente: feedback textual (string)
+#   - licoes_aprendidas: referência ao lessons-learned (string)
+
+entries: []

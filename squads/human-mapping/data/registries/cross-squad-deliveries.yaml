@@ -1,0 +1,20 @@
+# Registry: Cross-Squad Deliveries
+# Registro de entregas e integrações entre o Human Mapping Squad e outros
+# squads do ecossistema. Rastreia dados enviados, recebidos e acordos
+# de interface entre squads.
+#
+# Schema:
+#   - id: identificador único da entrega (string)
+#   - data: data da entrega (date)
+#   - direcao: enviado | recebido (string)
+#   - squad_parceiro: nome do squad parceiro (string)
+#   - tipo_entrega: perfil | insight | recomendação | dados | consulta (string)
+#   - descricao: descrição da entrega (string)
+#   - persona_id: referência à persona (se aplicável) (string)
+#   - projeto_id: referência ao projeto (se aplicável) (string)
+#   - formato: yaml | json | markdown | verbal (string)
+#   - confidencialidade: público | restrito | confidencial (string)
+#   - status: entregue | pendente | em_revisão (string)
+#   - feedback: feedback do squad receptor (string)
+
+entries: []

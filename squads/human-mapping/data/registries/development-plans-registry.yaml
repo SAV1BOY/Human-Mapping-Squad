@@ -1,0 +1,20 @@
+# Registry: Development Plans Registry
+# Registro de todos os planos de desenvolvimento individual (PDI) criados
+# pelo squad, incluindo status de acompanhamento e eficácia.
+#
+# Schema:
+#   - id: identificador único do plano (string)
+#   - persona_id: referência à persona (string)
+#   - projeto_id: referência ao projeto de origem (string)
+#   - data_criacao: data de criação do plano (date)
+#   - data_revisao: próxima data de revisão (date)
+#   - status: ativo | concluído | pausado | cancelado (string)
+#   - areas_foco: áreas de desenvolvimento priorizadas (list)
+#   - metas: lista de metas SMART definidas (list)
+#   - progresso_geral: 0 a 100 percentual (integer)
+#   - marcos_concluidos: marcos já alcançados (list)
+#   - obstaculos: obstáculos identificados (list)
+#   - eficacia_avaliada: sim | não (string)
+#   - notas: observações de acompanhamento (string)
+
+entries: []

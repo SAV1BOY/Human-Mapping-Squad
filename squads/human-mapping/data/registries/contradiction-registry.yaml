@@ -1,0 +1,20 @@
+# Registry: Contradiction Registry
+# Registro de contradições encontradas entre resultados de diferentes
+# frameworks aplicados a uma mesma persona. Serve como base de conhecimento
+# para resolver contradições futuras.
+#
+# Schema:
+#   - id: identificador único da contradição (string)
+#   - data: data de identificação (date)
+#   - persona_id: referência à persona (string)
+#   - framework_a: primeiro framework envolvido (string)
+#   - resultado_a: resultado no framework A (string)
+#   - framework_b: segundo framework envolvido (string)
+#   - resultado_b: resultado no framework B (string)
+#   - tipo: contextual | desenvolvimental | metodológica | genuína (string)
+#   - descricao: descrição da contradição (string)
+#   - resolucao: como foi resolvida (string)
+#   - status: resolvida | pendente | irresolvível (string)
+#   - aprendizado: lição aprendida para casos futuros (string)
+
+entries: []

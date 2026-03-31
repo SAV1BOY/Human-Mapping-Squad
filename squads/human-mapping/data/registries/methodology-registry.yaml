@@ -1,0 +1,20 @@
+# Registry: Methodology Registry
+# Registro das metodologias e procedimentos utilizados pelo squad,
+# incluindo métodos de proxy-inference, conversão entre frameworks
+# e técnicas de análise.
+#
+# Schema:
+#   - id: identificador único da metodologia (string)
+#   - nome: nome descritivo (string)
+#   - tipo: proxy_inference | conversão | análise | síntese | validação (string)
+#   - descricao: descrição do método (string)
+#   - frameworks_envolvidos: frameworks que o método conecta (list)
+#   - precisao_estimada: 0.0 a 1.0 (float)
+#   - limitacoes: limitações conhecidas (list)
+#   - pre_requisitos: dados necessários para aplicar (list)
+#   - referencia_doc: caminho para documentação detalhada (string)
+#   - data_criacao: data de criação (date)
+#   - ultima_validacao: data da última validação (date)
+#   - status: ativo | experimental | depreciado (string)
+
+entries: []

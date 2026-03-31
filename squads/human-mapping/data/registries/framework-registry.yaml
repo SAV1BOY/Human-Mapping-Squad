@@ -1,0 +1,19 @@
+# Registry: Framework Registry
+# Catálogo de todos os frameworks de avaliação de personalidade reconhecidos
+# pelo Human Mapping Squad, com metadados sobre validade, uso e confiança.
+#
+# Schema:
+#   - id: identificador único do framework (string)
+#   - nome: nome completo do framework (string)
+#   - sigla: abreviação (string)
+#   - categoria: traços | tipos | motivações | forças | comportamento | vocacional (string)
+#   - base_teorica: fundamento teórico (string)
+#   - validade_psicometrica: alta | média | baixa (string)
+#   - nivel_confianca_hms: 0.0 a 1.0 (float)
+#   - uso_recomendado: lista de contextos recomendados (list)
+#   - limitacoes: lista de limitações conhecidas (list)
+#   - certificacao_requerida: sim | não | varia (string)
+#   - custo: gratuito | pago | varia (string)
+#   - referencia_summary: caminho para o arquivo de resumo (string)
+
+entries: []

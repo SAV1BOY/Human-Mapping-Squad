@@ -1,0 +1,19 @@
+# Registry: Insight Registry
+# Registro de insights gerados durante processos de mapeamento e avaliação.
+# Insights são descobertas relevantes que emergem da análise de perfis,
+# cruzamento de frameworks ou análise de contradições.
+#
+# Schema:
+#   - id: identificador único do insight (string)
+#   - data: data de registro (date)
+#   - persona_id: referência à persona relacionada (string)
+#   - projeto_id: referência ao projeto de origem (string)
+#   - tipo: padrão | contradição | correlação | predição | emergente (string)
+#   - descricao: descrição do insight (string)
+#   - frameworks_envolvidos: frameworks que geraram o insight (list)
+#   - nivel_confianca: 0.0 a 1.0 (float)
+#   - acionavel: sim | não (string)
+#   - acao_sugerida: ação recomendada baseada no insight (string)
+#   - validado: sim | não | pendente (string)
+
+entries: []

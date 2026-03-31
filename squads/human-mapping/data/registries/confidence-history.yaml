@@ -1,0 +1,18 @@
+# Registry: Confidence History
+# Histórico de evolução dos níveis de confiança das avaliações ao longo
+# do tempo. Permite rastrear como a confiança muda com novas evidências,
+# reavaliações e resolução de contradições.
+#
+# Schema:
+#   - id: identificador único do registro (string)
+#   - persona_id: referência à persona (string)
+#   - data: data do registro (date)
+#   - dimensao: dimensão avaliada (ex: extroversão, dominância) (string)
+#   - framework: framework utilizado (string)
+#   - confianca_anterior: nível anterior 0.0 a 1.0 (float)
+#   - confianca_atual: nível atual 0.0 a 1.0 (float)
+#   - motivo_mudanca: razão da alteração (string)
+#   - evidencia: evidência que suportou a mudança (string)
+#   - tipo_evento: avaliação_inicial | reavaliação | nova_evidência | resolução_contradição (string)
+
+entries: []

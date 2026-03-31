@@ -1,0 +1,19 @@
+# Registry: Lessons Learned
+# Registro de lições aprendidas ao longo dos projetos do squad.
+# Base de conhecimento para melhoria contínua de processos,
+# metodologias e qualidade das avaliações.
+#
+# Schema:
+#   - id: identificador único da lição (string)
+#   - data: data do registro (date)
+#   - projeto_id: referência ao projeto de origem (string)
+#   - categoria: metodologia | processo | framework | comunicação | ética | qualidade (string)
+#   - titulo: título resumido da lição (string)
+#   - contexto: situação em que a lição foi aprendida (string)
+#   - aprendizado: descrição da lição (string)
+#   - impacto: alto | médio | baixo (string)
+#   - acao_implementada: ação tomada como resultado (string)
+#   - status: implementada | planejada | em_avaliação (string)
+#   - aplicavel_a: tipos de projeto onde a lição se aplica (list)
+
+entries: []

@@ -1,0 +1,19 @@
+# Registry: Persona Registry
+# Registro central de todas as personas mapeadas pelo Human Mapping Squad.
+# Cada entrada representa um indivíduo com seu perfil consolidado,
+# incluindo referências aos frameworks utilizados e níveis de confiança.
+#
+# Schema:
+#   - id: identificador único da persona (string)
+#   - nome: nome ou pseudônimo do indivíduo (string)
+#   - data_criacao: data de criação do registro (date)
+#   - data_atualizacao: última atualização (date)
+#   - status: ativo | arquivado | em_andamento (string)
+#   - projeto_origem: referência ao projeto que gerou o perfil (string)
+#   - frameworks_utilizados: lista de frameworks aplicados (list)
+#   - nivel_confianca_geral: 0.0 a 1.0 (float)
+#   - perfil_resumo: descrição breve do perfil (string)
+#   - tags: etiquetas para categorização (list)
+#   - notas: observações adicionais (string)
+
+entries: []
