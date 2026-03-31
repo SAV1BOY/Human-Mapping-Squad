@@ -1,0 +1,579 @@
+# ============================================================
+# HUMAN-MAPPING SQUAD — Glossário Oficial
+# ============================================================
+# Termos padronizados usados em todo o squad
+# Referência obrigatória para todos os agentes e documentos
+
+glossary:
+
+  # ── PIPELINE STAGES ──────────────────────────────────────
+
+  intake:
+    en: "Intake"
+    pt: "Intake / Entrada"
+    definition: "Fase inicial onde se coleta objetivo, contexto e profundidade desejada da sessão de assessment."
+    category: pipeline
+
+  calibration:
+    en: "Calibration"
+    pt: "Calibração"
+    definition: "Fase onde o respondente é calibrado — consistência, honestidade e clareza são verificadas antes de qualquer interpretação."
+    category: pipeline
+
+  trait-assessment:
+    en: "Trait Assessment"
+    pt: "Avaliação de Traços"
+    definition: "Camada mais estável do assessment. Mede dimensões contínuas de personalidade (Big Five, HEXACO, NEO, 16PF, Hogan HPI)."
+    category: pipeline
+
+  type-assessment:
+    en: "Type Assessment"
+    pt: "Avaliação de Tipos/Estilos"
+    definition: "Camada de tipologias e estilos comportamentais (MBTI, DISC, Insights, Social Style, PI, FIRO, PCM, Birkman)."
+    category: pipeline
+
+  motivation-assessment:
+    en: "Motivation Assessment"
+    pt: "Avaliação de Motivações"
+    definition: "Camada de motivações profundas e drives (Eneagrama, SDI, Reiss, MVPI, 12 Driving Forces)."
+    category: pipeline
+
+  strengths-assessment:
+    en: "Strengths Assessment"
+    pt: "Avaliação de Forças"
+    definition: "Camada de talentos naturais e forças de caráter (CliftonStrengths, VIA, Belbin)."
+    category: pipeline
+
+  career-fit-assessment:
+    en: "Career Fit Assessment"
+    pt: "Avaliação de Fit de Carreira"
+    definition: "Camada de interesses ocupacionais e fit de carreira (RIASEC, Strong Interest Inventory)."
+    category: pipeline
+
+  conation-assessment:
+    en: "Conation Assessment"
+    pt: "Avaliação de Conação"
+    definition: "Camada do modo instintivo de ação (Kolbe A Index — 4 Action Modes)."
+    category: pipeline
+
+  contradiction-audit:
+    en: "Contradiction Audit"
+    pt: "Auditoria de Contradições"
+    definition: "Fase obrigatória onde conflitos entre frameworks são detectados, analisados e reconciliados."
+    category: pipeline
+
+  synthesis:
+    en: "Synthesis"
+    pt: "Síntese"
+    definition: "Integração de todas as camadas em um mapa unificado da pessoa."
+    category: pipeline
+
+  report-generation:
+    en: "Report Generation"
+    pt: "Geração de Relatório"
+    definition: "Produção do laudo final (executivo, profundo, desenvolvimento, especializado)."
+    category: pipeline
+
+  development-planning:
+    en: "Development Planning"
+    pt: "Planejamento de Desenvolvimento"
+    definition: "Transformação do perfil em plano de ação acionável e priorizado."
+    category: pipeline
+
+  # ── ASSESSMENT CONCEPTS ──────────────────────────────────
+
+  trait:
+    en: "Trait"
+    pt: "Traço"
+    definition: "Dimensão contínua e relativamente estável da personalidade. Base do assessment — medido ANTES de tipos."
+    category: concept
+
+  type:
+    en: "Type"
+    pt: "Tipo"
+    definition: "Categoria discreta de personalidade derivada de preferências. Derivação de traços — medido DEPOIS."
+    category: concept
+
+  style:
+    en: "Style"
+    pt: "Estilo"
+    definition: "Padrão comportamental observável em contextos específicos (interpessoal, trabalho, comunicação)."
+    category: concept
+
+  motivation:
+    en: "Motivation"
+    pt: "Motivação"
+    definition: "Força interna que direciona comportamento. Inclui medos, desejos, valores e necessidades profundas."
+    category: concept
+
+  drive:
+    en: "Drive"
+    pt: "Impulso / Driver"
+    definition: "Motivação específica e mensurável que impulsiona comportamento no trabalho e na vida."
+    category: concept
+
+  strength:
+    en: "Strength"
+    pt: "Força"
+    definition: "Padrão natural de pensamento, sentimento ou comportamento que produz resultado consistente. Diferente de habilidade adquirida."
+    category: concept
+
+  talent:
+    en: "Talent"
+    pt: "Talento"
+    definition: "Padrão naturalmente recorrente de pensamento, sentimento ou comportamento que pode ser aplicado produtivamente."
+    category: concept
+
+  skill:
+    en: "Skill"
+    pt: "Habilidade"
+    definition: "Capacidade adquirida através de prática e aprendizado. NÃO é o mesmo que força natural."
+    category: concept
+
+  character-strength:
+    en: "Character Strength"
+    pt: "Força de Caráter"
+    definition: "Qualidade positiva do caráter (VIA: 24 forças organizadas em 6 virtudes)."
+    category: concept
+
+  team-role:
+    en: "Team Role"
+    pt: "Papel de Equipe"
+    definition: "Função natural que uma pessoa tende a assumir em contexto de equipe (Belbin: 9 papéis)."
+    category: concept
+
+  career-fit:
+    en: "Career Fit"
+    pt: "Fit de Carreira"
+    definition: "Grau de alinhamento entre perfil da pessoa e características de uma ocupação/ambiente."
+    category: concept
+
+  conation:
+    en: "Conation"
+    pt: "Conação"
+    definition: "Parte da mente responsável por impulso e vontade de agir. Modo instintivo de execução."
+    category: concept
+
+  action-mode:
+    en: "Action Mode"
+    pt: "Modo de Ação"
+    definition: "Um dos 4 modos instintivos de agir (Kolbe: Fact Finder, Follow Thru, Quick Start, Implementor)."
+    category: concept
+
+  # ── QUALITY CONCEPTS ─────────────────────────────────────
+
+  confidence-score:
+    en: "Confidence Score"
+    pt: "Score de Confiança"
+    definition: "Nível de certeza atribuído a cada conclusão do assessment (low/medium/high). Obrigatório por camada."
+    category: quality
+
+  contradiction:
+    en: "Contradiction"
+    pt: "Contradição"
+    definition: "Conflito entre conclusões de frameworks diferentes. Sinal valioso — não erro. Requer reconciliação."
+    category: quality
+
+  reconciliation:
+    en: "Reconciliation"
+    pt: "Reconciliação"
+    definition: "Processo de resolver contradições entre frameworks, separando traço de adaptação, fase e contexto."
+    category: quality
+
+  cross-framework-alignment:
+    en: "Cross-Framework Alignment"
+    pt: "Alinhamento entre Frameworks"
+    definition: "Grau de convergência entre conclusões de múltiplos frameworks sobre a mesma pessoa."
+    category: quality
+
+  social-desirability:
+    en: "Social Desirability"
+    pt: "Desejabilidade Social"
+    definition: "Tendência a responder de forma socialmente aceita em vez de honesta. Viés a ser detectado na calibração."
+    category: quality
+
+  proxy-inference:
+    en: "Proxy Inference"
+    pt: "Inferência Proxy"
+    definition: "Modo de operação onde frameworks são inferidos via entrevista estruturada e cruzamento, sem instrumento oficial."
+    category: quality
+
+  official-instrument:
+    en: "Official Instrument"
+    pt: "Instrumento Oficial"
+    definition: "Assessment formal aplicado com instrumento validado (ex: CliftonStrengths online, NEO-PI-3 aplicado)."
+    category: quality
+
+  barnum-effect:
+    en: "Barnum/Forer Effect"
+    pt: "Efeito Barnum/Forer"
+    definition: "Tendência a aceitar descrições vagas como precisas. Maior risco em assessments. Proteger com especificidade."
+    category: quality
+
+  halo-effect:
+    en: "Halo Effect"
+    pt: "Efeito Halo"
+    definition: "Viés onde impressão positiva em um traço contamina avaliação de outros traços."
+    category: quality
+
+  quality-gate:
+    en: "Quality Gate"
+    pt: "Gate de Qualidade"
+    definition: "Checkpoint obrigatório que deve ser aprovado antes de avançar no pipeline."
+    category: quality
+
+  # ── FRAMEWORKS (definições curtas) ───────────────────────
+
+  big-five:
+    en: "Big Five / OCEAN"
+    pt: "Big Five / OCEAN"
+    definition: "5 dimensões contínuas: Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism."
+    category: framework
+
+  hexaco:
+    en: "HEXACO"
+    pt: "HEXACO"
+    definition: "6 fatores: Honesty-Humility, Emotionality, eXtraversion, Agreeableness, Conscientiousness, Openness."
+    category: framework
+
+  neo-pi-3:
+    en: "NEO-PI-3"
+    pt: "NEO-PI-3"
+    definition: "5 fatores + 30 facetas (240 itens). Versão mais granular do Big Five (Costa & McCrae)."
+    category: framework
+
+  16pf:
+    en: "16PF"
+    pt: "16PF"
+    definition: "16 fatores primários de personalidade (Cattell). Granularidade intermediária."
+    category: framework
+
+  hogan-hpi:
+    en: "Hogan HPI"
+    pt: "Hogan HPI"
+    definition: "Hogan Personality Inventory. Tradução de traços para comportamento no trabalho (bright side)."
+    category: framework
+
+  mbti:
+    en: "MBTI"
+    pt: "MBTI"
+    definition: "16 tipos baseados em 4 dicotomias: E/I, S/N, T/F, J/P (Myers-Briggs, baseado em Jung)."
+    category: framework
+
+  disc:
+    en: "DISC"
+    pt: "DISC"
+    definition: "4 polos comportamentais: Dominance, Influence, Steadiness, Compliance (Marston)."
+    category: framework
+
+  insights-discovery:
+    en: "Insights Discovery"
+    pt: "Insights Discovery"
+    definition: "4 energias de cor (Cool Blue, Earth Green, Sunshine Yellow, Fiery Red) baseadas em Jung."
+    category: framework
+
+  social-style:
+    en: "Social Style"
+    pt: "Social Style"
+    definition: "4 estilos interpessoais + Versatility. Foco em assertividade e responsividade."
+    category: framework
+
+  predictive-index:
+    en: "Predictive Index"
+    pt: "Predictive Index"
+    definition: "Drives comportamentais no trabalho. Mede dominância, extroversão, paciência e formalidade."
+    category: framework
+
+  firo:
+    en: "FIRO"
+    pt: "FIRO"
+    definition: "3 necessidades interpessoais: Inclusão, Controle e Afeto (expressos e desejados)."
+    category: framework
+
+  pcm:
+    en: "PCM (Process Communication Model)"
+    pt: "PCM"
+    definition: "6 tipos de personalidade + comunicação + padrões de stress (Kahler)."
+    category: framework
+
+  birkman:
+    en: "Birkman Method"
+    pt: "Método Birkman"
+    definition: "Comportamento usual + motivações internas + necessidades ocultas + stress behaviors."
+    category: framework
+
+  enneagram:
+    en: "Enneagram"
+    pt: "Eneagrama"
+    definition: "9 tipos: medo central, desejo central, padrão automático, vício e virtude."
+    category: framework
+
+  sdi:
+    en: "SDI 2.0 (Strength Deployment Inventory)"
+    pt: "SDI 2.0"
+    definition: "Motivational Value System (em paz) + Conflict Sequence (sob pressão)."
+    category: framework
+
+  reiss:
+    en: "Reiss Motivation Profile"
+    pt: "Perfil de Motivação Reiss"
+    definition: "16 desejos básicos que motivam comportamento humano (Steven Reiss)."
+    category: framework
+
+  hogan-mvpi:
+    en: "Hogan MVPI"
+    pt: "Hogan MVPI"
+    definition: "Motives, Values, Preferences Inventory. Valores e drivers no trabalho."
+    category: framework
+
+  12-driving-forces:
+    en: "12 Driving Forces"
+    pt: "12 Forças Motrizes"
+    definition: "6 continuums motivacionais com 12 polos (TTI Success Insights)."
+    category: framework
+
+  cliftonstrengths:
+    en: "CliftonStrengths"
+    pt: "CliftonStrengths"
+    definition: "34 temas de talento organizados em 4 domínios (Gallup). Foco em forças naturais."
+    category: framework
+
+  via-character-strengths:
+    en: "VIA Character Strengths"
+    pt: "Forças de Caráter VIA"
+    definition: "24 forças de caráter organizadas em 6 virtudes (Peterson & Seligman)."
+    category: framework
+
+  belbin:
+    en: "Belbin Team Roles"
+    pt: "Papéis de Equipe Belbin"
+    definition: "9 papéis: 3 sociais, 3 de pensamento, 3 de ação (Meredith Belbin)."
+    category: framework
+
+  riasec:
+    en: "RIASEC / Holland Codes"
+    pt: "RIASEC / Códigos Holland"
+    definition: "6 tipos de interesse: Realistic, Investigative, Artistic, Social, Enterprising, Conventional."
+    category: framework
+
+  strong-interest-inventory:
+    en: "Strong Interest Inventory"
+    pt: "Inventário de Interesses Strong"
+    definition: "Interesses ocupacionais baseados em RIASEC. Mapeia interesses → ocupações."
+    category: framework
+
+  kolbe-a:
+    en: "Kolbe A Index"
+    pt: "Índice Kolbe A"
+    definition: "4 Action Modes: Fact Finder, Follow Thru, Quick Start, Implementor. Modo instintivo."
+    category: framework
+
+  # ── AGENT ROLES ──────────────────────────────────────────
+
+  chief:
+    en: "Chief"
+    pt: "Chefe / Líder"
+    definition: "Agente que orquestra uma camada ou o squad inteiro. Define prioridade, resolve conflitos, aprova entregas."
+    category: agent-role
+
+  analyst:
+    en: "Analyst"
+    pt: "Analista"
+    definition: "Agente especialista em um framework específico. Executa análise e scoring."
+    category: agent-role
+
+  auditor:
+    en: "Auditor"
+    pt: "Auditor"
+    definition: "Agente que verifica qualidade, detecta contradições e valida conclusões."
+    category: agent-role
+
+  architect:
+    en: "Architect"
+    pt: "Arquiteto"
+    definition: "Agente que constrói estruturas integradas (síntese, rapport, relatório)."
+    category: agent-role
+
+  orchestrator:
+    en: "Orchestrator"
+    pt: "Orquestrador"
+    definition: "Agente que coordena sequência de atividades e handoffs entre agentes."
+    category: agent-role
+
+  gatekeeper:
+    en: "Gatekeeper"
+    pt: "Gatekeeper"
+    definition: "Agente que impede avanço sem evidência suficiente. Protege contra conclusão prematura."
+    category: agent-role
+
+  planner:
+    en: "Planner"
+    pt: "Planejador"
+    definition: "Agente que transforma perfil em plano de ação acionável."
+    category: agent-role
+
+  writer:
+    en: "Writer"
+    pt: "Escritor"
+    definition: "Agente que gera laudos e relatórios finais com score de confiança."
+    category: agent-role
+
+  # ── REPORT TYPES ─────────────────────────────────────────
+
+  executive-snapshot:
+    en: "Executive Snapshot"
+    pt: "Snapshot Executivo"
+    definition: "Relatório de 1 página: quem a pessoa é, como age, o que a move. Para decisores."
+    category: report
+
+  deep-persona-report:
+    en: "Deep Persona Report"
+    pt: "Relatório Profundo de Persona"
+    definition: "Relatório completo com todas as camadas, evidências por conclusão e scores de confiança."
+    category: report
+
+  development-plan:
+    en: "Development Plan"
+    pt: "Plano de Desenvolvimento"
+    definition: "Plano acionável e priorizado derivado do perfil completo. Inclui quick wins e investimentos de longo prazo."
+    category: report
+
+  leadership-profile:
+    en: "Leadership Profile"
+    pt: "Perfil de Liderança"
+    definition: "Relatório focado em competências, estilo e riscos de liderança."
+    category: report
+
+  team-composition-report:
+    en: "Team Composition Report"
+    pt: "Relatório de Composição de Equipe"
+    definition: "Perfil da pessoa no contexto de composição e dinâmica de equipe."
+    category: report
+
+  career-guidance-report:
+    en: "Career Guidance Report"
+    pt: "Relatório de Orientação de Carreira"
+    definition: "Relatório focado em interesses, fit e recomendações de carreira."
+    category: report
+
+  hiring-assessment-report:
+    en: "Hiring Assessment Report"
+    pt: "Relatório de Assessment para Contratação"
+    definition: "Avaliação focada em fit para uma função específica, riscos e recomendações."
+    category: report
+
+  # ── OPERATIONAL TERMS ────────────────────────────────────
+
+  session:
+    en: "Session"
+    pt: "Sessão"
+    definition: "Uma instância completa de assessment, do /start ao /report."
+    category: operational
+
+  respondent:
+    en: "Respondent"
+    pt: "Respondente"
+    definition: "Pessoa sendo avaliada pelo assessment."
+    category: operational
+
+  assessor:
+    en: "Assessor"
+    pt: "Assessor"
+    definition: "Pessoa ou sistema que conduz o assessment."
+    category: operational
+
+  layer:
+    en: "Layer"
+    pt: "Camada"
+    definition: "Um nível do pipeline de assessment (traços, tipos, motivação, etc.)."
+    category: operational
+
+  pipeline:
+    en: "Pipeline"
+    pt: "Pipeline"
+    definition: "Sequência completa de etapas do assessment: Intake → ... → Report."
+    category: operational
+
+  checklist:
+    en: "Checklist"
+    pt: "Checklist"
+    definition: "Lista de critérios que devem ser satisfeitos para aprovar uma etapa."
+    category: operational
+
+  registry:
+    en: "Registry"
+    pt: "Registry / Registro"
+    definition: "Banco de dados persistente do squad (perfis, frameworks usados, contradições, lições)."
+    category: operational
+
+  handoff:
+    en: "Handoff"
+    pt: "Handoff / Passagem"
+    definition: "Transferência estruturada de dados entre agentes ou entre squads."
+    category: operational
+
+  cross-squad:
+    en: "Cross-Squad"
+    pt: "Entre Squads"
+    definition: "Interação bidirecional com outros squads do MMOS (Advisory, C-Level, Sales, etc.)."
+    category: operational
+
+  ralphloop:
+    en: "RalphLoop"
+    pt: "RalphLoop"
+    definition: "Ciclo de melhoria contínua do squad: retro → identificar gaps → calibrar → melhorar."
+    category: operational
+
+  depth-level:
+    en: "Depth Level"
+    pt: "Nível de Profundidade"
+    definition: "Três modos de profundidade: /fast (rápido), /start (padrão), /deep (profundo)."
+    category: operational
+
+  proxy-mode:
+    en: "Proxy Mode"
+    pt: "Modo Proxy"
+    definition: "Modo padrão de operação: inferência via entrevista estruturada sem instrumento formal."
+    category: operational
+
+  official-mode:
+    en: "Official Mode"
+    pt: "Modo Oficial"
+    definition: "Modo onde resultados de instrumentos formais aplicados são importados e interpretados."
+    category: operational
+
+  adaptation:
+    en: "Adaptation"
+    pt: "Adaptação"
+    definition: "Comportamento ajustado ao contexto, diferente do traço estável. Separar de identidade."
+    category: concept
+
+  identity:
+    en: "Identity"
+    pt: "Identidade"
+    definition: "Padrão estável e central da pessoa, diferente de adaptação contextual."
+    category: concept
+
+  persona-social:
+    en: "Social Persona"
+    pt: "Persona Social"
+    definition: "Máscara ou apresentação que a pessoa usa em contextos sociais. Diferente de identidade."
+    category: concept
+
+  facet:
+    en: "Facet"
+    pt: "Faceta"
+    definition: "Subdimensão de um traço (ex: NEO-PI-3 tem 6 facetas por fator = 30 facetas)."
+    category: concept
+
+  convergence:
+    en: "Convergence"
+    pt: "Convergência"
+    definition: "Quando múltiplos frameworks apontam na mesma direção. Aumenta confiança."
+    category: quality
+
+  divergence:
+    en: "Divergence"
+    pt: "Divergência"
+    definition: "Quando frameworks apontam em direções diferentes. Sinal de contradição a investigar."
+    category: quality

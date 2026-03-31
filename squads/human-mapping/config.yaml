@@ -1,0 +1,261 @@
+# ============================================================
+# HUMAN-MAPPING SQUAD — config.yaml
+# ============================================================
+
+squad:
+  name: human-mapping
+  version: "2.0.0"
+  description: "Assessment OS: mapear traços, estilos, motivações, forças, carreira e modo de ação"
+  chief_agent: human-mapping-chief
+  agents: 34
+  pipeline: "Intake → Calibration → Traits → Types → Motivation → Strengths → Team → Career → Conation → Contradictions → Synthesis → Report"
+
+principles:
+  - evidence_over_impression
+  - confidence_per_conclusion
+  - traits_before_types
+  - motivation_after_style
+  - contradiction_is_signal
+  - no_single_framework_rules_all
+  - synthesis_over_labeling
+  - actionability_over_vanity
+
+commands:
+  /start: "Inicia bateria completa"
+  /resume: "Retoma sessão anterior"
+  /fast: "Versão resumida (traços + tipos + motivação)"
+  /deep: "Versão profunda (todas as camadas + contradições)"
+  /report: "Entrega laudo final"
+  /contradictions: "Exibe conflitos entre frameworks"
+  /development: "Entrega plano de desenvolvimento"
+  /career: "Foco em carreira"
+  /team: "Foco em papel no time"
+  /leadership: "Foco em liderança"
+  /hiring: "Foco em contratação"
+
+# ============================================================
+# ROUTING
+# ============================================================
+
+routing:
+
+  start-session:
+    agents: [human-mapping-chief, intake-orchestrator, context-mapper]
+    frameworks: [assessment-intake-canvas, context-priority-matrix]
+    checklists: [intake/start-command-quality, intake/goal-definition-quality, intake/context-capture-quality]
+    templates: [intake/session-brief]
+    registry: [data/session-memory, data/registries/persona-registry]
+
+  calibrate-respondent:
+    agents: [rapport-architect, respondent-quality-auditor, readiness-gatekeeper]
+    frameworks: [response-reliability-model, social-desirability-screen, contradiction-baseline]
+    checklists: [calibration/response-consistency-quality, calibration/social-desirability-risk, calibration/self-awareness-baseline-quality]
+    templates: [calibration/reliability-sheet]
+    registry: [data/confidence-maps, data/session-memory]
+
+  run-trait-layer:
+    agents: [trait-chief, big-five-analyst, hexaco-analyst, neo-16pf-analyst]
+    frameworks: [traits/big-five, traits/hexaco, traits/neo-pi-3, traits/16pf]
+    checklists: [traits/big-five-quality, traits/hexaco-quality, traits/facet-resolution-quality, traits/trait-confidence-quality]
+    templates: [layers/trait-map-template, layers/facet-summary-template]
+    registry: [data/scored-results, data/registries/framework-registry]
+
+  run-workplace-translation:
+    agents: [hogan-bright-side-analyst]
+    frameworks: [traits/hogan-hpi, workplace-behavior-map]
+    checklists: [traits/workplace-translation-quality]
+    templates: [layers/workplace-translation-template]
+    registry: [data/scored-results]
+
+  run-type-style-layer:
+    agents: [type-style-chief, mbti-analyst, disc-analyst, insights-social-style-analyst, predictive-index-analyst, firo-pcm-birkman-analyst]
+    frameworks: [types-styles/mbti, types-styles/disc, types-styles/insights-discovery, types-styles/social-style, types-styles/predictive-index, types-styles/firo, types-styles/pcm, types-styles/birkman]
+    checklists: [types/mbti-inference-quality, types/disc-inference-quality, types/style-consistency-quality, types/type-vs-trait-separation]
+    templates: [layers/type-style-map-template]
+    registry: [data/scored-results, data/contradiction-maps]
+
+  run-motivation-layer:
+    agents: [motivation-chief, enneagram-analyst, sdi-analyst, reiss-analyst, mvpi-driving-forces-analyst]
+    frameworks: [motivation-drives/enneagram, motivation-drives/sdi-2-0, motivation-drives/reiss-motivation-profile, motivation-drives/hogan-mvpi, motivation-drives/12-driving-forces]
+    checklists: [motivation/enneagram-inference-quality, motivation/sdi-conflict-sequence-quality, motivation/reiss-drive-quality, motivation/motivation-depth-quality]
+    templates: [layers/motivation-map-template, layers/conflict-sequence-template]
+    registry: [data/scored-results, data/registries/insight-registry]
+
+  run-strengths-layer:
+    agents: [strengths-chief, cliftonstrengths-analyst, via-strengths-analyst, belbin-analyst]
+    frameworks: [strengths/cliftonstrengths, strengths/via-character-strengths, team-roles/belbin-team-roles]
+    checklists: [strengths/strengths-detection-quality, strengths/strength-vs-skill-separation, strengths/team-contribution-quality]
+    templates: [layers/strength-map-template, layers/team-role-map-template]
+    registry: [data/scored-results, data/development-plans]
+
+  run-career-action-layer:
+    agents: [career-fit-analyst, riasec-strong-analyst, kolbe-analyst]
+    frameworks: [career-fit/riasec, career-fit/strong-interest-inventory, conation/kolbe-a]
+    checklists: [career/career-fit-quality, career/role-fit-quality, career/conation-quality]
+    templates: [layers/career-fit-template, layers/mode-of-action-template]
+    registry: [data/scored-results, data/development-plans]
+
+  audit-contradictions:
+    agents: [contradiction-auditor, readiness-gatekeeper]
+    frameworks: [cross-framework-reconciliation, trait-vs-type-model, adaptation-vs-identity-model]
+    checklists: [contradiction/cross-framework-alignment, contradiction/trait-type-conflict, contradiction/confidence-reconciliation]
+    templates: [audit/contradiction-map-template, audit/confidence-map-template]
+    registry: [data/contradiction-maps, data/confidence-maps]
+
+  synthesize-profile:
+    agents: [synthesis-architect, report-writer, development-planner, human-mapping-chief]
+    frameworks: [persona-synthesis-model, executive-brief-model, development-prioritization]
+    checklists: [report/executive-summary-quality, report/deep-report-quality, report/development-plan-quality, report/actionability-quality]
+    templates: [reports/executive-snapshot-template, reports/deep-persona-report-template, reports/development-plan-template]
+    registry: [data/persona-profiles, data/development-plans, data/registries/persona-registry]
+
+  build-leadership-profile:
+    agents: [synthesis-architect, report-writer, human-mapping-chief]
+    frameworks: [persona-synthesis-model, workplace-behavior-map]
+    checklists: [report/executive-summary-quality]
+    templates: [reports/leadership-profile-template]
+    registry: [data/persona-profiles]
+
+  build-hiring-assessment:
+    agents: [synthesis-architect, report-writer, human-mapping-chief]
+    frameworks: [persona-synthesis-model, workplace-behavior-map]
+    checklists: [report/executive-summary-quality]
+    templates: [reports/hiring-assessment-template]
+    registry: [data/persona-profiles]
+
+  run-reassessment:
+    agents: [human-mapping-chief, contradiction-auditor, synthesis-architect]
+    frameworks: [cross-framework-reconciliation, adaptation-vs-identity-model]
+    checklists: [contradiction/cross-framework-alignment]
+    templates: [reports/deep-persona-report-template]
+    registry: [data/persona-profiles, data/registries/assessment-outcomes]
+
+  cross-squad-handoff:
+    agents: [human-mapping-chief]
+    frameworks: []
+    checklists: [cross-framework-reconciliation-quality]
+    templates: [operational/cross-squad-handoff-template]
+    registry: [data/registries/cross-squad-deliveries]
+
+# ============================================================
+# CROSS-SQUAD INTEGRATION (bidirecional)
+# ============================================================
+
+cross_squad:
+  advisory_board:
+    handoff_to_advisory:
+      - "leadership profiles → advisory/data/research (perfil de liderança para decisões)"
+      - "executive assessment → advisory/tasks (avaliação para sucessão)"
+    handoff_from_advisory:
+      - "strategic context → data/session-memory (contexto para assessment)"
+    shared_assets: [leadership-profiles, succession-assessments]
+
+  c_level_squad:
+    handoff_to_c_level:
+      - "executive profiles → c-level/data/research (perfis para decisões de people)"
+      - "team composition → c-level/tasks (composição de equipe)"
+    handoff_from_c_level:
+      - "hiring needs → data/session-memory (requisitos de contratação)"
+      - "culture context → data/session-memory (contexto cultural)"
+    shared_assets: [executive-profiles, team-composition-data]
+
+  sales_call_intelligence:
+    handoff_to_sales:
+      - "closer profiles → sales/data/registries (perfil do closer para coaching)"
+      - "communication style → sales/reference (estilo de comunicação)"
+    handoff_from_sales:
+      - "closer performance data → data/session-memory (dados de performance)"
+    shared_assets: [closer-profiles, communication-styles]
+
+  brand_squad:
+    handoff_to_brand:
+      - "founder/leader personality → brand/reference (personalidade para branding)"
+    handoff_from_brand:
+      - "brand archetype → data/session-memory (contexto de marca)"
+    shared_assets: [personality-brand-alignment]
+
+  storytelling_squad:
+    handoff_to_storytelling:
+      - "personality insights → storytelling/reference (insights para narrativa)"
+    handoff_from_storytelling:
+      - "narrative preferences → data/session-memory (preferências narrativas)"
+    shared_assets: [personality-narrative-alignment]
+
+  movement_squad:
+    handoff_to_movement:
+      - "motivation/values data → movement/data/research (motivações para movimento)"
+    handoff_from_movement:
+      - "cultural identity insights → data/session-memory (identidade cultural)"
+    shared_assets: [motivation-movement-alignment]
+
+  data_squad:
+    handoff_to_data:
+      - "assessment metrics → data/registries (métricas de assessment)"
+    handoff_from_data:
+      - "statistical analysis → data/scored-results (análise estatística)"
+    shared_assets: [assessment-metrics, scoring-validation]
+
+# ============================================================
+# QUALITY GATES
+# ============================================================
+
+quality_gates:
+  mandatory:
+    - calibration-quality
+    - trait-assessment-quality
+    - contradiction-audit-quality
+    - confidence-map-quality
+    - synthesis-quality
+  per_domain:
+    intake: [intake-quality]
+    traits: [traits/big-five-quality, traits/trait-confidence-quality]
+    types: [types/mbti-inference-quality, types/type-vs-trait-separation]
+    motivation: [motivation/motivation-depth-quality]
+    strengths: [strengths/strength-vs-skill-separation]
+    career: [career/career-fit-quality]
+    contradiction: [contradiction/cross-framework-alignment]
+    report: [report/actionability-quality]
+
+# ============================================================
+# KPIs
+# ============================================================
+
+kpis:
+  assessment_quality:
+    - confidence_average_per_layer
+    - contradiction_resolution_rate
+    - cross_framework_alignment_score
+    - respondent_consistency_score
+  depth:
+    - frameworks_covered_per_session
+    - facets_resolved_per_trait
+    - layers_completed
+    - depth_score
+  impact:
+    - profile_accuracy_feedback
+    - development_plan_adoption
+    - reassessment_consistency
+    - cross_squad_utility_score
+  operational:
+    - session_completion_rate
+    - average_session_duration
+    - methodology_calibration_rate
+    - registry_currency
+
+# ============================================================
+# DEFAULTS
+# ============================================================
+
+defaults:
+  review_agent: human-mapping-chief
+  gatekeeper: readiness-gatekeeper
+  min_checklists: 2
+  registry_on_completion: true
+  output_format: markdown
+  confidence_scale: [low, medium, high]
+  traits_before_types: true
+  motivation_after_style: true
+  contradiction_audit: mandatory
+  no_premature_labeling: true
+  proxy_mode: true
+  official_mode: false

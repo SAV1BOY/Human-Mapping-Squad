@@ -1,0 +1,39 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Sensitive data
+*.env
+*.secrets
+credentials.*
+
+# Session data (keep structure, ignore content)
+squads/human-mapping/data/raw-responses/*.json
+squads/human-mapping/data/raw-responses/*.yaml
+squads/human-mapping/data/scored-results/*.json
+squads/human-mapping/data/scored-results/*.yaml
+squads/human-mapping/data/confidence-maps/*.json
+squads/human-mapping/data/confidence-maps/*.yaml
+squads/human-mapping/data/contradiction-maps/*.json
+squads/human-mapping/data/contradiction-maps/*.yaml
+squads/human-mapping/data/development-plans/*.json
+squads/human-mapping/data/development-plans/*.yaml
+squads/human-mapping/data/persona-profiles/*.json
+squads/human-mapping/data/persona-profiles/*.yaml
+squads/human-mapping/data/session-memory/*.json
+squads/human-mapping/data/session-memory/*.yaml
+
+# Keep .gitkeep files
+!.gitkeep
+
+# Temp files
+*.tmp
+*.bak
+*.log
