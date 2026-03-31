@@ -8,96 +8,58 @@ version: "2.0.0"
 
 ## Resumo
 
-Este documento apresenta três teorias fundamentais de desenvolvimento de carreira: a teoria Life-Span
-Life-Space de Donald Super, a Teoria de Construção de Carreira de Mark Savickas e a Teoria do Caos
-das Carreiras (incluindo a Happenstance planejada de Krumboltz). Essas teorias fornecem ao Assessment
-OS a base teórica para contextualizar recomendações de carreira — considerando o estágio de
-desenvolvimento da pessoa, sua narrativa de identidade profissional e o papel do acaso na trajetória.
+Três teorias fundamentais: Life-Span/Life-Space de Super, Construção de Carreira de Savickas e
+Teoria do Caos/Happenstance de Krumboltz. O Assessment OS contextualiza recomendações considerando
+estágio de desenvolvimento, narrativa de identidade e o papel do acaso na trajetória.
 
 ## Conceitos Principais
 
-### Donald Super — Teoria Life-Span/Life-Space
+### Donald Super — Life-Span/Life-Space
 
-Super propôs que o desenvolvimento de carreira é um processo contínuo ao longo da vida, dividido
-em cinco estágios:
+Cinco estágios de desenvolvimento de carreira ao longo da vida:
+- **Crescimento (0-14)** — Formação do autoconceito, identificação com figuras significativas.
+- **Exploração (15-24)** — Experimentação de papéis: cristalização, especificação, implementação.
+- **Estabelecimento (25-44)** — Estabilização, consolidação de competência e reputação.
+- **Manutenção (45-64)** — Preservação de status, atualização, possível reavaliação.
+- **Declínio (65+)** — Desaceleração, planejamento de aposentadoria, redefinição de papéis.
 
-**Crescimento (0-14 anos)** — Formação do autoconceito, identificação com figuras significativas,
-desenvolvimento de interesses e capacidades iniciais.
+Life-Space: múltiplos papéis simultâneos (estudante, trabalhador, cônjuge, pai/mãe) cuja
+saliência varia ao longo da vida.
 
-**Exploração (15-24 anos)** — Experimentação de papéis por meio de fantasia, atividades escolares,
-trabalhos temporários e estágios. Subdividida em cristalização, especificação e implementação.
+### Mark Savickas — Construção de Carreira
 
-**Estabelecimento (25-44 anos)** — Estabilização em um campo ocupacional, consolidação de posição
-e avanço na carreira. Período de construção de competência e reputação.
+Perspectiva narrativa: carreira não se "tem", se "constrói" ativamente. Conceitos centrais:
+- **Adaptabilidade** — Preocupação (planejar), Controle (responsabilidade), Curiosidade
+  (explorar), Confiança (autoeficácia).
+- **Temas de vida** — Padrões recorrentes que revelam motivações profundas.
+- **Retrato vocacional** — Integração de interesses, valores e habilidades em narrativa coerente.
 
-**Manutenção (45-64 anos)** — Preservação do status conquistado, atualização de competências e
-inovação dentro do campo escolhido. Pode incluir questionamento e reavaliação.
+### Krumboltz — Happenstance Planejada
 
-**Declínio (65+ anos)** — Desaceleração, planejamento de aposentadoria e redefinição do papel
-profissional. Transição para outros papéis de vida (lazer, comunidade, família).
+Eventos não planejados têm papel significativo nas carreiras. Cinco competências para capitalizar
+o acaso: Curiosidade, Persistência, Flexibilidade, Otimismo e Disposição ao Risco.
 
-Super também introduziu o conceito de Life-Space — os múltiplos papéis que uma pessoa desempenha
-simultaneamente (filho/a, estudante, cidadão, trabalhador, cônjuge, pai/mãe, aposentado) e como
-a saliência de cada papel varia ao longo da vida.
-
-### Mark Savickas — Teoria de Construção de Carreira
-
-Savickas expandiu o trabalho de Super com uma perspectiva narrativa e construtivista. A carreira
-não é algo que se "tem", mas algo que se "constrói" ativamente por meio de narrativas pessoais.
-
-Conceitos centrais:
-- **Adaptabilidade de carreira** — composta por Preocupação (planejamento), Controle (responsabilidade
-  pela própria carreira), Curiosidade (exploração) e Confiança (autoeficácia).
-- **Temas de vida** — padrões recorrentes na história pessoal que revelam motivações profundas e
-  dão coerência à trajetória.
-- **Retrato vocacional** — integração de interesses, valores e habilidades em uma narrativa que
-  orienta escolhas de carreira futuras.
-
-### Teoria do Caos das Carreiras e Happenstance
-
-John Krumboltz propôs que eventos não planejados (happenstance) desempenham um papel significativo
-nas trajetórias de carreira. Em vez de eliminar o acaso, a abordagem recomenda desenvolver cinco
-competências para capitalizar oportunidades inesperadas:
-
-1. **Curiosidade** — explorar novas oportunidades de aprendizado
-2. **Persistência** — manter esforço apesar de obstáculos
-3. **Flexibilidade** — adaptar atitudes e circunstâncias
-4. **Otimismo** — ver novas oportunidades como possíveis e alcançáveis
-5. **Disposição ao risco** — agir diante de resultados incertos
-
-A Teoria do Caos das Carreiras (Pryor e Bright) complementa ao argumentar que carreiras são sistemas
-complexos, não-lineares, onde pequenas mudanças podem ter grandes efeitos e previsibilidade é limitada.
+A Teoria do Caos (Pryor e Bright) complementa: carreiras são sistemas complexos não-lineares onde
+pequenas mudanças geram grandes efeitos e a previsibilidade é limitada.
 
 ## Relevância para o Assessment OS
 
-O Assessment OS deve integrar o estágio de desenvolvimento como variável contextual crítica:
-
-- **Mesmos resultados, interpretações diferentes** — Alta Abertura à Experiência em alguém no
-  estágio de Exploração sugere flexibilidade saudável. No estágio de Estabelecimento, pode indicar
-  dificuldade de comprometimento.
-- **Adaptabilidade de carreira** — pode ser inferida parcialmente por Abertura (curiosidade),
-  Conscienciosidade (controle), Extroversão (confiança) e Estabilidade Emocional (preocupação
-  produtiva vs. ansiedade).
-- **Narrativa vs. traços** — o assessment deve considerar a história da pessoa, não apenas scores
-  estáticos. Padrões ao longo do tempo importam mais que uma fotografia pontual.
+- **Mesmos resultados, interpretações diferentes** — Abertura alta em Exploração: flexibilidade
+  saudável. Em Estabelecimento: possível dificuldade de comprometimento.
+- **Adaptabilidade inferida** — Abertura (curiosidade), Conscienciosidade (controle), Extroversão
+  (confiança), Estabilidade Emocional (preocupação produtiva vs. ansiedade).
+- **Narrativa > fotografia** — padrões ao longo do tempo importam mais que scores pontuais.
 
 ## Aplicação Prática
 
-O Assessment OS deve:
-1. **Identificar o estágio de desenvolvimento** — inferir com base na idade, experiência e
-   contexto de vida da pessoa avaliada.
-2. **Ajustar recomendações ao estágio** — orientação de carreira para alguém em Exploração difere
-   fundamentalmente de alguém em Manutenção.
-3. **Avaliar adaptabilidade** — estimar a capacidade da pessoa de navegar transições e incertezas
-   com base em perfil de personalidade e histórico.
-4. **Incorporar narrativa** — quando dados qualitativos estiverem disponíveis, integrar a história
-   de carreira do avaliado na interpretação dos resultados quantitativos.
+1. **Identificar estágio** — inferir com base em idade, experiência e contexto.
+2. **Ajustar recomendações** — orientação para Exploração difere de Manutenção.
+3. **Avaliar adaptabilidade** — capacidade de navegar transições e incertezas.
+4. **Incorporar narrativa** — integrar história de carreira na interpretação quantitativa.
 
 ## Referências
 
-- Super, D. E. (1980). A Life-Span, Life-Space Approach to Career Development. Journal of
-  Vocational Behavior, 16(3), 282-298.
-- Savickas, M. L. (2013). Career Construction Theory and Practice. In Brown, S. D. & Lent, R. W.
-  (Eds.), Career Development and Counseling. Wiley.
-- Krumboltz, J. D. (2009). The Happenstance Learning Theory. Journal of Career Assessment, 17(2).
+- Super, D. E. (1980). A Life-Span, Life-Space Approach. Journal of Vocational Behavior.
+- Savickas, M. L. (2013). Career Construction Theory and Practice. Wiley.
+- Krumboltz, J. D. (2009). Happenstance Learning Theory. Journal of Career Assessment.
 - Pryor, R. G., & Bright, J. E. (2011). The Chaos Theory of Careers. Routledge.
