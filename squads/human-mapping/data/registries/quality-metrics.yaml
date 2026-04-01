@@ -14,4 +14,33 @@
 #   - respondent_satisfaction_avg: satisfação média dos respondentes (float, 0.0 a 5.0)
 #   - notes: observações sobre o período (string, opcional)
 
-entries: []
+# Validation Rules:
+#   - date: obrigatório, formato YYYY-MM-DD (usar primeiro dia do mês para snapshots mensais)
+#   - session_count: obrigatório, inteiro >= 0
+#   - avg_confidence: obrigatório, float entre 0.0 e 1.0
+#   - contradiction_rate: obrigatório, float entre 0.0 e 1.0
+#   - completion_rate: obrigatório, float entre 0.0 e 1.0
+#   - avg_depth: obrigatório, float entre 1.0 e 4.0
+#   - quality_gate_pass_rate: obrigatório, float entre 0.0 e 1.0
+#   - respondent_satisfaction_avg: obrigatório, float entre 0.0 e 5.0
+#
+# Usage:
+#   Gerado automaticamente pelo Quality Auditor no primeiro dia de cada mês,
+#   consolidando dados do mês anterior a partir de session-index e respondent-feedback.
+#   Consultado pelo Meta-Analyst para identificar tendências e regressões.
+
+entries:
+  - date: "2026-03-01"
+    session_count: 14
+    avg_confidence: 0.72
+    contradiction_rate: 0.35
+    completion_rate: 0.86
+    avg_depth: 2.4
+    quality_gate_pass_rate: 0.79
+    respondent_satisfaction_avg: 4.1
+    notes: >
+      Fevereiro 2026. Primeiro mês completo com o novo fator de correção
+      de desejabilidade social (LL-0002). Confiança média subiu de 0.68
+      para 0.72 comparado a janeiro. Taxa de contradição ainda acima da
+      meta de 0.25 — investigar contradições recorrentes no eixo
+      Big Five E vs MBTI E/I.

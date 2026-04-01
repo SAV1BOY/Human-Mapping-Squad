@@ -16,4 +16,71 @@
 #   - status: implementada | planejada | em_avaliação (string)
 #   - aplicavel_a: tipos de projeto onde a lição se aplica (list)
 
-entries: []
+# Validation Rules:
+#   - id: obrigatório, formato "LL-NNNN", único no registro
+#   - data: obrigatório, formato YYYY-MM-DD
+#   - categoria: obrigatório, valores aceitos: metodologia | processo | framework | comunicação | ética | qualidade
+#   - impacto: obrigatório, valores aceitos: alto | médio | baixo
+#   - status: obrigatório, valores aceitos: implementada | planejada | em_avaliação
+#   - aplicavel_a: obrigatório, lista com pelo menos 1 contexto
+#
+# Usage:
+#   Escrito por qualquer agente ao identificar padrão recorrente ou insight metodológico.
+#   Revisado pelo Meta-Analyst em ciclos mensais de retrospectiva.
+#   Consultado antes de iniciar sessões para aplicar melhores práticas acumuladas.
+
+entries:
+  - id: "LL-0001"
+    data: 2026-02-25
+    projeto_id: "contratacao-engenharia-q1-2026"
+    categoria: "metodologia"
+    titulo: "Inferência proxy para Kolbe exige 15+ indicadores comportamentais"
+    contexto: >
+      Em 3 sessões consecutivas de contratação, tentamos inferir perfil Kolbe
+      a partir de dados indiretos (currículo, entrevista, referências). Com
+      menos de 15 indicadores comportamentais distintos, a confiança ficou
+      consistentemente abaixo de 0.40, tornando os resultados inutilizáveis.
+    aprendizado: >
+      Inferência proxy para o Kolbe A Index requer no mínimo 15 indicadores
+      comportamentais observáveis para atingir confiança média (0.50-0.65).
+      Abaixo disso, a margem de erro é tão alta que o resultado pode induzir
+      decisões incorretas. Em contextos de contratação, é preferível não
+      reportar Kolbe do que reportar com confiança abaixo de 0.50.
+    impacto: "alto"
+    acao_implementada: >
+      Adicionado threshold mínimo de 15 indicadores no agente Kolbe.
+      Quando abaixo do threshold, o agente reporta "dados insuficientes"
+      em vez de gerar resultado de baixa confiança.
+    status: "implementada"
+    aplicavel_a:
+      - "contratação"
+      - "mapeamento com dados indiretos"
+      - "qualquer framework baseado em proxy"
+
+  - id: "LL-0002"
+    data: 2026-03-05
+    projeto_id: "projeto-lideranca-tech-2026"
+    categoria: "qualidade"
+    titulo: "Viés de desejabilidade social aumenta 40% em contextos de contratação"
+    contexto: >
+      Comparando sessões de desenvolvimento pessoal vs. contratação, observamos
+      que respostas em contexto de contratação apresentam desvio sistemático:
+      Conscienciosidade +0.15, Amabilidade +0.12, Neuroticismo -0.18 no Big Five.
+      O padrão é consistente com viés de desejabilidade social amplificado.
+    aprendizado: >
+      Em contextos de contratação, o viés de desejabilidade social infla
+      traços socialmente desejáveis em ~40% comparado a contextos de desenvolvimento.
+      Isso afeta especialmente Big Five (C, A inflados; N deflacionado) e DISC
+      (I inflado). Frameworks motivacionais como Enneagram são menos afetados
+      porque as perguntas são menos transparentes quanto ao "resultado ideal".
+    impacto: "alto"
+    acao_implementada: >
+      Implementado fator de correção de desejabilidade social para sessões
+      de contratação: ajuste de -0.10 em C e A, +0.12 em N no Big Five.
+      Adicionado flag "contexto_contratacao" no session-index para ativar
+      a correção automaticamente.
+    status: "implementada"
+    aplicavel_a:
+      - "contratação"
+      - "promoção interna"
+      - "qualquer contexto avaliativo com consequências para o respondente"

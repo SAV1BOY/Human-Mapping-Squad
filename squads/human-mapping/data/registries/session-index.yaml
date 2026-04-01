@@ -13,4 +13,62 @@
 #   - frameworks_used: lista de frameworks aplicados (list of strings)
 #   - notes: observações livres sobre a sessão (string, opcional)
 
-entries: []
+# Validation Rules:
+#   - session_id: obrigatório, formato "HMS-YYYY-NNNN", único no registro
+#   - date: obrigatório, formato YYYY-MM-DD
+#   - respondent: obrigatório, identificador anonimizado (ex: "R-0001")
+#   - depth: obrigatório, valores aceitos: quick | standard | deep | forensic
+#   - status: obrigatório, valores aceitos: in_progress | completed | abandoned | under_review
+#   - confidence_avg: obrigatório, float entre 0.0 e 1.0
+#   - agents_activated: obrigatório, lista com pelo menos 1 agente
+#   - frameworks_used: obrigatório, lista com pelo menos 1 framework
+#
+# Usage:
+#   Criado automaticamente pelo Orchestrator Agent ao iniciar cada sessão.
+#   Atualizado ao final da sessão com status, confiança e notas.
+#   Consultado para análises históricas, métricas de qualidade e rastreabilidade.
+
+entries:
+  - session_id: "HMS-2026-0001"
+    date: "2026-01-15"
+    respondent: "R-0001"
+    depth: "deep"
+    status: "completed"
+    confidence_avg: 0.82
+    agents_activated:
+      - "orchestrator"
+      - "big-five-agent"
+      - "hexaco-agent"
+      - "mbti-agent"
+      - "enneagram-agent"
+      - "cliftonstrengths-agent"
+      - "integration-specialist"
+      - "quality-auditor"
+    frameworks_used:
+      - "Big Five"
+      - "HEXACO"
+      - "MBTI"
+      - "Enneagram"
+      - "CliftonStrengths"
+    notes: >
+      Sessão completa para Ana Souza (PER-0001). Duração ~90 min.
+      Uma contradição identificada (CONTR-0001) e resolvida durante integração.
+      Respondente validou resultado com reconhecimento 4.2/5.
+
+  - session_id: "HMS-2026-0002"
+    date: "2026-03-10"
+    respondent: "R-0002"
+    depth: "standard"
+    status: "in_progress"
+    confidence_avg: 0.45
+    agents_activated:
+      - "orchestrator"
+      - "big-five-agent"
+      - "disc-agent"
+    frameworks_used:
+      - "Big Five"
+      - "DISC"
+    notes: >
+      Sessão para Carlos Mendes (PER-0002) em contexto de contratação.
+      Dados limitados a currículo e entrevista inicial. Sessão pausada
+      aguardando disponibilidade do respondente para coleta direta.

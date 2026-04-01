@@ -17,4 +17,38 @@
 #   - effectiveness_rating: avaliação da efetividade do plano (integer, 1 a 5, opcional)
 #   - notes: observações sobre progresso ou obstáculos (string, opcional)
 
-entries: []
+# Validation Rules:
+#   - plan_id: obrigatório, formato "DEV-YYYY-NNNN", único no registro
+#   - session_id: obrigatório, formato "HMS-YYYY-NNNN", deve existir em session-index.yaml
+#   - created_date: obrigatório, formato YYYY-MM-DD
+#   - total_actions: obrigatório, inteiro >= 1
+#   - actions_completed: obrigatório, inteiro >= 0, não pode exceder total_actions
+#   - completion_rate: obrigatório, float entre 0.0 e 1.0, deve ser = actions_completed / total_actions
+#   - status: obrigatório, valores aceitos: active | completed | abandoned | stalled
+#   - effectiveness_rating: opcional, inteiro de 1 a 5 (preenchido apenas quando status = completed)
+#
+# Usage:
+#   Criado pelo Development Advisor ao final de uma sessão com plano de ação.
+#   Atualizado em follow-ups agendados (30, 60, 90 dias).
+#   Consultado para medir ROI real do mapeamento e calibrar recomendações futuras.
+
+entries:
+  - plan_id: "DEV-2026-0001"
+    session_id: "HMS-2026-0001"
+    respondent: "R-0001"
+    created_date: "2026-02-20"
+    total_actions: 5
+    actions_completed: 3
+    completion_rate: 0.60
+    outcomes:
+      - "Implementou rotina semanal de 1:1s com foco em desenvolvimento (ação 1) — equipe reportou maior clareza de expectativas"
+      - "Delegou 2 projetos operacionais para liberar tempo estratégico (ação 3) — reduziu carga em 8h/semana"
+      - "Iniciou journaling diário para desenvolver assertividade (ação 4) — percebe mais facilidade em dar feedback direto"
+    follow_up_dates:
+      - "2026-03-20"
+    status: "active"
+    effectiveness_rating: null
+    notes: >
+      Follow-up de 30 dias realizado em 2026-03-20. Ações 1, 3 e 4 implementadas.
+      Ação 2 (curso de comunicação não-violenta) adiada por agenda. Ação 5
+      (mentoria com líder sênior) em negociação. Próximo follow-up: 2026-04-20.

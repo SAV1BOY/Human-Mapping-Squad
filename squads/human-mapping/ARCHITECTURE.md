@@ -455,4 +455,148 @@ Não criaria um agente que "descobre MBTI". Criaria um **sistema de evidência c
 
 ---
 
+## 15. Cascata de Decisão HRM
+
+O Human-Mapping Squad opera dentro de uma hierarquia de decisão em 5 níveis:
+
+### Nível 1 — Agente Individual
+- Executa subtask dentro do seu escopo
+- Quality gate: checklist específico do agente
+- Se PASS → entrega ao próximo agente ou ao chief da camada
+- Se FAIL → rework interno (máximo 2 ciclos)
+- Se FAIL após 2 ciclos → escala para chief da camada
+
+### Nível 2 — Chief da Camada
+- Orquestra múltiplos agentes na mesma camada (trait-chief, type-style-chief, etc.)
+- Quality gate: checklist da camada (ex: `checklists/traits/big-five-quality.md`)
+- Se PASS → handoff para próxima camada via go/no-go gate
+- Se FAIL → retorna ao agente com feedback específico
+- Se impasse → escala para human-mapping-chief
+
+### Nível 3 — Human-Mapping Chief (Squad Chief)
+- Orquestra todo o pipeline, resolve conflitos, aprova output final
+- Quality gate: `checklists/chief/chief-report-approval-quality.md`
+- Se PASS → output aprovado para entrega ou handoff cross-squad
+- Se FAIL → retorna ao synthesis-architect ou report-writer
+- Se decisão ultrapassa escopo → escala para HRM Central
+
+### Nível 4 — Cross-Squad Handoff
+- Output sai do Human-Mapping para outro squad
+- Quality gate de SAÍDA: `checklists/chief/chief-cross-squad-handoff-quality.md`
+- Quality gate de ENTRADA: definido pelo squad receptor
+- Se REJEITADO pelo receptor → retorna ao chief com feedback
+- Registro: `data/registries/cross-squad-deliveries.yaml`
+
+### Nível 5 — HRM Central (Diretor Presidente)
+- Decisão final quando squad chief não pode resolver
+- Critérios de escalação (de `config.yaml` escalation_rules):
+  - Confiança global < 0.5 após todas tentativas
+  - Handoff rejeitado pelo squad receptor
+  - Preocupação ética (consentimento, discriminação, uso indevido)
+  - Mudança metodológica que afeta todo o pipeline
+  - Cliente disputa resultados com contra-evidência válida
+
+### Diagrama da Cascata
+
+```
+Agente → [gate] → Chief Camada → [gate] → Squad Chief → [gate] → Cross-Squad/Entrega
+   ↑ rework          ↑ rework              ↑ rework
+   └─ max 2x         └─ max 2x             └─ max 1x → HRM Central
+```
+
+---
+
+## 16. Protocolo de Rework Loop
+
+Quando um quality gate reprova um output, o sistema entra em loop de melhoria:
+
+### Triggers Automáticos (de `config.yaml` rework_triggers)
+
+| Trigger | Ação | Máximo de Ciclos |
+|---------|------|-----------------|
+| Confiança da camada < 0.4 | Retorna ao chief da camada para coleta adicional | 2 |
+| Teste Barnum FAIL no relatório | Retorna ao report-writer para reescrita com especificidade | 1 |
+| Contradição S4 (intra-framework) | Retorna ao respondent-quality-auditor para validação | 1 |
+| Síntese faltando ≥2 camadas obrigatórias | Retorna ao synthesis-architect com dados faltantes | 1 |
+
+### Triggers por Decisão do Chief
+
+| Trigger | Ação |
+|---------|------|
+| Tom do relatório inadequado | Retorna ao report-writer com guidance de voz |
+| Plano de desenvolvimento não acionável | Retorna ao development-planner com requisitos |
+
+### Regras do Loop
+
+1. **Máximo 2 ciclos** por trigger automático — após isso, escala para chief
+2. **Máximo 1 ciclo** por decisão do chief — após isso, escala para HRM Central
+3. **Cada rework** deve documentar: o que falhou, o que foi corrigido, evidência de melhoria
+4. **Confiança NÃO sobe automaticamente** após rework — precisa de nova evidência
+5. **Se o rework não melhora** → aceitar com caveats OU coletar dados adicionais OU encerrar sessão
+
+---
+
+## 17. Loop de Memória e Aprendizado
+
+### Como o Squad Aprende
+
+O Human-Mapping Squad implementa aprendizado contínuo via RalphLoop:
+
+```
+Sessão → Registro → Análise → Calibração → Melhoria → Verificação
+```
+
+### Componentes do Loop
+
+1. **Registro pós-sessão** (`data/registries/`)
+   - Toda sessão registra: resultados, confiança, contradições, feedback
+   - Registries: session-index, persona-registry, contradiction-registry, lessons-learned
+
+2. **Análise periódica** (`workflows/20-ralphloop-assessment-retro.md`)
+   - A cada 10 sessões: retrospectiva
+   - Identifica: padrões recorrentes, gaps metodológicos, frameworks mais/menos úteis
+
+3. **Calibração** (`frameworks/ralphloop-assessment.md`)
+   - Ajusta pesos de frameworks baseado em dados de acurácia
+   - Atualiza rubrics se thresholds precisam refinamento
+   - Documenta mudanças com evidência (mínimo 3 sessões mostrando problema)
+
+4. **Verificação**
+   - Aplica mudança retroativamente a 3 sessões passadas
+   - Compara resultados antes/depois
+   - Se melhoria confirmada → permanece; se não → rollback
+
+### Rastreabilidade
+
+| O que | Onde |
+|-------|------|
+| Decisões de sessão | `data/registries/session-index.yaml` |
+| Perfis gerados | `data/registries/persona-registry.yaml` |
+| Contradições detectadas | `data/registries/contradiction-registry.yaml` |
+| Lições aprendidas | `data/registries/lessons-learned.yaml` |
+| Efetividade de frameworks | `data/registries/framework-effectiveness.yaml` |
+| Feedback de respondentes | `data/registries/respondent-feedback.yaml` |
+| Histórico de calibração | `data/registries/calibration-history.yaml` |
+
+---
+
+## 18. Go/No-Go Gates do Pipeline
+
+Cada transição entre estágios do pipeline tem um gate explícito (definido em `config.yaml`):
+
+| Transição | Condição GO | Condição NO-GO |
+|-----------|-------------|----------------|
+| Intake → Calibração | Objetivo definido + contexto classificado + profundidade selecionada | Retorna ao intake-orchestrator |
+| Calibração → Traços | Consistência ≥ 0.5 + desejabilidade social ≤ MEDIUM | rapport-architect ajusta abordagem |
+| Traços → Tipos | Big Five confiança ≥ 0.5 em todas 5 dimensões | trait-chief solicita evidência adicional |
+| Tipos → Motivação | ≥2 frameworks de tipo avaliados + separação traço vs tipo verificada | type-style-chief adiciona frameworks |
+| Motivação → Forças | Motivação core identificada com ≥ 0.5 confiança | motivation-chief aprofunda |
+| Forças → Carreira | ≥2 frameworks de força + força vs habilidade separada | strengths-chief adiciona evidência |
+| Carreira → Contradições | Código RIASEC identificado OU carreira fora do escopo | career-fit-analyst adiciona dados |
+| Contradições → Síntese | Todas contradições S3/S4 resolvidas OU documentadas como irresolvíveis | contradiction-auditor investiga |
+| Síntese → Relatório | Integração multi-camada completa + confidence map + Barnum PASS | synthesis-architect rework |
+| Relatório → Entrega | Chief aprova + confiança ≥ 0.5 global | report-writer rework |
+
+---
+
 *Versão 2.0.0 — Human-Mapping Squad / MMOS*

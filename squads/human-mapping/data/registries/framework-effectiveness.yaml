@@ -13,4 +13,48 @@
 #   - known_limitations_observed: limitações observadas na prática (list of strings)
 #   - last_used: data da última utilização (string, formato: YYYY-MM-DD)
 
-entries: []
+# Validation Rules:
+#   - framework_id: obrigatório, deve corresponder a um id em framework-registry.yaml
+#   - times_used: obrigatório, inteiro >= 0
+#   - avg_confidence: obrigatório, float entre 0.0 e 1.0
+#   - conflicts_generated: obrigatório, inteiro >= 0
+#   - avg_respondent_recognition: obrigatório, float entre 0.0 e 1.0
+#   - best_paired_with: obrigatório, lista de framework_ids válidos
+#   - last_used: obrigatório, formato YYYY-MM-DD
+#
+# Usage:
+#   Atualizado automaticamente pelo Quality Auditor ao final de cada sessão.
+#   Revisado mensalmente pelo Meta-Analyst para ajustar recomendações de uso.
+#   Consultado pelo Orchestrator ao decidir quais frameworks incluir em uma sessão.
+
+entries:
+  - framework_id: "big-five"
+    times_used: 47
+    avg_confidence: 0.78
+    conflicts_generated: 8
+    avg_respondent_recognition: 0.81
+    best_paired_with:
+      - "hexaco"
+      - "mbti"
+      - "enneagram"
+    known_limitations_observed:
+      - "faceta assertividade frequentemente contradiz tipo MBTI E/I"
+      - "auto-relato de neuroticismo tende a ser subestimado em contextos profissionais"
+      - "abertura a experiências confundida com inteligência em respondentes acadêmicos"
+    last_used: "2026-03-10"
+
+  - framework_id: "enneagram"
+    times_used: 32
+    avg_confidence: 0.65
+    conflicts_generated: 12
+    avg_respondent_recognition: 0.74
+    best_paired_with:
+      - "big-five"
+      - "cliftonstrengths"
+      - "disc"
+    known_limitations_observed:
+      - "auto-tipagem do respondente incorreta em 60% dos casos — não usar como âncora"
+      - "tipos 3 e 7 frequentemente confundidos em respondentes de alta energia"
+      - "subtipos instintivos raramente inferíveis sem entrevista profunda"
+      - "descrições genéricas de tipo disparam Efeito Barnum — exigem especificidade"
+    last_used: "2026-03-08"

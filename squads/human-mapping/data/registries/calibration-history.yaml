@@ -18,4 +18,58 @@
 #   - author: quem realizou a calibração (string)
 #   - notes: observações adicionais (string, opcional)
 
-entries: []
+# Validation Rules:
+#   - calibration_id: obrigatório, formato "CAL-NNNN", único no registro
+#   - date: obrigatório, formato YYYY-MM-DD
+#   - what_changed: obrigatório, descrição clara e específica da alteração
+#   - reason: obrigatório, justificativa baseada em dados
+#   - affected_agents: obrigatório, lista com pelo menos 1 agente
+#   - affected_frameworks: obrigatório, lista com pelo menos 1 framework
+#   - rollback_needed: obrigatório, boolean
+#   - author: obrigatório, identificador do responsável
+#
+# Usage:
+#   Criado pelo Meta-Analyst ou Quality Auditor ao implementar mudança metodológica.
+#   Requer aprovação do Orchestrator antes de entrar em vigor.
+#   Consultado para entender evolução da metodologia e diagnosticar mudanças
+#   de desempenho (se métricas pioraram, verificar calibrações recentes).
+
+entries:
+  - calibration_id: "CAL-0001"
+    date: "2026-03-01"
+    what_changed: >
+      Implementado fator de correção de desejabilidade social para sessões
+      de contratação. Big Five: ajuste de -0.10 em Conscienciosidade e
+      Amabilidade, +0.12 em Neuroticismo. DISC: ajuste de -0.08 em Influência.
+    reason: >
+      Análise de 12 sessões de contratação vs. 23 sessões de desenvolvimento
+      revelou desvio sistemático nos traços socialmente desejáveis (ver LL-0002).
+      Desvio médio de 40% acima dos valores esperados em contextos avaliativos.
+    affected_agents:
+      - "big-five-agent"
+      - "disc-agent"
+      - "integration-specialist"
+    affected_frameworks:
+      - "Big Five"
+      - "DISC"
+    impact_expected: >
+      Redução de ~15% na taxa de contradição em sessões de contratação.
+      Aumento de ~0.05 na confiança média dessas sessões.
+    impact_observed: >
+      Após 6 sessões de contratação com a correção ativa: taxa de contradição
+      reduziu de 0.42 para 0.28 (-33%). Confiança média subiu de 0.61 para 0.69.
+      Reconhecimento do respondente subiu de 3.4 para 3.9 em sessões de contratação.
+    metrics_before:
+      contradiction_rate_hiring: 0.42
+      avg_confidence_hiring: 0.61
+      respondent_recognition_hiring: 3.4
+    metrics_after:
+      contradiction_rate_hiring: 0.28
+      avg_confidence_hiring: 0.69
+      respondent_recognition_hiring: 3.9
+    rollback_needed: false
+    author: "meta-analyst"
+    notes: >
+      Calibração bem-sucedida. Monitorar por mais 2 meses para confirmar
+      estabilidade. Considerar expandir correção para contextos de promoção
+      interna (dados insuficientes ainda — apenas 3 sessões desse tipo).

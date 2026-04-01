@@ -16,4 +16,63 @@
 #   - tags: etiquetas para categorização (list)
 #   - notas: observações adicionais (string)
 
-entries: []
+# Validation Rules:
+#   - id: obrigatório, formato "PER-NNNN", único no registro
+#   - nome: obrigatório, string não vazia
+#   - data_criacao / data_atualizacao: obrigatório, formato YYYY-MM-DD
+#   - status: obrigatório, valores aceitos: ativo | arquivado | em_andamento
+#   - nivel_confianca_geral: obrigatório, float entre 0.0 e 1.0
+#   - frameworks_utilizados: obrigatório, lista com pelo menos 1 framework
+#   - tags: obrigatório, lista com pelo menos 1 tag
+#
+# Usage:
+#   Escrito pelo Orchestrator Agent ao iniciar um novo mapeamento (status: em_andamento)
+#   e atualizado pelo Integration Specialist ao consolidar o perfil final (status: ativo).
+#   Consultado por todos os agentes para verificar estado e histórico da persona.
+
+entries:
+  - id: "PER-0001"
+    nome: "Ana Souza"
+    data_criacao: 2026-01-15
+    data_atualizacao: 2026-02-20
+    status: "ativo"
+    projeto_origem: "projeto-lideranca-tech-2026"
+    frameworks_utilizados:
+      - "Big Five"
+      - "HEXACO"
+      - "MBTI"
+      - "Enneagram"
+      - "CliftonStrengths"
+    nivel_confianca_geral: 0.82
+    perfil_resumo: >
+      Profissional de tecnologia com forte orientação a pessoas. Big Five indica
+      alta abertura (0.85) e amabilidade (0.78), com extroversão moderada (0.55).
+      Enneagram Tipo 2 com asa 3 confirma padrão de liderança servidora.
+      CliftonStrengths top 5: Empatia, Desenvolvimento, Estratégico, Conexão, Realização.
+    tags:
+      - "liderança"
+      - "desenvolvimento"
+    notas: >
+      Perfil consolidado após sessão deep com validação do respondente.
+      Reconhecimento de 4.2/5 na devolutiva. Contradição E baixo vs ENFP
+      resolvida como adaptação contextual (ver CONTR-0001).
+
+  - id: "PER-0002"
+    nome: "Carlos Mendes"
+    data_criacao: 2026-03-10
+    data_atualizacao: 2026-03-10
+    status: "em_andamento"
+    projeto_origem: "contratacao-engenharia-q1-2026"
+    frameworks_utilizados:
+      - "Big Five"
+      - "DISC"
+    nivel_confianca_geral: 0.45
+    perfil_resumo: >
+      Mapeamento inicial para processo seletivo. Big Five parcialmente inferido
+      via proxy (currículo e entrevista). DISC indica perfil DC (Dominância-Conformidade).
+      Aguardando sessão direta para elevar confiança acima de 0.60.
+    tags:
+      - "contratação"
+    notas: >
+      Confiança baixa por ser baseado apenas em dados indiretos.
+      Sessão standard agendada para 2026-03-18.

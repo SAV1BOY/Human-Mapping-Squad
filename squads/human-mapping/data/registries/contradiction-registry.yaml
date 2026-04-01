@@ -17,4 +17,67 @@
 #   - status: resolvida | pendente | irresolvível (string)
 #   - aprendizado: lição aprendida para casos futuros (string)
 
-entries: []
+# Validation Rules:
+#   - id: obrigatório, formato "CONTR-NNNN", único no registro
+#   - data: obrigatório, formato YYYY-MM-DD
+#   - persona_id: obrigatório, referência válida a persona-registry (formato "PER-NNNN")
+#   - framework_a / framework_b: obrigatório, nomes de frameworks reconhecidos
+#   - tipo: obrigatório, valores aceitos: contextual | desenvolvimental | metodológica | genuína
+#   - status: obrigatório, valores aceitos: resolvida | pendente | irresolvível
+#   - severidade: usar S1 (baixa), S2 (média), S3 (alta), S4 (crítica)
+#
+# Usage:
+#   Escrito pelo Integration Specialist ao detectar contradição entre frameworks.
+#   Resolvido em colaboração com os agentes especialistas envolvidos.
+#   Consultado como base de conhecimento para resolver contradições futuras semelhantes.
+
+entries:
+  - id: "CONTR-0001"
+    data: 2026-02-18
+    persona_id: "PER-0001"
+    framework_a: "Big Five"
+    resultado_a: "Extroversão baixa-moderada (0.55), faceta assertividade baixa (0.40)"
+    framework_b: "MBTI"
+    resultado_b: "ENFP — preferência clara por Extroversão (E)"
+    tipo: "contextual"
+    descricao: >
+      Big Five indica extroversão moderada com assertividade abaixo da média,
+      enquanto MBTI classifica como E (extrovertido). Contradição aparente
+      entre os dois frameworks sobre o eixo de extroversão.
+    resolucao: >
+      Resolvida como adaptação contextual. A respondente demonstra extroversão
+      seletiva: altamente engajada em contextos de ideação e brainstorming (capturado
+      pelo MBTI como Ne dominante), mas reservada em situações sociais amplas
+      (capturado pelo Big Five como E moderada). O Big Five mede o traço contínuo
+      enquanto o MBTI captura preferência cognitiva — ambos estão corretos em
+      seus respectivos domínios.
+    status: "resolvida"
+    aprendizado: >
+      Extroversão no Big Five e no MBTI medem constructos diferentes. Big Five
+      mede o traço comportamental geral; MBTI mede a orientação da energia
+      cognitiva. Contradições nesse eixo frequentemente indicam extroversão
+      seletiva ou contextual, não erro de medição.
+
+  - id: "CONTR-0002"
+    data: 2026-02-19
+    persona_id: "PER-0001"
+    framework_a: "Enneagram"
+    resultado_a: "Tipo 3 (Realizador) — forte orientação a metas e imagem"
+    framework_b: "DISC"
+    resultado_b: "Perfil S alto (Estabilidade) — preferência por harmonia e ritmo constante"
+    tipo: "contextual"
+    descricao: >
+      Enneagram Tipo 3 sugere alta orientação a resultados e competitividade,
+      enquanto DISC S indica preferência por estabilidade e ritmo previsível.
+      Contradição entre ambição/drive (Tipo 3) e preferência por segurança (S alto).
+    resolucao: >
+      Resolvida como diferença de contexto. O padrão Tipo 3 se manifesta em
+      metas de carreira e autoimagem profissional. O S alto no DISC reflete
+      o estilo de interação interpessoal — a respondente busca resultados
+      ambiciosos mas através de relacionamentos estáveis e cooperativos, não
+      via competição direta. O Tipo 3 com asa 2 é consistente com S alto.
+    status: "resolvida"
+    aprendizado: >
+      Enneagram mede motivação central e DISC mede estilo comportamental
+      observável. Tipo 3 com asa 2 frequentemente apresenta S alto no DISC
+      porque sua estratégia de realização é via conexão, não dominância.

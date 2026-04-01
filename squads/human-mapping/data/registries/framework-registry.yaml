@@ -16,4 +16,65 @@
 #   - custo: gratuito | pago | varia (string)
 #   - referencia_summary: caminho para o arquivo de resumo (string)
 
-entries: []
+# Validation Rules:
+#   - id: obrigatório, formato kebab-case (ex: "big-five"), único no registro
+#   - nome: obrigatório, nome completo oficial do framework
+#   - categoria: obrigatório, valores aceitos: traços | tipos | motivações | forças | comportamento | vocacional
+#   - validade_psicometrica: obrigatório, valores aceitos: alta | média | baixa
+#   - nivel_confianca_hms: obrigatório, float entre 0.0 e 1.0
+#   - certificacao_requerida: obrigatório, valores aceitos: sim | não | varia
+#   - custo: obrigatório, valores aceitos: gratuito | pago | varia
+#
+# Usage:
+#   Mantido pelo Meta-Analyst e atualizado quando novos frameworks são
+#   incorporados ou quando dados de efetividade justificam revisão.
+#   Consultado pelo Orchestrator para selecionar frameworks por sessão.
+
+entries:
+  - id: "big-five"
+    nome: "Big Five / Five Factor Model (OCEAN)"
+    sigla: "Big Five"
+    categoria: "traços"
+    base_teorica: >
+      Modelo dimensional baseado em análise fatorial lexical. Cinco grandes
+      fatores: Abertura, Conscienciosidade, Extroversão, Amabilidade, Neuroticismo.
+      Cada fator possui 6 facetas (modelo NEO PI-R).
+    validade_psicometrica: "alta"
+    nivel_confianca_hms: 0.78
+    uso_recomendado:
+      - "mapeamento geral de personalidade"
+      - "predição de comportamento no trabalho"
+      - "análise de compatibilidade em equipes"
+      - "linha de base para triangulação com outros frameworks"
+    limitacoes:
+      - "não captura motivações subjacentes"
+      - "sensível a contexto cultural em populações não-WEIRD"
+      - "auto-relato pode ser influenciado por desejabilidade social"
+      - "facetas podem mascarar variações importantes dentro de um fator"
+    certificacao_requerida: "não"
+    custo: "varia"
+    referencia_summary: "frameworks/big-five/summary.md"
+
+  - id: "enneagram"
+    nome: "Enneagram of Personality"
+    sigla: "Enneagram"
+    categoria: "motivações"
+    base_teorica: >
+      Sistema tipológico baseado em 9 tipos de personalidade organizados em
+      3 centros (instintivo, emocional, mental). Cada tipo possui motivação
+      central, medo básico, direções de integração/desintegração e 2 asas.
+    validade_psicometrica: "média"
+    nivel_confianca_hms: 0.65
+    uso_recomendado:
+      - "compreensão de motivações centrais e medos básicos"
+      - "identificação de padrões de estresse e crescimento"
+      - "coaching e desenvolvimento pessoal"
+      - "complemento motivacional ao Big Five"
+    limitacoes:
+      - "validade psicométrica inferior ao Big Five"
+      - "risco de Efeito Barnum em descrições genéricas"
+      - "auto-tipagem frequentemente incorreta — requer entrevista aprofundada"
+      - "sistema de asas e subtipos instintivos aumenta complexidade da inferência"
+    certificacao_requerida: "varia"
+    custo: "varia"
+    referencia_summary: "frameworks/enneagram/summary.md"
