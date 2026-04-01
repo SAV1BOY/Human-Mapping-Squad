@@ -1,0 +1,16 @@
+# Registry: Framework Effectiveness
+# Rastreamento da efetividade de cada framework de avaliação utilizado pelo squad.
+# Permite identificar quais frameworks produzem insights mais confiáveis e quais
+# geram mais contradições ou resultados questionáveis.
+#
+# Schema:
+#   - framework_id: identificador do framework (string, ex: big-five, mbti, disc)
+#   - times_used: número total de sessões em que o framework foi aplicado (integer)
+#   - avg_confidence: confiança média dos resultados produzidos pelo framework (float, 0.0 a 1.0)
+#   - conflicts_generated: número de conflitos/contradições gerados com outros frameworks (integer)
+#   - avg_respondent_recognition: taxa média de reconhecimento do respondente com o resultado (float, 0.0 a 1.0)
+#   - best_paired_with: frameworks com os quais produz melhor sinergia (list of strings)
+#   - known_limitations_observed: limitações observadas na prática (list of strings)
+#   - last_used: data da última utilização (string, formato: YYYY-MM-DD)
+
+entries: []

@@ -1,0 +1,21 @@
+# Registry: Calibration History
+# Histórico de calibrações metodológicas do Human Mapping Squad.
+# Registra todas as alterações feitas na metodologia, processos ou parâmetros
+# dos agentes, com justificativa e impacto observado.
+#
+# Schema:
+#   - calibration_id: identificador único da calibração (string, formato: CAL-NNNN)
+#   - date: data da calibração (string, formato: YYYY-MM-DD)
+#   - what_changed: descrição do que foi alterado (string)
+#   - reason: justificativa para a alteração (string)
+#   - affected_agents: lista de agentes impactados pela mudança (list of strings)
+#   - affected_frameworks: lista de frameworks impactados (list of strings)
+#   - impact_expected: impacto esperado da mudança (string)
+#   - impact_observed: impacto efetivamente observado após implementação (string, opcional)
+#   - metrics_before: métricas relevantes antes da calibração (map, opcional)
+#   - metrics_after: métricas relevantes após a calibração (map, opcional)
+#   - rollback_needed: se a mudança precisou ser revertida (boolean)
+#   - author: quem realizou a calibração (string)
+#   - notes: observações adicionais (string, opcional)
+
+entries: []

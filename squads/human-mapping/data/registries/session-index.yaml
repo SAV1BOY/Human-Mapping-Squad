@@ -1,0 +1,16 @@
+# Registry: Session Index
+# Índice de todas as sessões de mapeamento realizadas pelo Human Mapping Squad.
+# Cada entrada registra metadados da sessão para rastreabilidade e análise histórica.
+#
+# Schema:
+#   - session_id: identificador único da sessão (string, formato: HMS-YYYY-NNNN)
+#   - date: data da sessão (string, formato: YYYY-MM-DD)
+#   - respondent: identificador anonimizado do respondente (string)
+#   - depth: nível de profundidade selecionado — quick | standard | deep | forensic (string)
+#   - status: estado atual — in_progress | completed | abandoned | under_review (string)
+#   - confidence_avg: confiança média agregada de todos os agentes na sessão (float, 0.0 a 1.0)
+#   - agents_activated: lista de agentes que participaram da sessão (list of strings)
+#   - frameworks_used: lista de frameworks aplicados (list of strings)
+#   - notes: observações livres sobre a sessão (string, opcional)
+
+entries: []

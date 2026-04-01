@@ -1,0 +1,17 @@
+# Registry: Quality Metrics
+# Métricas de qualidade do Human Mapping Squad ao longo do tempo.
+# Permite monitorar tendências de desempenho, identificar regressões
+# e validar melhorias metodológicas.
+#
+# Schema:
+#   - date: data do registro (string, formato: YYYY-MM-DD)
+#   - session_count: número de sessões realizadas no período (integer)
+#   - avg_confidence: confiança média de todas as sessões no período (float, 0.0 a 1.0)
+#   - contradiction_rate: taxa de contradições detectadas por sessão (float, 0.0 a 1.0)
+#   - completion_rate: taxa de sessões completadas vs. iniciadas (float, 0.0 a 1.0)
+#   - avg_depth: profundidade média das sessões — 1=quick, 2=standard, 3=deep, 4=forensic (float)
+#   - quality_gate_pass_rate: taxa de aprovação nos quality gates (float, 0.0 a 1.0)
+#   - respondent_satisfaction_avg: satisfação média dos respondentes (float, 0.0 a 5.0)
+#   - notes: observações sobre o período (string, opcional)
+
+entries: []

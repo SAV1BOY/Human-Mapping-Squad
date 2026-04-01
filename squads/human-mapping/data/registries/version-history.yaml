@@ -1,0 +1,19 @@
+# Registry: Version History
+# Histórico de versões do Human Mapping Squad.
+# Registra cada versão publicada do squad com resumo das mudanças,
+# permitindo rastreabilidade completa da evolução do sistema.
+#
+# Schema:
+#   - version: número da versão (string, formato semântico: X.Y.Z)
+#   - date: data de publicação da versão (string, formato: YYYY-MM-DD)
+#   - changes_summary: resumo das mudanças incluídas na versão (string)
+#   - agents_added: agentes adicionados nesta versão (list of strings)
+#   - agents_modified: agentes modificados nesta versão (list of strings)
+#   - frameworks_added: frameworks adicionados (list of strings)
+#   - registries_added: registries adicionados (list of strings)
+#   - breaking_changes: mudanças que quebram compatibilidade com versões anteriores (list of strings)
+#   - migration_notes: notas para migração de versão anterior (string, opcional)
+#   - author: responsável pela versão (string)
+#   - notes: observações adicionais (string, opcional)
+
+entries: []

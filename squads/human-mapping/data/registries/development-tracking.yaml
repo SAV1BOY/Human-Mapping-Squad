@@ -1,0 +1,20 @@
+# Registry: Development Tracking
+# Rastreamento da execução de planos de desenvolvimento gerados pelo squad.
+# Monitora se as ações recomendadas foram implementadas e quais resultados
+# produziram, fechando o ciclo de feedback do mapeamento.
+#
+# Schema:
+#   - plan_id: identificador do plano de desenvolvimento (string, formato: DEV-YYYY-NNNN)
+#   - session_id: sessão que originou o plano (string, formato: HMS-YYYY-NNNN)
+#   - respondent: identificador anonimizado do respondente (string)
+#   - created_date: data de criação do plano (string, formato: YYYY-MM-DD)
+#   - total_actions: número total de ações recomendadas no plano (integer)
+#   - actions_completed: número de ações efetivamente completadas (integer)
+#   - completion_rate: taxa de conclusão das ações (float, 0.0 a 1.0)
+#   - outcomes: resultados observados após implementação (list of strings)
+#   - follow_up_dates: datas de acompanhamento realizadas (list of strings, formato: YYYY-MM-DD)
+#   - status: estado atual do plano — active | completed | abandoned | stalled (string)
+#   - effectiveness_rating: avaliação da efetividade do plano (integer, 1 a 5, opcional)
+#   - notes: observações sobre progresso ou obstáculos (string, opcional)
+
+entries: []

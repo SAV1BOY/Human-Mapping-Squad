@@ -1,0 +1,21 @@
+# Registry: Cross-Framework Correlation Cache
+# Cache de correlações entre frameworks descobertas durante sessões de mapeamento.
+# Armazena padrões de correlação observados empiricamente para acelerar análises
+# futuras e alimentar o synthesis-architect com dados históricos.
+#
+# Schema:
+#   - correlation_id: identificador único da correlação (string, formato: CFC-NNNN)
+#   - framework_a: primeiro framework na correlação (string)
+#   - dimension_a: dimensão específica do framework A (string)
+#   - framework_b: segundo framework na correlação (string)
+#   - dimension_b: dimensão específica do framework B (string)
+#   - correlation_type: tipo de correlação — positive | negative | conditional | nonlinear (string)
+#   - strength: força da correlação observada (float, 0.0 a 1.0)
+#   - observations: número de sessões em que a correlação foi observada (integer)
+#   - confidence: confiança na correlação baseada no volume de observações (float, 0.0 a 1.0)
+#   - conditions: condições em que a correlação se mantém (string, opcional)
+#   - discovered_date: data da primeira observação (string, formato: YYYY-MM-DD)
+#   - last_confirmed: data da última confirmação (string, formato: YYYY-MM-DD)
+#   - notes: observações adicionais (string, opcional)
+
+entries: []

@@ -1,0 +1,18 @@
+# Registry: Pattern Library
+# Biblioteca de padrões comportamentais detectados ao longo das sessões de mapeamento.
+# Padrões recorrentes são catalogados para acelerar futuras análises e melhorar
+# a precisão das inferências do squad.
+#
+# Schema:
+#   - pattern_id: identificador único do padrão (string, formato: PAT-NNNN)
+#   - name: nome descritivo do padrão (string)
+#   - description: descrição detalhada do padrão comportamental (string)
+#   - frequency: número de vezes que o padrão foi observado (integer)
+#   - accuracy: taxa de precisão quando o padrão é usado para inferência (float, 0.0 a 1.0)
+#   - associated_profiles: perfis típicos onde o padrão aparece (list of strings)
+#   - frameworks_involved: frameworks que contribuem para detecção do padrão (list of strings)
+#   - example_session_ids: sessões onde o padrão foi observado (list of strings)
+#   - discovered_date: data em que o padrão foi primeiro identificado (string, formato: YYYY-MM-DD)
+#   - notes: observações adicionais (string, opcional)
+
+entries: []

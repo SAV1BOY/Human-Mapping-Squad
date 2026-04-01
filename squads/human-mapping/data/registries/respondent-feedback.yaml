@@ -1,0 +1,18 @@
+# Registry: Respondent Feedback
+# Rastreamento do feedback dos respondentes sobre a qualidade e utilidade
+# dos mapeamentos realizados. Essencial para calibrar a metodologia e
+# detectar viés de Efeito Barnum.
+#
+# Schema:
+#   - session_id: identificador da sessão avaliada (string, formato: HMS-YYYY-NNNN)
+#   - respondent: identificador anonimizado do respondente (string)
+#   - date: data do feedback (string, formato: YYYY-MM-DD)
+#   - accuracy_rating: quão preciso o respondente considerou o mapeamento (integer, 1 a 5)
+#   - usefulness_rating: quão útil o respondente considerou o mapeamento (integer, 1 a 5)
+#   - surprise_factor: quanto o mapeamento revelou algo novo vs. confirmou o já sabido (integer, 1 a 5)
+#   - specific_insights_cited: insights específicos que o respondente destacou (list of strings)
+#   - disagreements_cited: pontos com os quais o respondente discordou (list of strings)
+#   - comments: comentários livres do respondente (string, opcional)
+#   - barnum_check: resultado do teste anti-Barnum — pass | fail | not_applied (string)
+
+entries: []

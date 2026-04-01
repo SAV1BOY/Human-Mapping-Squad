@@ -1,0 +1,15 @@
+# Registry: Agent Performance
+# Rastreamento de desempenho dos agentes do Human Mapping Squad ao longo das sessões.
+# Permite identificar quais agentes contribuem mais para a qualidade do mapeamento
+# e quais precisam de calibração.
+#
+# Schema:
+#   - agent_id: identificador do agente (string, ex: big-five-analyst)
+#   - sessions_used: número total de sessões em que o agente foi ativado (integer)
+#   - avg_confidence_contribution: confiança média que o agente contribui ao perfil final (float, 0.0 a 1.0)
+#   - issues_flagged: número de issues/contradições identificadas pelo agente (integer)
+#   - avg_processing_quality: qualidade média de processamento avaliada em quality gates (float, 0.0 a 1.0)
+#   - last_used: data da última sessão em que foi ativado (string, formato: YYYY-MM-DD)
+#   - notes: observações sobre calibração ou ajustes necessários (string, opcional)
+
+entries: []
