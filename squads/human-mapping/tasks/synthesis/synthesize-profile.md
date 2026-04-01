@@ -63,3 +63,20 @@ Sintetizar todos os resultados das camadas de assessment em um perfil humano int
 ## Próxima Task
 
 `tasks/synthesis/build-executive-snapshot.md` — Construir snapshot executivo
+
+## Subtask Breakdown
+1. **Carregar dados processados** — Agente: `synthesis-agent`. Input: session record completo. Output: dados organizados por camada. Gate: 8 camadas carregadas.
+2. **Identificar temas centrais** — Agente: `synthesis-agent`. Input: dados cruzados. Output: 3-5 `central-themes`. Gate: cada tema suportado por >= 2 frameworks.
+3. **Construir narrativa integrativa** — Agente: `synthesis-agent`. Input: temas + evidências. Output: narrativa coerente. Gate: narrativa conecta todos os temas sem contradições.
+4. **Mapear forças e áreas de atenção** — Agente: `synthesis-agent`. Input: perfil integrado. Output: `strengths-map` + `attention-areas`. Gate: cada item com evidência vinculada.
+5. **Validar consistência interna** — Agente: `synthesis-agent`. Input: perfil completo. Output: perfil validado. Gate: zero contradições internas no perfil final.
+
+## Quality Gate
+- [ ] 3-5 temas centrais identificados e documentados
+- [ ] Cada afirmação vinculada a evidências de >= 2 frameworks
+- Threshold: perfil internamente consistente (zero contradições não-explicadas)
+- Se FAIL: retornar ao audit para reconciliação adicional
+
+## Rework Trigger
+- Contradição interna no perfil → retornar a `reconcile-frameworks`
+- Tema central suportado por apenas 1 framework → rebaixar para "observação"

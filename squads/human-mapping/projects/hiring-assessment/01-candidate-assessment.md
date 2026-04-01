@@ -32,5 +32,24 @@ do candidato de forma estruturada e padronizada.
 - [ ] Observações comportamentais registradas
 - [ ] Dados consolidados em perfil estruturado
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Perfil do candidato mapeado nas mesmas dimensões do perfil ideal
+- [ ] Validade das respostas verificada (desejabilidade social, inconsistências)
+- [ ] Dados consolidados em perfil estruturado
+
+### NO-GO (não avançar)
+- Validade comprometida (alta desejabilidade social) → Ação: reaplicar com controles ou documentar limitação
+- Dimensões críticas não avaliadas → Ação: aplicar instrumento complementar
+
+### Entregáveis Obrigatórios
+- `hiring-assessment-template` (seção perfil candidato) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/hiring-assessment-template.md`
+- `checklists/calibration-quality.md`
+- `workflows/14-hiring-assessment-flow.md`
+
 ## Próxima Fase
 `02-fit-analysis.md` — Análise de fit candidato-vaga

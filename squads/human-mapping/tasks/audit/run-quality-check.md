@@ -64,3 +64,20 @@ Executar uma verificação abrangente de qualidade sobre todos os dados coletado
 ## Próxima Task
 
 `tasks/synthesis/synthesize-profile.md` — Sintetizar perfil integrado
+
+## Subtask Breakdown
+1. **Verificar completude** — Agente: `audit-agent`. Input: session record. Output: checklist de completude. Gate: todas as camadas obrigatórias presentes.
+2. **Verificar integridade** — Agente: `audit-agent`. Input: scores + timestamps. Output: relatório de integridade. Gate: zero campos nulos obrigatórios, scores no range válido.
+3. **Executar pattern-matcher** — Agente: `audit-agent`. Input: scores integrados. Output: padrões detectados + flags de suspeita. Gate: matcher executado sem erros.
+4. **Calcular quality score** — Agente: `audit-agent`. Input: completude (30%) + confiança (30%) + consistência (25%) + integridade (15%). Output: `quality-score` (0-100). Gate: QS calculado.
+5. **Gerar certificado** — Agente: `audit-agent`. Input: QS + breakdown. Output: `quality-certificate` + `synthesis-readiness`. Gate: flag de prontidão definido (QS >= 60).
+
+## Quality Gate
+- [ ] Quality Score >= 60
+- [ ] Nenhum padrão suspeito não-investigado
+- Threshold: QS >= 60 para prosseguir; QS < 60 bloqueia síntese
+- Se FAIL: identificar áreas com maior gap e propor ações corretivas
+
+## Rework Trigger
+- QS < 60 → retornar às camadas com menor contribuição para QS
+- Padrão suspeito detectado → investigar antes de prosseguir para síntese

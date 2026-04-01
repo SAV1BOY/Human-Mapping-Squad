@@ -54,3 +54,20 @@ Executar a camada de traços de personalidade (Big Five / OCEAN), coletando resp
 ## Próxima Task
 
 `tasks/assessment/run-workplace-translation.md` — Traduzir traços para trabalho
+
+## Subtask Breakdown
+1. **Selecionar perguntas** — Agente: `assessment-agent`. Input: `depth-mode` + banco de traços. Output: conjunto de perguntas randomizadas. Gate: contagem conforme profundidade (5/10/15).
+2. **Aplicar perguntas e monitorar** — Agente: `assessment-agent`. Input: perguntas selecionadas. Output: respostas + quality flags via response-quality-checker. Gate: todas respondidas com quality >= 40.
+3. **Aplicar correção de viés** — Agente: `assessment-agent`. Input: respostas + `correction-factor`. Output: respostas corrigidas. Gate: correção aplicada nas dimensões afetadas.
+4. **Calcular scores** — Agente: `assessment-agent`. Input: respostas corrigidas via `trait-scorer`. Output: `trait-scores` OCEAN (0-100). Gate: 5 dimensões com score válido.
+5. **Calcular confiança** — Agente: `assessment-agent`. Input: scores + qualidade das respostas. Output: `trait-confidence` por dimensão. Gate: confiança >= baseline por dimensão.
+
+## Quality Gate
+- [ ] 5 dimensões OCEAN com scores no range 0-100
+- [ ] Confiança média das dimensões >= 60
+- Threshold: nenhuma dimensão com confiança < 40
+- Se FAIL: aplicar perguntas complementares para dimensões com confiança baixa
+
+## Rework Trigger
+- Confiança de dimensão < 40 → aplicar 2-3 perguntas adicionais nessa dimensão
+- Quality score médio das respostas < 50 → pausar e verificar engajamento

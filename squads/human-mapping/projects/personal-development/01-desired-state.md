@@ -36,5 +36,23 @@ competências, papel profissional e satisfação pessoal.
 - [ ] Alinhamento organizacional verificado
 - [ ] Realismo da visão validado com o cliente
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Estado desejado descrito em ≥ 3 dimensões com indicadores observáveis
+- [ ] Prazo alvo estabelecido e validado como realista
+- [ ] Alinhamento com expectativas organizacionais verificado (se aplicável)
+
+### NO-GO (não avançar)
+- Visão de futuro vaga ou genérica → Ação: sessão adicional de clarificação
+- Indicadores não mensuráveis → Ação: reformular com critérios observáveis
+
+### Entregáveis Obrigatórios
+- `development-plan-template` (seção estado desejado) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/development-plan-template.md`
+- `workflows/12-development-plan-generation.md`
+
 ## Próxima Fase
 `02-gap-analysis.md` — Análise de lacunas

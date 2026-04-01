@@ -54,3 +54,20 @@ Permitir que o usuário selecione a profundidade da análise entre os modos `/fa
 ## Próxima Task
 
 `tasks/intake/map-context.md` — Mapear contexto do respondente
+
+## Subtask Breakdown
+1. **Apresentar opções de profundidade** — Agente: `session-manager`. Input: objetivo definido. Output: 3 opções exibidas. Gate: todas as opções com descrição de tempo e escopo.
+2. **Capturar e validar seleção** — Agente: `session-manager`. Input: resposta do usuário. Output: `depth-mode`. Gate: modo compatível com objetivo (ex: contratação requer >= `/start`).
+3. **Configurar perguntas por camada** — Agente: `session-manager`. Input: `depth-mode`. Output: `questions-per-layer`. Gate: contagem dentro dos ranges definidos.
+4. **Ajustar timer** — Agente: `session-manager`. Input: `depth-mode`. Output: `time-targets` por camada. Gate: soma dos targets <= tempo máximo do modo.
+5. **Confirmar com usuário** — Agente: `session-manager`. Input: configuração completa. Output: confirmação do usuário. Gate: aceite explícito registrado.
+
+## Quality Gate
+- [ ] `depth-mode` registrado no session record
+- [ ] Compatibilidade objetivo-profundidade verificada
+- Threshold: confirmação do usuário obtida em <= 2 tentativas
+- Se FAIL: escalar para sugestão automática de profundidade
+
+## Rework Trigger
+- Incompatibilidade objetivo/profundidade → retornar ao passo 2 com sugestão
+- Usuário rejeita configuração → retornar ao passo 1

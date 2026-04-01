@@ -73,3 +73,24 @@ Inferir o tipo psicológico do respondente (MBTI/Jung) a partir das respostas co
 ## Uso
 
 Chamado por `tasks/assessment/run-type-style-layer.md` para inferir o tipo do respondente.
+
+## Especificação de I/O
+
+### Input
+- Formato: YAML/JSON
+- Campos obrigatórios: `type-responses`, `trait-scores`, `behavioral-data`, `depth-mode`
+- Exemplo: `{type-responses: [{axis: "E/I", answer: "E", weight: 0.8}], trait-scores: {O: 72, C: 65, E: 45, A: 58, N: 38}}`
+
+### Output
+- Formato: YAML
+- Campos: `inferred-type`, `axis-scores`, `preference-clarity`, `cognitive-functions`, `type-probability`, `consistency-notes`
+
+### Thresholds
+- axis_score_range: [-100, +100]
+- marginal_preference: 15 (clareza < 15 = preferência marginal)
+- moderate_preference: 40 (clareza 15-40 = moderada)
+- source_weights: {direct: 0.60, traits: 0.25, behavioral: 0.15}
+
+### Tratamento de Erros
+- Input inválido: retornar erro `INVALID_TYPE_RESPONSES`
+- Dados insuficientes: inferir com fontes disponíveis e marcar eixos sem dados como `indeterminate`

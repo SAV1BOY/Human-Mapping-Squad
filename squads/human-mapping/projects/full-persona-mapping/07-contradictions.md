@@ -36,5 +36,25 @@ complexidade do perfil do cliente.
 - [ ] Níveis de confiança recalculados
 - [ ] Contradições não resolvidas documentadas com transparência
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Todas as contradições de severidade S3 (High) e S4 (Critical) resolvidas ou documentadas com justificativa
+- [ ] Níveis de confiança recalculados após resolução
+- [ ] Contradições não resolvidas transparentes e classificadas
+
+### NO-GO (não avançar)
+- Contradição S4 (Critical) sem resolução nem justificativa → Ação: investigar com dados adicionais
+- Contradições não classificadas por tipo → Ação: completar classificação antes de avançar
+
+### Entregáveis Obrigatórios
+- `contradiction-map-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/audit/contradiction-map-template.md`
+- `checklists/contradiction-audit-quality.md`
+- `checklists/contradiction/cross-framework-alignment.md`
+- `workflows/08-contradiction-audit-flow.md`
+
 ## Próxima Fase
 `08-synthesis.md` — Síntese do perfil integrado

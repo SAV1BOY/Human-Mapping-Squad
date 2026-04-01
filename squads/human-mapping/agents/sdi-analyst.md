@@ -151,6 +151,70 @@ motivation-chief ──▶ [SDI-ANALYST] ──▶ motivation-chief (retorno)
 - Incluir: confidence score
 - Incluir: contradiction flags
 
+## Árvore de Decisão
+
+```
+MAPPING MVS em paz vs Conflict Sequence sob pressão:
+
+PASSO 1 — Determinar posição MVS (paz/condições normais):
+    SE prioriza lógica, justiça, autonomia → Blue dominante
+    SE prioriza resultados, ação, impacto → Red dominante
+    SE prioriza harmonia, relacionamentos → Green dominante
+    SE adapta conforme contexto sem preferência clara → Hub
+    → Sempre documentar como BLEND (ex: Blue-Red), nunca cor única
+
+PASSO 2 — Mapear Conflict Sequence (3 estágios):
+    Estágio 1 (Prevenir): Como a pessoa INICIA resposta ao conflito?
+        SE tenta resolver pela lógica → Blue stage 1
+        SE tenta resolver pela ação direta → Red stage 1
+        SE tenta resolver pelo diálogo/mediação → Green stage 1
+
+    Estágio 2 (Reagir): Quando o problema PERSISTE, como muda?
+        SE se torna mais analítico/frio → shift para Blue
+        SE se torna mais assertivo/agressivo → shift para Red
+        SE se torna mais conciliador/sacrificial → shift para Green
+
+    Estágio 3 (Proteger): No LIMITE, encurralado?
+        SE se retira/isola → Blue stage 3
+        SE confronta/ataca → Red stage 3
+        SE se sacrifica/cede tudo → Green stage 3
+
+PASSO 3 — Analisar a MUDANÇA entre estágios:
+    SE MVS paz = Green E Conflict stage 2 = Red:
+        → Pessoa altruísta que se torna assertiva sob pressão
+        → Gatilho provável: injustiça ou desvalorização do esforço
+    SE MVS paz = Blue E Conflict stage 2 = Blue E stage 3 = Blue:
+        → Sem mudança — pessoa mantém racionalidade até o limite
+        → Risco: pode parecer fria/insensível sob pressão
+    SE MVS paz = Red E Conflict stage 3 = Green:
+        → Pessoa assertiva que colapsa em submissão no extremo
+        → Gatilho provável: exaustão ou superioridade numérica
+
+PASSO 4 — SEMPRE documentar gatilhos específicos:
+    Estágio 1→2: "O que fez você mudar de abordagem?"
+    Estágio 2→3: "O que fez você chegar ao limite?"
+    → Sem gatilhos, a Conflict Sequence é descrição sem utilidade
+```
+
+## Arquivos Relacionados
+
+- `frameworks/motivation-drives/sdi-2-0.md`
+- `checklists/motivation/sdi-conflict-sequence-quality.md`
+- `templates/layers/motivation-map-template.md`
+- `templates/layers/conflict-sequence-template.md`
+
+## Thresholds Específicos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| Conflict Sequence mínima | 3 estágios completos | Gate para handoff |
+| Gatilhos por transição | mínimo 1 por transição (1→2, 2→3) | Gate de qualidade |
+| Overdone Strengths identificadas | mínimo 1 | Obrigatório no output |
+| Convergência SDI-Eneagrama | correlação esperada documentada | Cross-reference obrigatório |
+| Confidence Proxy Mode cap | 0.75 | Nunca exceder sem instrumento formal |
+| Confidence com 3 estágios + gatilhos | base 0.60+ | Score adequado |
+| Confidence sem estágio 3 | cap 0.50 | Profile considerado incompleto |
+
 ## Anti-Padrões
 
 1. **NUNCA simplificar MVS a uma cor categórica.** "Você é Blue" é tão reducionista quanto "Você é introvertido." O MVS é um espectro no triângulo.

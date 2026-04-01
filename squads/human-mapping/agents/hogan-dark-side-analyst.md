@@ -212,6 +212,61 @@ handoff:
   message: "Dark-side assessment completo. Cluster dominante: {cluster}. {n} derailers high/critical. Top derailer: {name} (score {score})."
 ```
 
+## Arvore de Decisao
+
+```
+CONTEXTO: Lideranca vs Contribuidor Individual (IC)
+
+PARA CADA derailer:
+    SE contexto == "leadership":
+        DERAILERS CRITICOS (prioridade maxima):
+            Bold >= 7: CRITICO — arrogancia impacta equipe inteira
+            Excitable >= 7: CRITICO — volatilidade desestabiliza equipe
+            Mischievous >= 7: CRITICO — teste de limites com poder e perigoso
+            Reserved >= 7: ALTO — distanciamento prejudica gestao de pessoas
+            Leisurely >= 7: ALTO — resistencia passiva bloqueia iniciativas
+        DERAILERS MODERADOS:
+            Diligent >= 7: MODERADO — perfeccionismo causa microgerenciamento
+            Dutiful >= 7: MODERADO — dependencia de aprovacao limita decisoes
+            Cautious >= 6: MODERADO — paralisia em decisoes estrategicas
+
+    SE contexto == "individual_contributor":
+        DERAILERS CRITICOS (prioridade maxima):
+            Leisurely >= 7: CRITICO — resistencia passiva prejudica entregas
+            Excitable >= 7: CRITICO — volatilidade afeta confiabilidade
+            Diligent >= 8: ALTO — perfeccionismo atrasa entregas
+        DERAILERS MODERADOS:
+            Bold >= 7: MODERADO — menos impacto sem autoridade formal
+            Skeptical >= 7: MODERADO — cinismo afeta colaboracao
+            Cautious >= 7: MODERADO — aversao a risco limita inovacao
+
+    SE derailer_score >= 9 (qualquer contexto):
+        → CRITICO independente do contexto — mitigacao urgente
+    SE cluster_Moving_Against dominante E contexto == "leadership":
+        → ALERTA MAXIMO — risco de abuso de poder
+    SE cluster_Moving_Away dominante E contexto == "leadership":
+        → ALERTA ALTO — equipe sem direcao emocional
+```
+
+## Arquivos Relacionados
+
+- `reference/leadership/leadership-derailment-factors.md`
+- `templates/layers/dark-side-risk-template.md`
+- `checklists/types/dark-side-derailer-quality.md`
+- `frameworks/traits/hogan-hpi.md`
+
+## Thresholds Especificos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| Derailer baixo risco | 1-3 | Improvavel, nao priorizar |
+| Derailer moderado | 4-6 | Possivel sob stress prolongado |
+| Derailer alto risco | 7-8 | Provavel sob pressao — mitigacao necessaria |
+| Derailer critico | 9-10 | Quase certo — mitigacao urgente |
+| Bright-dark transition obrigatoria | score >= 6 | Documentar conexao HPI → HDS |
+| Evidencia minima para high score | 2 sinais comportamentais | Gate para score >= 7 |
+| Confidence minima perfil | 0.70 | Gate para handoff |
+
 ## Anti-Padroes
 
 1. **Usar linguagem clinica** — Derailers tem base em categorias clinicas (Borderline→Excitable, Narcisista→Bold) mas NUNCA devem ser apresentados como diagnosticos. Sao tendencias comportamentais, nao transtornos.

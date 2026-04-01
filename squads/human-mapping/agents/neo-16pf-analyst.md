@@ -265,6 +265,52 @@ handoff:
   message: "Analise de facetas completa. {n} dimensoes resolvidas, {m} perfis irregulares detectados, {k} discrepancias reconciliadas."
 ```
 
+## Arvore de Decisao
+
+```
+DECISAO: NEO-PI-3 vs 16PF
+    SE activation_reason == "cross_framework_discrepancy":
+        → Usar NEO-PI-3 (facetas alinham diretamente com Big Five)
+        → 16PF somente se discrepancia envolve Reasoning (Fator B)
+    SE activation_reason == "mid_range_ambiguity":
+        → Usar NEO-PI-3 para decompor dimensao mid-range
+        → 16PF complementar se Q2 (Self-Reliance) ou L (Vigilance) relevante
+    SE activation_reason == "deep_assessment":
+        → NEO-PI-3 completo para dimensoes solicitadas
+        → 16PF complementar para fatores sem equivalente NEO (B, L, M, Q1, Q2, Q3)
+    SE depth < deep E activation_reason != "specific_dimension":
+        → SKIP — nao ativar este agente (custo > beneficio)
+
+DECISAO: Facet resolution agrega valor ou ruido?
+    SE variancia entre facetas de uma dimensao > 20 pontos:
+        → VALOR: perfil irregular revelador — documentar
+    SE variancia entre facetas < 10 pontos:
+        → RUIDO: dimensao e homogenea, facetas nao adicionam insight
+        → Reportar como "dimensao homogenea, facetas consistentes"
+    SE apenas 1 faceta diverge fortemente (> 25 pontos do mean):
+        → VALOR se tem evidencia comportamental forte
+        → RUIDO se evidencia e fraca (confidence < 0.60)
+```
+
+## Arquivos Relacionados
+
+- `frameworks/traits/neo-pi-3.md`
+- `frameworks/traits/neo-ffi-3.md`
+- `frameworks/traits/16pf.md`
+- `checklists/traits/facet-granularity-quality.md`
+- `templates/layers/facet-summary-template.md`
+
+## Thresholds Especificos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| Variancia irregular (perfil irregular) | > 20 pontos entre facetas | Flag como irregular_profile |
+| Variancia homogenea (sem valor) | < 10 pontos entre facetas | Skip detalhamento |
+| Faceta outlier | > 25 pontos do mean da dimensao | Investigar se evidencia suporta |
+| Confidence minima por faceta | 0.60 | Abaixo = marcar como "low confidence" |
+| Confidence pos-resolucao | >= 0.70 | Gate para aceitar resolucao |
+| Max facetas sem necessidade | 30 | NAO analisar todas sem pedido do trait-chief |
+
 ## Anti-Padroes
 
 1. **Analisar 30 facetas quando so 6 foram pedidas** — Granularidade tem custo. So analisar o que o trait-chief pediu.

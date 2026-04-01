@@ -32,5 +32,24 @@ criando uma base de dados individual para análise coletiva.
 - [ ] Registros atualizados no persona-registry
 - [ ] Dados preparados para próxima fase
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] ≥ 80% dos membros da equipe com perfil mapeado
+- [ ] Tabela comparativa de perfis construída
+- [ ] Registros individuais atualizados no persona-registry
+
+### NO-GO (não avançar)
+- < 80% dos membros mapeados → Ação: completar avaliações pendentes
+- Dados de um membro inválidos → Ação: reaplicar instrumento
+
+### Entregáveis Obrigatórios
+- `team-role-map-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/layers/team-role-map-template.md`
+- `checklists/team/team-role-identification-quality.md`
+- `workflows/15-team-composition-flow.md`
+
 ## Próxima Fase
 `02-gap-analysis.md` — Análise de lacunas da equipe

@@ -69,3 +69,27 @@ Identificar padrões conhecidos no perfil do respondente, comparando os resultad
 ## Uso
 
 Chamado por `tasks/audit/run-quality-check.md` para verificação e por `tasks/synthesis/synthesize-profile.md` para enriquecer o perfil integrado.
+
+## Especificação de I/O
+
+### Input
+- Formato: YAML
+- Campos obrigatórios: `integrated-scores`, `convergence-clusters`, `context`
+- Campos opcionais: `patterns-library` (padrão: `lib/patterns/`)
+- Exemplo: `{integrated-scores: {O: 72, C: 85, N: 65}, context: "lideranca", convergence-clusters: ["inovador"]}`
+
+### Output
+- Formato: YAML
+- Campos: `matched-patterns`, `risk-patterns`, `pattern-insights`, `pattern-recommendations`
+
+### Thresholds
+- strong_match: 80% das condições atendidas
+- moderate_match: 60% das condições
+- discard_match: 60% (abaixo = descartar)
+- max_patterns_report: 5 (top 3-5 para relatório)
+- risk_always_include: true (padrões de risco sempre incluídos)
+
+### Tratamento de Erros
+- Input inválido: retornar erro `INVALID_SCORES`
+- Dados insuficientes: executar matching parcial e flag `limited-matching`
+- Biblioteca de padrões ausente: retornar lista vazia com warning `PATTERNS_LIBRARY_NOT_FOUND`

@@ -66,3 +66,25 @@ Classificar e pontuar as forças do respondente, mapeando-as para frameworks de 
 ## Uso
 
 Chamado por `tasks/assessment/run-strengths-layer.md` para classificar as forças do respondente.
+
+## Especificação de I/O
+
+### Input
+- Formato: YAML/JSON
+- Campos obrigatórios: `strength-responses`, `trait-scores`, `motivation-profile`, `type-result`
+- Exemplo: `{strength-responses: [{type: "STAR", text: "Quando liderei o projeto...", keywords: ["liderança", "inovação"]}]}`
+
+### Output
+- Formato: YAML
+- Campos: `top-strengths`, `strength-domains`, `talent-vs-skill`, `underused-strengths`, `strength-confidence`
+
+### Thresholds
+- top_strengths_fast: 5 (modo /fast)
+- top_strengths_deep: 10 (modo /deep)
+- match_strong: 80% (match forte com CliftonStrengths)
+- match_moderate: 60% (match moderado)
+- match_discard: 60% (abaixo = descartar)
+
+### Tratamento de Erros
+- Input inválido: retornar erro `INVALID_STRENGTH_DATA`
+- Dados insuficientes: reduzir para Top 3 com maior evidência e flag `limited-data`

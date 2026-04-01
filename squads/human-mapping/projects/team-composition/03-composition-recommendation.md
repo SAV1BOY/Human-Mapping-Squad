@@ -36,5 +36,24 @@ ajustes internos, contratações e redistribuição de papéis.
 - [ ] Composição ideal futura projetada
 - [ ] Trade-offs documentados
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Recomendações priorizadas por impacto e viabilidade
+- [ ] Trade-offs documentados com alternativas
+- [ ] Composição ideal futura projetada
+
+### NO-GO (não avançar)
+- Nenhuma recomendação viável → Ação: revisar restrições com stakeholder
+- Recomendações sem priorização → Ação: aplicar matriz impacto x viabilidade
+
+### Entregáveis Obrigatórios
+- `team-composition-template` (seção recomendações) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/team-composition-template.md`
+- `checklists/team/team-contribution-mapping-quality.md`
+- `workflows/15-team-composition-flow.md`
+
 ## Próxima Fase
 `04-action-plan.md` — Plano de ação

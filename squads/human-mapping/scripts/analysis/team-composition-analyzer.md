@@ -168,3 +168,26 @@ team_composition_analysis:
 - Compatibilidade calculada nao considera historico real de interacao entre os membros
 - Diversidade cognitiva e medida apenas por Openness — outras dimensoes tambem contribuem
 - Equipes menores que 4 pessoas terao naturalmente gaps Belbin — ajustar expectativa
+
+## Especificacao de I/O
+
+### Input
+- Formato: YAML
+- Campos obrigatorios: `team-members`, `individual-profiles`, `team-goal`, `team-type`
+- Exemplo: `{team-members: ["M1","M2","M3"], team-goal: "lancar produto", team-type: "inovacao"}`
+
+### Output
+- Formato: YAML
+- Campos: `composition_score`, `role_coverage`, `cognitive_diversity`, `motivation_alignment`, `communication_compatibility`, `gaps`, `risks`, `recommendations`
+
+### Thresholds
+- excelente: 0.8 (score >= 0.8)
+- forte: 0.6 (score 0.6-0.8)
+- adequada: 0.4 (score 0.4-0.6)
+- fragil: 0.4 (score < 0.4)
+- min_team_size: 3 (abaixo = warning sobre gaps naturais)
+- redundancy_penalty: 3 (>= 3 membros no mesmo papel primario)
+
+### Tratamento de Erros
+- Input invalido: retornar erro `INVALID_TEAM_DATA` com membro especifico
+- Dados insuficientes: calcular com dimensoes disponiveis e listar dimensoes ausentes

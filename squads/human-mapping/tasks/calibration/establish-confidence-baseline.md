@@ -61,3 +61,20 @@ Definir o baseline de confiança da sessão, consolidando os dados de calibraç�
 ## Próxima Task
 
 `tasks/assessment/run-trait-layer.md` — Rodar camada de traços
+
+## Subtask Breakdown
+1. **Consolidar indicadores** — Agente: `calibration-agent`. Input: consistência + IDS + padrão temporal. Output: indicadores consolidados. Gate: 4 indicadores presentes.
+2. **Calcular baseline** — Agente: `calibration-agent`. Input: indicadores consolidados. Output: `confidence-baseline` (0-100). Gate: fórmula aplicada corretamente.
+3. **Definir limiares por camada** — Agente: `calibration-agent`. Input: baseline. Output: `layer-thresholds`. Gate: limiares definidos para 3 faixas (>=70, 50-69, <50).
+4. **Definir mínimos por output** — Agente: `calibration-agent`. Input: baseline + tipos de output. Output: `output-minimums`. Gate: mínimos cobrem todos os tipos de relatório.
+5. **Preparar handoff** — Agente: `calibration-agent`. Input: calibração completa. Output: handoff para assessment-workflow. Gate: session record atualizado com baseline.
+
+## Quality Gate
+- [ ] Baseline calculado e >= 50
+- [ ] Todos os limiares e mínimos definidos
+- Threshold: baseline >= 50 para prosseguir; < 50 recomenda encerrar
+- Se FAIL: oferecer recalibração ou encerrar sessão com explicação
+
+## Rework Trigger
+- Baseline < 50 → retornar a `calibrate-respondent` para nova tentativa
+- Inconsistência entre indicadores → recalcular após revisar dados de calibração

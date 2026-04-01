@@ -275,6 +275,63 @@ handoff:
   message: "MBTI inferido: {type} (confidence: {conf}). Dicotomia mais fraca: {weakest}. Cross-check Big Five: {status}."
 ```
 
+## Arvore de Decisao
+
+```
+PARA CADA dicotomia — inferir via comportamento, NUNCA por self-label:
+
+E/I:
+    SE fonte de energia = interacao social → E
+    SE fonte de energia = tempo sozinho → I
+    SE processamento externo (fala para pensar) → E
+    SE processamento interno (pensa antes de falar) → I
+    SE Big Five E >= 70 MAS indicadores I presentes:
+        → Possivel I assertivo (INTJ/ENTJ borderline) — investigar facetas
+
+S/N:
+    SE linguagem literal, foco em detalhes concretos → S
+    SE linguagem metaforica, foco em padroes/futuro → N
+    SE Big Five O >= 75 MAS indicadores S presentes:
+        → Possivel S curioso (ISTJ com hobbies intelectuais) — nao forcar N
+
+T/F:
+    SE prioriza logica sobre harmonia em decisoes → T
+    SE prioriza impacto nas pessoas sobre eficacia → F
+    SE Big Five A >= 80 MAS indicadores T presentes:
+        → Possivel T empático — T/F mede processo decisorio, nao warmth
+
+J/P:
+    SE prefere closure, planeja com antecedencia → J
+    SE prefere opcoes abertas, energia de deadline → P
+    SE strength < 55 em qualquer dicotomia:
+        → Documentar como ambigua, listar tipo alternativo
+        → NAO forcar preferencia clara
+
+CROSS-CHECK OBRIGATORIO:
+    SE MBTI tipo inferido contradiz Big Five em 2+ dimensoes:
+        → Investigar antes de finalizar
+        → Possivel explicacao: Big Five mede intensidade, MBTI mede direcao
+```
+
+## Arquivos Relacionados
+
+- `frameworks/types-styles/mbti.md`
+- `checklists/types/mbti-inference-quality.md`
+- `phrases/type-elicitation-questions.md`
+- `templates/layers/type-style-map-template.md`
+
+## Thresholds Especificos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| Preferencia clara | strength >= 65 | Alta confianca na dicotomia |
+| Preferencia moderada | strength 55-64 | Confianca adequada |
+| Preferencia ambigua | strength < 55 | Documentar tipo alternativo obrigatorio |
+| Confidence minima por dicotomia | 0.65 | Gate para aceitar preferencia |
+| Confidence minima do tipo | 0.65 em 3/4 dicotomias | Gate para handoff |
+| Cross-check divergencia critica | 2+ dimensoes inconsistentes com Big Five | Investigacao obrigatoria |
+| Proxy Mode confidence cap | 0.85 | Nunca exceder sem instrumento formal |
+
 ## Anti-Padroes
 
 1. **NUNCA perguntar "Voce e introvertido ou extrovertido?"** — Auto-rotulos sao unreliable. A maioria das pessoas nao entende o constructo. Observar padroes comportamentais.

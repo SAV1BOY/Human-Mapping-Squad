@@ -33,5 +33,24 @@ técnicas, comportamentais e fit cultural esperados.
 - [ ] Benchmarks de referência estabelecidos
 - [ ] Lacunas de equipe mapeadas
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Perfil ideal definido com frameworks (Big Five, DISC, Belbin)
+- [ ] Critérios eliminatórios vs desejáveis separados e documentados
+- [ ] Benchmarks de referência estabelecidos
+
+### NO-GO (não avançar)
+- Perfil ideal não traduzido em traços mensuráveis → Ação: sessão adicional com gestor
+- Critérios eliminatórios não definidos → Ação: alinhar com RH antes de avaliar candidatos
+
+### Entregáveis Obrigatórios
+- `hiring-assessment-template` (seção requisitos) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/hiring-assessment-template.md`
+- `checklists/intake-quality.md`
+- `workflows/14-hiring-assessment-flow.md`
+
 ## Próxima Fase
 `01-candidate-assessment.md` — Avaliação do candidato

@@ -33,5 +33,24 @@ direcionar a busca de carreiras compatíveis.
 - [ ] Convergência forças x interesses verificada
 - [ ] Ambiente ideal descrito
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] CliftonStrengths analisado com domínios dominantes identificados
+- [ ] Estilo de trabalho mapeado (Kolbe ou DISC)
+- [ ] Convergência forças x interesses documentada
+
+### NO-GO (não avançar)
+- Nenhum framework de forças avaliado → Ação: aplicar CliftonStrengths ou proxy
+- Padrões de excelência não identificados → Ação: conduzir análise de realizações (STAR)
+
+### Entregáveis Obrigatórios
+- `strength-map-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/layers/strength-map-template.md`
+- `checklists/strengths-assessment-quality.md`
+- `workflows/16-career-guidance-flow.md`
+
 ## Próxima Fase
 `03-career-options.md` — Opções de carreira

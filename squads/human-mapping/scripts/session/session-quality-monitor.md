@@ -79,3 +79,25 @@ Anotar a cada 20 minutos:
 - Consistencia percebida (alta/media/baixa)
 - Fadiga (nenhuma/leve/moderada/severa)
 - Intervencoes realizadas e efeito observado
+
+## Especificacao de I/O
+
+### Input
+- Formato: YAML
+- Campos obrigatorios: `session-id`, `elapsed-time`, `response-history`, `calibration-baseline`
+- Exemplo: `{session-id: "HMS-20260401-0001", elapsed-time: 20, response-history: [{id: 1, length: 45, time: 12s}]}`
+
+### Output
+- Formato: YAML
+- Campos: `engagement-score` (1-5), `consistency-level`, `fatigue-level`, `interventions-log`
+
+### Thresholds
+- check_interval_minutes: 20
+- engagement_critical: 2 (intervir se <= 2)
+- fatigue_pause_trigger: "moderada" (oferecer pausa)
+- fatigue_stop_trigger: "severa" (encerrar e reagendar)
+- cumulative_quality_floor: 50 (sugerir pausa se media < 50)
+
+### Tratamento de Erros
+- Input invalido: logar warning e continuar com monitoramento parcial
+- Dados insuficientes: usar apenas indicadores disponiveis e flag `partial-monitoring`

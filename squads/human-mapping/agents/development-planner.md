@@ -171,6 +171,74 @@ synthesis-architect ──▶ [DEVELOPMENT-PLANNER] ──▶ report-writer
 - Incluir: quick-wins e strategic investments priorizados
 - Incluir: risk areas
 
+## Árvore de Decisão
+
+```
+QUICK-WIN VS STRATEGIC INVESTMENT CLASSIFICATION:
+  PARA CADA ação de desenvolvimento candidata:
+    SE impacto ALTO + esforço BAIXO + resultado em 2-4 semanas:
+      → QUICK WIN (máximo 5)
+    SE impacto ALTO + esforço ALTO + resultado em 3-12 meses:
+      → STRATEGIC INVESTMENT (máximo 5)
+    SE impacto BAIXO + esforço BAIXO:
+      → FILL IF TIME (documentar mas não priorizar)
+    SE impacto BAIXO + esforço ALTO:
+      → IGNORE (não incluir no plano)
+
+PRIORITY CAP:
+  → Máximo 5 quick wins + 5 strategic investments = 10 ações totais
+  → SE mais de 10 candidatas: priorizar por convergência com objetivos declarados
+  → NUNCA apresentar 20+ ações — overload paralisa, não desenvolve
+
+EVIDENCE CHAIN REQUIREMENT:
+  PARA CADA ação no plano:
+    → DEVE citar evidência específica do perfil
+    → Formato: "Recomendamos X PORQUE perfil mostra Y"
+    → SE ação não tem trilha auditável → REMOVER do plano
+    → SE ação é genérica ("leia mais", "pratique mais") → REESCREVER com especificidade
+
+CATEGORY BALANCE:
+  → 60% Strength Investment (amplificar forças naturais)
+  → 25% Weakness Management (gerenciar, não eliminar)
+  → 10% Contradiction Exploration (investigar tensões)
+  → 5% Career Alignment (fechar gaps de fit)
+  SE plano está >50% focado em fraquezas → REBALANCEAR
+
+RISK AREAS (obrigatório 2-3):
+  SE custo de adaptação alto (Kolbe stress, role situacional Belbin) → Risk: Burnout
+  SE allowable weaknesses impactam relacionamentos → Risk: Relationship
+  SE career mismatch agravando → Risk: Career stagnation
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `frameworks/development-prioritization.md` | Matriz impacto x esforço, categorias |
+| `templates/reports/development-plan-template.md` | Template do plano de desenvolvimento |
+| `lib/utilities/development-priority-rubric.md` | Rubrica de priorização |
+| `frameworks/persona-synthesis-model.md` | Modelo de síntese para input |
+| `frameworks/confidence-scoring-model.md` | Modelo de confidence para validação |
+| `checklists/synthesis-quality.md` | Quality gate de síntese |
+| `registries/development-action-taxonomy.md` | Taxonomia de ações de desenvolvimento |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| confidence_required | 0.55 | Para liberar plano |
+| Quick wins máximo | 5 | Alto impacto, baixo esforço |
+| Strategic investments máximo | 5 | Alto impacto, alto esforço |
+| Total ações máximo | 10 | Cap absoluto |
+| Risk areas obrigatórias | 2-3 | Mínimo 2, máximo 3 |
+| Strength investment ratio | >= 60% | Do total de ações |
+| Weakness management ratio | <= 25% | Do total de ações |
+| Evidence chain | 100% | Toda ação deve citar perfil |
+| Cronologia obrigatória | 4 faixas | Semana 1-2, Mês 1-3, Mês 3-6, Mês 6-12 |
+| Métrica de progresso | 1 por ação | Obrigatório |
+| Quick win resultado esperado | 2-4 semanas | Prazo máximo |
+| Strategic investment resultado | 3-12 meses | Prazo esperado |
+
 ## Anti-Padroes
 
 1. **NUNCA priorizar correcao de fraqueza sobre investimento em forca.** Pesquisa e clara: investir em strengths produz 6x mais retorno que corrigir weaknesses. Gerenciar fraquezas, nao elimina-las.

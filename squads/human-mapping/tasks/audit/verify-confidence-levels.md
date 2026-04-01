@@ -63,3 +63,20 @@ Verificar e validar os scores de confiança de todas as camadas e dimensões, ga
 ## Próxima Task
 
 `tasks/audit/run-quality-check.md` — Rodar verificação geral de qualidade
+
+## Subtask Breakdown
+1. **Compilar confiança de todas as camadas** — Agente: `audit-agent`. Input: session record completo. Output: mapa de confiança consolidado. Gate: 8 camadas compiladas.
+2. **Validar com confidence-calculator** — Agente: `audit-agent`. Input: dados de todas as camadas. Output: confiança validada por dimensão. Gate: validação executada.
+3. **Classificar dimensões** — Agente: `audit-agent`. Input: confiança vs mínimos do baseline. Output: `dimension-status` (verde/amarelo/vermelho). Gate: todas as dimensões classificadas.
+4. **Calcular confiança agregada** — Agente: `audit-agent`. Input: confiança por camada. Output: `aggregate-confidence`. Gate: score agregado no range 0-100.
+5. **Verificar elegibilidade de outputs** — Agente: `audit-agent`. Input: confiança agregada vs mínimos por output. Output: `output-eligibility`. Gate: cada tipo de relatório com status go/no-go.
+
+## Quality Gate
+- [ ] Mapa de confiança completo com todas as dimensões
+- [ ] Confiança agregada >= 60
+- Threshold: >= 70% das dimensões em status verde
+- Se FAIL: propor escopo reduzido ou sessão complementar
+
+## Rework Trigger
+- Confiança agregada < 50 → retornar a assessment para camadas fracas
+- > 50% das dimensões em vermelho → considerar invalidar sessão

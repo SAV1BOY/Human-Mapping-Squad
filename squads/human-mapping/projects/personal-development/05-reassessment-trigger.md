@@ -94,3 +94,22 @@ Registrar no memory update:
 - Escopo definido e justificativa
 - Data do reassessment anterior para comparacao
 - Expectativas de mudanca vs. estabilidade
+
+## Critérios de Decisão
+
+### GO (acionar reassessment)
+- [ ] Gatilho automático identificado (tempo 12+ meses, mudança de carreira, evento de vida, pós-desenvolvimento)
+- [ ] Escopo do reassessment definido (completo vs focado)
+- [ ] Respondente e sponsor alinhados
+
+### NO-GO (não acionar)
+- < 6 meses desde último assessment → Ação: aguardar (efeito de prática)
+- Curiosidade sem evidência de mudança → Ação: agendar revisão em 3 meses
+
+### Entregáveis Obrigatórios
+- Decisão documentada (acionar / não acionar / aguardar)
+
+### Arquivos Relacionados
+- `workflows/19-follow-up-reassessment-flow.md`
+- `templates/operational/session-log-template.md`
+- `projects/reassessment/00-previous-profile.md`

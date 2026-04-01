@@ -64,3 +64,20 @@ Construir um plano de desenvolvimento personalizado baseado no perfil integrado,
 ## Próxima Task
 
 `tasks/synthesis/build-specialized-report.md` — Construir relatório especializado (se aplicável)
+
+## Subtask Breakdown
+1. **Executar development-plan-builder + priority-ranker** — Agente: `synthesis-agent`. Input: perfil integrado + áreas de atenção. Output: matriz impacto x esforço. Gate: ranker executado.
+2. **Definir prioridades** — Agente: `synthesis-agent`. Input: matriz. Output: quick wins + projetos-chave classificados. Gate: 8-12 itens priorizados.
+3. **Detalhar ações** — Agente: `synthesis-agent`. Input: prioridades. Output: 3-5 ações por prioridade com prazos e métricas. Gate: cada ação com objetivo mensurável.
+4. **Incluir alavancagem e mitigação** — Agente: `synthesis-agent`. Input: forças + HDS risks. Output: seções de alavancagem e mitigação. Gate: top forças e top riscos cobertos.
+5. **Gerar timeline** — Agente: `synthesis-agent`. Input: ações + prazos. Output: `development-timeline`. Gate: timeline cobre curto, médio e longo prazo.
+
+## Quality Gate
+- [ ] Matriz impacto x esforço com >= 8 itens posicionados
+- [ ] Ações concretas com prazos e métricas definidos
+- Threshold: >= 2 quick wins identificados
+- Se FAIL: reordenar prioridades para garantir ao menos 1 quick win
+
+## Rework Trigger
+- Nenhum quick win → reavaliar forças subutilizadas como candidatas
+- Plano com > 15 itens → priorizar e reduzir escopo

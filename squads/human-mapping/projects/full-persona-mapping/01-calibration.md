@@ -32,5 +32,26 @@ do cliente, considerando contexto, objetivos e dados já disponíveis.
 - [ ] Plano de avaliação aprovado
 - [ ] Lacunas identificadas e mitigações planejadas
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Consistência do respondente (response consistency) ≥ 0.5
+- [ ] Frameworks selecionados e cobertura de dimensões verificada
+- [ ] Plano de avaliação documentado e aprovado
+
+### NO-GO (não avançar)
+- Consistência < 0.5 → Ação: aplicar técnicas de recalibração ou reavaliar viabilidade
+- Desejabilidade social elevada detectada → Ação: aplicar correções e documentar limitações
+
+### Entregáveis Obrigatórios
+- `reliability-sheet` — preenchido e validado
+- `quality-flag-sheet` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/calibration/reliability-sheet.md`
+- `templates/calibration/quality-flag-sheet.md`
+- `checklists/calibration-quality.md`
+- `workflows/02-respondent-calibration.md`
+
 ## Próxima Fase
 `02-traits.md` — Avaliação de traços de personalidade

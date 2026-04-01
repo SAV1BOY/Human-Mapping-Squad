@@ -59,3 +59,20 @@ Executar a camada de forças (strengths), identificando os talentos naturais do 
 ## Próxima Task
 
 `tasks/assessment/run-team-role-layer.md` — Rodar camada de papel em equipe
+
+## Subtask Breakdown
+1. **Aplicar perguntas de forças** — Agente: `assessment-agent`. Input: banco de forças + depth-mode. Output: respostas incluindo STAR. Gate: perguntas de flow, elogios e alto desempenho cobertas.
+2. **Validar com perguntas STAR** — Agente: `assessment-agent`. Input: forças declaradas. Output: evidências comportamentais. Gate: >= 2 respostas STAR com quality >= 60.
+3. **Classificar forças** — Agente: `assessment-agent`. Input: respostas via `strength-scorer`. Output: `top-strengths` mapeadas para CliftonStrengths. Gate: Top 5 identificadas.
+4. **Distinguir talento vs competência** — Agente: `assessment-agent`. Input: scores + evidências. Output: classificação por força. Gate: cada top strength classificada.
+5. **Identificar subutilizadas** — Agente: `assessment-agent`. Input: scores + aplicação reportada. Output: `underused-strengths`. Gate: lista documentada com oportunidades.
+
+## Quality Gate
+- [ ] Top 5-10 forças identificadas com scores e domínios
+- [ ] Cada força classificada como talento natural ou competência desenvolvida
+- Threshold: confiança média das top 5 forças >= 60
+- Se FAIL: reduzir para Top 3 com maior confiança
+
+## Rework Trigger
+- Nenhuma força com confiança >= 60 → reaplicar com perguntas STAR adicionais
+- Contradição forças vs traços → revisar scoring e cruzamento

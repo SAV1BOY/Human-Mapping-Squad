@@ -360,6 +360,69 @@ Despachar: {
 }
 ```
 
+## Árvore de Decisão
+
+```
+DEPTH SELECTION LOGIC:
+  SE chief enviou comando /fast:
+    → depth = rápida. Informar respondente. Intake abreviado (3-5 min).
+  SE chief enviou comando /start (sem qualifier):
+    → depth = padrão. Intake completo (5-10 min).
+  SE chief enviou comando /deep:
+    → depth = profunda. Intake completo + perguntas adicionais sobre instrumentos.
+  SE chief sugeriu depth MAS não definiu:
+    → Apresentar 3 opções ao respondente. Registrar escolha.
+    → SE escolha conflita com recomendação do chief:
+      → Priorizar chief para CIMA (pode aumentar depth)
+      → Respeitar respondente para BAIXO (pode reduzir depth)
+
+INSTRUMENT AVAILABILITY CHECK:
+  SE respondente tem instrumentos oficiais < 12 meses:
+    → Reutilizar. Registrar no session-brief. Confidence boost.
+  SE respondente tem instrumentos 12-24 meses:
+    → Usar como referência secundária. Registrar com warning de validade.
+  SE respondente tem instrumentos > 24 meses:
+    → Descartar. Registrar como histórico apenas.
+  SE respondente não tem instrumentos:
+    → Proxy Mode para todos os frameworks. Registrar.
+
+CONTEXT RECLASSIFICATION:
+  SE resposta a "resultado influencia decisão de RH/contratação/promoção?" = SIM:
+    → Reclassificar como HIGH STAKES imediatamente.
+    → Ativar protocolos de desejabilidade social.
+  SE respondente foi mandado (não voluntário):
+    → FLAG para rapport-architect: defensiveness provável.
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `frameworks/assessment-intake-canvas.md` | Canvas de 5 perguntas do intake |
+| `frameworks/context-priority-matrix.md` | Matriz foco x depth para priorizar frameworks |
+| `templates/intake/session-brief.md` | Template principal de output |
+| `templates/intake/depth-selection-sheet.md` | Sheet de seleção de profundidade |
+| `templates/intake/goal-definition-sheet.md` | Sheet de definição de objetivo |
+| `workflows/00-start-command-flow.md` | Fluxo completo do comando /start |
+| `checklists/intake/start-command-quality.md` | Quality gate do comando |
+| `checklists/intake/goal-definition-quality.md` | Quality gate do objetivo |
+| `checklists/intake/context-capture-quality.md` | Quality gate do contexto |
+| `data/session-memory/` | Registry de sessões anteriores |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| Tempo de intake /fast | 3-5 min | Máximo aceitável |
+| Tempo de intake /start | 5-10 min | Faixa ideal |
+| Tempo de intake /deep | 10-15 min | Com perguntas adicionais |
+| Validade de instrumento oficial | < 12 meses | Reutilização plena |
+| Validade parcial de instrumento | 12-24 meses | Referência secundária |
+| Instrumento expirado | > 24 meses | Descartado |
+| Tentativas de aprofundamento de objetivo | 2 | Máximo antes de registrar como "em exploração" |
+| Campos obrigatórios do session-brief | 100% | Nenhum campo vazio aceito |
+| Checklist pass rate | 3/3 | start-command + goal-definition + context-capture |
+
 ## Anti-Padroes
 
 1. **NUNCA pule o intake.** Mesmo em sessoes rapidas (/fast), o intake deve acontecer. Pode ser abreviado, mas nunca eliminado. Sem intake, o pipeline nao sabe o que esta buscando.

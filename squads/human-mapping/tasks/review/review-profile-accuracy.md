@@ -60,3 +60,20 @@ Revisar a acurácia do perfil gerado coletando feedback direto do respondente ou
 ## Próxima Task
 
 `tasks/review/update-methodology.md` — Atualizar metodologia (se necessário)
+
+## Subtask Breakdown
+1. **Apresentar achados-chave** — Agente: `review-agent`. Input: perfil integrado. Output: resumo apresentado ao respondente. Gate: resumo cobre dimensões principais.
+2. **Coletar feedback estruturado** — Agente: `review-agent`. Input: escala 1-5 por dimensão. Output: scores de acurácia por dimensão. Gate: feedback coletado para >= 80% das dimensões.
+3. **Investigar discrepâncias** — Agente: `review-agent`. Input: dimensões com score < 3. Output: `discrepancy-notes`. Gate: cada discrepância com explicação documentada.
+4. **Calcular taxa de acurácia** — Agente: `review-agent`. Input: scores ponderados. Output: `accuracy-score`. Gate: score no range 0-100.
+5. **Registrar na base de aprendizado** — Agente: `review-agent`. Input: feedback + padrões. Output: `learning-data`. Gate: dados persistidos na base.
+
+## Quality Gate
+- [ ] Feedback coletado por dimensão com scores 1-5
+- [ ] Taxa de acurácia geral >= 60%
+- Threshold: acurácia >= 60% para validar perfil; < 60% requer revisão
+- Se FAIL: revisar perfil incorporando feedback antes de finalizar
+
+## Rework Trigger
+- Acurácia < 60% → retornar a `synthesize-profile` com dados de feedback
+- Discrepância recorrente em dimensão → escalar para `calibrate-scoring`

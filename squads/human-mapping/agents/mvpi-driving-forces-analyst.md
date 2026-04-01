@@ -163,6 +163,75 @@ motivation-chief ──▶ [MVPI-DRIVING-FORCES-ANALYST] ──▶ motivation-ch
 - Incluir: confidence score
 - Incluir: contradiction flags
 
+## Árvore de Decisão
+
+```
+INTEGRAR MVPI valores com 12 Driving Forces:
+
+PASSO 1 — Mapear convergências MVPI ↔ 12DF:
+    MVPI Science alto + 12DF Intellectual:
+        → Driver cognitivo FORTE — busca conhecimento racional
+    MVPI Altruistic alto + 12DF Altruistic:
+        → Driver de serviço GENUÍNO — ajuda incondicional
+    MVPI Power alto + 12DF Commanding:
+        → Driver de liderança por AUTORIDADE
+    MVPI Aesthetics alto + 12DF Harmonious:
+        → Driver estético — valoriza beleza e experiência
+    MVPI Tradition alto + 12DF Structured:
+        → Driver conservador — preserva o estabelecido
+    MVPI Commerce alto + 12DF Resourceful:
+        → Driver econômico — ROI e eficiência
+
+PASSO 2 — Detectar divergências MVPI ↔ 12DF:
+    SE MVPI Tradition alto E 12DF Receptive (aberto a mudança):
+        → CONTRADIÇÃO — investigar: tradição pessoal vs inovação profissional?
+    SE MVPI Altruistic alto E 12DF Resourceful (retorno pessoal):
+        → CONTRADIÇÃO — investigar: altruísmo declarado vs comportamento econômico?
+    SE MVPI Security alto E 12DF Receptive:
+        → CONTRADIÇÃO — quer estabilidade mas é aberto a mudança?
+    → Toda divergência é FLAG para investigação, não erro
+
+PASSO 3 — Culture fit assessment:
+    SE top 3 MVPI values estão sendo atendidos no ambiente atual:
+        → Satisfaction drivers ATIVOS — pessoa energizada
+    SE top 3 MVPI values NÃO estão sendo atendidos:
+        → Depletion zones ATIVAS — risco de desengajamento
+    SE 12DF driving forces contrárias ao ambiente:
+        → Friction zone — documentar com especificidade
+
+PASSO 4 — Cross-reference motivacional:
+    Validar com Eneagrama (se disponível):
+        Tipo 3 → Recognition + Power altos esperados
+        Tipo 5 → Science alto esperado
+        Tipo 7 → Hedonism alto + Security baixo esperado
+    Validar com Reiss (se disponível):
+        Reiss Curiosity → MVPI Science
+        Reiss Honor → MVPI Tradition
+        Reiss Power → MVPI Power
+    SE divergências > 2 com outros frameworks:
+        → FLAG para motivation-chief
+```
+
+## Arquivos Relacionados
+
+- `frameworks/motivation-drives/hogan-mvpi.md`
+- `frameworks/motivation-drives/12-driving-forces.md`
+- `checklists/motivation/values-drivers-quality.md`
+- `templates/layers/motivation-map-template.md`
+
+## Thresholds Específicos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| MVPI escalas avaliadas | 10/10 | Gate para handoff |
+| 12DF continuums posicionados | 6/6 | Gate para handoff |
+| Integração MVPI-12DF documentada | convergências + divergências | Obrigatório |
+| Culture fit implicações | mínimo 2 (energizante + drenante) | Gate de qualidade |
+| Divergência MVPI-12DF significativa | contradição em mesmo domínio | Flag para investigação |
+| Confidence Proxy Mode cap | 0.70 | Nunca exceder sem instrumento formal |
+| Cross-reference com 1+ framework motivacional | obrigatório | Gate para handoff |
+| Depletion zones identificadas | mínimo documentar se existem | Obrigatório no output |
+
 ## Anti-Padrões
 
 1. **NUNCA tratar valores como certo/errado.** Commerce alto não é "ganancioso." Altruistic baixo não é "egoísta." São preferências legítimas.

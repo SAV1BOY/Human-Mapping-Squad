@@ -66,3 +66,24 @@ Retomar uma sessão de mapeamento humano previamente iniciada, restaurando o est
 ## Uso
 
 Chamado quando o usuário solicita retomar uma sessão existente via comando `/resume {session-id}` ou quando o sistema detecta uma sessão anterior ativa para o mesmo respondente durante o `/start`.
+
+## Especificação de I/O
+
+### Input
+- Formato: YAML (via parâmetros internos)
+- Campos obrigatórios: `session-id`, `user-id`, `timestamp`
+- Exemplo: `{session-id: "HMS-20260401-0001", user-id: "U-001", timestamp: "2026-04-01T14:00:00Z"}`
+
+### Output
+- Formato: YAML
+- Campos: `session-record`, `resume-point`, `completed-summary`, `estimated-remaining`, `warnings`
+
+### Thresholds
+- max_pause_days_normal: 7 (alerta sobre mudança no respondente)
+- max_pause_days_recalibrate: 30 (recomenda recalibração)
+- session_status_blocked: `["completed", "cancelled"]`
+
+### Tratamento de Erros
+- Input inválido: retornar erro `INVALID_SESSION_ID` com formato esperado
+- Dados insuficientes: se session record corrompido, retornar `SESSION_CORRUPT` e sugerir nova sessão
+- Sessão não encontrada: retornar `SESSION_NOT_FOUND`

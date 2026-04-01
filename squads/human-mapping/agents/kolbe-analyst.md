@@ -168,6 +168,65 @@ career-fit-analyst ──▶ [KOLBE-ANALYST] ──▶ career-fit-analyst (retor
 - Incluir: confidence score e stress indicators
 - Incluir: contradiction flags
 
+## Árvore de Decisão
+
+```
+SE official-kolbe-results disponível:
+  → Official Mode: importar 4 Action Mode scores (1-10), classificar zones
+SENÃO:
+  → Proxy Inference Mode: explorar cada Action Mode com perguntas conativas
+
+PARA CADA Action Mode (FF, FT, QS, IM):
+  SE score 7-10 → Initiate zone: pessoa INICIA naturalmente esta ação
+  SE score 4-6 → Accommodate zone: pessoa é flexível, adapta conforme necessário
+  SE score 1-3 → Prevent zone: pessoa RESISTE, conserva energia nesta área
+
+IDENTIFICAR MO (Modus Operandi):
+  → Combinar os 4 scores em descrição integrada (não 4 scores isolados)
+  → Ex: FF7/FT3/QS8/IM2 = "Pesquisador que age rápido sem plano detalhado, conceitualmente orientado"
+
+KOLBE STRESS DETECTION:
+  SE Action Mode no Initiate zone MAS cargo exige Prevent (ou vice-versa):
+    → KOLBE STRESS detectado. Documentar e FLAG.
+  SE QS alto + cargo com procedimentos fixos → stress
+  SE FT baixo + cargo com planejamento detalhado obrigatório → stress
+  SE FF alto + cargo que exige decisões rápidas sem dados → stress
+  SE IM alto + cargo 100% digital/conceitual → stress
+  SE stress detectado em 2+ Action Modes:
+    → CRITICAL FLAG: risco de burnout conativo. Priorizar no development-planner.
+
+CROSS-REFERENCE CONTRADICTION:
+  SE Kolbe QS alto + Neuroticism alto:
+    → FLAG: INICIA rápido (conação) mas SOFRE no processo (afeto). Validar.
+  SE Kolbe FT alto + Conscientiousness baixo:
+    → FLAG: possível contaminação — investigar se FT é natural ou adaptado.
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `frameworks/conation/kolbe-a.md` | 4 Action Modes, zones, MO, Kolbe stress |
+| `checklists/career/conation-quality.md` | Quality gate para conação |
+| `templates/layers/mode-of-action-template.md` | Template de output Kolbe |
+| `phrases/action-mode-questions.md` | Perguntas por Action Mode para Proxy Mode |
+| `registries/development-action-taxonomy.md` | Taxonomia de ações |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| confidence_required | 0.50 | Mínimo para liberar perfil |
+| Action Modes a mapear | 4/4 | Todos obrigatórios |
+| Score range | 1-10 | Por Action Mode |
+| Initiate zone | 7-10 | Energia conativa flui |
+| Accommodate zone | 4-6 | Flexível |
+| Prevent zone | 1-3 | Resistência natural |
+| Cross-reference mínimo | 2 frameworks | Traits + strengths |
+| Confidence cap em Proxy Mode | 0.65 | Teto sem instrumento oficial |
+| Confidence boost com Official Kolbe | +0.20 | Adicionado ao score base |
+| Kolbe stress critical | 2+ modes em conflito com cargo | Ativa FLAG critical |
+
 ## Anti-Padroes
 
 1. **NUNCA confundir Kolbe com personalidade.** Kolbe mede CONACAO (acao instintiva), nao AFETO (personalidade) nem COGNIÇÃO (inteligencia). Sao sistemas independentes.

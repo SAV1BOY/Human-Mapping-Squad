@@ -65,3 +65,20 @@ Atualizar a metodologia de assessment com base nos aprendizados acumulados de se
 ## Próxima Task
 
 `tasks/review/calibrate-scoring.md` — Calibrar scoring
+
+## Subtask Breakdown
+1. **Compilar dados de acurácia** — Agente: `review-agent`. Input: últimas N sessões (min 10). Output: análise estatística por dimensão. Gate: >= 10 sessões compiladas.
+2. **Analisar padrões de discrepância** — Agente: `review-agent`. Input: dados compilados. Output: dimensões e contextos problemáticos. Gate: padrões identificados e documentados.
+3. **Identificar causas-raiz** — Agente: `review-agent`. Input: padrões + scripts + bancos de perguntas. Output: causas-raiz com evidências. Gate: cada causa com evidência estatística.
+4. **Propor e documentar ajustes** — Agente: `review-agent`. Input: causas-raiz. Output: `proposed-changes` com impacto esperado. Gate: cada mudança com evidência e risco documentados.
+5. **Implementar e versionar** — Agente: `review-agent`. Input: propostas aprovadas. Output: scripts e docs atualizados + versão incrementada. Gate: aprovação do squad lead obtida.
+
+## Quality Gate
+- [ ] >= 10 sessões analisadas estatisticamente
+- [ ] Causas-raiz documentadas com evidências
+- Threshold: mudanças propostas devem melhorar acurácia em >= 5%
+- Se FAIL: adiar mudanças e acumular mais dados
+
+## Rework Trigger
+- Mudança implementada piora acurácia → reverter e reanalisar
+- Dados insuficientes (< 10 sessões) → adiar revisão e aguardar mais dados

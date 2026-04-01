@@ -33,5 +33,24 @@ a reavaliação, documentando o ponto de partida original.
 - [ ] Percepções do cliente coletadas
 - [ ] Base de comparação documentada
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Perfil anterior recuperado do persona-registry
+- [ ] Áreas de desenvolvimento do ciclo anterior listadas
+- [ ] Percepções do cliente sobre mudanças coletadas
+
+### NO-GO (não avançar)
+- Perfil anterior não encontrado no registry → Ação: reconstruir baseline antes de avaliar
+- Tempo decorrido < 6 meses → Ação: adiar (efeito de prática compromete dados)
+
+### Entregáveis Obrigatórios
+- Base de comparação documentada (perfil anterior + áreas de desenvolvimento)
+
+### Arquivos Relacionados
+- `templates/audit/confidence-map-template.md`
+- `workflows/19-follow-up-reassessment-flow.md`
+- `templates/operational/session-log-template.md`
+
 ## Próxima Fase
 `01-new-assessment.md` — Nova avaliação

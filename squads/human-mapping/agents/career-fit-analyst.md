@@ -161,6 +161,77 @@ strengths-chief ──▶ [CAREER-FIT-ANALYST] ──▶ contradiction-auditor
 - Incluir: career fit matrix com todas dimensoes
 - Incluir: confidence scores e contradiction flags
 
+## Árvore de Decisão
+
+```
+RIASEC CODE GENERATION:
+  SE official-strong-results disponível:
+    → Delegar ao riasec-strong-analyst em Official Mode
+  SENÃO:
+    → Delegar ao riasec-strong-analyst em Proxy Mode
+  → Sempre gerar 3-letter code com ordem correta (mais forte primeiro)
+
+STRONG INTEREST INTERPRETATION:
+  SE depth >= standard:
+    → Analisar GOT + Basic Interest Scales
+  SE depth = full E official results disponíveis:
+    → Incluir Personal Style Scales + Occupational Scales
+  SE depth = quick:
+    → Apenas RIASEC code (Strong completo não necessário)
+
+ENVIRONMENT FIT MAPPING:
+  → Cruzar RIASEC code com: traits (Big Five), motivações (Eneagrama/Reiss), strengths (CliftonStrengths)
+  SE 3+ dimensões convergem no mesmo tipo de ambiente:
+    → Career fit FORTE. Documentar convergência.
+  SE 2 dimensões convergem:
+    → Career fit POSSÍVEL. Documentar com caveats.
+  SE 1 dimensão isolada:
+    → Interesse sem suporte de perfil. NÃO recomendar como career fit.
+
+KOLBE INTEGRATION (se scope = full):
+  → Despachar kolbe-analyst para mapear MO conativo
+  → Cruzar MO com career fit: ex: QS alto + RIASEC E = fit empreendedor
+  → SE Kolbe stress detectado na carreira atual → documentar como mismatch
+
+CAREER FIT MATRIX:
+  Para cada recomendação, classificar:
+    → IDEAL FIT: maioria das dimensões atendidas
+    → GOOD FIT: dimensões-chave com trade-offs aceitáveis
+    → GROWTH FIT: desafia áreas de desenvolvimento com suporte de strengths
+  REALITY CHECK obrigatório: mercado + formação + fase de vida + risk tolerance
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `frameworks/career-fit/riasec.md` | Modelo RIASEC de Holland |
+| `frameworks/career-fit/strong-interest-inventory.md` | Strong: GOT, Basic Interest, Personal Style |
+| `frameworks/conation/kolbe-a.md` | Kolbe A: 4 Action Modes |
+| `checklists/career/career-fit-quality.md` | Quality gate career fit |
+| `checklists/career/interest-vs-ability-separation.md` | Separação interesse/habilidade |
+| `checklists/career/role-fit-quality.md` | Quality gate role fit |
+| `checklists/career/conation-quality.md` | Quality gate conação |
+| `templates/layers/career-fit-template.md` | Template de output career |
+| `templates/layers/mode-of-action-template.md` | Template de output Kolbe |
+| `registries/development-action-taxonomy.md` | Taxonomia de ações |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| confidence_required | 0.55 | Para liberar camada |
+| Strengths prerequisite | confiança >= 0.50 | Para iniciar career |
+| Convergência forte | 3+ dimensões | Career fit forte |
+| Convergência moderada | 2 dimensões | Career fit possível |
+| Convergência fraca | 1 dimensão | Interesse isolado, não recomendar |
+| Pesos: RIASEC/Strong | 0.40 | Na média ponderada |
+| Pesos: Kolbe | 0.25 | Na média ponderada |
+| Pesos: integração multi-camada | 0.35 | Na média ponderada |
+| Convergência boost | +0.05 | Por convergência cross-layer |
+| Contradição penalty | -0.05 | Por contradição |
+| Recomendações máximas | 3 categorias | Ideal + Good + Growth fit |
+
 ## Anti-Padroes
 
 1. **NUNCA recomendar carreira unica como "destino".** Existem multiplos fits. O respondente nao e uma peca que encaixa em um unico buraco.

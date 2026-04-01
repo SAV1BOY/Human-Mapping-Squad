@@ -37,5 +37,26 @@ nos resultados da reavaliação e na análise de mudanças.
 - [ ] Lessons-learned registry atualizado
 - [ ] Assessment-outcomes registry atualizado
 
+## Critérios de Decisão
+
+### GO (avançar — ciclo encerrado)
+- [ ] Perfil atualizado no persona-registry
+- [ ] Novo PDI criado com áreas prioritárias redefinidas
+- [ ] Todos os registries atualizados (persona, confidence-history, lessons-learned, assessment-outcomes)
+
+### NO-GO (não avançar)
+- Perfil não atualizado no registry → Ação: completar atualização antes de encerrar
+- Lições aprendidas não documentadas → Ação: registrar antes de fechar ciclo
+
+### Entregáveis Obrigatórios
+- `development-plan-template` — preenchido e validado
+- Relatório de reavaliação completo
+
+### Arquivos Relacionados
+- `templates/reports/development-plan-template.md`
+- `templates/operational/lessons-learned-template.md`
+- `checklists/development-plan-quality.md`
+- `workflows/19-follow-up-reassessment-flow.md`
+
 ## Próxima Fase
 Ciclo de reavaliação concluído. Próximo reassessment conforme cronograma do PDI.

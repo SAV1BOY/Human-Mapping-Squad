@@ -115,3 +115,23 @@ improvement_insights:
 ## Nota sobre Etica
 
 A validacao pos-contratacao e uma ferramenta de CALIBRACAO DO PROCESSO, nao de julgamento do contratado. Os resultados devem ser usados para melhorar assessments futuros. Nunca usar dados de validacao para justificar desligamento ou penalizacao retroativa.
+
+## Critérios de Decisão
+
+### GO (avançar — fase encerrada)
+- [ ] Todas as previsões originais comparadas com dados reais
+- [ ] Gestor e contratado entrevistados
+- [ ] Accuracy rate calculada e registrada
+
+### NO-GO (não avançar)
+- Menos de 6 meses desde contratação → Ação: aguardar período mínimo (exceto sinais claros)
+- Gestor ou contratado indisponível → Ação: reagendar entrevistas
+
+### Entregáveis Obrigatórios
+- `prediction_validation` (YAML) — preenchido e validado
+- `improvement_insights` (YAML) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/operational/quality-improvement-template.md`
+- `templates/operational/lessons-learned-template.md`
+- `workflows/20-ralphloop-assessment-retro.md`

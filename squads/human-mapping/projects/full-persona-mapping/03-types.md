@@ -32,5 +32,25 @@ DISC), oferecendo linguagem acessível e categorias práticas para o cliente.
 - [ ] Convergências documentadas
 - [ ] Contradições sinalizadas para Fase 07
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] ≥ 2 frameworks tipológicos avaliados (ex: MBTI + DISC, ou MBTI + Eneagrama)
+- [ ] Cruzamento com Big Five realizado e documentado
+- [ ] Contradições sinalizadas para Fase 07
+
+### NO-GO (não avançar)
+- Apenas 1 framework avaliado sem possibilidade de cruzamento → Ação: aplicar segundo framework ou proxy
+- Divergência crítica entre tipologias sem explicação → Ação: investigar antes de avançar
+
+### Entregáveis Obrigatórios
+- `type-style-map-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/layers/type-style-map-template.md`
+- `checklists/type-assessment-quality.md`
+- `checklists/types/mbti-inference-quality.md`
+- `workflows/04-type-style-assessment-flow.md`
+
 ## Próxima Fase
 `04-motivation.md` — Avaliação de motivações e valores

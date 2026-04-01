@@ -160,6 +160,71 @@ motivation-chief ──▶ [REISS-ANALYST] ──▶ motivation-chief (retorno)
 - Incluir: confidence score
 - Incluir: contradiction flags
 
+## Árvore de Decisão
+
+```
+IDENTIFICAR top 3 drives dos 16 e quando drives conflitam:
+
+PASSO 1 — Classificar os 16 desejos:
+    PARA CADA desejo (Power, Independence, Curiosity, Acceptance,
+    Order, Saving, Honor, Idealism, Social Contact, Family,
+    Status, Vengeance, Romance, Eating, Physical Activity, Tranquility):
+        SE respondente busca ativamente e é fonte de satisfação → ALTO
+        SE presente mas não dominante → NEUTRO
+        SE não motiva ou causa desconforto se forçado → BAIXO
+
+PASSO 2 — Identificar top 3 drivers:
+    Ranquear os desejos ALTOS por intensidade de evidência
+    SE top 3 são claros (evidência forte, convergem com traits):
+        → Documentar como drivers primários
+    SE empate entre 4-5 desejos altos:
+        → Usar cenários de trade-off para discriminar
+        → "Se tivesse que escolher entre X e Y, qual sacrificaria?"
+
+PASSO 3 — Detectar conflitos entre drives:
+    CONFLITOS CLÁSSICOS:
+        Independence alto + Acceptance alto:
+            → TENSÃO: quer ser livre mas precisa de aprovação
+            → Padrão: "rebelde que sofre com rejeição"
+        Power alto + Tranquility alto:
+            → TENSÃO: quer influenciar mas evita stress
+            → Padrão: "líder relutante"
+        Social Contact alto + Independence alto:
+            → TENSÃO: quer socializar mas precisa de autonomia
+            → Padrão: "social seletivo"
+        Honor alto + Vengeance alto:
+            → TENSÃO: princípios morais + competitividade
+            → Padrão: "guerreiro ético"
+
+    SE conflito detectado:
+        → FLAG como tensão interna — dado de alta relevância
+        → Encaminhar para synthesis-architect
+        → Este é frequentemente o insight mais valioso do Reiss
+
+PASSO 4 — Validar bottom 3:
+    Desejos baixos explicam o que a pessoa NÃO tolera
+    SE Social Contact baixo + role exige networking intenso:
+        → FLAG: mismatch role/pessoa — fonte provável de depletion
+```
+
+## Arquivos Relacionados
+
+- `frameworks/motivation-drives/reiss-motivation-profile.md`
+- `checklists/motivation/values-drivers-quality.md`
+- `templates/layers/motivation-map-template.md`
+
+## Thresholds Específicos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| Cobertura mínima | 16/16 desejos avaliados | Gate para handoff |
+| Top drivers documentados | 3-5 | Mínimo para perfil útil |
+| Bottom indiferenças documentadas | 3-5 | Obrigatório — ausência é informação |
+| Tensão interna significativa | 2+ drives altos em conflito | Flag para synthesis-architect |
+| Convergência com Eneagrama | correlação esperada documentada | Cross-reference obrigatório |
+| Confidence Proxy Mode cap | 0.70 | Nunca exceder sem instrumento formal |
+| Social desirability check | Honor/Idealism altos sem evidência comportamental | Rebaixar confidence em 0.10 |
+
 ## Anti-Padrões
 
 1. **NUNCA reduzir a um "tipo Reiss".** Não existe tipo — existe perfil de 16 dimensões. Cada combinação é única.

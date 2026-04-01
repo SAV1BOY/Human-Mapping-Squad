@@ -36,5 +36,26 @@ com linguagem acessível e recomendações acionáveis.
 - [ ] Relatório entregue ao cliente
 - [ ] Registros atualizados (persona-registry, assessment-outcomes)
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Aprovação do chief (peer review concluído sem bloqueios)
+- [ ] Disclaimers e limitações metodológicas incluídos
+- [ ] Relatório formatado para público-alvo e entregue
+
+### NO-GO (não avançar)
+- Chief reprova relatório → Ação: revisar conforme feedback e resubmeter
+- Seções obrigatórias ausentes → Ação: completar antes de entregar
+
+### Entregáveis Obrigatórios
+- `deep-persona-report-template` — preenchido e validado
+- `executive-snapshot-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/deep-persona-report-template.md`
+- `templates/reports/executive-snapshot-template.md`
+- `checklists/deep-report-quality.md`
+- `workflows/10-executive-report-generation.md`
+
 ## Próxima Fase
 Projeto concluído. Agendar reavaliação conforme `reassessment/` se aplicável.

@@ -99,3 +99,23 @@ Os dados de assessment de lideranca sao extremamente sensiveis no contexto de su
 - O acesso seja restrito ao sponsor e ao comite de talentos
 - Os dados nao sejam usados para decisoes de desligamento
 - O feedback ao candidato seja construtivo, focado em desenvolvimento
+
+## Critérios de Decisão
+
+### GO (avançar — fase encerrada)
+- [ ] Perfil de liderança com confidence mínimo de 0.65
+- [ ] Matriz de sucessão construída com ≥ 1 candidato por posição crítica
+- [ ] Plano de aceleração individualizado para candidatos top
+
+### NO-GO (não avançar)
+- Confidence do perfil < 0.65 → Ação: complementar assessment antes de usar para sucessão
+- Autorização do respondente ausente → Ação: obter consentimento formal
+
+### Entregáveis Obrigatórios
+- `succession-assessment-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/succession-assessment-template.md`
+- `templates/reports/leadership-profile-template.md`
+- `checklists/chief/chief-session-oversight-quality.md`
+- `workflows/13-leadership-profile-flow.md`

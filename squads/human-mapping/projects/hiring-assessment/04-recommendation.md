@@ -34,5 +34,24 @@ a contratação do candidato, com orientações para onboarding se aprovado.
 - [ ] Registro no assessment-outcomes atualizado
 - [ ] Relatório entregue ao gestor requisitante
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Recomendação formal emitida (aprovado / aprovado com ressalvas / não recomendado)
+- [ ] Fundamentação com dados objetivos documentada
+- [ ] Relatório entregue ao gestor requisitante
+
+### NO-GO (não avançar)
+- Dados conflitantes sem resolução → Ação: análise adicional antes de emitir recomendação
+- Stakeholder não disponível para receber relatório → Ação: agendar entrega
+
+### Entregáveis Obrigatórios
+- `hiring-assessment-template` (completo) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/hiring-assessment-template.md`
+- `checklists/chief/chief-report-approval-quality.md`
+- `workflows/14-hiring-assessment-flow.md`
+
 ## Próxima Fase
 Projeto concluído. Acompanhamento pós-contratação conforme plano de onboarding.

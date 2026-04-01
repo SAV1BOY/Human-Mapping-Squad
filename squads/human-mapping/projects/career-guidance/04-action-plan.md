@@ -37,5 +37,24 @@ de carreira identificadas, com etapas claras e prazos definidos.
 - [ ] Data de revisão agendada
 - [ ] Plano entregue ao cliente
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Top 2-3 opções priorizadas com o cliente
+- [ ] Plano de ação de 90 dias com marcos semanais criado
+- [ ] Critérios de decisão para escolha final estabelecidos
+
+### NO-GO (não avançar)
+- Cliente não priorizou opções → Ação: sessão de decisão facilitada
+- Plano sem ações concretas → Ação: detalhar ações de exploração por opção
+
+### Entregáveis Obrigatórios
+- `career-guidance-template` (completo) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/career-guidance-template.md`
+- `checklists/career/environment-fit-quality.md`
+- `workflows/16-career-guidance-flow.md`
+
 ## Próxima Fase
 Projeto concluído. Revisão de progresso na data agendada.

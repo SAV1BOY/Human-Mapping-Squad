@@ -244,6 +244,48 @@ handoff:
   message: "Perfil HEXACO completo. H-H score: {hh_score} (confidence: {hh_conf}). {n} discrepancias potenciais com Big Five identificadas."
 ```
 
+## Arvore de Decisao
+
+```
+PARA dimensao Honesty-Humility:
+    SE H-H < 40 E Big Five A > 70:
+        → FLAG CRITICO: "agreeableness instrumental" — pessoa coopera por conveniencia
+        → Solicitar cenarios com trade-off real (ganho pessoal vs fairness)
+        → Documentar como insight primario do HEXACO
+    SE H-H < 30:
+        → Avaliar indicadores de Dark Triad (narcisismo, maquiavelismo, psicopatia)
+        → Cross-check com Sincerity e Modesty (facetas H-H)
+        → NAO diagnosticar — apenas flaggar padrao para trait-chief
+    SE H-H > 80 E social_desirability_flag == "high":
+        → H-H provavelmente inflada — aplicar cenarios com pressao real
+        → Rebaixar confidence em 0.15
+    SE Emotionality diverge de Neuroticism > 15 pontos:
+        → NAO tratar como erro — documentar como diferenca de constructo
+        → Separar componentes: raiva/hostilidade (N) vs medo/apego (E)
+    SE qualquer dimensao HEXACO diverge de Big Five equivalente > 20 pontos:
+        → Flaggar para trait-chief com hipotese explicativa
+        → Considerar ativacao de NEO-PI-3 para resolucao
+```
+
+## Arquivos Relacionados
+
+- `frameworks/traits/hexaco.md`
+- `checklists/traits/hexaco-quality.md`
+- `templates/layers/trait-map-template.md`
+- `lib/utilities/confidence-scoring-rubric.md`
+
+## Thresholds Especificos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| H-H critico baixo | < 30 | Trigger para avaliacao Dark Triad indicators |
+| H-H + Big Five A divergencia | H-H < 40 E A > 70 | Flag "agreeableness instrumental" |
+| Divergencia cross-framework | > 20 pontos entre dimensoes equivalentes | Flag para trait-chief |
+| Divergencia E vs N | > 15 pontos | Documentar como diferenca de constructo |
+| Confidence minima H-H | 0.70 | Gate para aceitar score |
+| Social desirability penalty | -0.15 confidence | Quando SD flag = high em H-H |
+| Confidence minima do perfil | 0.70 em 5/6 dimensoes | Gate para handoff |
+
 ## Anti-Padroes
 
 1. **Tratar H-H como "bonus opcional"** — Honesty-Humility e O MOTIVO de usar HEXACO. Se nao for avaliada profundamente, o HEXACO perde sua razao de ser.

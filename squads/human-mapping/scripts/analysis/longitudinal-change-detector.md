@@ -186,3 +186,27 @@ longitudinal_change_report:
 - Efeito de pratica pode inflacionar ou deflacionar mudancas se o intervalo for curto
 - Mudancas em Enneagram tipo e MBTI tipo nao sao bem capturadas por delta numerico — tratar qualitativamente
 - Este script detecta mudanca, mas nao explica a causa — a interpretacao e humana
+
+## Especificacao de I/O
+
+### Input
+- Formato: YAML
+- Campos obrigatorios: `assessment_t1`, `assessment_t2`, `time_gap_months`, `instruments_used`
+- Campos opcionais: `life_events`, `development_actions`
+- Exemplo: `{assessment_t1: {ocean: {O:65}}, assessment_t2: {ocean: {O:72}}, time_gap_months: 12, instruments_used: ["NEO-PI-R"]}`
+
+### Output
+- Formato: YAML
+- Campos: `changes_detected`, `stable_dimensions`, `summary`, `growth_indicators`, `recommendations`
+
+### Thresholds
+- noise: delta_SEM < 1.0
+- possible_change: delta_SEM 1.0-1.5
+- probable_change: delta_SEM 1.5-2.0
+- significant_change: delta_SEM >= 2.0
+- comparability_minimum: 0.5 (abaixo = warning severo)
+- confidence_floor: 0.10 / confidence_ceiling: 0.90
+
+### Tratamento de Erros
+- Input invalido: retornar erro `INVALID_ASSESSMENT_DATA` com tempo especifico
+- Dados insuficientes: comparar apenas dimensoes presentes em ambos os tempos e flag `partial-comparison`

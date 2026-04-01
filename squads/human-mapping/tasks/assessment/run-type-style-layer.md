@@ -58,3 +58,20 @@ Executar a camada de tipos e estilos cognitivos, identificando preferências tip
 ## Próxima Task
 
 `tasks/assessment/run-motivation-layer.md` — Rodar camada de motivação
+
+## Subtask Breakdown
+1. **Aplicar perguntas tipológicas** — Agente: `assessment-agent`. Input: banco de tipos + depth-mode. Output: respostas nos 4 eixos. Gate: todos os 4 eixos com >= 2 respostas.
+2. **Inferir tipo** — Agente: `assessment-agent`. Input: respostas via `type-inference-engine`. Output: `type-result` + `preference-clarity`. Gate: tipo de 4 letras gerado.
+3. **Validar com traços** — Agente: `assessment-agent`. Input: tipo inferido + `trait-scores`. Output: `type-trait-consistency`. Gate: inconsistências sinalizadas.
+4. **Identificar funções cognitivas** — Agente: `assessment-agent`. Input: tipo inferido. Output: `cognitive-functions` stack. Gate: dominante e auxiliar identificadas.
+5. **Mapear estilo de aprendizagem** — Agente: `assessment-agent`. Input: tipo + funções. Output: `learning-style`. Gate: estilo vinculado a evidências.
+
+## Quality Gate
+- [ ] Tipo inferido com clareza de preferência em todos os 4 eixos
+- [ ] Consistência com traços documentada
+- Threshold: clareza de preferência >= 15 em ao menos 3 dos 4 eixos
+- Se FAIL: marcar eixos marginais (clareza < 15) como "indeterminado"
+
+## Rework Trigger
+- Clareza < 15 em 2+ eixos → aplicar perguntas adicionais nos eixos fracos
+- Contradição severa tipo vs traços → revisar respostas e considerar tipo alternativo

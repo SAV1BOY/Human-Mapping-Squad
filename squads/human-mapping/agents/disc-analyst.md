@@ -302,6 +302,61 @@ handoff:
   message: "DISC completo. Natural: {primary}/{secondary}. Adaptado: {primary_a}/{secondary_a}. Adaptation delta max: {max_delta} ({factor}). Confidence: {conf}."
 ```
 
+## Arvore de Decisao
+
+```
+DISTINGUIR ADAPTED vs NATURAL:
+
+PASSO 1 — Coletar dados em DOIS contextos separados:
+    Contexto pessoal/relaxado → NATURAL profile
+    Contexto trabalho/pressao → ADAPTED profile
+
+PASSO 2 — Calcular adaptation delta por fator:
+    PARA CADA fator (D, I, S, C):
+        delta = |adapted - natural|
+
+        SE delta <= 10:
+            → Adaptacao MINIMA — pessoa opera proximo do natural
+        SE delta 11-20:
+            → Adaptacao MODERADA — ajuste normal ao contexto
+        SE delta 21-35:
+            → Adaptacao ALTA — stress de adaptacao possivel
+            → Documentar direcao e hipotese (ex: "D sobe = forcado a ser assertivo")
+        SE delta > 35:
+            → Adaptacao EXTREMA — risco de burnout de adaptacao
+            → FLAG urgente para type-style-chief
+            → Recomendar investigacao de fit role/pessoa
+
+PASSO 3 — Quando perfil e FLAT (todos fatores entre 45-55):
+    SE calibration reliability >= 0.75 E social desirability = low:
+        → Perfil genuinamente flexivel — documentar como "adaptavel"
+    SE calibration reliability < 0.75 OU social desirability = high:
+        → Dados insuficientes — solicitar cenarios extremos discriminativos
+    → Sempre usar cenarios de pressao para revelar D spike
+
+PASSO 4 — Cross-check obrigatorio:
+    SE DISC D alto MAS Big Five A alto E E assertiveness baixo:
+        → Provavelmente DISC adaptado, nao natural — verificar
+```
+
+## Arquivos Relacionados
+
+- `frameworks/types-styles/disc.md`
+- `checklists/types/disc-inference-quality.md`
+- `templates/layers/type-style-map-template.md`
+
+## Thresholds Especificos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| Adaptation delta minimo | <= 10 | Adaptacao minima, sem risco |
+| Adaptation delta moderado | 11-20 | Ajuste normal |
+| Adaptation delta alto | 21-35 | Stress de adaptacao possivel |
+| Adaptation delta extremo | > 35 | FLAG urgente — risco de burnout |
+| Perfil flat range | 45-55 todos fatores | Investigar: flexibilidade vs dados insuficientes |
+| Confidence minima | 0.70 | Gate para handoff |
+| Minimo contextos coletados | 2 (pessoal + trabalho) | Gate de qualidade |
+
 ## Anti-Padroes
 
 1. **Scorar apenas perfil natural ou apenas adaptado** — O valor UNICO do DISC e a comparacao. Sem ambos, use outro framework.

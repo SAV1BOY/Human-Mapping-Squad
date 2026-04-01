@@ -36,6 +36,25 @@ necessário e documentar aprendizados ao longo do percurso.
 - [ ] Registro atualizado no development-plans-registry
 - [ ] Necessidade de reassessment avaliada
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] ≥ 1 check-in realizado conforme ritual estabelecido
+- [ ] Progresso avaliado por indicador com evidências
+- [ ] Decisão sobre necessidade de reassessment documentada
+
+### NO-GO (não avançar)
+- Check-ins não realizados → Ação: retomar ritual de acompanhamento
+- Progresso estagnado por 2+ meses → Ação: revisar plano e barreiras
+
+### Entregáveis Obrigatórios
+- `development-plan-template` (seção progresso) — atualizado
+
+### Arquivos Relacionados
+- `templates/reports/development-plan-template.md`
+- `checklists/development-plan-quality.md`
+- `workflows/19-follow-up-reassessment-flow.md`
+
 ## Próxima Fase
 Projeto em andamento. Se concluído, registrar no assessment-outcomes.
 Se reassessment necessário, iniciar `reassessment/00-previous-profile.md`.

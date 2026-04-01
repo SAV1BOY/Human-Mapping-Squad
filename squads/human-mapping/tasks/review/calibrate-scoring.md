@@ -63,3 +63,20 @@ Calibrar os algoritmos de scoring utilizados nas camadas de assessment, ajustand
 ## Próxima Task
 
 `tasks/operations/update-registries.md` — Atualizar registries (se necessário)
+
+## Subtask Breakdown
+1. **Identificar scorers a calibrar** — Agente: `review-agent`. Input: dados de acurácia por scorer. Output: lista de scorers com desvio. Gate: desvio médio calculado para cada scorer.
+2. **Coletar dados de calibração** — Agente: `review-agent`. Input: respostas + feedback históricos. Output: dataset de calibração. Gate: >= 50 datapoints por scorer.
+3. **Calcular e aplicar ajustes** — Agente: `review-agent`. Input: dataset. Output: novos pesos e limiares. Gate: ajuste melhora acurácia no dataset.
+4. **Recalibrar confidence-calculator** — Agente: `review-agent`. Input: confiança vs acurácia real. Output: fórmula ajustada. Gate: correlação confiança-acurácia melhora.
+5. **Testar regressão** — Agente: `review-agent`. Input: ajustes + 5 sessões históricas. Output: `regression-results`. Gate: nenhuma regressão > 5% em qualquer dimensão.
+
+## Quality Gate
+- [ ] Ajustes aplicados melhoram acurácia geral
+- [ ] Testes de regressão aprovados (5 sessões)
+- Threshold: zero regressões > 5% em qualquer dimensão
+- Se FAIL: reverter ajustes e investigar causa da regressão
+
+## Rework Trigger
+- Regressão detectada em teste → reverter ajuste específico e re-testar
+- Dados de calibração insuficientes (< 50 datapoints) → adiar calibração

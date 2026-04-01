@@ -167,6 +167,60 @@ strengths-chief ──▶ [BELBIN-ANALYST] ──▶ strengths-chief (retorno)
 - Incluir: confidence score
 - Incluir: contradiction flags
 
+## Árvore de Decisão
+
+```
+SE official-belbin-results disponível:
+  → Official Mode: importar top 2-3 roles, validar com contexto de equipe
+SENÃO:
+  → Proxy Inference Mode: explorar 3 categorias (Action/People/Thinking) via entrevista
+
+PARA CADA role candidata:
+  SE respondente gravita naturalmente + feedback positivo de equipe + satisfação:
+    → Role NATURAL (preferida)
+  SE respondente desempenha bem MAS "cederia com alívio se outro assumisse":
+    → Role SITUACIONAL (demanda da equipe). Documentar separadamente.
+  SE respondente evita + causa fadiga + desempenha mal mesmo com esforço:
+    → Role MENOS CONFORTÁVEL
+
+ALLOWABLE WEAKNESSES (obrigatório para cada role preferida):
+  SE role = Shaper → documentar: pode provocar, ofender sentimentos
+  SE role = Plant → documentar: pode ser impratico, desligado
+  SE role = Completer Finisher → documentar: pode ser perfeccionista
+  (aplicar para todas as 9 roles conforme mapeamento)
+
+TEAM BALANCE IMPLICATIONS:
+  SE top roles são todas do mesmo cluster (ex: 2 Action-oriented):
+    → FLAG: equipe pode ter gap em People ou Thinking
+  SE nenhum role People-oriented nos top 3:
+    → FLAG: risco de conflito interpessoal não gerenciado
+  SE respondente tem role situacional que conflita com role natural:
+    → FLAG: custo de adaptação — informar development-planner
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `frameworks/team-roles/belbin-team-roles.md` | 9 roles, 3 categorias, allowable weaknesses |
+| `checklists/strengths/team-contribution-quality.md` | Quality gate para contribuição em equipe |
+| `templates/layers/team-role-map-template.md` | Template de output Belbin |
+| `phrases/team-role-questions.md` | Perguntas situacionais para Proxy Mode |
+| `registries/strength-taxonomy.md` | Taxonomia de referência |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| confidence_required | 0.50 | Mínimo para liberar perfil |
+| Top roles a identificar | 2-3 | Preferidas naturais |
+| Roles menos confortáveis mínimas | 2 | Documentação obrigatória |
+| Allowable weaknesses por role | 1+ | Campo obrigatório no output |
+| Cross-reference mínimo | 1 framework | CliftonStrengths ou traits |
+| Confidence cap em Proxy Mode | 0.65 | Teto sem instrumento oficial |
+| Confidence boost com Official results | +0.15 | Adicionado ao score base |
+| Discriminação natural vs situacional | obrigatório | Para cada role nos top 3 |
+
 ## Anti-Padroes
 
 1. **NUNCA apresentar roles sem allowable weaknesses.** Toda forca tem custo. O Plant criativo e impratico. O Completer Finisher meticuloso microgerencia. Isso e NORMAL, nao defeito.

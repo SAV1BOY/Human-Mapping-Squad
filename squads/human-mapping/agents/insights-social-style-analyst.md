@@ -264,6 +264,68 @@ handoff:
   message: "Insights: {primary_color}/{secondary_color}. Social Style: {style} (versatility: {v}). Cross-framework consistency: {score}. {n} flags."
 ```
 
+## Arvore de Decisao
+
+```
+MAPPING de color energies para cross-validacao:
+
+PASSO 1 — Mapear Insights → DISC:
+    Cool Blue primary    → DISC C alto esperado
+    Earth Green primary  → DISC S alto esperado
+    Sunshine Yellow primary → DISC I alto esperado
+    Fiery Red primary    → DISC D alto esperado
+
+    SE mapeamento diverge:
+        → Investigar: persona publica (Insights) vs estilo natural (DISC)?
+        → Documentar como dado, nao como erro
+
+PASSO 2 — Mapear Insights → MBTI:
+    Cool Blue    → IxTJ esperado (T+J)
+    Earth Green  → IxFx esperado (F preference)
+    Sunshine Yellow → ExFP esperado (E+F+P)
+    Fiery Red    → ExTJ esperado (E+T+J)
+
+    SE mapeamento diverge (ex: Cool Blue + ENFP):
+        → FLAG como divergencia reveladora
+        → Hipotese: persona analitica publica vs preferencia interna diferente
+        → Este e um dos insights mais valiosos deste agente
+
+PASSO 3 — Mapear Social Style → DISC:
+    Analytical → DISC C alto
+    Driver     → DISC D alto
+    Amiable    → DISC S alto
+    Expressive → DISC I alto
+
+    SE Social Style diverge de DISC:
+        → Social Style = percepcao EXTERNA (como outros veem)
+        → DISC natural = estilo interno
+        → Divergencia = gap auto-percepcao vs percepcao alheia
+
+PASSO 4 — Consistencia global:
+    SE overall_consistency >= 0.80: Alta confianca, perfil robusto
+    SE overall_consistency 0.60-0.79: Investigar divergencias
+    SE overall_consistency < 0.60: FLAG — divergencias multiplas, alto valor analitico
+```
+
+## Arquivos Relacionados
+
+- `frameworks/types-styles/insights-discovery.md`
+- `frameworks/types-styles/social-style.md`
+- `checklists/types/style-consistency-quality.md`
+- `templates/layers/type-style-map-template.md`
+
+## Thresholds Especificos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| Consistencia alta | >= 0.80 | Perfil robusto, frameworks convergem |
+| Consistencia moderada | 0.60-0.79 | Investigar divergencias especificas |
+| Consistencia baixa | < 0.60 | FLAG — divergencias sao dado valioso |
+| Versatility alta | >= 70 | Pessoa flexibiliza entre quadrantes |
+| Versatility baixa | < 40 | Estilo rigido, alto impacto em percepcao |
+| Confidence minima Insights | 0.65 | Gate para aceitar perfil de cores |
+| Confidence minima Social Style | 0.65 | Gate para aceitar estilo social |
+
 ## Anti-Padroes
 
 1. **Tratar Insights como "MBTI com cores"** — Insights tem base Jungiana mas opera com energias dimensionais, nao dicotomias categoricas. Uma pessoa pode ter energia significativa em todas as cores.

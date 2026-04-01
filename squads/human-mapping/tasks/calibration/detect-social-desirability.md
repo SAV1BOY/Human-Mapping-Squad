@@ -55,3 +55,20 @@ Identificar e quantificar o grau de desejabilidade social nas respostas do respo
 ## Próxima Task
 
 `tasks/calibration/establish-confidence-baseline.md` — Estabelecer baseline de confiança
+
+## Subtask Breakdown
+1. **Analisar respostas-armadilha** — Agente: `calibration-agent`. Input: respostas a itens de desejabilidade. Output: contagem de respostas "ideais". Gate: >= 1 item armadilha avaliado.
+2. **Calcular IDS** — Agente: `calibration-agent`. Input: frequência de respostas ideais + ausência de fraquezas. Output: `social-desirability-index` (0-100). Gate: IDS calculado.
+3. **Classificar nível de viés** — Agente: `calibration-agent`. Input: IDS. Output: classificação (Baixo/Moderado/Alto). Gate: fator de correção definido.
+4. **Identificar dimensões afetadas** — Agente: `calibration-agent`. Input: IDS + respostas por dimensão. Output: `affected-dimensions`. Gate: lista documentada.
+5. **Registrar e decidir ações** — Agente: `calibration-agent`. Input: IDS + contexto. Output: fator de correção no session record. Gate: se IDS > 75, perguntas adicionais planejadas.
+
+## Quality Gate
+- [ ] IDS calculado e registrado no session record
+- [ ] Fator de correção definido e documentado
+- Threshold: IDS <= 75 para prosseguir sem perguntas adicionais
+- Se FAIL: inserir 3-5 perguntas de verificação no assessment
+
+## Rework Trigger
+- IDS > 90 → considerar invalidar sessão e reiniciar com orientação ao respondente
+- Dimensões afetadas > 3 → retornar ao `calibrate-respondent` para recalibração

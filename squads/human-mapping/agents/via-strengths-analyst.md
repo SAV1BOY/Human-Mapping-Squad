@@ -156,6 +156,54 @@ strengths-chief ──▶ [VIA-STRENGTHS-ANALYST] ──▶ strengths-chief (ret
 - Incluir: confidence score
 - Incluir: contradiction flags
 
+## Árvore de Decisão
+
+```
+SE official-via-results disponível:
+  → Official Mode: importar ranking de 24 strengths, validar top 5-7 com critérios de autenticidade
+SENÃO:
+  → Proxy Inference Mode: explorar 6 virtudes via entrevista
+
+PARA CADA character strength candidata a signature:
+  SE respondente diz "este sou eu de verdade" + dá exemplo concreto recente:
+    SE energiza (não drena) + aprendizado natural + desejo de usar em múltiplos contextos:
+      → Classificar como Signature Strength
+    SE energiza MAS sem exemplo concreto:
+      → POSSÍVEL signature — solicitar mais evidência
+  SE respondente diz "gostaria de ser assim" ou "admiro quem é assim":
+    → ASPIRACIONAL, não signature. Reclassificar como developmental goal.
+  SE cross-reference com traits contradiz (ex: Bravery declarada + Neuroticism muito alto + histórico de evitar confronto):
+    → FLAG: provável valor aspiracional, não força de caráter.
+
+DISTINÇÃO CARÁTER vs TALENTO:
+  SE strength descreve QUEM a pessoa é autenticamente → VIA (caráter)
+  SE strength descreve NO QUE a pessoa é naturalmente boa → CliftonStrengths (talento)
+  SE ambíguo → documentar em ambos com cross-reference
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `frameworks/strengths/via-character-strengths.md` | 24 strengths, 6 virtudes, critérios de signature |
+| `checklists/strengths/character-strength-quality.md` | Quality gate para VIA |
+| `checklists/strengths/strengths-detection-quality.md` | Checklist compartilhado de detecção |
+| `templates/layers/strength-map-template.md` | Template de output |
+| `registries/strength-taxonomy.md` | Taxonomia de referência |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| confidence_required | 0.55 | Mínimo para liberar perfil |
+| Signature strengths esperadas | 5-7 | Faixa normal do VIA |
+| Lesser strengths a documentar | 5 | Bottom 5 obrigatórios |
+| Critérios de autenticidade mínimos | 4/6 | Peterson & Seligman criteria |
+| Cross-reference mínimo | 1 framework | Pelo menos CliftonStrengths ou traits |
+| Confidence cap em Proxy Mode | 0.70 | Teto sem instrumento oficial |
+| Confidence boost com Official results | +0.15 | Adicionado ao score base |
+| Aspirational bias threshold | >2 strengths sem exemplo concreto | Ativa investigação de desejabilidade |
+
 ## Anti-Padroes
 
 1. **NUNCA aceitar ranking autodeclarado sem validacao.** "Minha maior forca e humildade" pode ser a declaracao menos humilde possivel. Validar com evidencia.

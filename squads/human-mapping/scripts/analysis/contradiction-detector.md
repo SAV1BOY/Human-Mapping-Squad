@@ -68,3 +68,24 @@ Detectar automaticamente contradições entre os resultados de diferentes framew
 ## Uso
 
 Chamado por `tasks/audit/audit-contradictions.md` como primeira etapa da auditoria pós-assessment.
+
+## Especificação de I/O
+
+### Input
+- Formato: YAML
+- Campos obrigatórios: `all-layer-results`, `framework-mappings`, `tolerance-thresholds`
+- Exemplo: `{all-layer-results: {ocean: {E: 75}, mbti: {type: "INTJ"}}, tolerance-thresholds: {strong: 0.3, moderate: 0.5}}`
+
+### Output
+- Formato: YAML
+- Campos: `contradictions`, `contradiction-score`, `hypotheses`, `reconciliation-priority`
+
+### Thresholds
+- critical_deviation: 2.0x tolerância (contradição diretamente oposta)
+- moderate_deviation: 1.5x tolerância
+- mild_deviation: 1.0x tolerância
+- severity_weights: {critical: 3, moderate: 2, mild: 1}
+
+### Tratamento de Erros
+- Input inválido: retornar erro `MISSING_LAYER_DATA` indicando camadas ausentes
+- Dados insuficientes: executar comparações possíveis e listar pares não-comparáveis

@@ -67,3 +67,24 @@ Monitorar o tempo gasto em cada camada do assessment e na sessão como um todo, 
 ## Uso
 
 Inicializado por `scripts/session/start-session-builder.md` ou `scripts/session/resume-session-builder.md`. Consultado por cada task de assessment para verificar tempo disponível.
+
+## Especificação de I/O
+
+### Input
+- Formato: YAML
+- Campos obrigatórios: `session-id`, `depth-mode`, `time-targets`, `max-session-time`
+- Exemplo: `{session-id: "HMS-20260401-0001", depth-mode: "start", time-targets: {calibration: 8, trait: 5, type: 5}, max-session-time: 50}`
+
+### Output
+- Formato: YAML
+- Campos: `timing-metrics`, `alerts`, `respondent-speed`, `time-remaining`
+
+### Thresholds
+- alert_yellow: 75% do tempo da camada
+- alert_orange: 100% do tempo da camada
+- alert_red: 120% do tempo da camada (forçar próxima)
+- session_warning: 80% do tempo total
+
+### Tratamento de Erros
+- Input inválido: usar tempos padrão do depth-mode e logar warning
+- Dados insuficientes: se `time-targets` ausente, derivar de `depth-mode`

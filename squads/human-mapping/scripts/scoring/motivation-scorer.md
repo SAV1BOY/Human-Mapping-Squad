@@ -73,3 +73,25 @@ Calcular o perfil motivacional do respondente, gerando um ranking hierárquico d
 ## Uso
 
 Chamado por `tasks/assessment/run-motivation-layer.md` após a coleta das respostas de motivação.
+
+## Especificação de I/O
+
+### Input
+- Formato: YAML/JSON
+- Campos obrigatórios: `motivation-responses`, `ranking-data`, `scenario-responses`, `trait-scores`, `type-result`
+- Exemplo: `{ranking-data: ["Autonomia", "Maestria", "Propósito", ...], scenario-responses: [{scenario: "S1", choice: "projeto desafiador"}]}`
+
+### Output
+- Formato: YAML
+- Campos: `motivation-ranking`, `intrinsic-top3`, `extrinsic-top3`, `demotivators`, `motivation-confidence`
+
+### Thresholds
+- score_range: [0, 100]
+- ranking_weight: 0.40 (peso do ranking forçado)
+- response_weight: 0.60 (peso das respostas diretas)
+- consistency_bonus: +10% (cenário confirma ranking)
+- inconsistency_penalty: -15% (cenário contradiz ranking)
+
+### Tratamento de Erros
+- Input inválido: retornar erro `INVALID_MOTIVATION_DATA`
+- Dados insuficientes: se ranking ausente, usar apenas respostas diretas com flag `no-ranking`

@@ -64,3 +64,20 @@ Mapear o contexto completo do respondente, identificando se a análise é pessoa
 ## Próxima Task
 
 `tasks/calibration/calibrate-respondent.md` — Calibrar respondente
+
+## Subtask Breakdown
+1. **Identificar contexto primário** — Agente: `session-manager`. Input: respostas do usuário. Output: tipo de contexto selecionado. Gate: contexto pertence às 5 categorias válidas.
+2. **Coletar dados contextuais** — Agente: `session-manager`. Input: perguntas contextuais. Output: área, nível, experiência, equipe. Gate: campos obrigatórios preenchidos.
+3. **Coletar dados específicos** — Agente: `session-manager`. Input: tipo de contexto. Output: dados de contratação ou equipe (se aplicável). Gate: dados mínimos para o contexto.
+4. **Selecionar template e frameworks** — Agente: `session-manager`. Input: `context-map`. Output: `interpretation-template` + `framework-priorities`. Gate: template existe e frameworks priorizados.
+5. **Gerar intake summary** — Agente: `session-manager`. Input: todos os dados de intake. Output: `intake-summary`. Gate: resumo cobre objetivo + profundidade + contexto.
+
+## Quality Gate
+- [ ] `context-map` completo no session record
+- [ ] Template de interpretação válido selecionado
+- Threshold: >= 3 campos contextuais preenchidos
+- Se FAIL: prosseguir com template genérico e flag de cautela
+
+## Rework Trigger
+- Contexto ambíguo entre 2 categorias → retornar ao passo 1 com perguntas de desempate
+- Dados insuficientes para contratação/equipe → retornar ao passo 3

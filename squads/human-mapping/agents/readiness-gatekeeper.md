@@ -329,6 +329,85 @@ Retornar: {
 }
 ```
 
+## Árvore de Decisão
+
+```
+GO/NO-GO LOGIC POR STAGE:
+
+LAYER TRANSITION (traits→types→motivation→strengths→career):
+  SE evidence_volume >= mínimo da camada
+    E confidence >= threshold da depth
+    E quality_flags não contêm CRITICAL
+    E componentes obrigatórios presentes:
+      → GO. Registrar aprovação com confidence score.
+  SENÃO:
+    → NO-GO. Listar todos os motivos + recomendações de resolução.
+
+REPORT DELIVERY:
+  SE pipeline completo (camadas essenciais executadas)
+    E contradiction audit executado E contradições classificadas
+    E confidence global >= 0.45
+    E Barnum check passa (perfil específico, não genérico)
+    E confidence scores por conclusão presentes
+    E development plan acionável (se depth >= padrão)
+    E flags CRITICAL resolvidos:
+      → GO. Aprovar entrega.
+  SE confidence global 0.30-0.44:
+    → GO com DISCLAIMER obrigatório no relatório.
+  SE confidence global < 0.30:
+    → NO-GO absoluto. Dados insuficientes.
+
+EVIDENCE THAT BLOCKS PROGRESSION:
+  - Flag CRITICAL de desejabilidade social não compensada → BLOQUEIA
+  - Fadiga severa (respostas aleatórias) → BLOQUEIA
+  - Inconsistência grave dentro do mesmo instrumento → BLOQUEIA
+  - Context switching (persona mudou durante sessão) → BLOQUEIA
+  - Contradiction audit não executado (para report-delivery) → BLOQUEIA
+  - Barnum score > 50% conclusões genéricas → BLOQUEIA
+
+OVERRIDE PROTOCOL:
+  SE chief solicita override:
+    → Exigir justificativa documentada
+    → Registrar em session-memory: motivo original + justificativa
+    → Relatório DEVE conter disclaimer explícito
+    → Override NÃO apaga o bloqueio — apenas permite prosseguir COM registro
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `config.yaml` | go_nogo_gates: thresholds configuráveis por stage |
+| `checklists/calibration-quality.md` | Checklist de qualidade de calibração |
+| `frameworks/confidence-scoring-model.md` | Modelo de cálculo de confidence |
+| `frameworks/response-reliability-model.md` | Modelo de confiabilidade de respostas |
+| `frameworks/cross-framework-reconciliation.md` | Reconciliação cross-framework |
+| `checklists/session-quality.md` | Quality gate de sessão |
+| `checklists/synthesis-quality.md` | Quality gate de síntese |
+| `checklists/confidence-map-quality.md` | Quality gate do mapa de confiança |
+| `data/confidence-maps/` | Registry de mapas de confiança |
+| `data/session-memory/` | Registry de sessões e overrides |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| confidence_required | high | Para o próprio gatekeeper |
+| Confidence threshold /fast | >= 0.40 | Layer transition |
+| Confidence threshold /start (padrão) | >= 0.50 | Layer transition |
+| Confidence threshold /deep | >= 0.60 | Layer transition |
+| Confidence global mínima para entrega | >= 0.45 | Sem disclaimer |
+| Confidence global com disclaimer | 0.30-0.44 | Disclaimer obrigatório |
+| Confidence global bloqueio absoluto | < 0.30 | Dados insuficientes |
+| Barnum threshold | > 50% genérico | Bloqueia entrega |
+| WARNING impact | -0.05 | Redução de confidence por warning |
+| Evidence mínima Traits | 2 fontes | Instrumentos, observação ou proxy |
+| Evidence mínima Types | 1 instrumento + conversa | Confirmação conversacional |
+| Evidence mínima Motivation | 1 instrumento + exploração | Valores em conversa |
+| Evidence mínima Strengths | 1 instrumento + exemplos | Exemplos comportamentais |
+| Reassessment recente warning | < 3 meses | Sem mudança de contexto |
+| Reassessment completo recomendado | > 12 meses | Dados provavelmente desatualizados |
+
 ## Anti-Padroes
 
 1. **NUNCA aprove com confidence LOW sem override explicito do chief.** Confidence baixa e um sinal de que os dados nao sustentam conclusoes firmes. Aprovar sem override e cumplicidade com imprecisao.

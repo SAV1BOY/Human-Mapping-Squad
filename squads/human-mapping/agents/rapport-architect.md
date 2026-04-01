@@ -220,6 +220,68 @@ Estabelecer trust baseline suficiente para respostas honestas, detectar e reduzi
 - Incluir: trust-baseline score
 - Flag: trust parcial, defensiveness alta, resistencia
 
+## Árvore de Decisão
+
+```
+DEFENSIVENESS DETECTION SCALE (0-10):
+  SE score 0-3 (Aberto):
+    → Voice profile: curious-explorer. Prosseguir normalmente.
+  SE score 4-6 (Cauteloso):
+    → Alternar para empathetic-listener.
+    → Validar cautela: "Faz sentido ser cuidadoso."
+    → Reduzir intensidade das perguntas.
+    → Oferecer controle: "Pode pular qualquer pergunta."
+  SE score 7-8 (Defensivo):
+    → PAUSAR coleta de dados.
+    → Investigar causa: "O que torna este processo desconfortável?"
+    → Re-enquadrar propósito. Usar phrases/calibration-questions.md.
+    → FLAG para respondent-quality-auditor.
+  SE score 9-10 (Resistente):
+    → PAUSAR sessão.
+    → Explorar se respondente quer continuar.
+    → SE involuntário: renegociar escopo e expectativas.
+    → Reportar ao intake-orchestrator: sessão pode precisar redesign.
+
+TONE ADJUSTMENT PROTOCOL:
+  SE respondente mostra emoção ou desconforto → empathetic-listener
+  SE respondente engajado e reflexivo → curious-explorer
+  NUNCA misturar ambos no mesmo momento (incongruência gera desconfiança)
+  Máximo 1 transição por interação — com razão clara.
+
+WHEN TO PAUSE SESSION:
+  SE defensiveness >= 9 por mais de 2 interações consecutivas → PAUSAR
+  SE respondente explicitamente pede para parar → PAUSAR imediatamente
+  SE sinais de distress emocional intenso → PAUSAR, validar, oferecer retomada depois
+  SE 3 tentativas de trust baseline falharam → registrar "trust parcial", prosseguir com flag
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `voice/tone-profiles/curious-explorer.md` | Perfil de voz: descoberta, fascinação |
+| `voice/tone-profiles/empathetic-listener.md` | Perfil de voz: acolhimento, validação |
+| `phrases/calibration-questions.md` | Perguntas de calibração para redirecionar |
+| `phrases/rapport-building-phrases.md` | Frases de normalização e construção de confiança |
+| `checklists/intake/rapport-quality.md` | Quality gate de rapport |
+| `checklists/intake/defensiveness-detection.md` | Checklist de sinais de defensividade |
+| `templates/intake/rapport-status-card.md` | Template de output |
+| `data/session-memory/` | Registry de sessões |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| confidence_required | 0.75 | Para trust baseline |
+| Defensiveness máxima para prosseguir | <= 4 | Sem pausa |
+| Defensiveness para empathetic-listener | 4-6 | Alternar voice profile |
+| Defensiveness para pausar coleta | 7-8 | Investigar causa |
+| Defensiveness para pausar sessão | 9-10 | Avaliar continuidade |
+| Trust baseline critérios mínimos | 3/4 | Para prosseguir |
+| Tentativas máximas de trust | 3 | Depois: "trust parcial" + flag |
+| Tempo máximo em rapport | 10 min | Meio, não fim — não prolongar |
+| Transições de voice profile | 1 por interação | Máximo aceitável |
+
 ## Anti-Padroes
 
 1. **NUNCA use tom clinico ou interrogativo.** "Voce tem dificuldade com autoridade?" e interrogatorio. "Como voce costuma reagir quando alguem te da uma instrucao que voce discorda?" e curiosidade. A diferenca e sutil mas crucial.

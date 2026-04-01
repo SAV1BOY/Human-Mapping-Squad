@@ -33,5 +33,24 @@ incluindo descarriladores, baixo fit e áreas de desenvolvimento críticas.
 - [ ] Mitigações identificadas para riscos gerenciáveis
 - [ ] Riscos eliminatórios sinalizados
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Mapa de riscos classificados por probabilidade e impacto
+- [ ] Descarriladores analisados no contexto específico do cargo
+- [ ] Mitigações identificadas para riscos gerenciáveis
+
+### NO-GO (não avançar)
+- Risco eliminatório identificado sem mitigação → Ação: documentar e escalar decisão
+- Dados de descarriladores ausentes → Ação: coletar antes de formular recomendação
+
+### Entregáveis Obrigatórios
+- `hiring-assessment-template` (seção risk analysis) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/hiring-assessment-template.md`
+- `templates/layers/dark-side-risk-template.md`
+- `workflows/14-hiring-assessment-flow.md`
+
 ## Próxima Fase
 `04-recommendation.md` — Recomendação final

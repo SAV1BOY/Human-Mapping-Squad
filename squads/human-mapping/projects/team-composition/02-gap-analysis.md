@@ -33,5 +33,25 @@ em relação aos objetivos e competências requeridas.
 - [ ] Cobertura de competências avaliada
 - [ ] Conexão com desafios atuais estabelecida
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Distribuição Belbin e DISC mapeada
+- [ ] Lacunas identificadas e priorizadas por impacto nos objetivos
+- [ ] Conexão entre lacunas e desafios atuais estabelecida
+
+### NO-GO (não avançar)
+- Nenhuma lacuna identificada → Ação: revisar critérios ou validar com líder
+- Dados de perfis individuais incompletos → Ação: retornar à Fase 01
+
+### Entregáveis Obrigatórios
+- `team-composition-template` (seção gap analysis) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/team-composition-template.md`
+- `checklists/team/team-balance-assessment-quality.md`
+- `checklists/team/team-gap-analysis-quality.md`
+- `workflows/15-team-composition-flow.md`
+
 ## Próxima Fase
 `03-composition-recommendation.md` — Recomendação de composição

@@ -123,3 +123,22 @@ Ao concluir a implementação, registrar:
 - O que precisou ser ajustado e por quê
 - Lições aprendidas para futuras composições de equipe
 - Recomendação de reavaliação da equipe (prazo sugerido)
+
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Plano de ação da Fase 04 aprovado pelo sponsor
+- [ ] Comunicação com todos os afetados realizada
+- [ ] Métricas de sucesso com baseline coletado (12 semanas)
+
+### NO-GO (não avançar)
+- Sponsor não aprovou implementação → Ação: revisar plano e reapresentar
+- Resistência coletiva detectada → Ação: pausar, ouvir, ajustar abordagem
+
+### Entregáveis Obrigatórios
+- `lessons-learned-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/operational/lessons-learned-template.md`
+- `checklists/team/team-dynamics-quality.md`
+- `workflows/15-team-composition-flow.md`

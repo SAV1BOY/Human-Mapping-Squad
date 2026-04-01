@@ -33,5 +33,24 @@ valores, forças e estilo de trabalho do cliente.
 - [ ] 5-8 opções selecionadas para detalhamento
 - [ ] Caminhos de transição identificados
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] 5-8 opções de carreira recomendadas com análise de alinhamento
+- [ ] Viabilidade de mercado pesquisada para cada opção
+- [ ] Caminhos de transição identificados
+
+### NO-GO (não avançar)
+- < 3 opções viáveis identificadas → Ação: ampliar critérios de busca ou revisar filtros
+- Opções sem análise de viabilidade → Ação: pesquisar mercado antes de apresentar
+
+### Entregáveis Obrigatórios
+- `career-guidance-template` (seção opções) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/career-guidance-template.md`
+- `checklists/career/role-fit-quality.md`
+- `workflows/16-career-guidance-flow.md`
+
 ## Próxima Fase
 `04-action-plan.md` — Plano de ação de carreira

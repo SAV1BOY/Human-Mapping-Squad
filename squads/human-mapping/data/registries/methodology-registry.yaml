@@ -17,4 +17,44 @@
 #   - ultima_validacao: data da última validação (date)
 #   - status: ativo | experimental | depreciado (string)
 
-entries: []
+# Validation Rules:
+#   - id: obrigatório, formato "MET-NNNN", único no registro
+#   - nome: obrigatório, string não vazia
+#   - tipo: obrigatório, valores aceitos: proxy_inference | conversão | análise | síntese | validação
+#   - precisao_estimada: obrigatório, float entre 0.0 e 1.0
+#   - data_criacao / ultima_validacao: obrigatório, formato YYYY-MM-DD
+#   - status: obrigatório, valores aceitos: ativo | experimental | depreciado
+#
+# Usage:
+#   Escrito pelo Chief ao formalizar novas metodologias do squad.
+#   Consultado por agentes analistas para selecionar o método adequado ao contexto.
+#   Revisado periodicamente para atualizar precisão estimada com base em dados empíricos.
+
+entries:
+  - id: "MET-0001"
+    nome: "Proxy-Inference via Entrevista Estruturada"
+    tipo: "proxy_inference"
+    descricao: >
+      Método padrão de inferência de traços e tipos quando instrumentos oficiais
+      não estão disponíveis. Utiliza roteiro de perguntas comportamentais calibradas
+      para cada framework, cruzamento de respostas entre frameworks e validação
+      por convergência. Inclui detecção de desejabilidade social e efeito Barnum.
+    frameworks_envolvidos:
+      - "Big Five"
+      - "HEXACO"
+      - "MBTI"
+      - "DISC"
+      - "Enneagram"
+    precisao_estimada: 0.75
+    limitacoes:
+      - "Depende da honestidade e autoconhecimento do respondente"
+      - "Precisão inferior a instrumentos oficiais validados (diferença estimada: -15%)"
+      - "Vulnerável a viés de desejabilidade social mesmo com detecção ativa"
+    pre_requisitos:
+      - "Sessão ao vivo com respondente (mínimo 30 minutos)"
+      - "Roteiro de perguntas calibradas por framework"
+      - "Agente de calibração ativado previamente"
+    referencia_doc: "squads/human-mapping/docs/metodologias/proxy-inference-guide.md"
+    data_criacao: 2026-01-10
+    ultima_validacao: 2026-03-10
+    status: "ativo"

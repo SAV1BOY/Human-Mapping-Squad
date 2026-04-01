@@ -101,3 +101,22 @@ O ciclo de mapeamento se encerra quando:
 3. Handoff para coach ou gestor foi completado (se aplicável)
 4. Documentação está completa e arquivada
 5. Respondente sabe como solicitar reavaliação futura se necessário
+
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Respondente confirmou recebimento do relatório
+- [ ] Follow-up inicial (2-4 semanas) realizado e documentado
+- [ ] Prioridades de desenvolvimento revisadas com respondente
+
+### NO-GO (não avançar)
+- Respondente não confirmou recebimento → Ação: reenviar e agendar contato
+- Resistência significativa aos achados → Ação: sessão adicional de devolutiva
+
+### Entregáveis Obrigatórios
+- `follow_up_record` (YAML) — preenchido e validado
+
+### Arquivos Relacionados
+- `checklists/report/actionability-quality.md`
+- `workflows/19-follow-up-reassessment-flow.md`
+- `templates/operational/session-log-template.md`

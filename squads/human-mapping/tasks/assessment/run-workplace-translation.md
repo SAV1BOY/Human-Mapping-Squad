@@ -56,3 +56,20 @@ Traduzir os traços de personalidade (Big Five) para o contexto de trabalho util
 ## Próxima Task
 
 `tasks/assessment/run-type-style-layer.md` — Rodar camada de tipos e estilos
+
+## Subtask Breakdown
+1. **Mapear OCEAN para HPI** — Agente: `assessment-agent`. Input: `trait-scores`. Output: scores nas 7 escalas HPI. Gate: 7 escalas com valores válidos.
+2. **Identificar descarriladores HDS** — Agente: `assessment-agent`. Input: extremos de traços. Output: `hds-risks` com severidade. Gate: ao menos os top 3 riscos documentados.
+3. **Inferir valores MVPI** — Agente: `assessment-agent`. Input: traços + contexto. Output: `mvpi-values`. Gate: valores inferidos com lógica documentada.
+4. **Aplicar perguntas complementares** — Agente: `assessment-agent`. Input: gaps de confiança (se /deep). Output: respostas adicionais. Gate: confiança da tradução >= 50.
+5. **Documentar lógica de mapeamento** — Agente: `assessment-agent`. Input: todos os mapeamentos. Output: `translation-logic`. Gate: cada tradução com justificativa registrada.
+
+## Quality Gate
+- [ ] 7 escalas HPI, descarriladores HDS e valores MVPI gerados
+- [ ] Confiança da tradução >= 50 para cada escala
+- Threshold: confiança da tradução não mais que 15% abaixo da camada de traços
+- Se FAIL: marcar escalas de baixa confiança como "hipótese" no relatório
+
+## Rework Trigger
+- Confiança da tradução < 40 em escala crítica → aplicar perguntas complementares
+- Mapeamento gera contradição óbvia com traços → revisar lógica de mapeamento

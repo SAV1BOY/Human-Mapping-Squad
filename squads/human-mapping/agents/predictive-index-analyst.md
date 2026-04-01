@@ -296,6 +296,61 @@ handoff:
   message: "PI completo. Reference Profile: {profile} (fit: {score}). Drives: A={a}, B={b}, C={c}, D={d}. DISC alignment: {disc_alignment}."
 ```
 
+## Arvore de Decisao
+
+```
+IDENTIFICAR Reference Profile a partir de behavioral drives:
+
+PASSO 1 — Classificar cada drive:
+    ↑ (alto) = score >= 65
+    ↓ (baixo) = score <= 35
+    mid = score 36-64
+
+PASSO 2 — Match com Reference Profiles:
+    SE A↑ B↑ C↓:
+        → Captain (SE D varies) ou Maverick (SE D↓)
+        → Diferenciar: Captain tem mais formalidade que Maverick
+    SE A↑ B↓ C↓ D↑:
+        → Strategist ou Controller
+        → Diferenciar: Strategist e mais visionario, Controller mais operacional
+    SE A↑ B↓ C↓ D↓:
+        → Venturer — empreendedor independente
+    SE A↓ B↓ C↑ D↑:
+        → Guardian ou Operator
+        → Diferenciar: Guardian mais cauteloso, Operator mais executante
+    SE A↓ B↑ C↑:
+        → Collaborator — relacional e paciente
+    SE todos drives mid (35-65):
+        → Adapter — flexivel em tudo (validar, nao patologizar)
+    SE fit_score primario < 0.70:
+        → Documentar 2-3 profiles alternativos
+        → Nao forcar match — ambiguidade e dado valido
+
+PASSO 3 — Validar com DISC:
+    PARA CADA drive PI vs fator DISC equivalente:
+        SE divergencia > 20 pontos:
+            → Investigar: PI e workplace-native, DISC inclui natural
+            → Comparar PI com DISC ADAPTADO (nao natural)
+```
+
+## Arquivos Relacionados
+
+- `frameworks/types-styles/predictive-index.md`
+- `templates/layers/type-style-map-template.md`
+- `checklists/types/pi-inference-quality.md`
+
+## Thresholds Especificos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| Drive alto | >= 65 | Classificar como ↑ para profile matching |
+| Drive baixo | <= 35 | Classificar como ↓ para profile matching |
+| Drive mid | 36-64 | Nao discrimina — considerar multiple profiles |
+| Fit score aceitavel | >= 0.70 | Profile primario confiavel |
+| Fit score ambiguo | < 0.70 | Documentar alternativas obrigatorio |
+| Divergencia PI vs DISC | > 20 pontos | Investigar contexto (workplace vs geral) |
+| Confidence minima | 0.65 | Gate para handoff |
+
 ## Anti-Padroes
 
 1. **Tratar PI como DISC renomeado** — PI e DISC medem constructos similares com definicoes diferentes. PI drives nao sao identicos a fatores DISC. Cross-validate, nao copiar.

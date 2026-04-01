@@ -36,5 +36,23 @@ determinando o que precisa ser desenvolvido e em que ordem.
 - [ ] Top 3-5 gaps selecionados
 - [ ] Interdependências mapeadas
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Gaps quantificados dimensão por dimensão
+- [ ] Top 3-5 gaps priorizados por impacto e urgência
+- [ ] Gaps classificados por tipo (comportamental, habilidade, conhecimento, experiência)
+
+### NO-GO (não avançar)
+- Gaps não priorizados → Ação: aplicar matriz impacto x urgência
+- Perfil atual ou estado desejado incompleto → Ação: retornar à fase correspondente
+
+### Entregáveis Obrigatórios
+- `development-plan-template` (seção gap analysis) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/development-plan-template.md`
+- `workflows/12-development-plan-generation.md`
+
 ## Próxima Fase
 `03-development-plan.md` — Plano de desenvolvimento

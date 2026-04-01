@@ -31,5 +31,24 @@ gerar dados comparáveis e identificar mudanças no perfil.
 - [ ] Mudanças metodológicas registradas
 - [ ] Dados preparados para comparação
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Mesmos instrumentos do assessment original reaplicados
+- [ ] Validade dos novos resultados verificada
+- [ ] Contexto atual documentado para qualificar diferenças
+
+### NO-GO (não avançar)
+- Instrumentos diferentes dos originais sem justificativa → Ação: aplicar instrumentos comparáveis
+- Resultados inválidos (fadiga, desejabilidade social) → Ação: reaplicar com controles
+
+### Entregáveis Obrigatórios
+- Novos resultados de avaliação consolidados
+
+### Arquivos Relacionados
+- `checklists/calibration-quality.md`
+- `checklists/respondent-quality/overclaiming-detection.md`
+- `workflows/19-follow-up-reassessment-flow.md`
+
 ## Próxima Fase
 `02-change-analysis.md` — Análise de mudanças

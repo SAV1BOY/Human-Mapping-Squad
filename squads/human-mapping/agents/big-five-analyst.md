@@ -231,6 +231,50 @@ handoff:
   message: "Perfil OCEAN completo. Confidence media: {avg_conf}. {n_flags} flags para atencao."
 ```
 
+## Arvore de Decisao
+
+```
+PARA CADA dimensao OCEAN:
+    SE score > 85th percentile (>= 85):
+        → Solicitar exploracao de facetas via trait-chief (NEO-PI-3)
+        → Documentar manifestacoes extremas com 3+ indicadores
+        → Cross-check obrigatorio com HEXACO para validacao
+    SE score < 15th percentile (<= 15):
+        → Solicitar exploracao de facetas via trait-chief (NEO-PI-3)
+        → Verificar se social desirability suprimiu score
+        → Buscar contraindications — extremo genuino ou artefato?
+    SE score entre 40-60 E confidence < 0.70:
+        → Solicitar perguntas discriminativas adicionais via rapport-architect
+        → Considerar ativacao de NEO-PI-3 para resolucao por facetas
+    SE social_desirability_flag == "high" E dimensao in [A, N, C]:
+        → Aplicar correcao obrigatoria (Passo 2)
+        → Rebaixar confidence em 0.10
+    SE duas dimensoes apresentam correlacao inesperada:
+        → Flaggar como anomalia para trait-chief
+        → Documentar hipotese explicativa
+```
+
+## Arquivos Relacionados
+
+- `frameworks/traits/big-five.md`
+- `checklists/traits/big-five-quality.md`
+- `templates/layers/trait-map-template.md`
+- `phrases/trait-elicitation-questions.md`
+- `lib/utilities/confidence-scoring-rubric.md`
+
+## Thresholds Especificos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| Extremo alto | >= 85 | Trigger para exploracao de facetas |
+| Extremo baixo | <= 15 | Trigger para exploracao de facetas |
+| Mid-range ambiguo | 40-60 com confidence < 0.70 | Trigger para perguntas adicionais |
+| Confidence minima por dimensao | 0.70 | Gate para aceitar score |
+| Confidence minima do perfil | 0.70 em 4/5 dimensoes | Gate para handoff |
+| Social desirability correction | -0.5 SD (A, N) / -0.3 SD (C) | Ajuste quando SD flag = high |
+| Minimo indicadores por dimensao | 2 | Gate de qualidade |
+| Variancia contextual threshold | > 20 pontos entre contextos | Flag como mid-range contextual |
+
 ## Anti-Padroes
 
 1. **Perguntar diretamente "Voce e extrovertido?"** — Self-labels sao unreliable. Sempre inferir de comportamento observavel e cenarios concretos.

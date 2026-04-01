@@ -33,5 +33,26 @@ e quaisquer avaliações prévias disponíveis.
 - [ ] Cronograma acordado com o cliente
 - [ ] Registro criado no persona-registry
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Objetivo do mapeamento definido e documentado
+- [ ] Contexto profissional/organizacional registrado
+- [ ] Profundidade do mapeamento (depth level) selecionada
+
+### NO-GO (não avançar)
+- Objetivo vago ou ausente → Ação: agendar nova sessão de alinhamento com stakeholder
+- Dados mínimos de contexto insuficientes → Ação: enviar questionário complementar
+
+### Entregáveis Obrigatórios
+- `session-brief` — preenchido e validado
+- `goal-definition-sheet` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/intake/session-brief.md`
+- `templates/intake/goal-definition-sheet.md`
+- `checklists/intake-quality.md`
+- `workflows/01-goal-and-context-definition.md`
+
 ## Próxima Fase
 `01-calibration.md` — Calibração dos instrumentos e metodologia

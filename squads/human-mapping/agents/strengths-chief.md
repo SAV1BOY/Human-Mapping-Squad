@@ -154,6 +154,72 @@ motivation-chief ──▶ [STRENGTHS-CHIEF] ──▶ career-fit-analyst
 - Incluir: team-role-summary
 - Incluir: confidence scores e contradiction flags
 
+## Árvore de Decisão
+
+```
+CLIFTONSTRENGTHS VS VIA PRIORITY:
+  SEMPRE despachar CliftonStrengths (âncora de talentos)
+  SE depth >= standard → despachar VIA em paralelo com CliftonStrengths
+  SE depth = quick → apenas CliftonStrengths
+  CliftonStrengths = "no que é naturalmente BOM" (talento)
+  VIA = "no que é naturalmente AUTÊNTICO" (caráter)
+  NÃO são redundantes — são complementares obrigatórios em depth >= standard
+
+WHEN BELBIN ADDS VALUE:
+  SE depth = full → SEMPRE despachar Belbin
+  SE context = team (qualquer depth) → despachar Belbin (crítico para composição)
+  SE context = leadership → despachar Belbin (papéis de liderança em equipe)
+  SE context = personal + depth = quick/standard → SKIP Belbin
+  SE context = career → Belbin OPCIONAL (informativo mas não crítico)
+
+STRENGTH-VS-SKILL SEPARATION PROTOCOL:
+  PARA CADA "força" reportada por qualquer analyst:
+    SE passa nos 5 critérios (ease + energy + rapid learning + yearning + satisfaction):
+      → STRENGTH genuína. Classificar e ranquear.
+    SE alto desempenho MAS sem energia/facilidade:
+      → SKILL adquirida. Documentar separadamente. NÃO classificar como strength.
+    SE motivação forte MAS desempenho em desenvolvimento:
+      → POTENTIAL strength. Documentar como oportunidade de investimento.
+    SE respondente insiste que é strength MAS critérios falham:
+      → Registrar discordância. Respeitar dados sobre declaração.
+
+CONFIDENCE GATE:
+  SE confiança >= 0.60 → handoff completo para career-fit-analyst
+  SE confiança 0.45-0.59 → handoff com WARNING
+  SE confiança < 0.45 → BLOQUEAR. Re-inquiry necessária.
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `frameworks/strengths/cliftonstrengths.md` | 34 themes, 4 domains |
+| `frameworks/strengths/via-character-strengths.md` | 24 strengths, 6 virtudes |
+| `frameworks/team-roles/belbin-team-roles.md` | 9 roles, 3 categorias |
+| `checklists/strengths/strengths-detection-quality.md` | Quality gate detecção |
+| `checklists/strengths/strength-vs-skill-separation.md` | Checklist separação |
+| `checklists/strengths/character-strength-quality.md` | Quality gate VIA |
+| `checklists/strengths/team-contribution-quality.md` | Quality gate Belbin |
+| `templates/layers/strength-map-template.md` | Template CliftonStrengths + VIA |
+| `templates/layers/team-role-map-template.md` | Template Belbin |
+| `registries/strength-taxonomy.md` | Taxonomia de forças |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| confidence_required | 0.60 | Para liberar camada |
+| Confidence warning zone | 0.45-0.59 | Libera com warning |
+| Confidence bloqueio | < 0.45 | Bloqueia progressão |
+| Motivation prerequisite | confiança >= 0.50 | Para iniciar strengths |
+| Pesos: CliftonStrengths | 0.40 | Na média ponderada |
+| Pesos: VIA | 0.30 | Na média ponderada |
+| Pesos: Belbin | 0.30 | Na média ponderada |
+| Convergência boost | +0.05 | Por par convergente |
+| Contradição penalty | -0.05 | Por contradição não resolvida |
+| Genuine strengths máximo esperado | 5-7 | Over-counting = red flag |
+| Skills a documentar separadamente | sem limite | Todas identificadas |
+
 ## Anti-Padrões
 
 1. **NUNCA aceitar "sou bom em X" como evidência de strength.** Perguntar: "Vem fácil? Te dá energia? Aprendeu rápido? Gravita naturalmente?" Se apenas desempenho — é skill.

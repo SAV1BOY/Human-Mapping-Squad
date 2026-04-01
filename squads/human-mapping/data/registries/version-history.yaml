@@ -16,4 +16,93 @@
 #   - author: responsável pela versão (string)
 #   - notes: observações adicionais (string, opcional)
 
-entries: []
+# Validation Rules:
+#   - version: obrigatório, formato semântico X.Y.Z, único no registro
+#   - date: obrigatório, formato YYYY-MM-DD
+#   - changes_summary: obrigatório, string não vazia
+#   - author: obrigatório, string não vazia
+#   - agents_added / agents_modified / frameworks_added / registries_added: listas (podem ser vazias)
+#   - breaking_changes: lista (pode ser vazia; se não vazia, migration_notes é obrigatório)
+#
+# Usage:
+#   Escrito pelo Chief ao publicar uma nova versão do squad.
+#   Consultado para rastreabilidade de mudanças e planejamento de migrações.
+#   Breaking changes exigem migration_notes detalhadas para squads consumidores.
+
+entries:
+  - version: "1.0.0"
+    date: "2026-01-10"
+    changes_summary: >
+      Release inicial do Human Mapping Squad. Pipeline completo de assessment
+      com 8 camadas (intake, calibração, traços, tipos, motivação, forças,
+      career-fit, conação), auditoria de contradições, síntese e geração de relatórios.
+    agents_added:
+      - "orchestrator"
+      - "big-five-agent"
+      - "hexaco-agent"
+      - "mbti-agent"
+      - "disc-agent"
+      - "enneagram-agent"
+      - "cliftonstrengths-agent"
+      - "integration-specialist"
+      - "quality-auditor"
+      - "report-writer"
+    agents_modified: []
+    frameworks_added:
+      - "Big Five"
+      - "HEXACO"
+      - "MBTI"
+      - "DISC"
+      - "Enneagram"
+      - "CliftonStrengths"
+    registries_added:
+      - "persona-registry"
+      - "session-index"
+      - "contradiction-registry"
+      - "framework-registry"
+      - "lessons-learned"
+    breaking_changes: []
+    author: "human-mapping-chief"
+    notes: "Versão fundacional do squad com foco em proxy-inference e integração multi-framework."
+
+  - version: "2.0.0"
+    date: "2026-03-01"
+    changes_summary: >
+      Expansão significativa com novos frameworks, agentes especializados e registries
+      de suporte. Adição de camadas de career-fit e conação. Inclusão de sistema
+      de correlação cross-framework e padrões comportamentais catalogados.
+    agents_added:
+      - "riasec-agent"
+      - "kolbe-agent"
+      - "predictive-index-agent"
+      - "development-planner"
+      - "synthesis-architect"
+    agents_modified:
+      - "orchestrator"
+      - "integration-specialist"
+    frameworks_added:
+      - "RIASEC"
+      - "Kolbe A"
+      - "Predictive Index"
+      - "VIA Character Strengths"
+      - "Belbin"
+    registries_added:
+      - "assessment-outcomes"
+      - "agent-performance"
+      - "confidence-history"
+      - "cross-framework-correlation-cache"
+      - "cross-squad-deliveries"
+      - "development-plans-registry"
+      - "insight-registry"
+      - "methodology-registry"
+      - "pattern-library"
+      - "version-history"
+      - "glossary"
+    breaking_changes:
+      - "Formato de session_id alterado de HMS-NNNN para HMS-YYYY-NNNN"
+      - "Campo 'confidence_avg' agora obrigatório em session-index (antes opcional)"
+    migration_notes: >
+      Atualizar referências de session_id para incluir o ano (ex: HMS-0001 -> HMS-2026-0001).
+      Preencher campo confidence_avg em sessões históricas que não possuíam o valor.
+    author: "human-mapping-chief"
+    notes: "Major release com foco em expansão de frameworks e rastreabilidade operacional."

@@ -65,3 +65,20 @@ Executar a camada conativa utilizando o framework Kolbe, identificando o modo in
 ## Próxima Task
 
 `tasks/audit/audit-contradictions.md` — Auditar contradições entre frameworks
+
+## Subtask Breakdown
+1. **Aplicar perguntas conativas** — Agente: `assessment-agent`. Input: banco de conação + depth-mode. Output: respostas nos 4 modos Kolbe. Gate: 4 modos cobertos.
+2. **Calcular scores Kolbe** — Agente: `assessment-agent`. Input: respostas + cenários de decisão. Output: `kolbe-profile` (1-10 por modo). Gate: scores no range 1-10.
+3. **Gerar zonas de operação** — Agente: `assessment-agent`. Input: scores. Output: `action-zones` (iniciante/acomodador/resistente). Gate: zona definida para cada modo.
+4. **Cruzar com perfil completo** — Agente: `assessment-agent`. Input: Kolbe + OCEAN + tipo. Output: consistências e conflitos. Gate: cruzamento documentado.
+5. **Identificar conflitos conativos** — Agente: `assessment-agent`. Input: perfil Kolbe + contexto profissional. Output: `conative-conflicts` + `productivity-tips`. Gate: conflitos e dicas registrados.
+
+## Quality Gate
+- [ ] 4 modos Kolbe com scores e zonas de operação
+- [ ] Conflitos conativos documentados
+- Threshold: confiança da camada >= 55
+- Se FAIL: marcar camada conativa como "indicativa" no relatório
+
+## Rework Trigger
+- Inconsistência severa Kolbe vs traços → reaplicar cenários-chave
+- Respondente em fadiga (última camada) → reduzir para perguntas essenciais

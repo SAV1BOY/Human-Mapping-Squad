@@ -133,3 +133,22 @@ Quando o comando `/resume` for ativado, o sistema deve:
 3. Listar proximos passos pendentes
 4. Sinalizar contradicoes ativas e decisoes pendentes
 5. Restaurar o contexto narrativo do `resume_context`
+
+## Critérios de Decisão
+
+### GO (avançar — ciclo encerrado)
+- [ ] Todos os 8 blocos do memory update preenchidos
+- [ ] Registries atualizados (persona-registry, assessment-outcomes, confidence-history)
+- [ ] Proximos passos documentados com responsaveis
+
+### NO-GO (não avançar)
+- Blocos incompletos → Ação: preencher antes de encerrar sessão
+- Contradições ativas não registradas → Ação: revisar contradiction-map e atualizar
+
+### Entregáveis Obrigatórios
+- `memory-update` (YAML completo, 8 blocos) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/audit/confidence-map-template.md`
+- `templates/operational/session-log-template.md`
+- `workflows/19-follow-up-reassessment-flow.md`

@@ -35,5 +35,25 @@ criando uma narrativa que captura a essência do cliente de forma precisa e úti
 - [ ] Coerência interna validada
 - [ ] Mapa visual do perfil criado
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Integração multi-camada completa (traços + tipos + motivação + forças + carreira)
+- [ ] Teste Barnum PASS (narrativa contém afirmações específicas, não genéricas)
+- [ ] Coerência interna validada e narrativa integrada redigida
+
+### NO-GO (não avançar)
+- Teste Barnum FAIL (perfil genérico demais) → Ação: reescrever com dados específicos do respondente
+- Camada ausente na integração → Ação: retornar à fase correspondente
+
+### Entregáveis Obrigatórios
+- `confidence-map-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/audit/confidence-map-template.md`
+- `checklists/synthesis-quality.md`
+- `checklists/synthesis/barnum-prevention-quality.md`
+- `workflows/09-synthesis-and-integration-flow.md`
+
 ## Próxima Fase
 `09-report.md` — Geração do relatório final

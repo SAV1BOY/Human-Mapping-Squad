@@ -59,3 +59,20 @@ Identificar os papéis preferenciais do respondente em equipe utilizando o frame
 ## Próxima Task
 
 `tasks/assessment/run-career-fit-layer.md` — Rodar fit de carreira
+
+## Subtask Breakdown
+1. **Aplicar cenários de equipe** — Agente: `assessment-agent`. Input: banco de team-roles + depth-mode. Output: preferências em cenários. Gate: >= 3 cenários aplicados.
+2. **Avaliar afinidade Belbin** — Agente: `assessment-agent`. Input: respostas + inferências de camadas anteriores. Output: scores nos 9 papéis. Gate: todos os 9 avaliados.
+3. **Gerar ranking** — Agente: `assessment-agent`. Input: scores cruzados. Output: `belbin-ranking` ordenado. Gate: ranking sem empates nos top 3.
+4. **Analisar complementaridade** — Agente: `assessment-agent`. Input: ranking + composição da equipe (se disponível). Output: `team-fit-analysis`. Gate: análise realizada (ou N/A se sem dados de equipe).
+5. **Calcular confiança** — Agente: `assessment-agent`. Input: qualidade dos dados + cruzamentos. Output: `confidence` por papel. Gate: confiança do papel primário >= 60.
+
+## Quality Gate
+- [ ] 9 papéis Belbin rankeados com scores
+- [ ] Papel primário e secundários identificados
+- Threshold: confiança do papel primário >= 60
+- Se FAIL: marcar papel primário como "provável" e incluir alternativa
+
+## Rework Trigger
+- Empate entre 2+ papéis primários → aplicar cenários de desempate
+- Papel primário contradiz perfil de traços → investigar via cruzamento adicional

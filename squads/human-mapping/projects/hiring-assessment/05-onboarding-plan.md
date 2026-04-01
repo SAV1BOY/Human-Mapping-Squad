@@ -111,3 +111,22 @@ Após 90 dias, registrar:
 - Relatório de progresso do onboarding personalizado
 - Sugestões de ajuste contínuo baseadas no perfil
 - Recomendação de plano de desenvolvimento (transição para projeto personal-development)
+
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Briefing para gestor direto entregue e conversa realizada
+- [ ] Plano de onboarding personalizado por perfil criado (30-60-90 dias)
+- [ ] Checklist de validação dos 90 dias definido
+
+### NO-GO (não avançar)
+- Decisão de contratação negativa → Ação: fase não se aplica, encerrar projeto
+- Consentimento do candidato ausente → Ação: obter autorização antes de compartilhar dados
+
+### Entregáveis Obrigatórios
+- `hiring-assessment-template` (seção onboarding plan) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/hiring-assessment-template.md`
+- `checklists/team/team-dynamics-quality.md`
+- `workflows/14-hiring-assessment-flow.md`

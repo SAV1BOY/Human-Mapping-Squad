@@ -62,3 +62,20 @@ Construir o relatório profundo e detalhado do perfil humano, cobrindo todas as 
 ## Próxima Task
 
 `tasks/synthesis/build-development-plan.md` — Construir plano de desenvolvimento
+
+## Subtask Breakdown
+1. **Executar deep-report-builder** — Agente: `synthesis-agent`. Input: dados completos + contradiction map + confidence map. Output: rascunho do relatório. Gate: builder executado.
+2. **Compor seções por camada** — Agente: `synthesis-agent`. Input: scores + evidências por camada. Output: 10+ seções detalhadas. Gate: nenhuma camada omitida.
+3. **Vincular evidências** — Agente: `synthesis-agent`. Input: afirmações + respostas do respondente. Output: `evidence-index`. Gate: cada afirmação-chave com evidência.
+4. **Incluir mapa de confiança** — Agente: `synthesis-agent`. Input: confidence map. Output: seção visual de confiança. Gate: status por dimensão incluído.
+5. **Formatar e revisar** — Agente: `synthesis-agent`. Input: rascunho completo. Output: `deep-report` final. Gate: template aplicado, limitações documentadas.
+
+## Quality Gate
+- [ ] 10+ seções compostas com dados quanti e qualitativos
+- [ ] Mapa de confiança incluído
+- Threshold: confiança agregada >= 65
+- Se FAIL: omitir seções com confiança < 50, documentar motivo
+
+## Rework Trigger
+- Seção com confiança < 40 → retornar ao audit para verificação
+- Evidências insuficientes em seção → enriquecer com dados brutos ou marcar como "indicativo"

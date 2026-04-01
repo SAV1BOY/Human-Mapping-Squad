@@ -16,4 +16,60 @@
 #   - acao_sugerida: ação recomendada baseada no insight (string)
 #   - validado: sim | não | pendente (string)
 
-entries: []
+# Validation Rules:
+#   - id: obrigatório, formato "INS-NNNN", único no registro
+#   - data: obrigatório, formato YYYY-MM-DD
+#   - persona_id: obrigatório, referência válida a persona-registry (formato "PER-NNNN")
+#   - projeto_id: obrigatório, referência válida a projeto existente
+#   - tipo: obrigatório, valores aceitos: padrão | contradição | correlação | predição | emergente
+#   - nivel_confianca: obrigatório, float entre 0.0 e 1.0
+#   - acionavel: obrigatório, valores aceitos: sim | não
+#   - validado: obrigatório, valores aceitos: sim | não | pendente
+#
+# Usage:
+#   Escrito pelo Integration Specialist ou Synthesis Architect ao identificar descobertas relevantes.
+#   Consultado para enriquecer futuros assessments com padrões previamente observados.
+#   Insights acionáveis alimentam diretamente o Development Planner na criação de PDIs.
+
+entries:
+  - id: "INS-0001"
+    data: 2026-02-18
+    persona_id: "PER-0001"
+    projeto_id: "projeto-lideranca-tech-2026"
+    tipo: "contradição"
+    descricao: >
+      A contradição entre extroversão moderada (Big Five) e preferência E no MBTI
+      revelou padrão de extroversão seletiva: alta energia em contextos de ideação
+      e brainstorming, mas reserva em situações sociais amplas. Este padrão é
+      especialmente relevante para posições de liderança técnica.
+    frameworks_envolvidos:
+      - "Big Five"
+      - "MBTI"
+    nivel_confianca: 0.85
+    acionavel: "sim"
+    acao_sugerida: >
+      Incluir no PDI: posicionar a pessoa em contextos de liderança que valorizem
+      facilitação de ideias (reuniões de brainstorming, design sprints) em vez de
+      representação social ampla (networking events, grandes apresentações).
+    validado: "sim"
+
+  - id: "INS-0002"
+    data: 2026-02-20
+    persona_id: "PER-0001"
+    projeto_id: "projeto-lideranca-tech-2026"
+    tipo: "correlação"
+    descricao: >
+      Convergência forte entre Enneagram Tipo 2 (asa 3) e CliftonStrengths
+      Empatia + Desenvolvimento no Top 5. Sugere orientação genuína a desenvolvimento
+      de pessoas, reforçada por drive de realização (asa 3). Padrão consistente
+      com perfil de liderança servidora eficaz.
+    frameworks_envolvidos:
+      - "Enneagram"
+      - "CliftonStrengths"
+    nivel_confianca: 0.80
+    acionavel: "sim"
+    acao_sugerida: >
+      Explorar papel de mentoria formal dentro da organização. Combinar talento
+      natural de desenvolvimento de pessoas com métricas de impacto (asa 3)
+      para maximizar engajamento e satisfação no papel.
+    validado: "sim"

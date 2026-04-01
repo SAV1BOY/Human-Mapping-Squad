@@ -33,5 +33,24 @@ de forças e descarriladores sob pressão.
 - [ ] Feedback 360 integrado
 - [ ] Matriz consolidada criada
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] CliftonStrengths Top 5 contextualizadas para liderança
+- [ ] Matriz forças x riscos consolidada
+- [ ] Feedback 360 integrado (se disponível)
+
+### NO-GO (não avançar)
+- Nenhum framework de forças avaliado → Ação: aplicar CliftonStrengths ou derivar via traços
+- Cruzamento forças x descarriladores ausente → Ação: completar matriz antes de avançar
+
+### Entregáveis Obrigatórios
+- `strength-map-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/layers/strength-map-template.md`
+- `checklists/strengths-assessment-quality.md`
+- `workflows/13-leadership-profile-flow.md`
+
 ## Próxima Fase
 `04-leadership-profile.md` — Perfil de liderança integrado

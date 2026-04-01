@@ -49,3 +49,20 @@ Iniciar uma nova sessão de mapeamento humano, criando o registro de sessão e p
 ## Próxima Task
 
 `tasks/intake/define-goal.md` — Definir objetivo da análise
+
+## Subtask Breakdown
+1. **Receber comando** — Agente: `session-manager`. Input: `/start` + metadados. Output: `session-id`. Gate: ID único gerado e validado.
+2. **Criar session record** — Agente: `session-manager`. Input: `session-id` + config. Output: `session-record.yaml`. Gate: arquivo persistido em `data/sessions/`.
+3. **Carregar configurações** — Agente: `session-manager`. Input: `config.yaml`. Output: `session-config`. Gate: todos os parâmetros obrigatórios presentes.
+4. **Inicializar timer e logger** — Agente: `session-manager`. Input: `session-config`. Output: timer ativo + audit-log. Gate: timer respondendo, log gravável.
+5. **Enviar boas-vindas** — Agente: `session-manager`. Input: `session-config`. Output: `welcome-message`. Gate: mensagem entregue ao respondente.
+
+## Quality Gate
+- [ ] Session ID registrado e sem duplicatas
+- [ ] Arquivo `data/sessions/{id}.yaml` existe e é válido
+- Threshold: tempo de setup < 5 segundos
+- Se FAIL: abortar sessão, logar erro e notificar operador
+
+## Rework Trigger
+- Sessão duplicada detectada → retornar ao passo 1 (gerar novo ID)
+- Config inválida → retornar ao passo 3 após corrigir `config.yaml`

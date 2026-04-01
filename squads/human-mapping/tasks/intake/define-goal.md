@@ -54,3 +54,20 @@ Capturar e registrar o objetivo específico da análise de mapeamento humano, ga
 ## Próxima Task
 
 `tasks/intake/select-depth.md` — Selecionar profundidade da análise
+
+## Subtask Breakdown
+1. **Apresentar categorias** — Agente: `session-manager`. Input: lista de objetivos suportados. Output: opções exibidas ao usuário. Gate: todas as 6 categorias apresentadas.
+2. **Capturar seleção** — Agente: `session-manager`. Input: resposta do usuário. Output: `goal-type` validado. Gate: objetivo pertence à lista suportada.
+3. **Capturar detalhamento** — Agente: `session-manager`. Input: texto livre. Output: `goal-detail` (max 500 chars). Gate: texto não vazio e dentro do limite.
+4. **Definir camadas** — Agente: `session-manager`. Input: `goal-type`. Output: `required-layers` + `optional-layers`. Gate: ao menos 1 camada obrigatória definida.
+5. **Comunicar escopo** — Agente: `session-manager`. Input: camadas definidas. Output: `scope-summary` entregue. Gate: confirmação do usuário recebida.
+
+## Quality Gate
+- [ ] Objetivo registrado no session record com `goal-type` e `goal-detail`
+- [ ] Camadas obrigatórias >= 1
+- Threshold: detalhamento com >= 10 caracteres
+- Se FAIL: re-solicitar detalhamento ao usuário
+
+## Rework Trigger
+- Objetivo selecionado inválido → retornar ao passo 1
+- Usuário muda de objetivo após ver escopo → retornar ao passo 2

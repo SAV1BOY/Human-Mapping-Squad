@@ -15,4 +15,41 @@
 #   - evidencia: evidência que suportou a mudança (string)
 #   - tipo_evento: avaliação_inicial | reavaliação | nova_evidência | resolução_contradição (string)
 
-entries: []
+# Validation Rules:
+#   - id: obrigatório, formato "CH-NNNN", único no registro
+#   - persona_id: obrigatório, referência válida a persona-registry (formato "PER-NNNN")
+#   - data: obrigatório, formato YYYY-MM-DD
+#   - dimensao: obrigatório, string não vazia
+#   - framework: obrigatório, nome de framework reconhecido
+#   - confianca_anterior / confianca_atual: obrigatório, float entre 0.0 e 1.0
+#   - tipo_evento: obrigatório, valores aceitos: avaliação_inicial | reavaliação | nova_evidência | resolução_contradição
+#
+# Usage:
+#   Escrito pelos agentes analistas ao calcular ou recalcular confiança de uma dimensão.
+#   Consultado pelo Integration Specialist para rastrear evolução e justificar scores finais.
+#   Usado em retrospectivas para entender quais tipos de evidência mais elevam confiança.
+
+entries:
+  - id: "CH-0001"
+    persona_id: "PER-0001"
+    data: 2026-01-15
+    dimensao: "Extroversão"
+    framework: "Big Five"
+    confianca_anterior: 0.0
+    confianca_atual: 0.72
+    motivo_mudanca: "Avaliação inicial via proxy-inference durante sessão deep"
+    evidencia: "Respostas consistentes em 8 perguntas sobre socialização e energia interpessoal"
+    tipo_evento: "avaliação_inicial"
+
+  - id: "CH-0002"
+    persona_id: "PER-0001"
+    data: 2026-02-18
+    dimensao: "Extroversão"
+    framework: "Big Five"
+    confianca_anterior: 0.72
+    confianca_atual: 0.85
+    motivo_mudanca: "Resolução de contradição CONTR-0001 entre Big Five e MBTI"
+    evidencia: >
+      Contradição explicada como adaptação contextual — extroversão seletiva em
+      contextos de ideação. Faceta assertividade revisada com dados complementares.
+    tipo_evento: "resolução_contradição"

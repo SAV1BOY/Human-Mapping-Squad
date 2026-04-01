@@ -32,5 +32,24 @@ nível hierárquico, desafios atuais e objetivos da avaliação.
 - [ ] Escopo e instrumentos definidos
 - [ ] Confidencialidade acordada
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Contexto organizacional e nível hierárquico documentados
+- [ ] Competências de liderança esperadas mapeadas
+- [ ] Escopo, instrumentos e confidencialidade definidos
+
+### NO-GO (não avançar)
+- Competências esperadas não definidas → Ação: reunião adicional com stakeholder
+- Acordo de confidencialidade ausente → Ação: formalizar antes de iniciar avaliação
+
+### Entregáveis Obrigatórios
+- `session-brief` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/intake/session-brief.md`
+- `checklists/intake-quality.md`
+- `workflows/13-leadership-profile-flow.md`
+
 ## Próxima Fase
 `01-traits-and-style.md` — Traços de personalidade e estilo de liderança

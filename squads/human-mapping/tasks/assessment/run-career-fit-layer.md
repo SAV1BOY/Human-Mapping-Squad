@@ -62,3 +62,20 @@ Avaliar o fit de carreira do respondente utilizando os frameworks RIASEC (Hollan
 ## Próxima Task
 
 `tasks/assessment/run-conation-layer.md` — Rodar modo de ação
+
+## Subtask Breakdown
+1. **Aplicar perguntas RIASEC** — Agente: `assessment-agent`. Input: banco de career + depth-mode. Output: respostas nos 6 tipos. Gate: todos os 6 tipos cobertos.
+2. **Gerar código Holland** — Agente: `assessment-agent`. Input: scores RIASEC. Output: código de 3 letras. Gate: 3 letras ordenadas por score.
+3. **Cruzar com camadas anteriores** — Agente: `assessment-agent`. Input: código + OCEAN + tipo. Output: validação cruzada. Gate: inconsistências documentadas.
+4. **Mapear carreiras e ambientes** — Agente: `assessment-agent`. Input: código Holland + contexto. Output: `career-families` + `environment-fit`. Gate: >= 3 famílias de carreiras sugeridas.
+5. **Avaliar fit contextual** — Agente: `assessment-agent`. Input: perfil + vaga/transição (se aplicável). Output: `career-suggestions` com grau de fit. Gate: fit score calculado para o contexto.
+
+## Quality Gate
+- [ ] Código Holland de 3 letras gerado com scores por tipo
+- [ ] Famílias de carreiras mapeadas
+- Threshold: confiança da camada >= 55
+- Se FAIL: limitar sugestões de carreira às mais fortemente suportadas
+
+## Rework Trigger
+- Código Holland contradiz motivação e traços → reaplicar com perguntas diferenciadas
+- Respondente em fadiga (penúltima camada) → priorizar cobertura sobre profundidade

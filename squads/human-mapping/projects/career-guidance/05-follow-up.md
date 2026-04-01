@@ -135,3 +135,22 @@ O ciclo se encerra quando:
 | Transição para posição de liderança | Projeto leadership-assessment |
 | Mudança de equipe dentro da organização | Projeto team-composition |
 | Reavaliação após mudança significativa | Projeto reassessment |
+
+## Critérios de Decisão
+
+### GO (avançar — ciclo encerrado)
+- [ ] Direção de carreira validada na prática (não apenas na teoria)
+- [ ] ≥ 50% das ações do plano concluídas ou em andamento
+- [ ] Respondente segue com autonomia
+
+### NO-GO (não encerrar)
+- Direção descartada → Ação: nova orientação (revisitar Fases 01-03)
+- Respondente sem motivação para ação → Ação: investigar barreiras e considerar coaching
+
+### Entregáveis Obrigatórios
+- `career_follow_up` (YAML) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/career-guidance-template.md`
+- `workflows/19-follow-up-reassessment-flow.md`
+- `templates/operational/session-log-template.md`

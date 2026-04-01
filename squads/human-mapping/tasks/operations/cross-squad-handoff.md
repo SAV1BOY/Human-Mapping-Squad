@@ -65,3 +65,20 @@ Realizar o handoff estruturado de dados e insights do mapeamento humano para out
 ## Próxima Task
 
 Nenhuma — esta é uma task terminal do fluxo de operações.
+
+## Subtask Breakdown
+1. **Identificar squads receptores** — Agente: `operations-agent`. Input: contexto da sessão + objetivo. Output: lista de squads elegíveis. Gate: ao menos 1 squad identificado.
+2. **Preparar pacotes de handoff** — Agente: `operations-agent`. Input: relatórios + dados. Output: `handoff-package` por squad. Gate: dados filtrados e adaptados ao formato do receptor.
+3. **Verificar privacidade** — Agente: `operations-agent`. Input: pacotes + políticas. Output: `privacy-clearance`. Gate: consentimento verificado para dados pessoais.
+4. **Criar e enviar tickets** — Agente: `operations-agent`. Input: pacotes aprovados. Output: `handoff-ticket` enviado. Gate: ticket com resumo, caveats e nível de confiança.
+5. **Confirmar recebimento** — Agente: `operations-agent`. Input: canais de comunicação. Output: confirmação registrada. Gate: confirmação em <= 48h.
+
+## Quality Gate
+- [ ] Pacotes de handoff entregues a todos os squads identificados
+- [ ] Conformidade com privacidade documentada
+- Threshold: confirmação de recebimento em <= 48h
+- Se FAIL: escalar para squad lead se sem confirmação em 48h
+
+## Rework Trigger
+- Violação de privacidade detectada → revogar handoff e auditar
+- Squad receptor rejeita pacote → adaptar formato e reenviar

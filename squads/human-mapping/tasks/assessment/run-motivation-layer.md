@@ -60,3 +60,20 @@ Executar a camada de motivação, identificando os motivadores intrínsecos e ex
 ## Próxima Task
 
 `tasks/assessment/run-strengths-layer.md` — Rodar camada de forças
+
+## Subtask Breakdown
+1. **Aplicar perguntas de motivação** — Agente: `assessment-agent`. Input: banco de motivação + depth-mode. Output: respostas sobre 7 drivers. Gate: todos os 7 motivadores cobertos.
+2. **Executar ranking forçado** — Agente: `assessment-agent`. Input: lista de motivadores. Output: hierarquia declarada. Gate: ranking completo sem empates.
+3. **Validar com cenários** — Agente: `assessment-agent`. Input: cenários situacionais. Output: motivadores revelados por cenário. Gate: >= 2 cenários aplicados.
+4. **Calcular scores** — Agente: `assessment-agent`. Input: respostas + ranking via `motivation-scorer`. Output: `motivation-profile`. Gate: 7 motivadores com score 0-100.
+5. **Cruzar e identificar desmotivadores** — Agente: `assessment-agent`. Input: profile + tipos + MVPI. Output: `demotivators` + validação cruzada. Gate: top 3 intrínsecos e extrínsecos definidos.
+
+## Quality Gate
+- [ ] Perfil motivacional com 7 motivadores rankeados
+- [ ] Consistência ranking declarado vs cenários >= 60%
+- Threshold: confiança da camada >= 60
+- Se FAIL: aplicar cenários adicionais para motivadores inconsistentes
+
+## Rework Trigger
+- Consistência ranking vs cenários < 40% → reaplicar ranking com explicações
+- Respondente em fadiga → pausar, retomar motivação após intervalo

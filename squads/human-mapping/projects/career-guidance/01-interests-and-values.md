@@ -33,5 +33,24 @@ identificação de caminhos de carreira alinhados.
 - [ ] Cruzamento interesses vs evidências realizado
 - [ ] Inconsistências sinalizadas
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] RIASEC mapeado com código de 3 letras
+- [ ] Valores profissionais hierarquizados
+- [ ] Cruzamento interesses vs evidências comportamentais realizado
+
+### NO-GO (não avançar)
+- RIASEC não mapeado → Ação: aplicar instrumento ou derivar via entrevista
+- Valores não hierarquizados → Ação: completar questionário de valores
+
+### Entregáveis Obrigatórios
+- `career-fit-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/layers/career-fit-template.md`
+- `checklists/career/career-fit-quality.md`
+- `workflows/16-career-guidance-flow.md`
+
 ## Próxima Fase
 `02-strengths-and-style.md` — Forças e estilo de trabalho

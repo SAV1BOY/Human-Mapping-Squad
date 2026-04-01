@@ -12,4 +12,36 @@
 #   - last_used: data da última sessão em que foi ativado (string, formato: YYYY-MM-DD)
 #   - notes: observações sobre calibração ou ajustes necessários (string, opcional)
 
-entries: []
+# Validation Rules:
+#   - agent_id: obrigatório, identificador válido de agente do squad (string)
+#   - sessions_used: obrigatório, inteiro >= 0
+#   - avg_confidence_contribution: obrigatório, float entre 0.0 e 1.0
+#   - issues_flagged: obrigatório, inteiro >= 0
+#   - avg_processing_quality: obrigatório, float entre 0.0 e 1.0
+#   - last_used: obrigatório, formato YYYY-MM-DD
+#
+# Usage:
+#   Atualizado automaticamente pelo Quality Auditor ao final de cada sessão.
+#   Consultado pelo Orchestrator para decidir quais agentes ativar e priorizar.
+#   Usado em retrospectivas para identificar agentes que precisam de calibração.
+
+entries:
+  - agent_id: "big-five-agent"
+    sessions_used: 2
+    avg_confidence_contribution: 0.84
+    issues_flagged: 1
+    avg_processing_quality: 0.88
+    last_used: "2026-03-10"
+    notes: >
+      Agente mais ativado do squad. Confiança consistentemente alta.
+      Issue flagged em HMS-2026-0001 resultou em CONTR-0001 (contradição com MBTI).
+
+  - agent_id: "enneagram-agent"
+    sessions_used: 1
+    avg_confidence_contribution: 0.78
+    issues_flagged: 0
+    avg_processing_quality: 0.82
+    last_used: "2026-01-15"
+    notes: >
+      Utilizado apenas em sessões deep. Boa contribuição para camada motivacional.
+      Requer mais dados históricos para avaliação robusta de desempenho.

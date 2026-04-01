@@ -74,3 +74,24 @@ Rankear as prioridades de desenvolvimento do respondente com base no perfil inte
 ## Uso
 
 Chamado por `tasks/synthesis/build-development-plan.md` para gerar o plano de desenvolvimento priorizado.
+
+## Especificação de I/O
+
+### Input
+- Formato: YAML
+- Campos obrigatórios: `integrated-profile`, `attention-areas`, `underused-strengths`, `risk-patterns`, `context`, `hds-risks`
+- Exemplo: `{attention-areas: [{area: "gestão de estresse", impact: 75}], hds-risks: [{risk: "Bold", severity: "high"}]}`
+
+### Output
+- Formato: YAML
+- Campos: `priority-ranking`, `impact-effort-matrix`, `action-suggestions`, `critical-overrides`, `timeline-estimate`
+
+### Thresholds
+- quick_win: {impact: ">60", effort: "<40"}
+- key_project: {impact: ">60", effort: ">=40"}
+- max_plan_items: 12 (limitar a 8-12 itens)
+- critical_override_trigger: HDS severidade "high" ou padrão de burnout
+
+### Tratamento de Erros
+- Input inválido: retornar erro `INVALID_PROFILE_DATA`
+- Dados insuficientes: gerar ranking parcial com áreas disponíveis e flag `incomplete-ranking`

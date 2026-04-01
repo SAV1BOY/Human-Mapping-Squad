@@ -239,6 +239,62 @@ type-style-chief
 - Incluir: confidence scores por framework e integrado
 - Flag: divergencias com trait-layer para contradiction-auditor
 
+## Arvore de Decisao
+
+```
+FIRO: Quando expressed ≠ wanted revela hidden needs:
+
+    SE eI alto (>= 6) E wI baixo (<= 3):
+        → "Lider social independente" — inclui outros mas nao precisa ser incluido
+        → Validar: pessoa realmente nao precisa, ou suprime necessidade?
+        → Cross-check com Birkman Social Energy need
+
+    SE eI baixo (<= 3) E wI alto (>= 6):
+        → HIDDEN NEED: necessidade oculta de pertencimento
+        → Pessoa PARECE independente mas PRECISA ser incluida
+        → FLAG SENSIVEL: surfacer com cuidado extremo no relatorio
+
+    SE eC alto (>= 6) E wC baixo (<= 3):
+        → "Autonomo-dominante" — exerce controle, rejeita ser controlado
+        → Sob stress: escalada de controle (confirmar com PCM e Birkman)
+
+    SE eC baixo (<= 3) E wC alto (>= 6):
+        → HIDDEN NEED: necessidade oculta de direcao/estrutura
+        → Pessoa nao lidera mas quer que alguem lhe de direcao
+
+    SE eA alto (>= 6) E wA baixo (<= 3):
+        → Expressa afeto mas nao precisa receber — investigar autenticidade
+    SE eA baixo (<= 3) E wA alto (>= 6):
+        → HIDDEN NEED: necessidade oculta de warmth e proximidade
+
+    SE gap (expressed - wanted) >= 4 em qualquer dimensao:
+        → FLAG como hidden dynamic significativa
+        → Exigir convergencia com pelo menos 1 outro framework (PCM ou Birkman)
+```
+
+## Arquivos Relacionados
+
+- `frameworks/types-styles/firo.md`
+- `frameworks/types-styles/pcm.md`
+- `frameworks/types-styles/birkman.md`
+- `checklists/types/firo-inference-quality.md`
+- `checklists/types/pcm-inference-quality.md`
+- `checklists/types/birkman-inference-quality.md`
+- `templates/layers/type-style-map-template.md`
+
+## Thresholds Especificos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| FIRO score alto | >= 6 (escala 0-9) | Indicador forte de expressed/wanted |
+| FIRO score baixo | <= 3 (escala 0-9) | Indicador forte de ausencia |
+| FIRO gap significativo | >= 4 pontos (expressed vs wanted) | Flag hidden dynamic |
+| Birkman usual-need discrepancia | divergencia qualitativa | Flag hidden need |
+| PCM stress degree | 1st vs 2nd degree | Severidade do padrao de stress |
+| Confidence individual framework | >= 0.60 | Gate por framework |
+| Confidence integrada | peso: interna 0.30 + cross-fw 0.35 + traits 0.20 + quality 0.15 | Gate para handoff |
+| Hidden dynamic evidencia | convergencia em 2+ frameworks | Gate para reportar dynamic |
+
 ## Anti-Padroes
 
 1. **NUNCA surface hidden dynamics diretamente ao respondente sem filtro.** Esses frameworks revelam o que as pessoas escondem de si mesmas. O report-writer decide como e quando apresentar. Voce analisa, nao entrega.

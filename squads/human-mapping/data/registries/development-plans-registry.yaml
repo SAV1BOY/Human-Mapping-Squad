@@ -17,4 +17,43 @@
 #   - eficacia_avaliada: sim | não (string)
 #   - notas: observações de acompanhamento (string)
 
-entries: []
+# Validation Rules:
+#   - id: obrigatório, formato "PDI-NNNN", único no registro
+#   - persona_id: obrigatório, referência válida a persona-registry (formato "PER-NNNN")
+#   - projeto_id: obrigatório, referência válida a projeto existente
+#   - data_criacao / data_revisao: obrigatório, formato YYYY-MM-DD
+#   - status: obrigatório, valores aceitos: ativo | concluído | pausado | cancelado
+#   - progresso_geral: obrigatório, inteiro entre 0 e 100
+#   - eficacia_avaliada: obrigatório, valores aceitos: sim | não
+#
+# Usage:
+#   Escrito pelo Development Planner ao criar PDI a partir do perfil consolidado.
+#   Atualizado periodicamente conforme marcos são concluídos ou obstáculos surgem.
+#   Consultado pelo Orchestrator para acompanhamento e pelo respondente como guia de ação.
+
+entries:
+  - id: "PDI-0001"
+    persona_id: "PER-0001"
+    projeto_id: "projeto-lideranca-tech-2026"
+    data_criacao: 2026-02-22
+    data_revisao: 2026-05-22
+    status: "ativo"
+    areas_foco:
+      - "Assertividade em contextos de decisão"
+      - "Delegação estratégica"
+      - "Gestão de conflitos interpessoais"
+    metas:
+      - "Praticar posicionamento direto em 3 reuniões de decisão por semana até maio/2026"
+      - "Delegar pelo menos 2 tarefas operacionais por sprint para membros da equipe"
+      - "Conduzir 1 conversa difícil por mês utilizando framework de feedback SBI"
+    progresso_geral: 35
+    marcos_concluidos:
+      - "Identificação de padrões de evitação de conflito (concluído 2026-03-01)"
+      - "Workshop individual sobre assertividade vs agressividade (concluído 2026-03-15)"
+    obstaculos:
+      - "Tendência a absorver tarefas ao invés de delegar por medo de sobrecarregar equipe"
+    eficacia_avaliada: "não"
+    notas: >
+      PDI derivado do perfil PER-0001. Foco principal em desenvolver assertividade
+      (faceta Big Five 0.40) sem perder a empatia natural (CliftonStrengths #1).
+      Próxima revisão agendada para maio/2026.

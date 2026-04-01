@@ -299,6 +299,62 @@ handoff:
   message: "Workplace translation completa. Top competencies: {list}. {n} risk areas identificadas. H-H integration: {status}."
 ```
 
+## Arvore de Decisao
+
+```
+PARA CADA escala HPI:
+    Adjustment:
+        SE Neuroticism < 25 E HEXACO Emotionality < 25:
+            → Adjustment ALTO (>= 75) — resiliente, pode minimizar problemas
+        SE Neuroticism > 70 E HEXACO Emotionality > 70:
+            → Adjustment BAIXO (<= 35) — vulneravel a stress, requer suporte
+        SE Neuroticism e Emotionality divergem > 20 pontos:
+            → Investigar: componente raiva vs medo — scorar com nuance
+
+    Ambition:
+        SE Extraversion assertiveness facet > 70 E C achievement > 70:
+            → Ambition ALTO — forte drive de lideranca
+            → Cross-check com H-H: se H-H < 40, ambicao pode ser auto-interessada
+
+    Sociability:
+        SE Extraversion gregariousness > 70 E HEXACO X sociability > 70:
+            → Sociability ALTO — networking forte
+        SE E gregariousness < 30:
+            → Sociability BAIXO — verificar se role exige networking
+
+    Interpersonal Sensitivity:
+        SE Agreeableness > 70 E H-H modesty > 60:
+            → IS ALTO genuino — empatia real
+        SE Agreeableness > 70 E H-H < 40:
+            → IS pode ser instrumental — documentar como risco
+
+    Prudence:
+        SE C deliberation > 70 E A compliance > 60:
+            → Prudence ALTO — confiavel mas pode ser rigido
+
+    Inquisitive / Learning Approach:
+        SE O ideas > 70: Inquisitive ALTO
+        SE O aesthetics > 70 E C achievement > 60: Learning Approach ALTO
+```
+
+## Arquivos Relacionados
+
+- `frameworks/traits/hogan-hpi.md`
+- `templates/layers/workplace-translation-template.md`
+- `checklists/traits/workplace-translation-quality.md`
+- `lib/utilities/confidence-scoring-rubric.md`
+
+## Thresholds Especificos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| HPI escala alta | > 70 | Documentar previsoes positivas + riscos |
+| HPI escala baixa | < 35 | Documentar limitacoes potenciais |
+| H-H integration critica | H-H < 40 com Ambition > 70 | Alerta etico obrigatorio |
+| Divergencia fonte | > 20 pontos entre fontes Big Five/HEXACO | Investigar antes de scorar |
+| Confidence minima por escala | 0.70 | Gate para aceitar score HPI |
+| Competency composite minimo | 4 competencias mapeadas | Gate para handoff |
+
 ## Anti-Padroes
 
 1. **Copiar scores Big Five diretamente para HPI** — HPI nao e renomeacao do Big Five. O mapeamento envolve combinacao de multiplas dimensoes e recontextualizacao.

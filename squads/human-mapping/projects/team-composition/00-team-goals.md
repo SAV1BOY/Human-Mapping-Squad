@@ -33,5 +33,24 @@ critérios de sucesso que orientarão a análise de composição.
 - [ ] Critérios de sucesso definidos
 - [ ] Escopo e instrumentos acordados
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Objetivos estratégicos da equipe documentados
+- [ ] Competências críticas requeridas listadas
+- [ ] Escopo da análise e instrumentos acordados com líder
+
+### NO-GO (não avançar)
+- Objetivos da equipe não definidos → Ação: sessão adicional com líder/stakeholder
+- Líder não disponível para briefing → Ação: reagendar antes de iniciar
+
+### Entregáveis Obrigatórios
+- `team-composition-template` (seção objetivos) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/team-composition-template.md`
+- `checklists/team/team-gap-analysis-quality.md`
+- `workflows/15-team-composition-flow.md`
+
 ## Próxima Fase
 `01-individual-profiles.md` — Perfis individuais dos membros

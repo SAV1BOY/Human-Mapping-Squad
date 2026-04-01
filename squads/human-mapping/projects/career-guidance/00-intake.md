@@ -32,5 +32,25 @@ de carreira e objetivos para a orientação vocacional.
 - [ ] Escopo e instrumentos definidos
 - [ ] Cronograma alinhado
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Momento de carreira compreendido (transição, insatisfação, exploração)
+- [ ] Objetivos do cliente documentados
+- [ ] Escopo e instrumentos definidos
+
+### NO-GO (não avançar)
+- Cliente sem objetivo claro → Ação: sessão de clarificação antes de avançar
+- Histórico profissional ausente → Ação: coletar antes de iniciar avaliação
+
+### Entregáveis Obrigatórios
+- `session-brief` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/intake/session-brief.md`
+- `templates/reports/career-guidance-template.md`
+- `checklists/intake-quality.md`
+- `workflows/16-career-guidance-flow.md`
+
 ## Próxima Fase
 `01-interests-and-values.md` — Interesses e valores

@@ -38,5 +38,24 @@ prioritários identificados, com ações concretas e cronograma.
 - [ ] Ritual de acompanhamento acordado
 - [ ] PDI registrado no development-plans-registry
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Metas SMART definidas para cada gap prioritário
+- [ ] Ações 70-20-10 identificadas e cronogramadas
+- [ ] Ritual de acompanhamento acordado com cliente
+
+### NO-GO (não avançar)
+- Metas não mensuráveis → Ação: reformular com indicadores SMART
+- Cliente não aprovou plano → Ação: ajustar conforme feedback
+
+### Entregáveis Obrigatórios
+- `development-plan-template` (completo) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/development-plan-template.md`
+- `checklists/development-plan-quality.md`
+- `workflows/12-development-plan-generation.md`
+
 ## Próxima Fase
 `04-progress-tracking.md` — Acompanhamento de progresso

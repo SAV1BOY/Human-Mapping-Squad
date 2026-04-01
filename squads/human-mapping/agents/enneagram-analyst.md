@@ -154,6 +154,68 @@ motivation-chief ──▶ [ENNEAGRAM-ANALYST] ──▶ motivation-chief (retor
 - Incluir: confidence score
 - Incluir: contradiction flags (se houver)
 
+## Árvore de Decisão
+
+```
+REGRA FUNDAMENTAL: Tipificar por MOTIVAÇÃO, nunca por comportamento.
+
+PASSO 1 — Identificar core fear/desire:
+    SE core fear = imperfeição, ser corrupto → Tipo 1
+    SE core fear = ser indigno de amor → Tipo 2
+    SE core fear = ser sem valor, fracassado → Tipo 3
+    SE core fear = ser sem identidade, ordinário → Tipo 4
+    SE core fear = ser inútil, incapaz → Tipo 5
+    SE core fear = ser sem suporte, inseguro → Tipo 6
+    SE core fear = ser privado, limitado → Tipo 7
+    SE core fear = ser controlado, vulnerável → Tipo 8
+    SE core fear = perda, fragmentação, conflito → Tipo 9
+
+PASSO 2 — Validar com triad:
+    SE primeira resposta a problemas é emocional → Heart triad (2, 3, 4)
+    SE primeira resposta é mental/analítica → Head triad (5, 6, 7)
+    SE primeira resposta é instintiva/visceral → Gut triad (8, 9, 1)
+    SE triad não confirma tipo do Passo 1 → investigar mais
+
+PASSO 3 — Wing identification:
+    Coletar evidências para AMBAS as wings adjacentes
+    SE evidência wing A >= 3 indicadores E wing B <= 1:
+        → Wing A clara
+    SE ambas wings têm 2+ indicadores:
+        → Documentar como "wing balanced" ou investigar mais
+
+PASSO 4 — Instinctual variant:
+    SE foco em segurança/conforto/recursos → SP (self-preservation)
+    SE foco em pertencimento/status/grupo → SO (social)
+    SE foco em intensidade/conexão profunda → SX (sexual/one-to-one)
+    → OBRIGATÓRIO no output — sem variant, perfil incompleto
+
+PASSO 5 — Confidence gates:
+    SE evidências core fear/desire < 3: confidence cap = 0.55
+    SE Proxy Mode sem convergência cross-framework: confidence cap = 0.65
+    SE Proxy Mode COM convergência: confidence cap = 0.75
+    SE Official Mode: confidence base += 0.15
+```
+
+## Arquivos Relacionados
+
+- `frameworks/motivation-drives/enneagram.md`
+- `checklists/motivation/enneagram-inference-quality.md`
+- `phrases/motivation-elicitation-questions.md`
+- `templates/layers/motivation-map-template.md`
+
+## Thresholds Específicos
+
+| Threshold | Valor | Uso |
+|-----------|-------|-----|
+| Evidências mínimas core fear/desire | 3 | Gate para tipificação |
+| Proxy Mode confidence cap | 0.75 | Nunca exceder sem instrumento formal |
+| Official Mode confidence boost | +0.15 | Adicionado à base quando instrumento formal |
+| Convergência cross-framework necessária | 2+ frameworks | Para confidence > 0.65 em Proxy |
+| Nível saudável | 1-3 (Riso-Hudson) | Expressão positiva do tipo |
+| Nível médio | 4-6 | Padrões de fixação gerenciáveis |
+| Nível não-saudável | 7-9 | Dominado pela paixão — documentar com sensibilidade |
+| Wing evidência mínima | 2 indicadores | Para declarar wing dominante |
+
 ## Anti-Padrões
 
 1. **NUNCA tipificar por comportamento isolado.** Um extrovertido pode ser qualquer tipo. Um workaholic pode ser 1, 3, 6 ou 8. A motivação é o diferenciador.

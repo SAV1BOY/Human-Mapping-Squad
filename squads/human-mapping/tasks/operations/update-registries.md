@@ -62,3 +62,20 @@ Atualizar os registros centrais do squad (registries) com dados de sessões conc
 ## Próxima Task
 
 `tasks/operations/cross-squad-handoff.md` — Handoff para outros squads (se necessário)
+
+## Subtask Breakdown
+1. **Atualizar registry de sessões** — Agente: `operations-agent`. Input: session record finalizado. Output: entrada em `data/registries/sessions/`. Gate: session-id registrado com status.
+2. **Atualizar registry de perfis** — Agente: `operations-agent`. Input: scores agregados anonimizados. Output: entrada em `data/registries/profiles/`. Gate: dados sem PII.
+3. **Atualizar registry de frameworks** — Agente: `operations-agent`. Input: performance por framework. Output: estatísticas atualizadas. Gate: acurácia por framework atualizada.
+4. **Atualizar registry de padrões** — Agente: `operations-agent`. Input: padrões descobertos. Output: frequências atualizadas. Gate: padrões emergentes sinalizados.
+5. **Backup e verificação** — Agente: `operations-agent`. Input: registries atualizados. Output: backup + integridade verificada. Gate: backup confirmado e índices atualizados.
+
+## Quality Gate
+- [ ] 4 registries atualizados sem erros
+- [ ] Backup realizado e verificado
+- Threshold: zero campos obrigatórios nulos nos registries
+- Se FAIL: restaurar backup anterior e investigar erro de atualização
+
+## Rework Trigger
+- Falha de integridade em registry → restaurar backup e re-aplicar atualização
+- Dados pessoais detectados em registry anonimizado → remover e auditar

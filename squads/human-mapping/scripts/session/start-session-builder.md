@@ -72,3 +72,23 @@ Inicializar uma nova sessão de mapeamento humano, criando a estrutura de dados 
 ## Uso
 
 Chamado por `tasks/intake/start-session.md` no início de cada nova sessão. Deve ser a primeira operação executada ao receber o comando `/start`.
+
+## Especificação de I/O
+
+### Input
+- Formato: YAML (via parâmetros internos)
+- Campos obrigatórios: `user-id`, `respondent-id`, `channel`, `timestamp`, `config`
+- Exemplo: `{user-id: "U-001", respondent-id: "R-001", channel: "chat", timestamp: "2026-04-01T10:00:00Z"}`
+
+### Output
+- Formato: YAML
+- Campos: `session-record`, `session-config`, `session-path`, `audit-log-path`
+
+### Thresholds
+- max_session_id_retries: 5 (tentativas para gerar ID único)
+- session_setup_timeout: 5000ms
+
+### Tratamento de Erros
+- Input inválido: rejeitar com erro descritivo e não criar sessão
+- Dados insuficientes: exigir todos os campos obrigatórios antes de prosseguir
+- Config ausente: abortar e logar `CONFIG_NOT_FOUND`

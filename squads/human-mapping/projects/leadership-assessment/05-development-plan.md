@@ -37,5 +37,24 @@ liderança integrado, com metas, ações e métricas de acompanhamento.
 - [ ] Plano alinhado com líder e stakeholders
 - [ ] Registro atualizado no development-plans-registry
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] PDI com 3-5 áreas priorizadas e metas SMART
+- [ ] Plano alinhado com líder e stakeholders
+- [ ] Cronograma com marcos trimestrais definido
+
+### NO-GO (não avançar)
+- Líder não aprovou o plano → Ação: sessão de alinhamento adicional
+- Metas não mensuráveis → Ação: reformular com indicadores SMART
+
+### Entregáveis Obrigatórios
+- `development-plan-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/development-plan-template.md`
+- `checklists/development-plan-quality.md`
+- `workflows/12-development-plan-generation.md`
+
 ## Próxima Fase
 Projeto concluído. Acompanhamento conforme cronograma do PDI.

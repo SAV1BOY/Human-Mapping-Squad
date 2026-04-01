@@ -78,3 +78,25 @@ O brief so pode ser compartilhado com:
 - Clareza sobre o que sera compartilhado
 - Opcao de remover itens sensiveis
 - Registro documentado do consentimento
+
+## Especificacao de I/O
+
+### Input
+- Formato: YAML/Markdown
+- Campos obrigatorios: perfil integrado, contexto do coachee (cargo, nivel, objetivo), consentimento confirmado
+- Exemplo: `{profile: {big_five: {...}, enneagram: {type: 3, wing: 2}}, context: {role: "gerente", level: "senior"}, consent: true}`
+
+### Output
+- Formato: Markdown formatado (2-3 paginas)
+- Campos: contexto, perfil sintetico, dados de assessment, dinamicas observadas, recomendacoes para coach, metricas de sucesso
+
+### Thresholds
+- max_strengths_listed: 3
+- max_development_areas: 2
+- min_confidence_for_sharing: 60
+- consent_required: true (bloqueante)
+
+### Tratamento de Erros
+- Input invalido: retornar erro `MISSING_PROFILE_DATA`
+- Dados insuficientes: gerar brief parcial com disclaimer e flag `limited-data`
+- Consentimento ausente: bloquear geracao e retornar `CONSENT_REQUIRED`

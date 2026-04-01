@@ -150,6 +150,81 @@ trait-chief ──▶ type-style-chief ──▶ [MOTIVATION-CHIEF] ──▶ st
 - Incluir: contradiction flags pendentes
 - Formato: motivation-map-template preenchido
 
+## Árvore de Decisão
+
+```
+DEPTH OF MOTIVATION ANALYSIS:
+  SE depth = quick:
+    → Eneagrama + SDI apenas (2 frameworks)
+    → Proxy Mode suficiente se sem instrumento oficial
+  SE depth = standard:
+    → Eneagrama + SDI + Reiss (3 frameworks)
+    → Proxy Mode aceitável, official preferido
+  SE depth = full:
+    → Todos: Eneagrama + SDI + Reiss + MVPI + 12 Driving Forces (5 frameworks)
+    → Official preferido; Proxy Mode aceito com confidence cap
+
+WHEN PROXY IS SUFFICIENT VS OFFICIAL NEEDED:
+  SE context = personal/career + depth = quick/standard:
+    → Proxy suficiente. Confidence cap = 0.70.
+  SE context = hiring/leadership + depth = standard/full:
+    → Official FORTEMENTE recomendado. Proxy aceito com warning + confidence cap 0.60.
+  SE context = hiring + stakes = HIGH:
+    → Official RECOMENDADO. Se Proxy, disclaimer obrigatório no relatório.
+
+EXECUTION ORDER:
+  1. Eneagrama SEMPRE primeiro (âncora motivacional)
+  2. SDI em paralelo OU sequencial (se Proxy, precisa do Eneagrama como cross-reference)
+  3. Reiss após Eneagrama (complementa granularidade)
+  4. MVPI + 12DF por último (se scope = full)
+
+CONFIDENCE GATE:
+  SE confiança da camada >= 0.60 → liberar para strengths-chief
+  SE confiança 0.45-0.59 → liberar com WARNING
+  SE confiança < 0.45 → BLOQUEAR. Solicitar re-inquiry ou dados adicionais.
+
+CROSS-CHECK OBRIGATÓRIO:
+  SE Eneagrama core fear DIVERGE do SDI Conflict Sequence:
+    → FLAG contradição. Investigar antes de liberar.
+  SE Reiss priorities DIVERGEM do MVPI values:
+    → FLAG contradição. Encaminhar para contradiction-auditor.
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `frameworks/motivation/enneagram.md` | Eneagrama: 9 tipos, wings, instinctual variants |
+| `frameworks/motivation/sdi-2-0.md` | SDI: MVS, Conflict Sequence |
+| `frameworks/motivation/reiss-motivation-profile.md` | Reiss: 16 basic desires |
+| `frameworks/motivation/hogan-mvpi.md` | MVPI: valores Hogan |
+| `frameworks/motivation/12-driving-forces.md` | 12DF: 6 continuums |
+| `checklists/motivation/enneagram-inference-quality.md` | Quality gate Eneagrama |
+| `checklists/motivation/sdi-conflict-sequence-quality.md` | Quality gate SDI |
+| `checklists/motivation/motivation-depth-quality.md` | Quality gate profundidade |
+| `checklists/motivation/values-drivers-quality.md` | Quality gate valores |
+| `templates/layers/motivation-map-template.md` | Template de output |
+| `templates/layers/conflict-sequence-template.md` | Template sequência de conflito |
+| `registries/motivation-taxonomy.md` | Taxonomia motivacional |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| confidence_required | 0.60 | Para liberar camada |
+| Confidence warning zone | 0.45-0.59 | Libera com warning |
+| Confidence bloqueio | < 0.45 | Bloqueia progressão |
+| Type-style prerequisite | confiança >= 0.50 | Para iniciar motivação |
+| Confidence cap Proxy + hiring | 0.60 | Teto em contexto high-stakes |
+| Confidence cap Proxy + personal | 0.70 | Teto em contexto low-stakes |
+| Pesos: Eneagrama | 0.30 | Na média ponderada |
+| Pesos: SDI | 0.25 | Na média ponderada |
+| Pesos: Reiss | 0.20 | Na média ponderada |
+| Pesos: MVPI | 0.15 | Na média ponderada |
+| Pesos: 12DF | 0.10 | Na média ponderada |
+| Convergência boost | +0.05 | Por par convergente |
+| Contradição penalty | -0.05 | Por contradição não resolvida |
+
 ## Anti-Padrões
 
 1. **NUNCA iniciar análise motivacional sem dados de traits e types.** Motivação sem contexto comportamental produz tipificação superficial.

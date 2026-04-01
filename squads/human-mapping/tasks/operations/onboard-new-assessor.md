@@ -69,3 +69,20 @@ Realizar o onboarding completo de um novo assessor (agente humano ou AI) no squa
 ## Próxima Task
 
 Nenhuma — esta é uma task terminal de onboarding.
+
+## Subtask Breakdown
+1. **Preparar e entregar kit** — Agente: `operations-agent`. Input: materiais do squad. Output: kit de onboarding entregue. Gate: README, ARCHITECTURE, config e voice entregues.
+2. **Conduzir orientação** — Agente: `operations-agent`. Input: fluxo completo do assessment. Output: sessão de orientação concluída. Gate: novo assessor demonstra compreensão do fluxo.
+3. **Treinamento teórico** — Agente: `operations-agent`. Input: 7 frameworks. Output: `training-log` com 7 módulos. Gate: avaliação teórica >= 70% por framework.
+4. **Treinamento prático** — Agente: `operations-agent`. Input: sessões reais. Output: 3 sessões observadas + 1 supervisionada + 2 revisadas. Gate: todas concluídas.
+5. **Certificar assessor** — Agente: `operations-agent`. Input: avaliação de competência. Output: `certification`. Gate: acurácia >= 70% nas sessões supervisionadas.
+
+## Quality Gate
+- [ ] 7 frameworks treinados com avaliação >= 70%
+- [ ] Acurácia >= 70% nas sessões supervisionadas
+- Threshold: competência em scripts e ferramentas demonstrada
+- Se FAIL: estender período de supervisão com +2 sessões assistidas
+
+## Rework Trigger
+- Acurácia < 70% nas sessões → retreinamento nos frameworks com gap
+- Não domina scripts → sessão adicional de treinamento técnico

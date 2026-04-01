@@ -17,4 +17,58 @@
 #   - feedback_cliente: feedback textual (string)
 #   - licoes_aprendidas: referência ao lessons-learned (string)
 
-entries: []
+# Validation Rules:
+#   - id: obrigatório, formato "AO-NNNN", único no registro
+#   - projeto_id: obrigatório, referência válida a um projeto existente
+#   - tipo_projeto: obrigatório, valores aceitos: full_persona | leadership | hiring | team | career | development | reassessment
+#   - persona_id: obrigatório, referência válida a persona-registry (formato "PER-NNNN")
+#   - data_inicio / data_conclusao: obrigatório, formato YYYY-MM-DD
+#   - confianca_media: obrigatório, float entre 0.0 e 1.0
+#   - contradicoes_encontradas / contradicoes_resolvidas: obrigatório, inteiros >= 0
+#   - satisfacao_cliente: obrigatório, inteiro entre 1 e 5
+#
+# Usage:
+#   Escrito pelo Orchestrator Agent ao finalizar um projeto de assessment.
+#   Consultado para análise de qualidade histórica e benchmarking de futuros projetos.
+#   Alimenta métricas de eficácia do squad e satisfação do cliente.
+
+entries:
+  - id: "AO-0001"
+    projeto_id: "projeto-lideranca-tech-2026"
+    tipo_projeto: "full_persona"
+    persona_id: "PER-0001"
+    data_inicio: 2026-01-15
+    data_conclusao: 2026-02-20
+    frameworks_utilizados:
+      - "Big Five"
+      - "HEXACO"
+      - "MBTI"
+      - "Enneagram"
+      - "CliftonStrengths"
+    confianca_media: 0.82
+    contradicoes_encontradas: 1
+    contradicoes_resolvidas: 1
+    satisfacao_cliente: 4
+    feedback_cliente: >
+      Relatório profundo e detalhado. A contradição identificada entre Big Five e MBTI
+      foi explicada de forma clara. Reconhecimento de 4.2/5 na devolutiva.
+    licoes_aprendidas: "LL-0001"
+
+  - id: "AO-0002"
+    projeto_id: "contratacao-engenharia-q1-2026"
+    tipo_projeto: "hiring"
+    persona_id: "PER-0002"
+    data_inicio: 2026-03-10
+    data_conclusao: 2026-03-25
+    frameworks_utilizados:
+      - "Big Five"
+      - "DISC"
+      - "Predictive Index"
+    confianca_media: 0.68
+    contradicoes_encontradas: 0
+    contradicoes_resolvidas: 0
+    satisfacao_cliente: 5
+    feedback_cliente: >
+      Assessment focado e objetivo para processo seletivo. Perfil DC do DISC
+      confirmado pelo Predictive Index. Recomendação de contratação clara e bem fundamentada.
+    licoes_aprendidas: "LL-0002"

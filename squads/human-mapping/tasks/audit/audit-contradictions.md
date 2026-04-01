@@ -59,3 +59,19 @@ Identificar e documentar contradições entre os resultados dos diferentes frame
 ## Próxima Task
 
 `tasks/audit/reconcile-frameworks.md` — Reconciliar conflitos entre frameworks
+
+## Subtask Breakdown
+1. **Executar contradiction-detector** — Agente: `audit-agent`. Input: todos os layer results. Output: lista de contradições com severidade. Gate: todos os pares de frameworks verificados.
+2. **Classificar por severidade** — Agente: `audit-agent`. Input: contradições detectadas. Output: classificação (Crítica/Moderada/Leve). Gate: cada contradição classificada.
+3. **Diagnosticar origens** — Agente: `audit-agent`. Input: contradições + dados brutos. Output: `contradiction-origins`. Gate: hipótese documentada para cada contradição crítica.
+4. **Priorizar para reconciliação** — Agente: `audit-agent`. Input: classificações + origens. Output: `reconciliation-priorities`. Gate: ordem definida para tratamento.
+
+## Quality Gate
+- [ ] Todos os pares de frameworks comparados
+- [ ] Zero contradições críticas sem hipótese de origem
+- Threshold: score de contradição geral < 20 para perfil "limpo"
+- Se FAIL: escalar contradições críticas para reconciliação manual
+
+## Rework Trigger
+- Contradições críticas > 3 → reavaliar dados brutos das camadas envolvidas
+- Score de contradição > 40 → considerar recalibração e reaplicação de camadas

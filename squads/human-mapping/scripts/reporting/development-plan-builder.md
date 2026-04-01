@@ -78,3 +78,25 @@ Dependencias:
   - development-prioritization, development-priority-rubric
   - development-plan-template
 ```
+
+## Especificacao de I/O
+
+### Input
+- Formato: YAML/Markdown
+- Campos obrigatorios: synthesis output, contradiction-map, confidence-map, development-prioritization framework
+- Exemplo: `{synthesis: {strengths: [...], attention_areas: [...]}, confidence: {overall: 70}, prioritization: "impact-effort"}`
+
+### Output
+- Formato: Markdown formatado
+- Campos: matriz impacto x esforco, top 3-5 areas prioritarias (estado atual, desejado, quick wins, acoes longo prazo, recursos, cronograma)
+
+### Thresholds
+- min_priority_areas: 3
+- max_priority_areas: 5
+- quick_win_timeline: 30 dias
+- long_term_timeline: 3-12 meses
+- min_confidence_for_recommendation: 55
+
+### Tratamento de Erros
+- Input invalido: retornar erro `MISSING_SYNTHESIS_DATA`
+- Dados insuficientes: gerar plano com areas de maior confianca e flag `limited-scope`

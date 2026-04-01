@@ -17,4 +17,36 @@
 #   - status: entregue | pendente | em_revisão (string)
 #   - feedback: feedback do squad receptor (string)
 
-entries: []
+# Validation Rules:
+#   - id: obrigatório, formato "CSD-NNNN", único no registro
+#   - data: obrigatório, formato YYYY-MM-DD
+#   - direcao: obrigatório, valores aceitos: enviado | recebido
+#   - squad_parceiro: obrigatório, nome de squad válido do ecossistema
+#   - tipo_entrega: obrigatório, valores aceitos: perfil | insight | recomendação | dados | consulta
+#   - formato: obrigatório, valores aceitos: yaml | json | markdown | verbal
+#   - confidencialidade: obrigatório, valores aceitos: público | restrito | confidencial
+#   - status: obrigatório, valores aceitos: entregue | pendente | em_revisão
+#
+# Usage:
+#   Escrito pelo Orchestrator Agent ao realizar handoffs entre squads.
+#   Consultado para auditoria de fluxo de dados e rastreabilidade de entregas.
+#   Usado para medir volume e qualidade de integrações cross-squad.
+
+entries:
+  - id: "CSD-0001"
+    data: 2026-02-22
+    direcao: "enviado"
+    squad_parceiro: "advisory-board"
+    tipo_entrega: "perfil"
+    descricao: >
+      Entrega do perfil consolidado de Ana Souza (PER-0001) ao Advisory Board
+      para subsidiar decisão de promoção a Tech Lead. Inclui Executive Snapshot
+      e Leadership Profile com scores de confiança por dimensão.
+    persona_id: "PER-0001"
+    projeto_id: "projeto-lideranca-tech-2026"
+    formato: "markdown"
+    confidencialidade: "confidencial"
+    status: "entregue"
+    feedback: >
+      Advisory Board confirmou recebimento e utilizou perfil na deliberação.
+      Feedback positivo sobre clareza do relatório e utilidade dos scores de confiança.

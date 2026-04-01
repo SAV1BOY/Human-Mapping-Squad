@@ -34,5 +34,26 @@ responsáveis, prazos e métricas de acompanhamento.
 - [ ] Plano alinhado com líder e stakeholders
 - [ ] Relatório final entregue
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Ações específicas com responsáveis e prazos definidos
+- [ ] Métricas de sucesso estabelecidas
+- [ ] Plano alinhado e aprovado por líder e stakeholders
+
+### NO-GO (não avançar)
+- Líder não aprovou o plano → Ação: revisar e realinhar
+- Ações sem responsável ou prazo → Ação: completar antes de entregar
+
+### Entregáveis Obrigatórios
+- `team-composition-template` (completo) — preenchido e validado
+- `team-dynamics-report-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/team-composition-template.md`
+- `templates/reports/team-dynamics-report-template.md`
+- `checklists/team-role-quality.md`
+- `workflows/15-team-composition-flow.md`
+
 ## Próxima Fase
 Projeto concluído. Revisão de progresso nos marcos de 30, 60 e 90 dias.

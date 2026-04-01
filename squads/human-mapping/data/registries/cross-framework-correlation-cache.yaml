@@ -18,4 +18,50 @@
 #   - last_confirmed: data da última confirmação (string, formato: YYYY-MM-DD)
 #   - notes: observações adicionais (string, opcional)
 
-entries: []
+# Validation Rules:
+#   - correlation_id: obrigatório, formato "CFC-NNNN", único no registro
+#   - framework_a / framework_b: obrigatório, nomes de frameworks reconhecidos
+#   - dimension_a / dimension_b: obrigatório, string não vazia
+#   - correlation_type: obrigatório, valores aceitos: positive | negative | conditional | nonlinear
+#   - strength: obrigatório, float entre 0.0 e 1.0
+#   - observations: obrigatório, inteiro >= 1
+#   - confidence: obrigatório, float entre 0.0 e 1.0
+#   - discovered_date / last_confirmed: obrigatório, formato YYYY-MM-DD
+#
+# Usage:
+#   Escrito pelo Synthesis Architect ao identificar correlações durante integração.
+#   Consultado por agentes analistas para acelerar inferências e aumentar confiança.
+#   Cache é invalidado se a confiança cai abaixo de 0.5 após novas observações.
+
+entries:
+  - correlation_id: "CFC-0001"
+    framework_a: "Big Five"
+    dimension_a: "Extroversão alta (>0.70)"
+    framework_b: "DISC"
+    dimension_b: "Influência (I) dominante"
+    correlation_type: "positive"
+    strength: 0.78
+    observations: 2
+    confidence: 0.72
+    conditions: "Correlação mais forte quando faceta 'warmth' do Big Five também é alta"
+    discovered_date: "2026-01-15"
+    last_confirmed: "2026-03-10"
+    notes: >
+      Correlação esperada pela teoria. Extroversão Big Five compartilha
+      variância com eixo Influência do DISC. Observada em HMS-2026-0001 e HMS-2026-0002.
+
+  - correlation_id: "CFC-0002"
+    framework_a: "Enneagram"
+    dimension_a: "Tipo 2 (Helper)"
+    framework_b: "CliftonStrengths"
+    dimension_b: "Empatia e Desenvolvimento no Top 5"
+    correlation_type: "positive"
+    strength: 0.82
+    observations: 1
+    confidence: 0.60
+    conditions: "Observada quando asa 3 está presente, reforçando orientação a pessoas com drive de realização"
+    discovered_date: "2026-02-20"
+    last_confirmed: "2026-02-20"
+    notes: >
+      Observada em PER-0001. Tipo 2 do Eneagrama com asa 3 correlaciona fortemente
+      com presença de Empatia e Desenvolvimento entre os Top 5 do CliftonStrengths.

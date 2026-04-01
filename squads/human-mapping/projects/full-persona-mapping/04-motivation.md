@@ -33,5 +33,25 @@ impulsiona suas decisões, engajamento e satisfação profissional e pessoal.
 - [ ] Alinhamento contextual avaliado
 - [ ] Nível de confiança registrado
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Motivação central identificada com confiança ≥ 0.5
+- [ ] Valores dominantes hierarquizados
+- [ ] Cruzamento com traços e tipos realizado
+
+### NO-GO (não avançar)
+- Confiança na motivação central < 0.5 → Ação: aplicar instrumento adicional ou entrevista de aprofundamento
+- Conflito irreconciliável entre motivação e traços → Ação: sinalizar para Fase 07 e documentar
+
+### Entregáveis Obrigatórios
+- `motivation-map-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/layers/motivation-map-template.md`
+- `checklists/motivation-assessment-quality.md`
+- `checklists/motivation/values-drivers-quality.md`
+- `workflows/05-motivation-assessment-flow.md`
+
 ## Próxima Fase
 `05-strengths.md` — Avaliação de forças e talentos

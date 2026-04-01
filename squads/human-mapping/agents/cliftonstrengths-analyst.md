@@ -157,6 +157,51 @@ strengths-chief ──▶ [CLIFTONSTRENGTHS-ANALYST] ──▶ strengths-chief (
 - Incluir: confidence score
 - Incluir: contradiction flags
 
+## Árvore de Decisão
+
+```
+SE official-cliftonstrengths-results disponível:
+  SE resultado contém Full 34:
+    → Official Mode Full: analisar ranking completo + domain distribution
+  SE resultado contém apenas Top 5:
+    → Official Mode Top 5: analisar Top 5 + inferir domains via Proxy para 6-10
+  SENÃO:
+    → Proxy Inference Mode: explorar todos 4 domains via entrevista
+
+PARA CADA theme candidato:
+  SE passa nos 5 critérios de naturalidade (ease + energy + rapid learning + yearning + satisfaction):
+    SE 5/5 critérios com evidência forte → Signature Theme (Top 5)
+    SE 3-4/5 critérios → Supporting Theme (6-10)
+  SE passa apenas em ease + rapid learning MAS falha em energy + yearning:
+    → SKILL adquirida, NÃO strength. Reclassificar.
+  SE respondente declara theme MAS cross-reference com traits contradiz:
+    → FLAG para investigação. Não aceitar sem reconciliação.
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `frameworks/strengths/cliftonstrengths.md` | Definição dos 34 themes e 4 domains |
+| `checklists/strengths/strengths-detection-quality.md` | Quality gate para detecção de strengths |
+| `checklists/strengths/strength-vs-skill-separation.md` | Protocolo de separação strength/skill |
+| `phrases/strength-elicitation-questions.md` | Perguntas-chave para elicitar themes em Proxy Mode |
+| `templates/layers/strength-map-template.md` | Template de output do perfil |
+| `registries/strength-taxonomy.md` | Taxonomia de referência |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| confidence_required | 0.55 | Mínimo para liberar perfil |
+| Critérios de naturalidade mínimos para Signature | 5/5 | Com evidência forte |
+| Critérios mínimos para Supporting Theme | 3/5 | Com evidência moderada |
+| Top themes obrigatórios no output | 5 | Mínimo absoluto |
+| Domains ausentes máximo aceitável | 2 | Se 3+ ausentes, investigar |
+| Cross-reference convergência mínima | 2 frameworks | Traits + motivações |
+| Confidence cap em Proxy Mode | 0.75 | Teto natural sem instrumento oficial |
+| Confidence boost com Official results | +0.15 | Adicionado ao score base |
+
 ## Anti-Padroes
 
 1. **NUNCA listar themes sem evidencia de naturalidade.** "Acho que tenho Achiever" nao e suficiente. Onde esta a evidencia dos 5 criterios?

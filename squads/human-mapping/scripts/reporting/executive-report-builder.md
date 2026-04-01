@@ -70,3 +70,24 @@ Dependencias:
   - executive-brief-model, executive-snapshot-template
   - voice/tone-profiles/executive-advisor.md
 ```
+
+## Especificacao de I/O
+
+### Input
+- Formato: YAML/Markdown
+- Campos obrigatorios: saida do synthesis-architect (perfil integrado), confidence-map
+- Exemplo: `{synthesis: {central-themes: [...], strengths: [...], risks: [...]}, confidence: {overall: 75, by_category: {...}}}`
+
+### Output
+- Formato: Markdown formatado (1 pagina)
+- Campos: resumo em 1 frase, top 3 forcas, top 3 areas de atencao, perfil relampago, recomendacao-chave, resumo de confianca
+
+### Thresholds
+- min_frameworks_per_point: 2 (cada afirmacao suportada por >= 2 frameworks)
+- max_sections: 5
+- max_sentences_per_section: 3
+- min_confidence_for_inclusion: 50
+
+### Tratamento de Erros
+- Input invalido: retornar erro `MISSING_SYNTHESIS_DATA`
+- Dados insuficientes: gerar snapshot parcial com sections disponiveis e disclaimer

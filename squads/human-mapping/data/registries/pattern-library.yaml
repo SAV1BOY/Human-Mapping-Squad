@@ -15,4 +15,59 @@
 #   - discovered_date: data em que o padrão foi primeiro identificado (string, formato: YYYY-MM-DD)
 #   - notes: observações adicionais (string, opcional)
 
-entries: []
+# Validation Rules:
+#   - pattern_id: obrigatório, formato "PAT-NNNN", único no registro
+#   - name: obrigatório, string não vazia
+#   - frequency: obrigatório, inteiro >= 1
+#   - accuracy: obrigatório, float entre 0.0 e 1.0
+#   - associated_profiles: obrigatório, lista com pelo menos 1 perfil
+#   - frameworks_involved: obrigatório, lista com pelo menos 1 framework
+#   - discovered_date: obrigatório, formato YYYY-MM-DD
+#
+# Usage:
+#   Escrito pelo Synthesis Architect ao identificar padrões recorrentes em sessões.
+#   Consultado por agentes analistas para acelerar inferências quando padrão é reconhecido.
+#   Padrões com accuracy < 0.60 são marcados para revisão ou remoção.
+
+entries:
+  - pattern_id: "PAT-0001"
+    name: "Extroversão Seletiva em Líderes Técnicos"
+    description: >
+      Profissionais de tecnologia em posições de liderança frequentemente apresentam
+      extroversão moderada no Big Five (0.45-0.60) combinada com preferência E no MBTI.
+      O padrão se resolve como extroversão seletiva: alta energia em contextos de
+      ideação/brainstorming, reserva em situações sociais amplas. Correlaciona com
+      Ne dominante no MBTI e faceta 'warmth' acima da média no Big Five.
+    frequency: 1
+    accuracy: 0.80
+    associated_profiles:
+      - "Líderes técnicos com perfil ENFP/ENTP"
+      - "Tech Leads e Engineering Managers"
+    frameworks_involved:
+      - "Big Five"
+      - "MBTI"
+    example_session_ids:
+      - "HMS-2026-0001"
+    discovered_date: "2026-02-18"
+    notes: "Derivado da resolução de CONTR-0001. Necessita mais observações para validação robusta."
+
+  - pattern_id: "PAT-0002"
+    name: "Helper-Achiever em Liderança Servidora"
+    description: >
+      Combinação de Enneagram Tipo 2 (Helper) com asa 3 (Achiever) correlaciona
+      fortemente com presença de Empatia e Desenvolvimento entre os Top 5 do
+      CliftonStrengths. Este padrão indica orientação genuína a desenvolvimento
+      de pessoas, potencializada por drive de realização. Pessoas com este padrão
+      tendem a ser mentores naturais que medem impacto de forma tangível.
+    frequency: 1
+    accuracy: 0.82
+    associated_profiles:
+      - "Líderes com orientação a pessoas e resultados"
+      - "Mentores naturais em organizações"
+    frameworks_involved:
+      - "Enneagram"
+      - "CliftonStrengths"
+    example_session_ids:
+      - "HMS-2026-0001"
+    discovered_date: "2026-02-20"
+    notes: "Correlação registrada como CFC-0002. Confiança moderada por ter apenas 1 observação."

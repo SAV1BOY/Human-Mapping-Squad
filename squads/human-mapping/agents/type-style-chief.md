@@ -280,6 +280,78 @@ handoff:
   message: "Perfil tipologico consolidado. {n} frameworks completos. Consistency: {score}. {m} flags para atencao."
 ```
 
+## Árvore de Decisão
+
+```
+FRAMEWORK EXECUTION ORDER:
+  SEMPRE obrigatórios (qualquer depth):
+    1. MBTI → inferir 4 dicotomias + tipo
+    2. DISC → perfil natural + adaptado
+    (disparar em PARALELO)
+
+  SE depth >= standard:
+    3. Insights Discovery / Social Style → ativar após MBTI+DISC
+  SE depth >= deep:
+    4. Predictive Index → ativar em paralelo com Insights
+  SE depth >= comprehensive:
+    5. FIRO + PCM + Birkman → ativar APÓS consistency check dos 1-4
+
+WHEN TO SKIP OPTIONAL FRAMEWORKS:
+  SE depth < standard → NÃO ativar Insights/SS, PI, FIRO/PCM/Birkman
+  SE depth = standard MAS tempo insuficiente → priorizar Insights, skip PI
+  SE trait_meta_confidence < 0.50 → BLOQUEAR toda a camada, retornar ao trait-chief
+  NUNCA skip MBTI ou DISC — são SEMPRE obrigatórios
+
+TYPE-VS-TRAIT SEPARATION VERIFICATION:
+  PARA CADA inferência tipológica:
+    SE tipo CONSISTENTE com traits (ex: ENTJ + E=75, O=70, A=40, C=80):
+      → Validado. confidence_boost = +0.05
+    SE tipo INCONSISTENTE com traits (ex: ENFP + C=85, O=40):
+      → FLAG. Solicitar re-análise ao analyst com contexto de traits.
+      → Investigar: tipo inferido incorretamente OU traço mascara tipo?
+      → Documentar resolução OU manter flag pendente.
+    SE mais de 2 flags de inconsistência não resolvidos:
+      → BLOQUEAR handoff até resolução.
+
+CONSISTENCY CHECK (antes de FIRO/PCM/Birkman):
+  SE cross-framework consistency >= 0.65 → prosseguir
+  SE cross-framework consistency 0.50-0.64 → WARNING, prosseguir com flag
+  SE cross-framework consistency < 0.50 → BLOQUEAR, investigar divergências
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `frameworks/types-styles/mbti.md` | MBTI: 4 dicotomias, 16 tipos |
+| `frameworks/types-styles/disc.md` | DISC: natural vs adaptado |
+| `frameworks/types-styles/insights-discovery.md` | Insights: 4 cores |
+| `frameworks/types-styles/predictive-index.md` | PI: 4 drives, reference profiles |
+| `frameworks/types-styles/firo.md` | FIRO: Inclusion, Control, Affection |
+| `frameworks/types-styles/pcm.md` | PCM: base, stress pattern |
+| `frameworks/types-styles/birkman.md` | Birkman: usual vs necessidades ocultas |
+| `checklists/types/mbti-inference-quality.md` | Quality gate MBTI |
+| `checklists/types/disc-inference-quality.md` | Quality gate DISC |
+| `checklists/types/style-consistency-quality.md` | Quality gate consistência |
+| `checklists/types/type-vs-trait-separation.md` | Checklist separação tipo/traço |
+| `templates/layers/type-style-map-template.md` | Template de output |
+| `registries/type-taxonomy.md` | Taxonomia de tipos |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| confidence_required | 0.70 | Para liberar camada |
+| trait_meta_confidence mínimo | 0.75 | Para iniciar tipos; se menor, confidence cap |
+| trait_meta_confidence bloqueio | < 0.50 | Retornar ao trait-chief |
+| Cross-framework consistency mínimo | >= 0.65 | Para handoff |
+| Cross-framework consistency warning | 0.50-0.64 | Prosseguir com flag |
+| Cross-framework consistency bloqueio | < 0.50 | Investigar divergências |
+| Flags inconsistência máximo pendentes | 2 | Se >2, bloquear handoff |
+| Confidence boost por concordância | +0.05 | Por par de frameworks |
+| MBTI dicotomias completas | 4/4 | Obrigatório |
+| DISC perfis completos | 2 (natural + adaptado) | Obrigatório |
+
 ## Anti-Padroes
 
 1. **Inferir tipos ANTES de ter tracos** — Tipos DEPENDEM de tracos. MBTI sem Big Five e adivinhacao.

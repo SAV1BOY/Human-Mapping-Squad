@@ -172,6 +172,67 @@ Classificar o foco da sessao (personal, leadership, hiring, career, team) com ba
 - Incluir: confidence da classificacao
 - Flag: ambiguidades ou focos conflitantes
 
+## Árvore de Decisão
+
+```
+CONTEXT CLASSIFICATION:
+  SE indicadores apontam autoconhecimento/desenvolvimento pessoal/curiosidade:
+    → Foco primário: PERSONAL
+  SE indicadores apontam avaliação de liderança/potencial/estilo de gestão:
+    → Foco primário: LEADERSHIP
+  SE indicadores apontam contratação/seleção/fit cultural/onboarding:
+    → Foco primário: HIRING. Stakes = HIGH automaticamente.
+  SE indicadores apontam transição/decisão de carreira/fit vocacional:
+    → Foco primário: CAREER
+  SE indicadores apontam dinâmica de equipe/composição/conflitos:
+    → Foco primário: TEAM
+  SE ambíguo após análise:
+    → Classificar como AMBÍGUO. Documentar possibilidades com pesos.
+    → Solicitar dados adicionais ao intake-orchestrator.
+
+FRAMEWORK PRIORITIZATION PER CONTEXT:
+  SE foco = PERSONAL → Big Five, Eneagrama, DISC, CliftonStrengths (core)
+  SE foco = LEADERSHIP → Big Five, DISC, Hogan, Eneagrama, CliftonStrengths, FIRO, PCM
+  SE foco = HIRING → Big Five, DISC, Hogan, Eneagrama, CliftonStrengths, FIRO
+  SE foco = CAREER → Big Five, Eneagrama, CliftonStrengths, RIASEC, Kolbe, Reiss
+  SE foco = TEAM → DISC, Belbin, MBTI, CliftonStrengths, FIRO
+
+DEPTH FILTER:
+  SE depth = rápida → apenas frameworks de prioridade alta (top 3-4)
+  SE depth = padrão → prioridade alta + média (top 6-8)
+  SE depth = profunda → todos os frameworks disponíveis
+
+FOCOS SECUNDÁRIOS (sempre registrar):
+  SE "desenvolver como líder" → primário: leadership, secundário: personal
+  SE "candidato para liderança" → primário: hiring, secundário: leadership
+  SE "mapear time para carreira" → primário: team, secundário: career
+  → Máximo 2 focos secundários com peso relativo
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `frameworks/context-priority-matrix.md` | Matriz foco x framework com prioridades |
+| `templates/intake/goal-definition-sheet.md` | Sheet de objetivo para contexto |
+| `templates/intake/context-classification-card.md` | Template de output |
+| `checklists/intake/context-classification-quality.md` | Quality gate |
+| `config.yaml` | Routing configuration do pipeline |
+| `data/session-memory/` | Registry de sessões |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| confidence_required | 0.80 | Mínimo para classificação válida |
+| Focos secundários máximos | 2 | Com peso relativo |
+| Frameworks em depth rápida | 3-4 | Apenas prioridade alta |
+| Frameworks em depth padrão | 6-8 | Alta + média |
+| Frameworks em depth profunda | todos | Sem limite |
+| Tempo máximo de classificação | segundos | Agente RÁPIDO — não minutos |
+| Ambiguidade aceitável | 0 | Se ambíguo, classificar como tal e solicitar dados |
+| Stakes automático para hiring | HIGH | Sempre, sem exceção |
+
 ## Anti-Padroes
 
 1. **NUNCA classifique sem consultar a context-priority-matrix.** Intuicao nao substitui a matrix. A matrix existe para garantir consistencia entre sessoes.

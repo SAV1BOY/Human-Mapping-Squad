@@ -77,3 +77,24 @@ Avalia se motivacoes fundamentais sao compatíveis.
 - Contexto e lideranca importam mais que perfis
 - Score e indicativo, nao determinístico
 - Pessoas crescem e mudam — reavaliar periodicamente
+
+## Especificacao de I/O
+
+### Input
+- Formato: YAML
+- Campos obrigatorios: perfis completos de cada membro (Big Five, DISC, Enneagrama, Kolbe), contexto da equipe
+- Exemplo: `{members: [{id: "M1", big_five: {O:70,C:60,E:55,A:65,N:30}, disc: "Di", kolbe: [7,4,8,3]}], context: "inovacao"}`
+
+### Output
+- Formato: YAML
+- Campos: `score_geral` (0-100), `breakdown` por dimensao, `pontos_sinergia`, `pontos_atrito`, `recomendacoes`
+
+### Thresholds
+- alta_compatibilidade: 80 (score >= 80 monitorar groupthink)
+- boa_compatibilidade: 60 (score 60-79)
+- baixa_compatibilidade: 20 (score 20-39 alto risco)
+- incompatibilidade: 20 (score < 20 reconsiderar composicao)
+
+### Tratamento de Erros
+- Input invalido: retornar erro `INVALID_PROFILE_DATA` com membro especifico
+- Dados insuficientes: calcular com dimensoes disponiveis e flag `partial-analysis`

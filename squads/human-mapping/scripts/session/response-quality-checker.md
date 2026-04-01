@@ -68,3 +68,25 @@ Verificar a qualidade das respostas do respondente em tempo real durante o asses
 ## Uso
 
 Chamado automaticamente após cada resposta do respondente durante qualquer camada de assessment. Integrado com todos os tasks de `tasks/assessment/`.
+
+## Especificação de I/O
+
+### Input
+- Formato: YAML/JSON
+- Campos obrigatórios: `response`, `question`, `session-context`, `calibration-data`
+- Exemplo: `{response: "Eu prefiro trabalhar em equipe...", question: {id: "T-01", type: "open"}, session-context: {previous_quality_avg: 75}}`
+
+### Output
+- Formato: YAML
+- Campos: `quality-score`, `flags`, `action`, `cumulative-quality`
+
+### Thresholds
+- min_chars_open: 20 (mínimo para perguntas abertas)
+- accept_threshold: 70 (score >= 70 aceita normalmente)
+- rephrase_threshold: 40 (score < 40 solicita reformulação)
+- acquiescence_limit: 0.70 (> 70% concordância = padrão suspeito)
+- engagement_drop_std: 2.0 (desvios-padrão para flag de desengajamento)
+
+### Tratamento de Erros
+- Input inválido: retornar quality-score = 0 e flag `invalid-input`
+- Dados insuficientes: aceitar resposta com flag `insufficient-context` e quality = 50

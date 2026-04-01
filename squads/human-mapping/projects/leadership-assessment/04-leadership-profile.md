@@ -32,5 +32,24 @@ com narrativa clara sobre estilo, forças, riscos e motivações.
 - [ ] Mapa visual criado
 - [ ] Sumário executivo redigido
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Narrativa integrada redigida e revisada
+- [ ] Gaps perfil vs competências esperadas identificados
+- [ ] Contradições resolvidas ou documentadas com transparência
+
+### NO-GO (não avançar)
+- Integração incompleta (camada ausente) → Ação: retornar à fase correspondente
+- Gaps não priorizados → Ação: completar priorização antes de gerar plano
+
+### Entregáveis Obrigatórios
+- `leadership-profile-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/leadership-profile-template.md`
+- `checklists/synthesis-quality.md`
+- `workflows/13-leadership-profile-flow.md`
+
 ## Próxima Fase
 `05-development-plan.md` — Plano de desenvolvimento de liderança

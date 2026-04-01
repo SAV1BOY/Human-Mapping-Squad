@@ -33,5 +33,24 @@ aderência em cada dimensão e o fit cultural com a organização e equipe.
 - [ ] Pontos fortes e fracos listados
 - [ ] Critérios eliminatórios verificados
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Matriz de comparação candidato vs perfil ideal completa
+- [ ] Fit cultural avaliado com evidências
+- [ ] Critérios eliminatórios verificados (nenhum bloqueio)
+
+### NO-GO (não avançar)
+- Candidato falha em critério eliminatório → Ação: documentar e encerrar ou escalar para decisão
+- Dados insuficientes para cálculo de fit → Ação: coletar dados complementares
+
+### Entregáveis Obrigatórios
+- `hiring-assessment-template` (seção fit analysis) — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/hiring-assessment-template.md`
+- `checklists/cross-framework-reconciliation-quality.md`
+- `workflows/14-hiring-assessment-flow.md`
+
 ## Próxima Fase
 `03-risk-analysis.md` — Análise de riscos

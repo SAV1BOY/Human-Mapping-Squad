@@ -33,5 +33,26 @@ liderança, incluindo o "lado brilhante" e os riscos de descarrilamento.
 - [ ] Cruzamento com dados de desempenho realizado
 - [ ] Níveis de confiança documentados
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] HPI (ou Big Five) analisado com confiança ≥ 0.6
+- [ ] HDS descarriladores mapeados e priorizados por risco
+- [ ] Estilo de liderança predominante identificado
+
+### NO-GO (não avançar)
+- Dados de traços insuficientes para perfil mínimo → Ação: aplicar instrumento alternativo
+- Descarriladores não avaliados → Ação: coletar dados HDS ou proxy antes de avançar
+
+### Entregáveis Obrigatórios
+- `trait-map-template` — preenchido e validado
+- `dark-side-risk-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/layers/trait-map-template.md`
+- `templates/layers/dark-side-risk-template.md`
+- `checklists/trait-assessment-quality.md`
+- `workflows/13-leadership-profile-flow.md`
+
 ## Próxima Fase
 `02-motivation-and-drives.md` — Motivações e drivers de liderança

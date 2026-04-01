@@ -104,3 +104,23 @@ A cada 3 meses, submeter dados de monitoramento de equipe ao processo de RalphLo
 - Dados individuais de assessment permanecem confidenciais — o monitoramento foca na dinamica coletiva
 - O lider da equipe e co-responsavel pelo monitoramento, nao apenas o analista externo
 - Equipes remotas ou hibridas podem necessitar frequencia de monitoramento maior nos primeiros meses
+
+## Critérios de Decisão
+
+### GO (avançar — ciclo de monitoramento encerrado)
+- [ ] Score de saúde da equipe ≥ 6 por 2 meses consecutivos
+- [ ] Gaps críticos da Fase 02 preenchidos ou em mitigação ativa
+- [ ] Dados de monitoramento submetidos ao RalphLoop
+
+### NO-GO (não encerrar monitoramento)
+- Score de saúde < 5 por 2 meses → Ação: acionar reassessment completo
+- Membro saiu ou entrou na equipe → Ação: recalcular cobertura e gaps
+
+### Entregáveis Obrigatórios
+- `monthly_checkin` (YAML) — preenchido a cada check-in
+- `team-dynamics-report-template` — atualizado trimestralmente
+
+### Arquivos Relacionados
+- `templates/reports/team-dynamics-report-template.md`
+- `checklists/team/team-dynamics-quality.md`
+- `workflows/20-ralphloop-assessment-retro.md`

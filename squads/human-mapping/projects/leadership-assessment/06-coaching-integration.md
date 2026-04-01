@@ -112,3 +112,23 @@ Após a entrega do relatório de liderança (Fase 05), quando o líder será aco
 | Precisão do perfil | ≥80% dos achados confirmados na prática de coaching |
 | Tempo até primeira ação | Líder inicia ação de desenvolvimento em ≤4 semanas |
 | Progresso em 6 meses | Melhoria mensurável em ≥2 das 3 prioridades |
+
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Handoff para coach realizado com briefing executivo entregue
+- [ ] Reunião de alinhamento com coach concluída (60 min)
+- [ ] Consentimento do respondente para compartilhamento documentado
+
+### NO-GO (não avançar)
+- Coach não recebeu briefing → Ação: agendar reunião de alinhamento
+- Consentimento ausente → Ação: obter autorização antes de compartilhar dados
+
+### Entregáveis Obrigatórios
+- `coaching-brief-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/reports/coaching-brief-template.md`
+- `templates/operational/cross-squad-handoff-template.md`
+- `checklists/chief/chief-cross-squad-handoff-quality.md`
+- `workflows/17-cross-squad-handoff-flow.md`

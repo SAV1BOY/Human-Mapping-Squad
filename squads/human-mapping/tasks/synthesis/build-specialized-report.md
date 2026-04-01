@@ -68,3 +68,20 @@ Construir relatório especializado adaptado ao contexto específico da análise 
 ## Próxima Task
 
 `tasks/review/review-profile-accuracy.md` — Revisar acurácia do perfil
+
+## Subtask Breakdown
+1. **Identificar tipo de relatório** — Agente: `synthesis-agent`. Input: contexto da análise. Output: tipo selecionado (Contratação/Equipe/Liderança/Transição). Gate: tipo válido.
+2. **Executar análise específica** — Agente: `synthesis-agent`. Input: perfil integrado + dados do contexto. Output: análise especializada. Gate: análise cobre todas as dimensões relevantes.
+3. **Calcular fit score** — Agente: `synthesis-agent`. Input: perfil vs requisitos. Output: `fit-score` (0-100). Gate: score calculado (quando aplicável).
+4. **Gerar recomendação** — Agente: `synthesis-agent`. Input: análise + fit score. Output: `decision-recommendation` fundamentada. Gate: recomendação com >= 3 evidências.
+5. **Formatar relatório** — Agente: `synthesis-agent`. Input: análise completa. Output: `specialized-report`. Gate: template especializado aplicado.
+
+## Quality Gate
+- [ ] Relatório especializado completo e formatado
+- [ ] Recomendação fundamentada com evidências
+- Threshold: fit score com confiança >= 60
+- Se FAIL: incluir disclaimer sobre confiança limitada na recomendação
+
+## Rework Trigger
+- Dados insuficientes para o contexto → solicitar informações complementares
+- Fit score contradiz perfil qualitativo → reconciliar antes de emitir recomendação

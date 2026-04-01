@@ -33,5 +33,25 @@ ambientes, funções e atividades mais alinhados com o perfil mapeado.
 - [ ] Recomendações de carreira documentadas
 - [ ] Congruência atual avaliada
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] Código RIASEC identificado e contextualizado
+- [ ] Cruzamento com forças e traços realizado
+- [ ] Ambientes de trabalho ideais documentados
+
+### NO-GO (não avançar)
+- RIASEC não mapeado e sem proxy viável → Ação: aplicar instrumento RIASEC ou derivar via Holland codes
+- Histórico profissional insuficiente para análise → Ação: conduzir entrevista complementar
+
+### Entregáveis Obrigatórios
+- `career-fit-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/layers/career-fit-template.md`
+- `checklists/career-fit-quality.md`
+- `checklists/career/role-fit-quality.md`
+- `workflows/07-career-action-assessment-flow.md`
+
 ## Próxima Fase
 `07-contradictions.md` — Análise de contradições

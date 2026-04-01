@@ -164,6 +164,62 @@ career-fit-analyst ──▶ [RIASEC-STRONG-ANALYST] ──▶ career-fit-analys
 - Incluir: confidence score
 - Incluir: contradiction flags
 
+## Árvore de Decisão
+
+```
+SE official-strong-results disponível:
+  → Official Mode: importar GOT scores + Basic Interest Scales + Personal Style Scales
+  → Gerar 3-letter code a partir dos GOT scores oficiais
+SENÃO:
+  → Proxy Inference Mode: explorar 6 tipos via entrevista de atividades energizantes
+
+PARA CADA tipo RIASEC:
+  SE respondente relata energia + busca ativa + exemplos concretos:
+    → Muito alto (candidato ao 3-letter code)
+  SE respondente relata interesse moderado, nem atrai nem repele:
+    → Moderado (não entra no code)
+  SE respondente relata aversão + drenagem de energia:
+    → Muito baixo (informação de career anti-fit)
+
+GERAR 3-LETTER CODE:
+  → Ordenar os 3 tipos com maior intensidade
+  → A ORDEM importa: primeiro = mais forte
+
+PERSON-ENVIRONMENT FIT:
+  SE RIASEC code converge com traits + motivações + strengths (3+ dimensões):
+    → Career fit FORTE — documentar convergência
+  SE RIASEC code converge com apenas 1-2 dimensões:
+    → Career fit POSSÍVEL — documentar com caveats
+  SE tipos opostos no hexágono ambos altos (R+S, I+E, A+C):
+    → RIASEC CONFLICT — investigar: tensão genuína ou nicho raro?
+  SE interesse declarado MAS sem convergência com traits/strengths:
+    → FLAG: possível interesse sem aptidão — não confundir com career fit
+```
+
+## Arquivos Relacionados
+
+| Arquivo | Uso |
+|---------|-----|
+| `frameworks/career-fit/riasec.md` | Modelo RIASEC de Holland, hexágono, 6 tipos |
+| `frameworks/career-fit/strong-interest-inventory.md` | Strong: GOT, Basic Interest, Personal Style Scales |
+| `checklists/career/career-fit-quality.md` | Quality gate para career fit |
+| `templates/layers/career-fit-template.md` | Template de output |
+| `phrases/career-fit-questions.md` | Perguntas por tipo RIASEC para Proxy Mode |
+| `registries/development-action-taxonomy.md` | Taxonomia de ações |
+
+## Thresholds
+
+| Métrica | Valor | Contexto |
+|---------|-------|----------|
+| confidence_required | 0.50 | Mínimo para liberar perfil |
+| Tipos RIASEC a avaliar | 6/6 | Todos obrigatórios |
+| 3-letter code | obrigatório | Sempre gerar com ordem correta |
+| Intensidade escala | 5 níveis | Muito alto → Muito baixo |
+| Cross-reference mínimo | 2 frameworks | Traits + motivações |
+| Confidence cap em Proxy Mode | 0.70 | Teto sem instrumento oficial |
+| Confidence boost com Official Strong | +0.20 | Adicionado ao score base |
+| RIASEC conflict threshold | tipos opostos ambos >= Alto | Ativa investigação |
+
 ## Anti-Padroes
 
 1. **NUNCA confundir interesse com habilidade.** RIASEC I alto nao significa ser bom cientista — significa que pesquisa ENERGIZA.

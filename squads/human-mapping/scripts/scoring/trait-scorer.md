@@ -68,3 +68,24 @@ Calcular os scores de traços de personalidade (Big Five / OCEAN) a partir das r
 ## Uso
 
 Chamado por `tasks/assessment/run-trait-layer.md` após a coleta de todas as respostas da camada de traços.
+
+## Especificação de I/O
+
+### Input
+- Formato: YAML/JSON
+- Campos obrigatórios: `responses`, `question-weights`, `correction-factor`, `depth-mode`
+- Exemplo: `{responses: [{q_id: "O-1", answer: 4, time: 8s}], question-weights: {O-1: {O: 0.8}}, correction-factor: 0.10, depth-mode: "start"}`
+
+### Output
+- Formato: YAML
+- Campos: `trait-scores`, `trait-facets`, `trait-levels`, `raw-scores`, `correction-applied`
+
+### Thresholds
+- score_range: [0, 100]
+- low_threshold: 35 (score < 35 = Baixo)
+- high_threshold: 65 (score > 65 = Alto)
+- max_correction: 30% (fator de correção nunca excede 30% do score bruto)
+
+### Tratamento de Erros
+- Input inválido: retornar erro `INVALID_RESPONSES` com detalhes do campo inválido
+- Dados insuficientes: calcular scores parciais e marcar dimensões com < 2 respostas como `low-confidence`

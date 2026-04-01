@@ -78,3 +78,23 @@ Dependencias:
   - deep-persona-report-template
   - voice/tone-profiles/precise-analyst.md
 ```
+
+## Especificacao de I/O
+
+### Input
+- Formato: YAML/Markdown
+- Campos obrigatorios: todas as saidas de camada, contradiction-map, confidence-map
+- Exemplo: `{layers: {traits: {...}, types: {...}, ...}, contradiction-map: [...], confidence-map: {overall: 72}}`
+
+### Output
+- Formato: Markdown formatado (relatorio completo multi-secao)
+- Campos: sumario executivo, perfil de personalidade, traducao trabalho, estilo cognitivo, mapa motivacional, inventario de forcas, dinamica de equipe, fit de carreira, modo de acao, analise integrada, mapa de confianca
+
+### Thresholds
+- min_sections: 10
+- min_confidence_for_section: 50 (abaixo = omitir ou marcar como hipotese)
+- evidence_required: true (cada afirmacao com evidencia vinculada)
+
+### Tratamento de Erros
+- Input invalido: retornar erro `INCOMPLETE_LAYER_DATA` com camadas ausentes
+- Dados insuficientes: gerar relatorio com secoes disponiveis e nota de limitacoes expandida

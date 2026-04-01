@@ -58,3 +58,20 @@ Resolver as contradições identificadas na auditoria, determinando qual interpr
 ## Próxima Task
 
 `tasks/audit/verify-confidence-levels.md` — Verificar scores de confiança
+
+## Subtask Breakdown
+1. **Carregar contradições priorizadas** — Agente: `audit-agent`. Input: contradiction report. Output: lista ordenada. Gate: prioridades carregadas.
+2. **Aplicar protocolo de reconciliação** — Agente: `audit-agent`. Input: contradição + dados brutos + confiança. Output: decisão por contradição. Gate: protocolo aplicado a cada crítica.
+3. **Executar cross-framework-aligner** — Agente: `audit-agent`. Input: layer results + contradições. Output: alinhamentos verificados. Gate: clusters de convergência identificados.
+4. **Documentar tensões produtivas** — Agente: `audit-agent`. Input: contradições de complexidade genuína. Output: `productive-tensions`. Gate: cada tensão com explicação do mecanismo.
+5. **Recalcular confiança** — Agente: `audit-agent`. Input: scores ajustados. Output: `updated-confidence`. Gate: confiança recalculada para dimensões afetadas.
+
+## Quality Gate
+- [ ] Todas as contradições críticas reconciliadas com justificativa
+- [ ] Scores ajustados onde necessário
+- Threshold: confiança pós-reconciliação >= 55 para dimensões ajustadas
+- Se FAIL: rebaixar dimensões com confiança < 55 para "hipótese"
+
+## Rework Trigger
+- Reconciliação gera nova contradição → iterar até estabilizar
+- Confiança pós-ajuste < 40 → retornar camada afetada para reassessment

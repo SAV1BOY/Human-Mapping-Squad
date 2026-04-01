@@ -53,3 +53,20 @@ Calibrar o respondente antes do assessment principal, avaliando consistência na
 ## Próxima Task
 
 `tasks/calibration/detect-social-desirability.md` — Detectar viés de desejabilidade social
+
+## Subtask Breakdown
+1. **Aplicar perguntas de calibração** — Agente: `calibration-agent`. Input: banco de calibração (5-8 itens). Output: respostas + timestamps. Gate: todas as perguntas respondidas.
+2. **Medir consistência** — Agente: `calibration-agent`. Input: respostas espelhadas. Output: score de consistência (0-100). Gate: ao menos 2 pares espelhados avaliados.
+3. **Analisar padrões temporais** — Agente: `calibration-agent`. Input: timestamps por resposta. Output: `response-pattern`. Gate: desvio-padrão de tempos calculado.
+4. **Calcular score de calibração** — Agente: `calibration-agent`. Input: consistência + padrão temporal. Output: `calibration-score` via confidence-calculator. Gate: score no range 0-100.
+5. **Ajustar estratégia** — Agente: `calibration-agent`. Input: estilo de comunicação + score. Output: `question-strategy`. Gate: estratégia documentada no session record.
+
+## Quality Gate
+- [ ] Score de consistência calculado
+- [ ] Estilo de comunicação identificado (direto/reflexivo/narrativo)
+- Threshold: consistência >= 50% para prosseguir sem recalibração
+- Se FAIL: aplicar rodada adicional de 3 perguntas de calibração
+
+## Rework Trigger
+- Consistência < 50% → repetir calibração com perguntas alternativas
+- Respondente não engajado (respostas < 3s cada) → pausar e reavaliar

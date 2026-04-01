@@ -75,3 +75,28 @@ Calcular o nível de confiança dos resultados por dimensão, camada e perfil ag
 ## Uso
 
 Chamado por cada task de assessment ao final da camada, por tasks de audit para verificação, e por tasks de síntese para inclusão nos relatórios.
+
+## Especificação de I/O
+
+### Input
+- Formato: YAML/JSON
+- Campos obrigatórios: `layer-data`, `calibration-data`, `quality-metrics`, `mode`
+- Campos opcionais: `cross-framework-data`
+- Exemplo: `{layer-data: {responses: 10, min_required: 10}, quality-metrics: {avg_score: 78}, mode: "layer"}`
+
+### Output
+- Formato: YAML
+- Campos: `confidence-score`, `confidence-level`, `confidence-breakdown`, `modifiers-applied`, `recommendations`
+
+### Thresholds
+- max_score: 100
+- high_confidence: 70 (>= 70 = Alta)
+- medium_confidence: 50 (50-69 = Média)
+- low_confidence: 50 (< 50 = Baixa)
+- social_desirability_penalty: -10
+- fast_response_penalty: -5 (< 3s por pergunta)
+- suspicious_pattern_penalty: -15
+
+### Tratamento de Erros
+- Input inválido: retornar confidence = 0 com flag `INVALID_INPUT`
+- Dados insuficientes: calcular com critérios disponíveis e marcar ausentes como score mínimo (5 pontos)

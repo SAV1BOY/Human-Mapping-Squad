@@ -33,5 +33,24 @@ organizacional onde terá melhor desempenho e satisfação.
 - [ ] Cruzamento com estilo de liderança realizado
 - [ ] Fontes de desengajamento documentadas
 
+## Critérios de Decisão
+
+### GO (avançar para próxima fase)
+- [ ] MVPI (ou equivalente) analisado com drivers dominantes identificados
+- [ ] Cultura organizacional ideal mapeada
+- [ ] Alinhamento motivação vs contexto atual avaliado
+
+### NO-GO (não avançar)
+- Drivers motivacionais não identificados → Ação: conduzir entrevista de motivações
+- Cruzamento com estilo de liderança ausente → Ação: completar integração antes de avançar
+
+### Entregáveis Obrigatórios
+- `motivation-map-template` — preenchido e validado
+
+### Arquivos Relacionados
+- `templates/layers/motivation-map-template.md`
+- `checklists/motivation-assessment-quality.md`
+- `workflows/13-leadership-profile-flow.md`
+
 ## Próxima Fase
 `03-strengths-and-risks.md` — Forças e riscos na liderança

@@ -67,3 +67,24 @@ Verificar e quantificar o alinhamento entre os resultados dos diferentes framewo
 ## Uso
 
 Chamado por `tasks/audit/reconcile-frameworks.md` durante a reconciliação e por `tasks/synthesis/synthesize-profile.md` para construir o perfil integrado.
+
+## Especificação de I/O
+
+### Input
+- Formato: YAML
+- Campos obrigatórios: `all-layer-results`, `contradiction-report`, `framework-mappings`
+- Exemplo: `{all-layer-results: {ocean: {...}, mbti: {...}, belbin: {...}}, contradiction-report: {critical: [...]}}`
+
+### Output
+- Formato: YAML
+- Campos: `alignment-matrix`, `convergence-clusters`, `isolated-dimensions`, `alignment-score`, `synthesis-recommendations`
+
+### Thresholds
+- strong_alignment: 0.7 (concordância > 0.7 = alinhamento forte)
+- moderate_alignment: 0.4 (concordância 0.4-0.7)
+- misalignment: 0.4 (concordância < 0.4 = investigar)
+- min_frameworks_for_cluster: 3 (cluster requer >= 3 frameworks convergindo)
+
+### Tratamento de Erros
+- Input inválido: retornar erro `INVALID_LAYER_RESULTS`
+- Dados insuficientes: construir matriz parcial e flag dimensões sem dados como `no-data`

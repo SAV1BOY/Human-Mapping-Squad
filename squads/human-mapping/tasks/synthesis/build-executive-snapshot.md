@@ -59,3 +59,20 @@ Construir um snapshot executivo conciso e de alto impacto que resume o perfil in
 ## Próxima Task
 
 `tasks/synthesis/build-deep-report.md` — Construir relatório profundo (se profundidade /start ou /deep)
+
+## Subtask Breakdown
+1. **Executar executive-report-builder** — Agente: `synthesis-agent`. Input: perfil integrado + confidence map. Output: rascunho do snapshot. Gate: builder executado sem erros.
+2. **Selecionar template por contexto** — Agente: `synthesis-agent`. Input: contexto da análise. Output: template aplicado. Gate: template correto para o contexto.
+3. **Compor seções** — Agente: `synthesis-agent`. Input: temas + forças + áreas de atenção. Output: 5 seções do snapshot. Gate: cada seção com <= 3 frases.
+4. **Validar suporte multi-framework** — Agente: `synthesis-agent`. Input: afirmações do snapshot. Output: checklist de suporte. Gate: cada ponto suportado por >= 2 frameworks.
+5. **Revisar e formatar** — Agente: `synthesis-agent`. Input: rascunho completo. Output: `executive-snapshot` final. Gate: linguagem sem jargão, confiança indicada, limitações incluídas.
+
+## Quality Gate
+- [ ] Snapshot com todas as 5 seções obrigatórias
+- [ ] Linguagem acessível (sem jargões técnicos)
+- Threshold: confiança geral do snapshot >= 60
+- Se FAIL: adicionar caveats explícitos nas seções de menor confiança
+
+## Rework Trigger
+- Contradição interna no snapshot → revisar com dados do perfil integrado
+- Confiança do snapshot < 50 → reduzir escopo para seções de alta confiança apenas
