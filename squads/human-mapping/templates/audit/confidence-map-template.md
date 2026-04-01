@@ -3,10 +3,16 @@ type: template
 squad: human-mapping
 version: "3.0.0"
 used_by: [audit-agent, synthesis-agent, coordinator-agent]
+related_files:
+  - frameworks/confidence-scoring-model.md
+  - frameworks/cross-framework-reconciliation.md
+  - templates/audit/contradiction-map-template.md
+  - templates/reports/executive-snapshot-template.md
+  - templates/reports/deep-persona-report-template.md
 ---
 # Confidence Map — Fillable Template
 
-> Instrucoes: Consolide os niveis de confianca de cada layer do assessment. Classificacao e formula seguem `frameworks/confidence-scoring-model.md`. Este mapa determina a credibilidade geral e a decisao GO/NO-GO.
+> Instrucoes: Consolide os niveis de confianca de cada layer do assessment. Este mapa determina a credibilidade geral do perfil e quais areas requerem cautela na interpretacao. Cada campo tem definicao, formato e regras de preenchimento.
 
 ---
 
@@ -15,204 +21,240 @@ used_by: [audit-agent, synthesis-agent, coordinator-agent]
 | Campo | Definicao | Formato | Valor |
 |---|---|---|---|
 | Nome | Nome completo do respondente | Texto, max 60 chars | _______________ |
-| Session ID | Identificador unico | HMS-YYYY-MMDD-NNN | _______________ |
-| Profundidade | Nivel executado | Escolha: /fast / /start / /deep | _______________ |
+| Session ID | Identificador unico da sessao | HMS-YYYY-MMDD-NNN | _______________ |
+| Profundidade | Nivel de profundidade executado | Escolha: /fast / /start / /deep | _______________ |
 | Data | Data do assessment | YYYY-MM-DD | _______________ |
 
 ---
 
-## Escala de Classificacao (Referencia: `frameworks/confidence-scoring-model.md`)
+## Classificacao de Confidence
 
-| Score | Classificacao | Significado | Uso no Report |
-|---|---|---|---|
-| 0.00-0.29 | Insuficiente | Dados muito limitados; conclusoes nao confiaveis | NAO usar para decisoes; sinalizar como lacuna |
-| 0.30-0.49 | Baixa | Dados parciais; conclusoes tentativas | Usar com ressalva explicita; recomendar dados adicionais |
-| 0.50-0.69 | Moderada | Dados adequados; conclusoes razoaveis | Usar com nota de cautela em areas especificas |
-| 0.70-0.84 | Alta | Dados solidos; boa convergencia entre fontes | Usar com confianca para recomendacoes |
-| 0.85-1.00 | Muito Alta | Dados abundantes e convergentes | Usar com alta confianca para decisoes |
+> Referencia: `frameworks/confidence-scoring-model.md`
 
----
+| Score Range | Classificacao | Cor | Significado | Acao |
+|---|---|---|---|---|
+| 0.90 - 1.00 | Muito Alta | Verde | Multiplos frameworks convergem fortemente | Proceder livremente; resultado altamente confiavel |
+| 0.70 - 0.89 | Alta | Verde | Boa convergencia entre frameworks | Proceder livremente; resultado confiavel |
+| 0.50 - 0.69 | Moderada | Amarelo | Convergencia parcial ou base limitada | Proceder COM ressalvas explicitas no report |
+| 0.30 - 0.49 | Baixa | Vermelho | Pouca convergencia ou poucos dados | Layer considerada inconclusiva; ressalva obrigatoria |
+| 0.00 - 0.29 | Muito Baixa | Vermelho | Dados insuficientes ou contraditorios | Layer NAO deve informar decisoes; recomendar retestagem |
 
-## Fatores de Avaliacao por Layer
-
-> Cada layer e avaliada em 4 fatores. O score final da layer e a media dos 4 fatores.
-
-| Fator | Definicao | Como Pontuar |
-|---|---|---|
-| **Qualidade dos dados** | Confiabilidade dos instrumentos e qualidade das respostas | 1.0 = instrumento validado + respostas consistentes; 0.5 = instrumento razoavel ou respostas com flags; 0.0 = dados questionaveis |
-| **Convergencia** | Concordancia entre frameworks diferentes na mesma layer | 1.0 = 3+ frameworks convergem; 0.7 = 2 frameworks convergem; 0.4 = resultados mistos; 0.0 = frameworks divergem |
-| **Consistencia** | Ausencia de contradicoes internas e com outras layers | 1.0 = sem contradicoes; 0.7 = contradicoes S1 apenas; 0.4 = contradicoes S2; 0.0 = contradicoes S3/S4 |
-| **Completude** | Cobertura dos construtos relevantes da layer | 1.0 = todos construtos cobertos; 0.7 = maioria coberta; 0.4 = cobertura parcial; 0.0 = lacunas criticas |
+**REGRAS DE DECISAO:**
+- Score >= 0.70: Proceder livremente — resultado usado sem ressalvas
+- Score 0.50-0.69: Proceder com caveats — incluir ressalva no report explicando limitacao
+- Score < 0.50: Layer inconclusiva — NAO usar para recomendacoes; incluir ressalva forte; recomendar dados adicionais
 
 ---
 
 ## Confidence por Layer
 
-### Traits (Tracos de Personalidade) — LAYER OBRIGATORIA
+> Para cada layer: preencher Score, Classificacao, Base de Evidencia, Flags e Acao. Se a layer nao foi avaliada (ex: profundidade /fast nao inclui Team Role), escrever "N/A — nao avaliada nesta profundidade."
 
-| Fator | Definicao | Score (0.0-1.0) | Justificativa (1 frase) |
+### Traits (Tracos de Personalidade)
+
+| Campo | Definicao | Formato | Valor |
 |---|---|---|---|
-| Qualidade dos dados | Instrumentos utilizados e qualidade das respostas | ___ | _______________ |
-| Convergencia | Concordancia entre frameworks de tracos | ___ | _______________ |
-| Consistencia | Ausencia de contradicoes com outras layers | ___ | _______________ |
-| Completude | Cobertura dos 5 fatores + facetas relevantes | ___ | _______________ |
-| **Score da layer** | **Media dos 4 fatores** | **___/1.0** | |
-| **Classificacao** | Per escala acima | **___** | |
+| Score | Confidence score desta layer | Decimal 0.00-1.00 (2 casas) | ___/1.0 |
+| Classificacao | Categoria conforme tabela acima | Muito Baixa / Baixa / Moderada / Alta / Muito Alta | _______________ |
+| Frameworks utilizados | Quantos e quais frameworks compuseram esta layer | Inteiro + lista (ex: "3: NEO-PI-R, BFI-2, HEXACO-60") | _______________ |
+| Convergencia | Grau de concordancia entre frameworks | Alta (>80% concordancia) / Media (50-80%) / Baixa (<50%) | _______________ |
+| Flags | Problemas de qualidade identificados | Lista ou "Nenhuma". Ex: "1 framework proxy", "auto-relato apenas" | _______________ |
+| Acao | Decisao baseada no score | Proceder / Proceder com ressalva / Layer inconclusiva | _______________ |
+| Justificativa | Explicacao do score atribuido | 1-2 frases. Max 40 words. Por que este score e nao outro? | _______________ |
 
-### Types/Styles (Tipologias e Estilos) — LAYER OBRIGATORIA
+### Types/Styles (Tipologias e Estilos)
 
-| Fator | Score (0.0-1.0) | Justificativa |
-|---|---|---|
-| Qualidade dos dados | ___ | _______________ |
-| Convergencia | ___ | _______________ |
-| Consistencia | ___ | _______________ |
-| Completude | ___ | _______________ |
-| **Score da layer** | **___/1.0** | |
-| **Classificacao** | **___** | |
+| Campo | Definicao | Formato | Valor |
+|---|---|---|---|
+| Score | Confidence score | Decimal 0.00-1.00 | ___/1.0 |
+| Classificacao | Categoria | Muito Baixa / Baixa / Moderada / Alta / Muito Alta | _______________ |
+| Frameworks utilizados | Quantos e quais | Inteiro + lista | _______________ |
+| Convergencia | Concordancia entre frameworks | Alta / Media / Baixa | _______________ |
+| Flags | Problemas de qualidade | Lista ou "Nenhuma" | _______________ |
+| Acao | Decisao | Proceder / Proceder com ressalva / Layer inconclusiva | _______________ |
+| Justificativa | Explicacao do score | Max 40 words | _______________ |
 
-### Motivation (Motivacao) — LAYER OBRIGATORIA
+### Motivation (Motivacao)
 
-| Fator | Score (0.0-1.0) | Justificativa |
-|---|---|---|
-| Qualidade dos dados | ___ | _______________ |
-| Convergencia | ___ | _______________ |
-| Consistencia | ___ | _______________ |
-| Completude | ___ | _______________ |
-| **Score da layer** | **___/1.0** | |
-| **Classificacao** | **___** | |
+| Campo | Definicao | Formato | Valor |
+|---|---|---|---|
+| Score | Confidence score | Decimal 0.00-1.00 | ___/1.0 |
+| Classificacao | Categoria | Muito Baixa / Baixa / Moderada / Alta / Muito Alta | _______________ |
+| Frameworks utilizados | Quantos e quais | Inteiro + lista | _______________ |
+| Convergencia | Concordancia entre frameworks | Alta / Media / Baixa | _______________ |
+| Flags | Problemas de qualidade | Lista ou "Nenhuma" | _______________ |
+| Acao | Decisao | Proceder / Proceder com ressalva / Layer inconclusiva | _______________ |
+| Justificativa | Explicacao do score | Max 40 words | _______________ |
 
-### Strengths (Forcas) — LAYER OBRIGATORIA
+### Strengths (Forcas)
 
-| Fator | Score (0.0-1.0) | Justificativa |
-|---|---|---|
-| Qualidade dos dados | ___ | _______________ |
-| Convergencia | ___ | _______________ |
-| Consistencia | ___ | _______________ |
-| Completude | ___ | _______________ |
-| **Score da layer** | **___/1.0** | |
-| **Classificacao** | **___** | |
+| Campo | Definicao | Formato | Valor |
+|---|---|---|---|
+| Score | Confidence score | Decimal 0.00-1.00 | ___/1.0 |
+| Classificacao | Categoria | Muito Baixa / Baixa / Moderada / Alta / Muito Alta | _______________ |
+| Frameworks utilizados | Quantos e quais | Inteiro + lista | _______________ |
+| Convergencia | Concordancia entre frameworks | Alta / Media / Baixa | _______________ |
+| Flags | Problemas de qualidade | Lista ou "Nenhuma" | _______________ |
+| Acao | Decisao | Proceder / Proceder com ressalva / Layer inconclusiva | _______________ |
+| Justificativa | Explicacao do score | Max 40 words | _______________ |
 
-### Team Role — CONDICIONAL (obrigatoria para /deep)
+### Team Role (Papel de Equipe)
 
-| Fator | Score (0.0-1.0) | Justificativa |
-|---|---|---|
-| Qualidade dos dados | ___ | _______________ |
-| Convergencia | ___ | _______________ |
-| Consistencia | ___ | _______________ |
-| Completude | ___ | _______________ |
-| **Score da layer** | **___/1.0** | |
+| Campo | Definicao | Formato | Valor |
+|---|---|---|---|
+| Score | Confidence score | Decimal 0.00-1.00 | ___/1.0 |
+| Classificacao | Categoria | Muito Baixa / Baixa / Moderada / Alta / Muito Alta | _______________ |
+| Frameworks utilizados | Quantos e quais | Inteiro + lista | _______________ |
+| Convergencia | Concordancia entre frameworks | Alta / Media / Baixa | _______________ |
+| Flags | Problemas de qualidade | Lista ou "Nenhuma" | _______________ |
+| Acao | Decisao | Proceder / Proceder com ressalva / Layer inconclusiva | _______________ |
+| Justificativa | Explicacao do score | Max 40 words | _______________ |
 
-### Career Fit — CONDICIONAL (obrigatoria para /deep)
+### Career Fit (Adequacao de Carreira)
 
-| Fator | Score (0.0-1.0) | Justificativa |
-|---|---|---|
-| Qualidade dos dados | ___ | _______________ |
-| Convergencia | ___ | _______________ |
-| Consistencia | ___ | _______________ |
-| Completude | ___ | _______________ |
-| **Score da layer** | **___/1.0** | |
+| Campo | Definicao | Formato | Valor |
+|---|---|---|---|
+| Score | Confidence score | Decimal 0.00-1.00 | ___/1.0 |
+| Classificacao | Categoria | Muito Baixa / Baixa / Moderada / Alta / Muito Alta | _______________ |
+| Frameworks utilizados | Quantos e quais | Inteiro + lista | _______________ |
+| Convergencia | Concordancia entre frameworks | Alta / Media / Baixa | _______________ |
+| Flags | Problemas de qualidade | Lista ou "Nenhuma" | _______________ |
+| Acao | Decisao | Proceder / Proceder com ressalva / Layer inconclusiva | _______________ |
+| Justificativa | Explicacao do score | Max 40 words | _______________ |
 
-### Mode of Action — CONDICIONAL (obrigatoria para /deep)
+### Mode of Action (Modo de Acao)
 
-| Fator | Score (0.0-1.0) | Justificativa |
-|---|---|---|
-| Qualidade dos dados | ___ | _______________ |
-| Convergencia | ___ | _______________ |
-| Consistencia | ___ | _______________ |
-| Completude | ___ | _______________ |
-| **Score da layer** | **___/1.0** | |
+| Campo | Definicao | Formato | Valor |
+|---|---|---|---|
+| Score | Confidence score | Decimal 0.00-1.00 | ___/1.0 |
+| Classificacao | Categoria | Muito Baixa / Baixa / Moderada / Alta / Muito Alta | _______________ |
+| Frameworks utilizados | Quantos e quais | Inteiro + lista | _______________ |
+| Convergencia | Concordancia entre frameworks | Alta / Media / Baixa | _______________ |
+| Flags | Problemas de qualidade | Lista ou "Nenhuma" | _______________ |
+| Acao | Decisao | Proceder / Proceder com ressalva / Layer inconclusiva | _______________ |
+| Justificativa | Explicacao do score | Max 40 words | _______________ |
 
-### Conflict/Stress — CONDICIONAL (obrigatoria para /deep)
+### Conflict/Stress (Conflito e Estresse)
 
-| Fator | Score (0.0-1.0) | Justificativa |
-|---|---|---|
-| Qualidade dos dados | ___ | _______________ |
-| Convergencia | ___ | _______________ |
-| Consistencia | ___ | _______________ |
-| Completude | ___ | _______________ |
-| **Score da layer** | **___/1.0** | |
+| Campo | Definicao | Formato | Valor |
+|---|---|---|---|
+| Score | Confidence score | Decimal 0.00-1.00 | ___/1.0 |
+| Classificacao | Categoria | Muito Baixa / Baixa / Moderada / Alta / Muito Alta | _______________ |
+| Frameworks utilizados | Quantos e quais | Inteiro + lista | _______________ |
+| Convergencia | Concordancia entre frameworks | Alta / Media / Baixa | _______________ |
+| Flags | Problemas de qualidade | Lista ou "Nenhuma" | _______________ |
+| Acao | Decisao | Proceder / Proceder com ressalva / Layer inconclusiva | _______________ |
+| Justificativa | Explicacao do score | Max 40 words | _______________ |
 
 ---
 
 ## Tabela Resumo
 
-| Layer | Score | Classificacao | Obrigatoria? | Status |
-|---|---|---|---|---|
-| Traits | ___/1.0 | _______________ | Sim | Verde/Amarelo/Vermelho |
-| Types/Styles | ___/1.0 | _______________ | Sim | Verde/Amarelo/Vermelho |
-| Motivation | ___/1.0 | _______________ | Sim | Verde/Amarelo/Vermelho |
-| Strengths | ___/1.0 | _______________ | Sim | Verde/Amarelo/Vermelho |
-| Team Role | ___/1.0 | _______________ | /deep only | Verde/Amarelo/Vermelho |
-| Career Fit | ___/1.0 | _______________ | /deep only | Verde/Amarelo/Vermelho |
-| Mode of Action | ___/1.0 | _______________ | /deep only | Verde/Amarelo/Vermelho |
-| Conflict/Stress | ___/1.0 | _______________ | /deep only | Verde/Amarelo/Vermelho |
-
-**Status:** Verde >= 0.70 | Amarelo 0.50-0.69 | Vermelho < 0.50
+| Layer | Score | Classificacao | Frameworks (qtd) | Convergencia | Flags | Acao |
+|---|---|---|---|---|---|---|
+| Traits | ___/1.0 | _______________ | ___ | Alta/Media/Baixa | _______________ | Proceder / Ressalva / Inconclusiva |
+| Types/Styles | ___/1.0 | _______________ | ___ | Alta/Media/Baixa | _______________ | Proceder / Ressalva / Inconclusiva |
+| Motivation | ___/1.0 | _______________ | ___ | Alta/Media/Baixa | _______________ | Proceder / Ressalva / Inconclusiva |
+| Strengths | ___/1.0 | _______________ | ___ | Alta/Media/Baixa | _______________ | Proceder / Ressalva / Inconclusiva |
+| Team Role | ___/1.0 | _______________ | ___ | Alta/Media/Baixa | _______________ | Proceder / Ressalva / Inconclusiva |
+| Career Fit | ___/1.0 | _______________ | ___ | Alta/Media/Baixa | _______________ | Proceder / Ressalva / Inconclusiva |
+| Mode of Action | ___/1.0 | _______________ | ___ | Alta/Media/Baixa | _______________ | Proceder / Ressalva / Inconclusiva |
+| Conflict/Stress | ___/1.0 | _______________ | ___ | Alta/Media/Baixa | _______________ | Proceder / Ressalva / Inconclusiva |
 
 ---
 
 ## Overall Assessment Confidence
 
-**FORMULA (per `frameworks/confidence-scoring-model.md`):**
+**FORMULA:** Media ponderada das layers conforme `frameworks/confidence-scoring-model.md`:
 
 ```
-Overall = (Traits x 2 + Types x 2 + Motivation x 1.5 + Strengths x 1.5 + TeamRole x 1 + CareerFit x 1 + ModeAction x 1 + Conflict x 1) / Soma dos pesos aplicaveis
+Overall = (Traits x 2 + Types/Styles x 2 + Motivation x 1.5 + Strengths x 1.5 + Team Role x 1 + Career Fit x 1 + Mode of Action x 1 + Conflict/Stress x 1) / (2 + 2 + 1.5 + 1.5 + 1 + 1 + 1 + 1)
 ```
 
-> Para /fast e /start, usar apenas layers aplicaveis. Pesos das layers nao avaliadas sao removidos do denominador.
+**NOTA:** Layers nao avaliadas (N/A) sao excluidas do calculo. Ajustar denominador de acordo.
 
-| Metrica | Formato | Valor |
-|---|---|---|
-| Score geral | Decimal 0.00-1.00 (resultado da formula) | ___/1.0 |
-| Classificacao | Per escala (Insuficiente a Muito Alta) | _______________ |
-| Contradicoes pendentes | Numero de contradicoes S3/S4 Abertas | ___ |
-| Quality flags ativas | Flags do contradiction map ou outros audit docs | ___ |
+| Campo | Definicao | Formato | Valor |
+|---|---|---|---|
+| Score geral | Media ponderada calculada pela formula acima | Decimal 0.00-1.00 (2 casas) | ___/1.0 |
+| Classificacao | Categoria conforme tabela de classificacao | Muito Baixa / Baixa / Moderada / Alta / Muito Alta | _______________ |
+| Contradicoes pendentes | Quantidade de contradicoes S3+ nao resolvidas (do contradiction-map) | Inteiro | ___ |
+| Reducao por contradicoes | Total de reducao no confidence por contradicoes | Decimal negativo (do contradiction-map) | -___ |
+| Score ajustado | Score geral - Reducao por contradicoes | Decimal 0.00-1.00 | ___/1.0 |
+| Quality flags ativas | Flags que afetam o assessment como um todo | Lista ou "Nenhuma" | _______________ |
+| Veredito | Classificacao final para stakeholders | Alta confianca / Confianca adequada / Confianca limitada / Baixa confianca | _______________ |
 
----
-
-## Decisao GO / NO-GO / CONDITIONAL
-
-**REGRAS DE DECISAO:**
-
-| Decisao | Criterio | Acao |
-|---|---|---|
-| **GO** | Todas as layers obrigatorias >= 0.50 E nenhuma contradicao S4 aberta | Prosseguir com report final |
-| **NO-GO** | Qualquer layer obrigatoria < 0.50 OU contradicao S4 aberta | Suspender report; coletar dados adicionais ou retestagem |
-| **CONDITIONAL** | Layers nao-obrigatorias abaixo de 0.50 mas obrigatorias OK | Prosseguir com ressalvas nas layers afetadas |
-
-**DECISAO PARA ESTE ASSESSMENT:** [ GO / NO-GO / CONDITIONAL ]
-**JUSTIFICATIVA:** _______________
+**REGRAS DE VEREDITO:**
+- Score ajustado >= 0.70 E nenhuma S4 aberta = "Alta confianca"
+- Score ajustado 0.60-0.69 OU ate 1 S3 aberta = "Confianca adequada"
+- Score ajustado 0.50-0.59 OU 2+ S3 abertas = "Confianca limitada"
+- Score ajustado < 0.50 OU qualquer S4 aberta = "Baixa confianca"
 
 ---
 
 ## Recomendacoes Baseadas na Confianca
 
-| Categoria | Definicao | Layers |
-|---|---|---|
-| Confianca suficiente para decisoes | Layers com score >= 0.70 | _______________ |
-| Requerem cautela | Layers com score 0.50-0.69 | _______________ |
-| Requerem dados adicionais | Layers com score < 0.50 | _______________ |
-
-**Proximos passos recomendados:** _______________
+| Campo | Definicao | Formato | Valor |
+|---|---|---|---|
+| Layers para decisao | Layers com score >= 0.70 que podem informar decisoes diretamente | Lista de layers | _______________ |
+| Layers com cautela | Layers com score 0.50-0.69 que requerem ressalvas | Lista de layers + ressalva especifica | _______________ |
+| Layers insuficientes | Layers com score < 0.50 que nao devem informar decisoes | Lista de layers + recomendacao de dados adicionais | _______________ |
+| Proximos passos | Acoes recomendadas para melhorar confianca | Lista priorizada. Max 3 items, cada max 25 words. | _______________ |
 
 ---
 
-## EXEMPLO PREENCHIDO
+## QUALITY CRITERIA
 
-**Respondente:** Marina Costa Silva | **Session ID:** HMS-2026-0315-042 | **/deep** | **2026-03-15**
+Um confidence map preenchido corretamente atende a TODOS os seguintes criterios:
 
-| Layer | Qualidade | Convergencia | Consistencia | Completude | **Score** | **Classificacao** |
+1. **Completude:** Todas as layers avaliadas possuem Score, Classificacao, Frameworks, Flags e Acao preenchidos
+2. **Classificacao correta:** Scores seguem a tabela de classificacao (Verde/Amarelo/Vermelho) sem excecoes
+3. **Formula aplicada:** Overall calculado pela formula ponderada, nao por media simples
+4. **Contradicoes integradas:** Reducao por contradicoes reflete totais do contradiction-map
+5. **Acoes coerentes:** Acao por layer e consistente com score (>=0.70=Proceder, 0.50-0.69=Ressalva, <0.50=Inconclusiva)
+6. **Veredito fundamentado:** Veredito final segue regras definidas, nao e subjetivo
+7. **Recomendacoes acionaveis:** Proximos passos sao especificos e priorizados
+
+---
+
+## EXEMPLO PREENCHIDO — Tabela Resumo e Overall
+
+**Tabela Resumo (exemplo):**
+
+| Layer | Score | Classificacao | Frameworks (qtd) | Convergencia | Flags | Acao |
 |---|---|---|---|---|---|---|
-| Traits | 0.90 | 0.85 | 0.70 | 0.95 | **0.85** | Muito Alta |
-| Types/Styles | 0.80 | 0.65 | 0.60 | 0.80 | **0.71** | Alta |
-| Motivation | 0.70 | 0.40 | 0.80 | 0.50 | **0.60** | Moderada |
-| Strengths | 0.85 | 0.75 | 0.80 | 0.80 | **0.80** | Alta |
-| Team Role | 0.75 | 0.60 | 0.80 | 0.70 | **0.71** | Alta |
-| Career Fit | 0.60 | 0.50 | 0.70 | 0.50 | **0.58** | Moderada |
-| Mode of Action | 0.80 | 0.70 | 0.80 | 0.75 | **0.76** | Alta |
-| Conflict/Stress | 0.65 | 0.50 | 0.70 | 0.60 | **0.61** | Moderada |
+| Traits | 0.85/1.0 | Alta | 3 (NEO-PI-R, BFI-2, HEXACO-60) | Alta | Nenhuma | Proceder |
+| Types/Styles | 0.75/1.0 | Alta | 2 (MBTI, DISC) | Media | MBTI auto-relato | Proceder |
+| Motivation | 0.55/1.0 | Moderada | 1 (SDT questionnaire) | N/A (1 framework) | Framework unico | Proceder com ressalva |
+| Strengths | 0.80/1.0 | Alta | 2 (VIA, CliftonStrengths) | Alta | Nenhuma | Proceder |
+| Team Role | 0.70/1.0 | Alta | 1 (Belbin) | N/A (1 framework) | Framework unico | Proceder |
+| Career Fit | 0.60/1.0 | Moderada | 1 (RIASEC) | N/A (1 framework) | Framework unico, proxy | Proceder com ressalva |
+| Mode of Action | 0.72/1.0 | Alta | 1 (Kolbe A) | N/A (1 framework) | Nenhuma | Proceder |
+| Conflict/Stress | 0.65/1.0 | Moderada | 1 (SDI) | N/A (1 framework) | Framework unico | Proceder com ressalva |
 
-**Overall:** (0.85x2 + 0.71x2 + 0.60x1.5 + 0.80x1.5 + 0.71x1 + 0.58x1 + 0.76x1 + 0.61x1) / (2+2+1.5+1.5+1+1+1+1) = 8.88 / 11 = **0.73/1.0 — Alta**
+**Overall (exemplo):**
 
-**Decisao:** GO — Todas as layers obrigatorias >= 0.50, nenhuma S4 aberta.
-**Cautela:** Motivation (0.60) e Career Fit (0.58) em Moderada; incluir ressalvas no report.
+```
+Overall = (0.85x2 + 0.75x2 + 0.55x1.5 + 0.80x1.5 + 0.70x1 + 0.60x1 + 0.72x1 + 0.65x1) / 11
+        = (1.70 + 1.50 + 0.825 + 1.20 + 0.70 + 0.60 + 0.72 + 0.65) / 11
+        = 7.895 / 11
+        = 0.72
+```
+
+| Campo | Valor |
+|---|---|
+| Score geral | 0.72/1.0 |
+| Classificacao | Alta |
+| Contradicoes pendentes | 0 |
+| Reducao por contradicoes | -0.00 |
+| Score ajustado | 0.72/1.0 |
+| Quality flags ativas | Motivation, Career Fit e Conflict/Stress baseados em framework unico |
+| Veredito | Alta confianca |
+
+**Recomendacoes (exemplo):**
+
+| Campo | Valor |
+|---|---|
+| Layers para decisao | Traits, Types/Styles, Strengths, Team Role, Mode of Action |
+| Layers com cautela | Motivation (framework unico SDT), Career Fit (proxy RIASEC), Conflict/Stress (framework unico SDI) |
+| Layers insuficientes | Nenhuma |
+| Proximos passos | 1. Aplicar segundo framework motivacional para elevar confidence. 2. Validar career fit com entrevista estruturada. |
