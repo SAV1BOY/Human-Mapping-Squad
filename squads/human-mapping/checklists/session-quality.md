@@ -2,53 +2,73 @@
 type: checklist
 level: macro
 squad: human-mapping
-version: "2.0.0"
+version: "3.0.0"
 gate: mandatory
 ---
+
 # Checklist: Qualidade da Sessao Completa
 
 ## Proposito
-Verificar que a sessao de mapeamento humano foi conduzida do inicio ao fim com todas as etapas obrigatorias cumpridas, garantindo integridade e confiabilidade do resultado final.
+Verificar que a sessao de mapeamento foi conduzida do inicio ao fim com todas as etapas cumpridas, thresholds atingidos e integridade garantida.
 
 ## Criterios de Aprovacao
 
-### Obrigatorios (todos devem passar)
-- [ ] Intake foi realizado e registrado antes do inicio da sessao — Evidencia: `registro de intake com timestamp`
-- [ ] Calibracao do respondente foi aprovada conforme checklist de calibracao — Evidencia: `resultado da calibracao com status aprovado`
-- [ ] Todas as camadas de avaliacao definidas no escopo foram completadas — Evidencia: `lista de camadas com status de conclusao`
-- [ ] Nenhuma camada foi ignorada ou parcialmente preenchida sem justificativa — Evidencia: `log de completude por camada`
-- [ ] Auditoria de contradicoes foi executada sobre os resultados — Evidencia: `relatorio de auditoria de contradicoes`
-- [ ] Contradicoes identificadas foram classificadas e reconciliadas — Evidencia: `registro de reconciliacao`
-- [ ] Relatorio final foi gerado com score de confianca por camada — Evidencia: `relatorio com mapa de confianca`
-- [ ] Score de confianca global da sessao atinge o limiar minimo definido — Evidencia: `score >= limiar configurado`
-- [ ] Tempo total da sessao esta dentro do intervalo aceitavel — Evidencia: `timestamp inicio e fim`
-- [ ] Dados brutos da sessao foram preservados para auditoria futura — Evidencia: `artefatos brutos arquivados`
+### Obrigatorios — Todos devem passar
 
-### Desejaveis (aumentam confianca)
-- [ ] Respondente confirmou que se sentiu confortavel durante a sessao
-- [ ] Nenhum indicador de fadiga severa foi detectado nas respostas finais
-- [ ] Sessao foi conduzida sem interrupcoes significativas
-- [ ] Feedback qualitativo do respondente foi coletado ao final
-- [ ] Revisao por pares do relatorio foi realizada
+#### Intake e Calibracao
+- [ ] Intake realizado e registrado antes do inicio — Evidencia: registro de intake com timestamp; campos objetivo, contexto e escopo preenchidos; ref: `intake/intake-quality.md`
+- [ ] Calibracao do respondente aprovada — Evidencia: resultado da calibracao com status "aprovado"; score de consistencia >= 0.60; ref: `calibration/calibration-quality.md`
 
-## Evidencia Necessaria
-- Registro completo de intake com objetivo, contexto e escopo
-- Resultado da calibracao com metricas de consistencia
-- Status de conclusao de cada camada avaliada
-- Relatorio de auditoria de contradicoes com classificacao
-- Relatorio final com scores de confianca por camada e global
-- Timestamps de inicio e fim da sessao
-- Artefatos brutos arquivados
+#### Execucao de Camadas
+- [ ] Todas as camadas definidas no escopo foram completadas — Evidencia: lista de camadas com status "concluida" para cada uma; contagem concluidas = contagem planejadas; delta = 0
+- [ ] Nenhuma camada ignorada ou parcialmente preenchida sem justificativa — Evidencia: campo "camadas_incompletas" vazio OU cada camada incompleta tem justificativa com >= 2 frases
+
+#### Auditoria de Contradicoes
+- [ ] Auditoria de contradicoes executada — Evidencia: relatorio de auditoria presente com lista de contradicoes identificadas (pode ser lista vazia); ref: `contradiction/contradiction-audit-quality.md`
+- [ ] Contradicoes classificadas e reconciliadas — Evidencia: >= 80% das contradicoes com status "resolvida" ou "tensao valida"; 0 contradicoes de alta severidade em aberto
+
+#### Confidence
+- [ ] Confianca media da sessao >= 0.50 — Evidencia: media aritmetica dos confidence scores de todas as camadas >= 0.50; valor numerico documentado
+- [ ] Nenhuma camada com confianca < 0.30 sem tratamento — Evidencia: camadas com confidence < 0.30 marcadas como "inconclusiva" no relatorio OU re-avaliadas com dados adicionais
+- [ ] Confianca por camada documentada — Evidencia: tabela com confidence score para cada camada presente no relatorio
+
+#### Relatorio Final
+- [ ] Relatorio gerado com mapa de confianca — Evidencia: relatorio final presente com secao de confidence map mostrando score por camada e score global
+- [ ] Teste Barnum passou — Evidencia: checklist `synthesis/barnum-prevention-quality.md` com status "PASSA"
+- [ ] Coerencia narrativa verificada — Evidencia: checklist `synthesis/narrative-coherence-quality.md` com status "PASSA"
+
+#### Integridade
+- [ ] Tempo da sessao dentro do intervalo — Evidencia: duracao entre 45min e 180min; timestamps de inicio e fim registrados; desvios justificados
+- [ ] Dados brutos preservados para auditoria — Evidencia: artefatos brutos arquivados com referencia/path documentado
+- [ ] Aprovacao do Chief registrada — Evidencia: checklist `chief/chief-report-approval-quality.md` com status "APROVADO" e data
+
+### Desejaveis — Aumentam confianca
+- [ ] Respondente confirmou conforto durante a sessao (feedback qualitativo)
+- [ ] Nenhum indicador de fadiga severa nas respostas finais (consistencia mantida)
+- [ ] Sessao sem interrupcoes significativas (> 15min)
+- [ ] Revisao por pares do relatorio realizada
+- [ ] Feedback qualitativo do respondente coletado ao final
+
+## Metricas Resumo da Sessao
+
+| Metrica | Threshold Minimo | Valor |
+|---------|-----------------|-------|
+| Confianca media global | >= 0.50 | [valor] |
+| Contradicoes resolvidas | >= 80% | [valor] |
+| Camadas completas | 100% (ou justificadas) | [valor] |
+| Teste Barnum | PASSA | [status] |
+| Tempo total | 45-180 min | [valor] |
 
 ## Acao se Falhar
-- Se intake nao foi feito: sessao deve ser reiniciada desde o intake
-- Se calibracao falhou: respondente deve ser recalibrado antes de prosseguir
-- Se camadas estao incompletas: completar as camadas faltantes ou justificar exclusao
-- Se contradicoes nao foram auditadas: executar auditoria antes de gerar relatorio
-- Se confianca esta abaixo do limiar: investigar camadas com baixa confianca e considerar re-avaliacao
-- Se dados brutos nao foram preservados: reconstruir a partir dos artefatos disponiveis
+- Intake nao feito: reiniciar desde o intake
+- Calibracao falhou: recalibrar antes de prosseguir
+- Camadas incompletas: completar ou justificar exclusao
+- Contradicoes nao auditadas: executar auditoria antes do relatorio
+- Confianca < 0.50: investigar camadas fracas; considerar re-avaliacao
+- Dados nao preservados: reconstruir a partir dos artefatos disponiveis
+- Barnum falhou: retornar ao respondent-quality-auditor
 
 ## Agente Responsavel
-- **Agente principal**: Orquestrador de Sessao
-- **Agentes de suporte**: Agente de Calibracao, Agente de Auditoria, Agente de Sintese
-- **Aprovador final**: Agente de Qualidade
+- **Principal**: human-mapping-chief
+- **Suporte**: calibration-agent, contradiction-auditor, synthesis-architect
+- **Aprovador**: human-mapping-chief

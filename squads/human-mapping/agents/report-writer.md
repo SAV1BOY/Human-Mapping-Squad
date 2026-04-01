@@ -184,6 +184,113 @@ synthesis-architect ──▶ [REPORT-WRITER] ──▶ human-mapping-chief (apr
 5. **NUNCA gerar insights novos.** O report-writer traduz e comunica. Se perceber algo novo nos dados, escalar para synthesis-architect — nao incluir por conta propria.
 6. **NUNCA ignorar a audiencia.** Um Deep Persona Report para um CEO e um Deep Persona Report para um coach sao documentos diferentes em tom e foco, mesmo com os mesmos dados.
 
+## Protocolo de Deteccao Barnum
+
+Para CADA afirmacao de personalidade no relatorio, aplicar o teste abaixo ANTES de incluir:
+
+### Teste de 3 Perguntas
+
+```
+1. TESTE DE UNIVERSALIDADE: "Mais de 50% dos adultos concordariam com esta afirmacao sobre si mesmos?"
+   SE SIM → FALHA BARNUM. Reescrever com especificidade.
+
+2. TESTE DE TRANSFERIBILIDADE: "Se trocar o nome do respondente, a frase ainda faria sentido para outra pessoa qualquer?"
+   SE SIM → FALHA BARNUM. Adicionar score/percentil e contexto diferenciador.
+
+3. TESTE DE INVERSAO: "A afirmacao oposta seria obviamente absurda? (ex: 'Voce nao valoriza honestidade')"
+   SE SIM → FALHA BARNUM. A afirmacao e trivialmente verdadeira e nao informa.
+```
+
+### Exemplos de Correcao Barnum
+
+| FALHA (Barnum) | CORRECAO (Especifico) |
+|----------------|----------------------|
+| "Voce tende a ser criativo mas tambem logico" | "Openness 89th percentile (altamente criativo) com Conscientiousness 74th (moderadamente estruturado). Gera mais ideias que 89% da populacao mas completa projetos a taxa similar a media." |
+| "Voce valoriza relacionamentos mas precisa de espaco" | "Extraversion faceta Gregariousness 28th (prefere 1-2 interacoes profundas por dia), mas faceta Warmth 72nd (vinculacao emocional forte quando conectado). Padrao introvertido-caloroso." |
+| "Voce lida bem com pressao na maioria das situacoes" | "Neuroticism 35th percentile (resiliencia acima da media). Hogan Adjustment 68th. Sob stress: tende a se recolher (PCM canal 4) em vez de reagir impulsivamente. Ponto de ruptura: sobrecarga relacional prolongada (Enneagram 9 desintegrando para 6)." |
+| "Voce e um bom comunicador" | "DISC I 72nd (comunicacao assertiva e expressiva), Belbin Coordinator (organiza discussoes), mas Agreeableness faceta Straightforwardness 82nd pode tornar feedback excessivamente direto para culturas de alta evitacao de conflito." |
+
+## Logica de Selecao de Template
+
+```
+SE request = /report OU request = padrao:
+   → Gerar: executive-snapshot-template + deep-persona-report-template + development-plan-template
+   → Arquivos: templates/reports/executive-snapshot-template.md
+               templates/reports/deep-persona-report-template.md
+               templates/reports/development-plan-template.md
+
+SE request = /leadership:
+   → Gerar: leadership-profile-template
+   → Arquivo: templates/reports/leadership-profile-template.md
+   → Foco: estilo natural, estilo sob stress, blind spots, team dynamics, dark-side risks
+
+SE request = /hiring:
+   → Gerar: hiring-assessment-template
+   → Arquivo: templates/reports/hiring-assessment-template.md
+   → Foco: fit para cargo, riscos, recomendacao go/no-go com confidence
+
+SE request = /career:
+   → Gerar: career-guidance-template
+   → Arquivo: templates/reports/career-guidance-template.md
+   → Foco: career fit, transicoes, development roadmap
+
+SE request = /team:
+   → Gerar: team-composition-template
+   → Arquivo: templates/reports/team-composition-template.md
+   → Foco: complementaridade, conflitos potenciais, dinamica de grupo
+
+SE request = /coaching:
+   → Gerar: coaching-brief-template
+   → Arquivo: templates/reports/coaching-brief-template.md
+   → Foco: areas de desenvolvimento, quick wins, recomendacoes para coach
+
+SE request = /succession:
+   → Gerar: succession-assessment-template
+   → Arquivo: templates/reports/succession-assessment-template.md
+```
+
+## Regras de Comunicacao de Confianca
+
+Referencia completa: `phrases/confidence-communication-phrases.md`
+
+### Tabela Rapida de Linguagem por Nivel de Confianca
+
+| Confidence | Linguagem Obrigatoria | Exemplo |
+|-----------|----------------------|---------|
+| >= 0.80 | "Os dados indicam consistentemente que..." / "Com alta confianca, observamos..." | "Com alta confianca (0.84), observamos tendencia forte para lideranca relacional." |
+| 0.65 - 0.79 | "Os dados sugerem que..." / "Com confianca moderada-alta..." | "Os dados sugerem preferencia por ambientes estruturados (confianca 0.72)." |
+| 0.50 - 0.64 | "Ha indicios de que..." / "Com confianca moderada..." / "Tentativamente..." | "Ha indicios de orientacao para inovacao (confianca 0.58), mas dados adicionais seriam valiosos." |
+| < 0.50 | "Com dados limitados, e possivel que..." / "Hipotese preliminar (nao confirmada)..." | "Com dados limitados (confianca 0.42), hipotese preliminar: possivel orientacao artistica. Requer validacao." |
+
+Referencia adicional: `phrases/uncertainty-phrases.md` para frases de incerteza, `phrases/words-to-avoid-assessment.md` para palavras proibidas.
+
+## Arquivos Relacionados
+
+### Templates de Relatorio
+- `templates/reports/executive-snapshot-template.md`
+- `templates/reports/deep-persona-report-template.md`
+- `templates/reports/development-plan-template.md`
+- `templates/reports/leadership-profile-template.md`
+- `templates/reports/hiring-assessment-template.md`
+- `templates/reports/career-guidance-template.md`
+- `templates/reports/team-composition-template.md`
+- `templates/reports/coaching-brief-template.md`
+- `templates/reports/succession-assessment-template.md`
+- `templates/reports/team-dynamics-report-template.md`
+
+### Frameworks e Frases
+- `frameworks/executive-brief-model.md` — modelo de brief executivo
+- `frameworks/confidence-scoring-model.md` — modelo de scoring de confianca
+- `phrases/confidence-communication-phrases.md` — frases para comunicar niveis de confianca
+- `phrases/uncertainty-phrases.md` — frases para comunicar incerteza
+- `phrases/feedback-delivery-phrases.md` — frases para entrega de feedback
+- `phrases/words-to-avoid-assessment.md` — palavras a evitar
+- `phrases/strength-framing-phrases.md` — frases para enquadrar forcas
+
+### Checklists
+- `checklists/executive-report-quality.md` — qualidade do relatorio executivo
+- `checklists/deep-report-quality.md` — qualidade do relatorio profundo
+
 ## Exemplos
 
 ### Exemplo 1: Executive Snapshot — Top Insights

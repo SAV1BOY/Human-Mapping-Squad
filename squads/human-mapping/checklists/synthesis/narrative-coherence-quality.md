@@ -4,33 +4,68 @@ level: layer
 layer: synthesis
 squad: human-mapping
 version: "2.0.0"
+gate: mandatory
+related_files:
+  - squads/human-mapping/frameworks/confidence-scoring-model.md
+  - squads/human-mapping/voice/language-guides/feedback-delivery-language.md
 ---
-
-# Checklist: Qualidade da Coerencia Narrativa
+# Checklist: Narrative Coherence Quality
 
 ## Proposito
-Garantir que a narrativa da persona e coerente, sem contradições nao explicadas, fluindo logicamente de tracos a desenvolvimento.
+Garantir que o relatorio apresenta UMA pessoa coerente, sem contradicoes ocultas, com todas as afirmacoes rastreadas a evidencias especificas do perfil.
 
 ## Criterios Obrigatorios
-- [ ] Narrativa flui logicamente de tracos fundamentais ate plano de desenvolvimento — Evidencia: `___`
-- [ ] Nao existem contradições nao explicadas entre secoes da narrativa — Evidencia: `___`
-- [ ] Contradições aparentes foram explicitamente tratadas como nuances do perfil — Evidencia: `___`
-- [ ] Transicoes entre secoes sao logicas e naturais — Evidencia: `___`
-- [ ] Tom da narrativa e consistente do inicio ao fim — Evidencia: `___`
-- [ ] Cada secao subsequente se constroi sobre as anteriores — Evidencia: `___`
-- [ ] Narrativa nao apresenta saltos logicos ou conclusoes sem premissas — Evidencia: `___`
-- [ ] Linguagem utilizada e clara, precisa e acessivel — Evidencia: `___`
-- [ ] Narrativa respeita a complexidade da pessoa sem simplificar excessivamente — Evidencia: `___`
+
+- [ ] **Logical Sequence Check** — Read trait -> type -> motivation -> strength sequence: no logical contradictions
+  - Threshold: 0 contradictions between consecutive sections; each section references >= 1 element from the previous section
+  - Evidence: Sequential read-through audit documenting each cross-section reference and flagging any contradictions found
+  - Fail action: report-writer resolves contradictions or adds reconciliation text
+
+- [ ] **Contradiction Transparency** — All unresolved contradictions explicitly flagged (not hidden)
+  - Threshold: 0 contradictions from the audit log that do not appear in the final report; each flagged contradiction includes: Framework A vs Framework B, nature of conflict, resolution
+  - Evidence: Cross-reference contradiction audit log entries against report content
+  - Fail action: report-writer adds explicit contradiction discussion for each missing entry
+
+- [ ] **Recommendation Traceability** — Development recommendations trace back to specific profile findings
+  - Threshold: Every recommendation cites >= 1 specific finding with score/percentile and framework
+  - Evidence: Trace table: recommendation -> profile finding -> framework + score
+  - Fail action: report-writer adds evidence chain or removes ungrounded recommendation
+
+- [ ] **Zero Unattributed Claims** — No personality or behavioral claim without source
+  - Threshold: 0 claims in the report without framework attribution and supporting data
+  - Evidence: Full report scan; flag each claim and verify attribution exists
+  - Fail action: report-writer attributes each claim or removes it
+
+- [ ] **Person Unity** — The report describes ONE individual, not a collage of profiles
+  - Threshold: Identifiable thread connecting >= 3 sections; executive summary captures the person in <= 5 sentences
+  - Evidence: Executive summary present; thematic thread documented
+  - Fail action: report-writer rewrites to establish unifying narrative thread
+
+- [ ] **Consistent Tone** — Tone is consistent from start to finish
+  - Threshold: No shift between technical and colloquial register; technical terms (Big Five, MBTI, Kolbe) always accompanied by plain-language explanation
+  - Evidence: Sample 1 paragraph from beginning and 1 from end; verify same register
+  - Fail action: report-writer normalizes tone throughout
+
+- [ ] **Complete Dimension Coverage** — All assessed dimensions appear in the narrative
+  - Threshold: Delta between assessed dimensions and mentioned dimensions = 0; dimensions with extreme scores (>= 0.85 or <= 0.15) highlighted with emphasis
+  - Evidence: Dimension checklist: assessed vs mentioned
+  - Fail action: report-writer adds missing dimensions
 
 ## Criterios Desejaveis
-- [ ] Leitor consegue construir uma imagem mental coerente da pessoa
-- [ ] Narrativa inclui fio condutor que conecta todas as dimensoes
-- [ ] Exemplos e metaforas utilizados sao consistentes entre si
-- [ ] Narrativa foi revisada para eliminar redundancias desnecessarias
-- [ ] Fluxo logico foi validado por leitura completa de ponta a ponta
+- [ ] Examples and metaphors are consistent between sections
+- [ ] Narrative reviewed to eliminate redundancies (0 unnecessary repetitions)
+- [ ] Thematic thread explicitly named (e.g., "The profile of a cautious strategist")
+
+## Decisao
+- **PASS**: Todos criterios obrigatorios atendem threshold
+- **CONDITIONAL PASS**: >=80% criterios, gaps documentados
+- **FAIL**: <50% criterios -> rework obrigatorio
 
 ## Acao se Falhar
-Retornar ao report-writer para revisao da narrativa. Identificar pontos de incoerencia ou contradição. Reestruturar o fluxo logico garantindo que cada secao se conecta naturalmente a proxima. Re-submeter apos correcao.
+1. report-writer receives annotated list of incoherence points with section numbers
+2. report-writer resolves contradictions, adds attributions, establishes narrative thread
+3. Re-submit for checklist re-evaluation
+**Bloqueio**: Relatorio nao avanca para aprovacao do chief ate coerencia verificada.
 
 ## Agente Responsavel
-report-writer
+report-writer — Arquivo: `agents/report-writer.md`

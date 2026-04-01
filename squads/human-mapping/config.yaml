@@ -259,3 +259,154 @@ defaults:
   no_premature_labeling: true
   proxy_mode: true
   official_mode: false
+
+# ============================================================
+# ESCALATION RULES
+# ============================================================
+
+escalation_rules:
+  agent_to_chief:
+    - "Confidence < 0.4 on any mandatory layer"
+    - "S3/S4 contradiction detected and unresolvable by auditor alone"
+    - "Respondent quality flags: social desirability HIGH or consistency LOW"
+    - "Task outside agent's declared scope"
+    - "Multiple frameworks yield conflicting conclusions on core trait"
+
+  chief_to_hrm:
+    - "Overall session confidence < 0.5 after all remediation attempts"
+    - "Cross-squad handoff rejected by receiving squad"
+    - "Ethical concern (consent, discrimination, misuse of results)"
+    - "Methodology update requires systemic change across pipeline"
+    - "Client disputes results with valid counter-evidence"
+
+# ============================================================
+# DELEGATION RULES
+# ============================================================
+
+delegation_rules:
+  out_of_scope:
+    - condition: "Task requires clinical diagnosis (DSM/ICD)"
+      delegate_to: "clinical psychology professional (external)"
+      handoff: "Document findings, flag as non-diagnostic, recommend referral"
+
+    - condition: "Task requires 360-degree feedback collection"
+      delegate_to: "data_squad"
+      handoff: "Provide assessment framework, receive aggregated data"
+
+    - condition: "Task requires organizational culture analysis"
+      delegate_to: "c_level_squad"
+      handoff: "Provide individual profiles, receive culture context"
+
+    - condition: "Task requires compensation/succession decision"
+      delegate_to: "advisory_board"
+      handoff: "Provide leadership profile, receive strategic context"
+
+# ============================================================
+# REWORK TRIGGERS
+# ============================================================
+
+rework_triggers:
+  automatic:
+    - trigger: "Layer confidence < 0.4"
+      action: "Return to layer chief for additional data collection"
+      max_rework_cycles: 2
+
+    - trigger: "Barnum test FAIL on report"
+      action: "Return to report-writer for specificity rewrite"
+      max_rework_cycles: 1
+
+    - trigger: "S4 contradiction (intra-framework)"
+      action: "Return to respondent-quality-auditor for data validation"
+      max_rework_cycles: 1
+
+    - trigger: "Synthesis missing ≥2 mandatory layers"
+      action: "Return to synthesis-architect with missing layer data"
+      max_rework_cycles: 1
+
+  chief_discretion:
+    - trigger: "Report tone inappropriate for audience"
+      action: "Return to report-writer with tone guidance"
+
+    - trigger: "Development plan not actionable"
+      action: "Return to development-planner with specificity requirements"
+
+# ============================================================
+# GO/NO-GO GATES (pipeline stage transitions)
+# ============================================================
+
+go_nogo_gates:
+  intake_to_calibration:
+    gate: "intake-quality"
+    go_condition: "Objective defined AND context classified AND depth selected"
+    nogo_action: "Return to intake-orchestrator"
+
+  calibration_to_traits:
+    gate: "calibration-quality"
+    go_condition: "Respondent consistency ≥ 0.5 AND social desirability risk ≤ MEDIUM"
+    nogo_action: "rapport-architect adjusts approach, re-calibrate"
+
+  traits_to_types:
+    gate: "trait-assessment-quality"
+    go_condition: "Big Five confidence ≥ 0.5 on all 5 dimensions"
+    nogo_action: "trait-chief requests additional evidence"
+
+  types_to_motivation:
+    gate: "type-assessment-quality"
+    go_condition: "≥2 type frameworks assessed AND type-vs-trait separation verified"
+    nogo_action: "type-style-chief adds frameworks or clarifies separation"
+
+  motivation_to_strengths:
+    gate: "motivation-assessment-quality"
+    go_condition: "Core motivation identified with ≥ 0.5 confidence"
+    nogo_action: "motivation-chief probes deeper"
+
+  strengths_to_career:
+    gate: "strengths-assessment-quality"
+    go_condition: "≥2 strength frameworks + strength-vs-skill separated"
+    nogo_action: "strengths-chief adds evidence"
+
+  career_to_contradiction:
+    gate: "career-fit-quality"
+    go_condition: "RIASEC code identified OR career not in scope"
+    nogo_action: "career-fit-analyst adds data"
+
+  contradiction_to_synthesis:
+    gate: "contradiction-audit-quality"
+    go_condition: "All S3/S4 contradictions resolved OR documented as unresolvable"
+    nogo_action: "contradiction-auditor investigates further"
+
+  synthesis_to_report:
+    gate: "synthesis-quality"
+    go_condition: "Multi-layer integration complete AND confidence map filled AND Barnum test PASS"
+    nogo_action: "synthesis-architect reworks integration"
+
+  report_to_delivery:
+    gate: "chief-report-approval-quality"
+    go_condition: "Chief approves AND confidence ≥ 0.5 overall"
+    nogo_action: "report-writer reworks per chief feedback"
+
+# ============================================================
+# SCORE THRESHOLDS
+# ============================================================
+
+score_thresholds:
+  confidence:
+    minimum_per_layer: 0.4          # Below this = layer inconclusive
+    minimum_for_conclusion: 0.5     # Below this = cannot draw conclusions
+    minimum_for_report: 0.5         # Below this = report blocked
+    high_confidence: 0.7            # Above this = strong conclusion
+    very_high_confidence: 0.9       # Above this = very strong conclusion
+
+  contradiction:
+    max_unresolved_s3: 0            # Zero S3 contradictions left unresolved
+    max_unresolved_s4: 0            # Zero S4 contradictions left unresolved
+    max_unresolved_s2: 3            # Up to 3 S2 documented but unresolved
+
+  barnum:
+    max_barnum_statements: 2        # Maximum generic statements in report
+    specificity_requirement: "Every personality claim must include score/percentile or behavioral frequency"
+
+  session:
+    min_layers_fast: 3              # /fast minimum: traits + types + motivation
+    min_layers_standard: 7          # /start minimum: all core layers
+    min_layers_deep: 9              # /deep: all layers including conation + dark side

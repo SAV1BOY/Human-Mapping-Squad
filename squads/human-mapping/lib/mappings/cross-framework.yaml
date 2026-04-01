@@ -1,0 +1,127 @@
+# ============================================================
+# CROSS-FRAMEWORK MAPPING — Correlações Esperadas
+# ============================================================
+# Usado por: scripts/analysis/contradiction-detector.md
+# Propósito: Define correlações esperadas entre frameworks para
+#            detecção automática de contradições.
+# Cada mapeamento define: par de construtos, direção esperada,
+#            tolerância, e severidade se violado.
+
+mappings:
+
+  # ── TRAITS ↔ TYPES ───────────────────────────────────────
+
+  - pair: ["Big Five Extraversion HIGH", "MBTI E (Extraversion)"]
+    direction: positive
+    tolerance: 0.20
+    severity_if_violated: S3
+    note: "Correlação bem estabelecida (r≈0.74 na literatura)"
+
+  - pair: ["Big Five Extraversion LOW", "MBTI I (Introversion)"]
+    direction: positive
+    tolerance: 0.20
+    severity_if_violated: S3
+
+  - pair: ["Big Five Openness HIGH", "MBTI N (Intuition)"]
+    direction: positive
+    tolerance: 0.25
+    severity_if_violated: S2
+    note: "Correlação moderada (r≈0.55)"
+
+  - pair: ["Big Five Agreeableness HIGH", "DISC S (Steadiness)"]
+    direction: positive
+    tolerance: 0.25
+    severity_if_violated: S2
+
+  - pair: ["Big Five Conscientiousness HIGH", "DISC C (Compliance)"]
+    direction: positive
+    tolerance: 0.25
+    severity_if_violated: S2
+
+  - pair: ["Big Five Extraversion HIGH", "DISC D+I (Dominance+Influence)"]
+    direction: positive
+    tolerance: 0.20
+    severity_if_violated: S2
+
+  - pair: ["Big Five Neuroticism HIGH", "Hogan Adjustment LOW"]
+    direction: inverse
+    tolerance: 0.20
+    severity_if_violated: S3
+    note: "Correlação forte inversa (r≈-0.70)"
+
+  # ── TRAITS ↔ MOTIVATION ──────────────────────────────────
+
+  - pair: ["Big Five Agreeableness HIGH", "SDI Blue (Altruistic-Nurturing)"]
+    direction: positive
+    tolerance: 0.30
+    severity_if_violated: S2
+
+  - pair: ["Big Five Conscientiousness HIGH", "Enneagram 1 or 3"]
+    direction: positive
+    tolerance: 0.35
+    severity_if_violated: S1
+    note: "Correlação fraca — motivação ≠ traço"
+
+  - pair: ["Big Five Extraversion LOW", "Enneagram 5"]
+    direction: positive
+    tolerance: 0.30
+    severity_if_violated: S2
+
+  # ── TYPES ↔ MOTIVATION ───────────────────────────────────
+
+  - pair: ["DISC D HIGH", "SDI Red (Assertive-Directing)"]
+    direction: positive
+    tolerance: 0.25
+    severity_if_violated: S2
+
+  - pair: ["DISC I HIGH", "Enneagram 2 or 7"]
+    direction: positive
+    tolerance: 0.30
+    severity_if_violated: S1
+
+  # ── STRENGTHS ↔ TRAITS ───────────────────────────────────
+
+  - pair: ["CliftonStrengths Strategic Thinking domain", "Big Five Openness HIGH"]
+    direction: positive
+    tolerance: 0.30
+    severity_if_violated: S2
+
+  - pair: ["CliftonStrengths Executing domain", "Big Five Conscientiousness HIGH"]
+    direction: positive
+    tolerance: 0.25
+    severity_if_violated: S2
+
+  - pair: ["CliftonStrengths Influencing domain", "Big Five Extraversion HIGH"]
+    direction: positive
+    tolerance: 0.25
+    severity_if_violated: S2
+
+  # ── CONATION ↔ TRAITS ────────────────────────────────────
+
+  - pair: ["Kolbe Follow Thru HIGH", "Big Five Conscientiousness HIGH"]
+    direction: positive
+    tolerance: 0.30
+    severity_if_violated: S2
+
+  - pair: ["Kolbe Quick Start HIGH", "Big Five Openness HIGH"]
+    direction: positive
+    tolerance: 0.30
+    severity_if_violated: S1
+
+  # ── CAREER ↔ STRENGTHS ───────────────────────────────────
+
+  - pair: ["RIASEC Investigative", "CliftonStrengths Analytical/Learner/Input"]
+    direction: positive
+    tolerance: 0.30
+    severity_if_violated: S1
+
+  - pair: ["RIASEC Social", "CliftonStrengths Empathy/Developer/Includer"]
+    direction: positive
+    tolerance: 0.30
+    severity_if_violated: S1
+
+# ── SEVERITY LEGEND ──────────────────────────────────────
+# S1: Frameworks measure loosely related constructs. Divergence is informational.
+# S2: Frameworks measure related constructs. Moderate agreement expected. Investigate if violated.
+# S3: Frameworks measure same construct. Strong agreement expected. Direct contradiction requires resolution.
+# S4: Same framework contradicts itself. Data quality issue — requires respondent re-validation.

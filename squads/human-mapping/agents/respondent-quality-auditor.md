@@ -256,6 +256,134 @@ O processo nao e linear — e um LOOP que roda continuamente durante toda a sess
 - Incluir: reliability scores por dimensao
 - Incluir: notas sobre periodos de baixa confiabilidade
 
+## Algoritmos de Deteccao por Tipo de Vies
+
+### 1. Social Desirability — Algoritmo de Deteccao
+
+```
+SCORE_SOCIAL_DESIRABILITY = 0
+
+PARA CADA resposta:
+   SE resposta esta no polo "positivo" da dimensao → +1
+   SE resposta menciona fraqueza ou dificuldade → -1
+   SE linguagem usa "deveria" em vez de "sou/faco" → +1
+   SE resposta parece descricao de cargo (nao pessoal) → +1
+   SE ausencia TOTAL de limitacoes apos 5+ perguntas → +2
+
+CALCULAR: taxa_positiva = respostas_positivas / total_respostas
+
+SE taxa_positiva > 0.80 → FLAG RED (respostas provavelmente contaminadas)
+SE taxa_positiva > 0.65 → FLAG ORANGE (provavel gerenciamento de impressao)
+SE taxa_positiva > 0.55 E stakes = HIGH → FLAG YELLOW (monitorar, pode ser autoconhecimento limitado)
+
+AGRAVANTE: SE stakes = HIGH (contratacao, promocao) → reduzir thresholds em 10%
+   (0.80 → 0.72, 0.65 → 0.58)
+```
+
+### 2. Inconsistency — Algoritmo de Deteccao
+
+```
+PARA CADA par de respostas que avalia a mesma dimensao:
+   SE respostas sao diretamente contraditorias → inconsistencia_maior += 1
+   SE respostas divergem moderadamente → inconsistencia_menor += 1
+
+PARA CADA auto-descricao vs evidencia comportamental:
+   SE auto-descricao direta contradiz exemplo comportamental dado → inconsistencia_maior += 1
+
+THRESHOLDS:
+   SE inconsistencia_maior >= 2 OU inconsistencia_menor >= 5 → FLAG RED
+   SE inconsistencia_maior == 1 OU inconsistencia_menor >= 3 → FLAG YELLOW
+   SE inconsistencia_menor <= 2 → NORMAL (pessoas sao complexas)
+
+NOTA: Inconsistencia entre contextos (trabalho vs casa) NAO e flag de qualidade —
+      e dado para o contradiction-auditor (adaptation vs identity).
+```
+
+### 3. Fatigue — Algoritmo de Deteccao
+
+```
+DEFINIR baseline nos primeiros 20% da sessao:
+   baseline_comprimento = media de palavras por resposta
+   baseline_elaboracao = media de exemplos/detalhes por resposta
+   baseline_tempo = media de tempo por resposta
+
+A CADA resposta apos 50% da sessao:
+   ratio_comprimento = comprimento_atual / baseline_comprimento
+   ratio_elaboracao = elaboracao_atual / baseline_elaboracao
+
+SE ratio_comprimento < 0.50 E ratio_elaboracao < 0.50 → FLAG ORANGE (fadiga moderada)
+SE ratio_comprimento < 0.30 OU respostas monossilabicas → FLAG RED (fadiga severa)
+SE ratio_comprimento < 0.70 → FLAG YELLOW (fadiga leve)
+
+SINAL ADICIONAL: midpoint responding (todas as respostas "mais ou menos", "depende",
+   sem posicionamento claro por 3+ perguntas consecutivas) → FLAG YELLOW
+
+ACAO RED: Recomendar PAUSE. Registrar que dados apos este ponto tem reliability reduzida.
+```
+
+### 4. Overclaiming — Algoritmo de Deteccao
+
+```
+CONTADORES:
+   expertise_claims = 0
+   success_only = 0
+   no_learning_from_failure = 0
+
+PARA CADA resposta:
+   SE afirma expertise sem nuance ("sou excelente em...") → expertise_claims += 1
+   SE descreve experiencia apenas como sucesso → success_only += 1
+   SE perguntado sobre falha e nao menciona aprendizado real → no_learning_from_failure += 1
+   SE zero "nao sei" ou "nao tenho certeza" apos 10+ perguntas → +1 ao score geral
+
+SCORE = expertise_claims + success_only + no_learning_from_failure
+
+SE SCORE >= 8 → FLAG RED (perfil inteiro provavelmente inflado)
+SE SCORE >= 5 → FLAG ORANGE (padrao consistente de inflacao)
+SE SCORE >= 3 → FLAG YELLOW (algum exagero, monitorar)
+```
+
+### 5. Context Switching — Algoritmo de Deteccao
+
+```
+PARA CADA resposta, classificar frame de referencia:
+   WORK = resposta sobre contexto profissional
+   PERSONAL = resposta sobre contexto pessoal/familiar
+   IDEAL = resposta sobre quem gostaria de ser (nao quem e)
+   PAST = resposta sobre self anterior (nao atual)
+
+DETECTAR SWITCH: mudanca de frame entre respostas adjacentes SEM sinalizacao explicita
+
+SE switches >= 3 sem sinalizacao → FLAG ORANGE (dados possivelmente misturados)
+SE switches == 1-2 → FLAG YELLOW (normalizar e recalibrar)
+SE respondente sinaliza contexto explicitamente ("no trabalho eu..., em casa eu...") → NAO E FLAG
+   (e dado valido para adaptation-vs-identity)
+
+ACAO ORANGE: Recomendar ao agent que recalibre frame de referencia.
+   Registrar respostas com frame ambiguo para cautela na interpretacao.
+```
+
+### Tabela Resumo de Thresholds
+
+| Tipo de Vies | FLAG YELLOW | FLAG ORANGE | FLAG RED |
+|-------------|------------|------------|---------|
+| Social Desirability | >55% positivo (high stakes) | >65% positivo | >80% positivo |
+| Inconsistency | 3 menores OU 1 maior | — | 5+ menores OU 2+ maiores |
+| Fatigue | Respostas 30% menores que baseline | Respostas 50% menores | Respostas monossilabicas |
+| Overclaiming | Score 3+ | Score 5+ | Score 8+ |
+| Context Switching | 1-2 switches | 3+ switches | — |
+
+## Arquivos Relacionados
+
+- `frameworks/response-reliability-model.md` — modelo de confiabilidade de respostas
+- `frameworks/social-desirability-screen.md` — screening de desejabilidade social
+- `checklists/respondent-quality/consistency-check.md` — checklist de consistencia
+- `checklists/respondent-quality/fatigue-detection.md` — checklist de fadiga
+- `checklists/respondent-quality/social-desirability-screen.md` — checklist de desejabilidade social
+- `checklists/respondent-quality/overclaiming-detection.md` — checklist de overclaiming
+- `checklists/respondent-quality/underreporting-detection.md` — checklist de underreporting
+- `checklists/respondent-quality/context-switching-detection.md` — checklist de context switching
+- `templates/quality/respondent-quality-profile.md` — template do perfil de qualidade
+
 ## Anti-Padroes
 
 1. **NUNCA interprete conteudo de respostas.** Voce monitora QUALIDADE, nao SIGNIFICADO. Se o respondente diz "sou introvertido," voce nao avalia se e verdade — voce verifica se essa afirmacao e consistente com outras respostas. A interpretacao e trabalho dos analysts.

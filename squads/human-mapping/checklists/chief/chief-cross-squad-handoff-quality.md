@@ -4,74 +4,78 @@ level: layer
 layer: chief
 squad: human-mapping
 version: "2.0.0"
+gate: mandatory
+related_files:
+  - squads/human-mapping/templates/operational/cross-squad-handoff-template.md
+  - data/registries/cross-squad-deliveries.yaml
 ---
-
-# Checklist: Qualidade do Handoff Cross-Squad pelo Chief
+# Checklist: Chief Cross-Squad Handoff Quality
 
 ## Proposito
-Garantir que dados e insights transferidos do Human Mapping Squad para outros squads estejam formatados corretamente, com confidence documentada e contexto suficiente para uso adequado pelo squad receptor. Um handoff mal feito pode levar a interpretacoes erradas dos dados de personalidade em outros contextos.
+Garantir que dados transferidos para outros squads estao formatados por template, com confidence documentada, limitacoes explicitas, contexto para o receptor e registro no sistema de entregas.
 
 ## Criterios Obrigatorios
 
-### Formatacao e Completude
-- [ ] O handoff segue o cross-squad-handoff-template padrao — Verificado: `___`
-- [ ] Todos os campos obrigatorios do template estao preenchidos — Campos faltantes: `___`
-- [ ] O resumo executivo e autocontido — compreensivel sem acessar dados brutos — Verificado: `___`
-- [ ] A linguagem esta adaptada para o squad receptor (sem jargao exclusivo do Human Mapping) — Verificado: `___`
+- [ ] **Template Compliance** — Data formatted per `templates/operational/cross-squad-handoff-template.md`
+  - Threshold: All mandatory fields in the handoff template populated; 0 missing fields
+  - Evidence: Field-by-field comparison of handoff document against template; list any missing fields
+  - Fail action: Chief completes missing fields or returns to originating agent
 
-### Confidence e Transparencia
-- [ ] Cada insight transferido tem confidence score documentado — Verificado: `___`
-- [ ] Insights com confidence abaixo de 0.50 estao marcados como "hipotese" ou "indicacao preliminar" — Verificado: `___`
-- [ ] Limitacoes dos dados estao explicitamente declaradas — Limitacoes: `___`
-- [ ] Contradicoes nao resolvidas relevantes para o squad receptor estao sinalizadas — Contradicoes: `___`
-- [ ] A fonte dos dados e rastreavel (quais instrumentos, oficiais ou proxy) — Verificado: `___`
+- [ ] **Confidence Scores Included** — Every transferred insight has a confidence score
+  - Threshold: 0 insights without confidence score; insights with confidence < 0.50 explicitly marked as "hypothesis" or "preliminary indication"
+  - Evidence: Confidence score present per insight; low-confidence items flagged with appropriate label
+  - Fail action: Chief adds confidence scores to unscored insights
 
-### Contexto e Interpretacao
-- [ ] O objetivo original do mapeamento esta documentado (o squad receptor sabe POR QUE o assessment foi feito) — Objetivo: `___`
-- [ ] Orientacoes de "como usar" e "como NAO usar" os dados estao incluidas — Verificado: `___`
-- [ ] Ajustes culturais aplicados estao documentados — Ajustes: `___`
-- [ ] O escopo do que esta sendo transferido esta claro (quais camadas, quais dimensoes) — Escopo: `___`
-- [ ] Dados que NAO devem ser compartilhados alem do squad receptor estao sinalizados — Restricoes: `___`
+- [ ] **Limitations Explicitly Stated** — Limitations of the data are documented
+  - Threshold: Limitations section present with >= 3 specific limitations (e.g., instrument type, sample context, data age, unresolved contradictions)
+  - Evidence: Limitations section in handoff document with concrete items
+  - Fail action: Chief writes limitations section before delivery
 
-### Privacidade e Etica
-- [ ] O respondente autorizou o compartilhamento de dados com o squad receptor — Autorizacao: `___`
-- [ ] O nivel de detalhe e apropriado para o proposito do squad receptor (principio do minimo necessario) — Verificado: `___`
-- [ ] Dados de Hogan HDS (dark side) so sao transferidos quando explicitamente necessarios e autorizados — Status: `___`
-- [ ] Dados brutos de assessment NAO sao transferidos — apenas insights interpretados — Verificado: `___`
+- [ ] **Receiving Squad Context Explained** — Context for the receiving squad is provided
+  - Threshold: Handoff includes all four: (1) original assessment objective, (2) "how to use" guidance, (3) "how NOT to use" warnings, (4) scope of transfer (which layers/dimensions included and excluded)
+  - Evidence: Context section in handoff with all four elements present
+  - Fail action: Chief adds missing context elements
 
-### Acionalidade
-- [ ] O handoff inclui recomendacoes especificas para o contexto do squad receptor — Recomendacoes: `___`
-- [ ] As recomendacoes sao accionaveis (o squad receptor sabe o que FAZER com a informacao) — Verificado: `___`
-- [ ] Ha indicacao clara de quando recontactar o Human Mapping Squad para esclarecimentos — Protocolo: `___`
-- [ ] Proximos passos do lado do Human Mapping (se houver) estao documentados — Passos: `___`
+- [ ] **Registry Entry Created** — Delivery registered in `data/registries/cross-squad-deliveries.yaml`
+  - Threshold: Registry entry exists with: date, sending squad, receiving squad, respondent ID (anonymized), scope, confidence range, Chief approval status
+  - Evidence: Registry file entry matching this handoff
+  - Fail action: Chief creates registry entry before delivery
 
-## Verificacao por Tipo de Squad Receptor
+- [ ] **Privacy Authorization Obtained** — Respondent authorized data sharing with the receiving squad
+  - Threshold: Authorization record exists with respondent consent, date, and scope of permitted sharing
+  - Evidence: Authorization artifact with respondent identifier, date, and scope
+  - Fail action: Chief obtains authorization or BLOCKS the handoff — this is an absolute blocker
 
-### Para squads de Estrategia/Produto
-- [ ] Insights focam em estilo de trabalho, preferencias de comunicacao e pontos de alavancagem
-- [ ] Evitar excesso de detalhe psicometrico — focar em implicacoes praticas
+- [ ] **Minimum Necessary Principle** — Detail level appropriate for receiving squad's purpose
+  - Threshold: Only interpreted insights transferred (not raw assessment data); detail level matched to receiving squad type per squad-specific table below
+  - Evidence: Review of transferred data against receiving squad needs
+  - Fail action: Chief reduces detail level to minimum necessary
 
-### Para squads de People/RH
-- [ ] Nivel de detalhe psicometrico pode ser maior — audiencia familiarizada
-- [ ] Incluir recomendacoes de desenvolvimento e coaching
+- [ ] **Actionable Recommendations Included** — Handoff includes recommendations tailored to the receiving squad
+  - Threshold: >= 2 actionable recommendations for the receiving squad's domain; clear contact protocol for follow-up questions documented
+  - Evidence: Recommendations section with squad-specific actions and contact protocol
+  - Fail action: Chief adds tailored recommendations and contact protocol
 
-### Para squads de Lideranca/Gestao
-- [ ] Focar em estilo de lideranca, gestao de equipe e riscos de derailer
-- [ ] Incluir recomendacoes de comunicacao e feedback
+## Squad-Specific Detail Levels
 
-### Para squads Externos (fora da organizacao)
-- [ ] Nivel maximo de anonimizacao
-- [ ] Apenas insights agregados, nunca dados individuais identificaveis
-- [ ] Aprovacao adicional do respondente e do sponsor
+| Squad Receptor | Focus | Detail Level |
+|---|---|---|
+| Strategy/Product | Work style, communication preferences, leverage points | Low psychometric detail |
+| People/HR | Development, coaching, cultural fit | High psychometric detail permitted |
+| Leadership/Management | Leadership style, derailer risks, team management | Medium psychometric detail |
+| External (outside org) | Aggregated insights only, max anonymization, additional sponsor approval required | Minimum detail |
 
-## Decisao do Chief
+## Decisao
+- **PASS**: Todos criterios obrigatorios atendem threshold
+- **CONDITIONAL PASS**: >=80% criterios, gaps documentados
+- **FAIL**: <50% criterios OR privacy authorization missing -> handoff blocked
 
-- [ ] **APROVADO** — Handoff pronto para envio
-- [ ] **APROVADO COM AJUSTES** — Ajustes necessarios antes do envio: `___`
-- [ ] **DEVOLVIDO** — Requer retrabalho significativo: `___`
-- [ ] **BLOQUEADO** — Questao de privacidade ou etica impede o handoff: `___`
+## Acao se Falhar
+1. Chief identifies specific failing criteria and returns handoff for correction
+2. Originating agent corrects format, adds confidence scores, writes limitations
+3. Chief verifies registry entry and privacy authorization
+4. Re-submit for checklist re-evaluation
+**Bloqueio**: Handoff cannot be sent without Chief PASS. Privacy failures are absolute blockers — no conditional pass allowed.
 
-**Data da decisao:** ___
-**Chief:** ___
-**Squad receptor:** ___
-**Contato no squad receptor:** ___
+## Agente Responsavel
+human-mapping-chief — Arquivo: `agents/human-mapping-chief.md`

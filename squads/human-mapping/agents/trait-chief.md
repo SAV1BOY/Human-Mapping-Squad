@@ -232,6 +232,130 @@ handoff:
     - discrepancy_count > 0
 ```
 
+## Arvore de Decisao: Resolucao de Facetas
+
+```
+1. SCORE EXTREMO?
+   SE qualquer dimensao Big Five > 85th OU < 15th percentile
+   → ATIVAR analise de facetas (neo-16pf-analyst)
+   Motivo: scores extremos frequentemente escondem perfis facetados irregulares
+   Exemplo: Extraversion 90th pode ter Gregariousness 95th mas Assertiveness 55th
+
+2. CONTRADICAO INTER-FRAMEWORK?
+   SE duas dimensoes Big Five parecem contraditorias
+   (ex: Agreeableness alto + Assertiveness faceta alta)
+   → ATIVAR analise de facetas para disambiguar
+   Motivo: contradicoes dimensionais geralmente se resolvem no nivel de facetas
+
+3. DEPTH = DEEP OU COMPREHENSIVE?
+   SE depth_selection == "deep" OU "comprehensive"
+   → SEMPRE ativar analise de facetas completa (30 facetas NEO-PI-3)
+   Motivo: assessment profundo requer granularidade maxima
+
+4. DEPTH = QUICK?
+   SE depth_selection == "quick"
+   → PULAR facetas EXCETO se score extremo detectado (regra 1)
+   Motivo: economia de tempo sem perda de informacao critica
+
+5. DEPTH = STANDARD?
+   SE depth_selection == "standard"
+   → Ativar facetas APENAS se: score extremo (regra 1), contradicao (regra 2),
+     OU mid-range ambiguo (scores 40-60 em 3+ dimensoes)
+   Motivo: equilibrio entre profundidade e eficiencia
+
+6. SOLICITACAO EXPLICITA?
+   SE cliente ou chief solicitou resolucao granular
+   → ATIVAR analise de facetas independente do depth
+```
+
+## Requisitos Minimos de Evidencia
+
+### Por Nivel de Confianca
+
+```
+PARA CADA dimensao Big Five/HEXACO:
+
+CONFIDENCE ALTA (>= 0.80):
+   - Minimo 15 indicadores comportamentais distintos
+   - Evidencia de pelo menos 2 frameworks diferentes (Big Five + HEXACO minimo)
+   - Zero contradicoes cross-framework na dimensao
+   - Facetas consistentes com score dimensional (se disponivel)
+
+CONFIDENCE MEDIA (0.65 - 0.79):
+   - Minimo 8 indicadores comportamentais distintos
+   - Evidencia de pelo menos 2 frameworks
+   - Contradicoes menores permitidas (S1-S2), documentadas
+
+CONFIDENCE BAIXA (0.50 - 0.64):
+   - Minimo 4 indicadores comportamentais
+   - Pode ter evidencia de apenas 1 framework
+   - Contradicoes presentes mas investigadas
+   - OBRIGATORIO: caveat no relatorio
+
+CONFIDENCE INSUFICIENTE (< 0.50):
+   - Menos de 4 indicadores
+   - Camada NAO pode ser usada como ancora para decisoes
+   - OBRIGATORIO: flaggar para chief, caveat explícito
+```
+
+### Contagem de Indicadores Comportamentais
+
+```
+O QUE CONTA como indicador comportamental:
+   - Resposta direta a pergunta de trait-elicitation (+1)
+   - Exemplo comportamental especifico citado pelo respondente (+2)
+   - Padrao consistente observado ao longo de multiplas respostas (+1)
+   - Score de instrumento formal/oficial (+3)
+   - Score de proxy/inferencia conversacional (+1)
+
+O QUE NAO CONTA:
+   - Auto-rotulo sem evidencia ("eu sou extrovertido") (+0)
+   - Resposta ambigua ou generica (+0)
+   - Resposta flaggada por respondent-quality-auditor (+0)
+```
+
+## Regra de Cross-Validacao Obrigatoria
+
+```
+REGRA: Todo score Big Five DEVE ser cruzado com pelo menos um outro framework de traits.
+
+PREFERENCIA DE CROSS-VALIDACAO (em ordem):
+   1. HEXACO (OBRIGATORIO — sempre disponivel no pipeline)
+   2. Hogan HPI (SE depth >= standard E workplace translation ativa)
+   3. 16PF (SE analise de facetas ativa)
+   4. NEO-PI-3 facetas (SE disponivel)
+
+PROCEDIMENTO:
+   PARA CADA dimensao Big Five:
+      score_big5 = score da dimensao
+      score_cross = score equivalente no framework de cross-validacao
+
+      SE |score_big5 - score_cross| <= 1.0 SD → CONVERGENTE (confidence += 0.05)
+      SE |score_big5 - score_cross| entre 1.0 e 1.5 SD → DIVERGENTE LEVE (confidence inalterada, nota)
+      SE |score_big5 - score_cross| > 1.5 SD → DISCREPANTE (confidence -= 0.10, investigar)
+
+MAPA DE EQUIVALENCIAS Big Five ↔ HEXACO:
+   Big Five Openness ↔ HEXACO Openness to Experience
+   Big Five Conscientiousness ↔ HEXACO Conscientiousness
+   Big Five Extraversion ↔ HEXACO Extraversion
+   Big Five Agreeableness ↔ HEXACO Agreeableness (NOTA: parcial, H-H absorve variancia)
+   Big Five Neuroticism ↔ HEXACO Emotionality (NOTA: construtos sobrepostos mas nao identicos)
+   SEM EQUIVALENTE Big Five ↔ HEXACO Honesty-Humility (dimensao incremental)
+```
+
+## Arquivos Relacionados
+
+- `frameworks/cross-framework-reconciliation.md` — reconciliacao cross-framework
+- `frameworks/trait-vs-type-model.md` — modelo trait vs type
+- `checklists/traits/big-five-quality.md` — checklist de qualidade Big Five
+- `checklists/traits/hexaco-quality.md` — checklist de qualidade HEXACO
+- `checklists/traits/trait-confidence-quality.md` — checklist de confidence de traits
+- `templates/layers/trait-map-template.md` — template do mapa de traits
+- `templates/layers/facet-summary-template.md` — template de resumo de facetas
+- `templates/layers/workplace-translation-template.md` — template de traducao workplace
+- `lib/taxonomies/trait-taxonomy.md` — taxonomia de tracos
+- `phrases/trait-elicitation-questions.md` — perguntas de elicitacao de traits
+
 ## Anti-Padroes
 
 1. **Pular HEXACO porque Big Five "já cobre"** — HEXACO adiciona Honesty-Humility, dimensão crítica para assessment de workplace behavior. Nunca é redundante.

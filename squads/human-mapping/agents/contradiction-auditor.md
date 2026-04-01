@@ -181,6 +181,94 @@ career-fit-analyst ──▶ [CONTRADICTION-AUDITOR] ──▶ synthesis-archite
 4. **NUNCA ignorar contradicoes informacionais.** "Adaptation vs Identity" nao e menos importante — pode ser a chave para entender como a pessoa opera em diferentes contextos.
 5. **NUNCA auditar superficialmente para "destravar" o pipeline.** A auditoria de contradição e OBRIGATORIA e COMPLETA. Nenhum atalho e aceitavel.
 
+## Matriz de Comparacao Cross-Framework
+
+### Mapa de Equivalencias Obrigatorias
+
+Cada linha abaixo DEVE ser cruzada durante a auditoria. Se qualquer par diverge significativamente, registrar como contradição e classificar severidade.
+
+| Dimensao | Framework A | Framework B | Framework C | Framework D | Framework E |
+|----------|------------|------------|------------|------------|------------|
+| **Energia Social** | Big Five Extraversion | MBTI E/I | DISC D+I (alto) / S+C (baixo) | Insights Yellow+Red (alto) / Blue+Green (baixo) | RIASEC Social |
+| **Agreeableness** | Big Five Agreeableness | DISC S (alto) | SDI Blue/Green (alto) | Enneagram 2/9 (alto) | HEXACO Agreeableness |
+| **Conscientiousness** | Big Five Conscientiousness | Kolbe Follow Thru (alto) | Enneagram 1/3 (alto) | DISC C (alto) | Belbin Completer Finisher |
+| **Estabilidade Emocional** | Big Five Neuroticism (invertido) | Hogan Adjustment (invertido) | PCM stress pattern (sob stress) | Enneagram nivel de saude | 16PF Anxiety |
+| **Abertura/Criatividade** | Big Five Openness | MBTI N (alto) / S (baixo) | Kolbe Quick Start (alto) | CliftonStrengths Strategic Thinking | RIASEC Artistic |
+| **Honestidade/Humildade** | HEXACO Honesty-Humility | — (sem equivalente direto Big Five) | Hogan HPI Prudence (parcial) | Enneagram 1 (parcial) | VIA Honesty |
+| **Assertividade** | Big Five Assertiveness (faceta) | DISC D (alto) | SDI Red (alto) | Belbin Shaper | Social Styles Driving |
+| **Motivacao por Status** | Hogan MVPI Recognition | Enneagram 3 | Reiss Status | SDI Red | CliftonStrengths Significance |
+
+### Exemplos de Severidade por Tipo
+
+**S1 — Correlacao Esperada (informacional, sem acao):**
+- CliftonStrengths Analytical + Belbin Monitor Evaluator → complementares, esperado
+- Big Five Conscientiousness alto + Kolbe Follow Thru alto → convergencia natural
+- Enneagram 1 + VIA Fairness como signature strength → alinhamento motivacao-carater
+- DISC C alto + Insights Blue dominante → mesmo construto, frameworks diferentes
+
+**S2 — Divergencia Menor (documentar, nota no relatorio):**
+- Big Five Extraversion 55th percentile + MBTI INTP → zona cinzenta, MBTI pode captar preferencia sutil
+- CliftonStrengths Relator (profundidade) + DISC I alto (amplitude) → dimensoes diferentes de socialidade
+- Enneagram 5 + Belbin Teamworker → possivel em contextos especificos
+
+**S3 — Contradicao Direta (investigacao obrigatoria):**
+- Big Five Extraversion 25th percentile + MBTI ENFP → contradicao direta que requer analise de facetas
+- Big Five Agreeableness 15th percentile + VIA Kindness como signature strength → tensao real
+- Hogan Adjustment alto (calmo) + Enneagram 6 (ansiedade core) → adaptacao vs identidade?
+- DISC S dominante (estabilidade) + Kolbe Quick Start 9 (impulso por mudanca) → conflito conacao vs estilo
+
+**S4 — Contradicao Critica Multi-Framework (escalar ao chief):**
+- Big Five Extraversion <20th + MBTI E + DISC D+I altos + Insights Red → 3+ frameworks divergem
+- Big Five Neuroticism >85th + Hogan Adjustment alto + PCM sem stress visivel → dados contraditórios em cadeia
+- Respondent quality flags (social desirability RED) + perfil "perfeito" em todos os frameworks → dados possivelmente invalidos
+
+### Arvore de Decisao: Reconciliacao
+
+Para cada contradição S3 ou superior, seguir esta arvore:
+
+```
+1. E ADAPTACAO CONTEXTUAL?
+   Pergunta: O respondente se comporta diferente em contextos diferentes?
+   Evidencia: Respostas variam por contexto (trabalho vs casa vs social)?
+   SE SIM → Documentar AMBOS padroes. Usar adaptation-vs-identity-model.md
+            Resultado: Reconciliada. Penalidade: 0.
+   SE NAO → passo 2
+
+2. E FASE DEVELOPMENTAL?
+   Pergunta: O respondente esta em transicao ou crescimento recente?
+   Evidencia: Menciona mudancas recentes, terapia, nova funcao?
+   SE SIM → Documentar como transicao. Framework antigo pode captar self anterior.
+            Resultado: Parcialmente reconciliada. Penalidade: -0.02
+   SE NAO → passo 3
+
+3. E ERRO DE MEDICAO?
+   Pergunta: Respondent quality flags presentes? Social desirability? Fadiga?
+   Evidencia: Consultar respondent-quality-profile.
+   SE SIM → Flaggar para re-analise pelo analyst responsavel.
+            Resultado: Pendente re-analise. Penalidade: -0.05 ate resolucao
+   SE NAO → passo 4
+
+4. E COMPLEXIDADE GENUINA?
+   Pergunta: A pessoa realmente contem dimensoes contraditórias?
+   Evidencia: Facetas divergentes dentro da mesma dimensao? Historia de vida consistente com tensao?
+   SE SIM → Preservar como riqueza do perfil. NAO eliminar.
+            Resultado: Nao-reconciliada (genuina). Penalidade: -0.03
+   SE INDETERMINADO → Registrar como nao-reconciliada sem explicacao.
+            Resultado: Nao-reconciliada. Penalidade: -0.10
+```
+
+## Arquivos Relacionados
+
+- `frameworks/cross-framework-reconciliation.md` — modelo de reconciliacao com severidades S1-S4
+- `frameworks/trait-vs-type-model.md` — modelo de comparacao trait vs type
+- `frameworks/adaptation-vs-identity-model.md` — modelo adaptacao vs identidade
+- `frameworks/contradiction-baseline.md` — baseline de contradicoes esperadas
+- `checklists/contradiction-audit-quality.md` — checklist de qualidade da auditoria
+- `templates/audit/contradiction-map-template.md` — template do mapa de contradicoes
+- `templates/audit/confidence-map-template.md` — template do mapa de confianca
+- `lib/taxonomies/contradiction-taxonomy.md` — taxonomia de contradicoes
+- `phrases/contradiction-reconciliation-questions.md` — perguntas para reconciliacao
+
 ## Exemplos
 
 ### Exemplo 1: Contradição Alta — Trait vs Type

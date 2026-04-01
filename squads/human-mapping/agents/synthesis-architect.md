@@ -174,6 +174,122 @@ contradiction-auditor ──▶ [SYNTHESIS-ARCHITECT] ──▶ report-writer
 4. **NUNCA ignorar camadas de baixa confianca.** Incluir com caveat: "Com base em dados limitados (confianca 0.40), indicamos que..."
 5. **NUNCA apresentar o perfil como verdade definitiva.** O perfil e o melhor retrato possivel com os dados disponiveis. Sempre incluir limitacoes e caveats.
 
+## Algoritmo de Ponderacao por Camada
+
+### Pesos Base (fixos)
+
+```
+Camada Trait:           30% (mais estavel, maior validacao empirica — Big Five/HEXACO sao ancora)
+Camada Type/Style:      20% (patterns uteis mas derivados de traits + preferencias)
+Camada Motivation:      20% (drivers profundos mas mais dificeis de medir com precisao)
+Camada Strength:        15% (talentos naturais, mais contextuais)
+Camada Career/Action:   10% (interesses + fit, mais volateis por fase de vida)
+Camada Conation:         5% (modo instintivo de acao — Kolbe, menos validacao cruzada)
+                       ----
+                       100%
+```
+
+### Ajuste Dinamico por Confidence
+
+```
+PARA CADA camada:
+   SE confidence_camada >= 0.70 → manter peso base
+   SE confidence_camada entre 0.50 e 0.69 → peso = peso_base * 0.75
+   SE confidence_camada entre 0.30 e 0.49 → peso = peso_base * 0.40
+   SE confidence_camada < 0.30 → peso = 0 (camada excluida da sintese, com caveat)
+
+APOS ajuste: renormalizar pesos para somar 100%
+```
+
+### Exemplo de Calculo
+
+```
+Camada         | Peso Base | Confidence | Ajuste   | Peso Final (renormalizado)
+Trait          | 0.30      | 0.82       | 0.30     | 0.33
+Type/Style     | 0.20      | 0.71       | 0.20     | 0.22
+Motivation     | 0.20      | 0.58       | 0.15     | 0.16
+Strength       | 0.15      | 0.75       | 0.15     | 0.16
+Career/Action  | 0.10      | 0.44       | 0.04     | 0.04
+Conation       | 0.05      | 0.80       | 0.05     | 0.05
+               |           |            | Total: 0.89 → renormalizado para 1.00
+```
+
+## Metodologia de Integracao: Citacao de Camadas
+
+Para CADA conclusao no perfil integrado, documentar:
+
+```
+CONCLUSAO: "[afirmacao sobre o respondente]"
+SUPORTA:
+  - Camada Trait: [dado especifico, score, confidence]
+  - Camada Type: [dado especifico, score, confidence]
+  - Camada Motivation: [dado especifico, score, confidence]
+CONTRADIZ:
+  - Camada Strength: [dado especifico, score, confidence] — reconciliacao: [explicacao]
+AUSENTE:
+  - Camada Career: sem dado relevante para esta conclusao
+CONFIDENCE INTEGRADA: [media ponderada das camadas que suportam]
+```
+
+### Exemplo
+
+```
+CONCLUSAO: "Tendencia forte para lideranca relacional sobre lideranca diretiva"
+SUPORTA:
+  - Trait: Agreeableness 78th, Assertiveness faceta 45th (confidence 0.81)
+  - Type: MBTI ENFJ, DISC I/S (confidence 0.74)
+  - Motivation: Enneagram 2w3, SDI Blue-Red (confidence 0.68)
+  - Strength: CliftonStrengths Relator, Empathy, Developer (confidence 0.77)
+CONTRADIZ:
+  - Career: Belbin Shaper (papel de lideranca diretiva) — reconciliacao: Shaper em segundo lugar,
+    ativado apenas sob pressao de deadline. Padrao primario e Coordinator.
+CONFIDENCE INTEGRADA: 0.75
+```
+
+## Triggers de Revisao pelo Chief
+
+Flaggar AUTOMATICAMENTE para human-mapping-chief se QUALQUER condicao abaixo for verdadeira:
+
+```
+1. CONFIDENCE BAIXA EM CAMADA OBRIGATORIA
+   SE confidence < 0.50 em Trait OU Type/Style → FLAG CRITICO
+   SE confidence < 0.50 em Motivation OU Strength → FLAG ALTO
+   Acao: chief decide se prossegue com caveat ou solicita dados adicionais
+
+2. CONTRADICAO S3+ NAO RESOLVIDA
+   SE qualquer contradicao de severidade S3 ou S4 permanece nao-reconciliada
+   apos investigacao completa do contradiction-auditor → FLAG ALTO
+   Acao: chief arbitra ou solicita coleta adicional
+
+3. DIVERGENCIA MULTI-FRAMEWORK
+   SE >= 3 frameworks discordam sobre a mesma dimensao core → FLAG CRITICO
+   Exemplo: Big Five Extraversion baixo + MBTI E + DISC D alto + Insights Red
+   Acao: chief investiga com trait-chief e contradiction-auditor
+
+4. PERFIL BARNUM
+   SE narrative-persona-description falha no teste Barnum
+   (descricao genérica demais, transferivel para outra pessoa) → FLAG ALTO
+   Acao: reescrever com maior especificidade antes de liberar
+
+5. CAMADA AUSENTE EM DEPTH STANDARD+
+   SE depth >= STANDARD e qualquer camada obrigatoria nao foi completada → FLAG CRITICO
+   Acao: chief decide se reduz escopo ou completa camada
+```
+
+## Arquivos Relacionados
+
+- `frameworks/persona-synthesis-model.md` — modelo de sintese com hierarquia de pesos
+- `frameworks/executive-brief-model.md` — modelo de brief executivo
+- `frameworks/confidence-scoring-model.md` — modelo de calculo de confidence
+- `checklists/synthesis-quality.md` — checklist de qualidade da sintese
+- `templates/reports/deep-persona-report-template.md` — template de relatorio profundo
+- `templates/audit/confidence-map-template.md` — template do mapa de confianca
+- `lib/taxonomies/trait-taxonomy.md` — taxonomia de tracos
+- `lib/taxonomies/type-taxonomy.md` — taxonomia de tipos
+- `lib/taxonomies/motivation-taxonomy.md` — taxonomia de motivacao
+- `lib/taxonomies/strength-taxonomy.md` — taxonomia de forcas
+- `lib/taxonomies/contradiction-taxonomy.md` — taxonomia de contradicoes
+
 ## Exemplos
 
 ### Exemplo 1: Tema Central Integrado

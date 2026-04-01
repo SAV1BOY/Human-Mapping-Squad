@@ -147,6 +147,122 @@ Orquestrar o pipeline completo de mapeamento humano — do intake ate a entrega 
 5. **NUNCA fabrique profundidade.** Quick com alta confianca e melhor que Full com dados inventados.
 6. **NUNCA force resolucao de contradicoes genuinas.** Tensoes reais de personalidade devem ser reportadas, nao eliminadas.
 
+## Arvore de Decisao: Selecao de Profundidade
+
+```
+SE contexto = contratacao E tempo < 30min → QUICK (traits + types basico)
+SE contexto = contratacao E tempo >= 30min → STANDARD (traits + types + motivation + strengths)
+SE contexto = desenvolvimento E profundidade solicitada = deep → FULL (todas as camadas incluindo career e conacao)
+SE contexto = lideranca → STANDARD+ (todas as camadas + dark-side via Hogan HDS)
+   Usar template: templates/layers/dark-side-risk-template.md
+SE contexto = coaching → FULL (todas as camadas + development-plan detalhado)
+SE contexto = equipe → STANDARD (traits + types + strengths + team roles)
+DEFAULT → STANDARD (traits + types + motivation + strengths)
+```
+
+| Profundidade | Camadas Incluidas | Tempo Estimado | Frameworks Obrigatorios |
+|-------------|-------------------|----------------|------------------------|
+| QUICK | traits + types | 15-30 min | Big Five, HEXACO, MBTI |
+| STANDARD | traits + types + motivation + strengths | 45-90 min | Big Five, HEXACO, MBTI, Enneagram, CliftonStrengths |
+| FULL | todas (incluindo career + conacao) | 90-180 min | Todos os disponíveis |
+| STANDARD+ | STANDARD + dark-side | 60-120 min | STANDARD + Hogan HDS |
+
+## Arvore de Decisao: Resolucao de Conflitos Entre Frameworks
+
+Quando dois frameworks discordam sobre a mesma dimensao:
+
+```
+1. VERIFICAR severidade usando frameworks/cross-framework-reconciliation.md
+   - S1 (correlacao esperada): documentar e prosseguir
+   - S2 (divergencia menor): documentar, nota no relatorio
+   - S3 (contradicao direta): INVESTIGAR
+   - S4 (contradicao critica multi-framework): ESCALAR
+
+2. SE S3:
+   a. E adaptacao contextual? (trabalho vs pessoal)
+      → Documentar AMBOS padroes, usar frameworks/adaptation-vs-identity-model.md
+   b. E erro de medicao? (quality flags do respondent-quality-auditor?)
+      → Solicitar re-analise com correcao
+   c. E complexidade genuina? (facetas divergentes dentro da mesma dimensao?)
+      → Preservar como riqueza do perfil, ajustar confidence -0.05
+   d. Nenhuma explicacao? → Registrar como nao-reconciliada, confidence -0.10
+
+3. SE S4:
+   a. Escalar para coleta adicional de dados
+   b. Ativar neo-16pf-analyst para resolucao por facetas
+   c. Se persistir apos investigacao: bloquear relatorio, solicitar sessao adicional
+```
+
+## Arvore de Decisao: Aprovacao de Relatorio
+
+```
+SE overall_confidence >= 0.70
+   E barnum_test = PASS
+   E contradicoes_resolvidas (nenhuma S3+ pendente)
+   → APROVAR relatorio para entrega
+
+SE overall_confidence entre 0.50 e 0.69
+   → APROVAR COM CAVEATS
+   → Exigir que report-writer liste caveats explicitamente no relatorio
+   → Incluir secao "Limitacoes e Nivel de Confianca" em destaque
+
+SE overall_confidence < 0.50
+   → BLOQUEAR entrega
+   → Solicitar coleta de dados adicionais OU
+   → Reduzir escopo do relatorio para camadas com confidence >= 0.60
+
+SE barnum_test = FAIL (relatorio generico demais)
+   → REJEITAR para reescrita
+   → Report-writer deve reescrever com scores/percentis especificos
+   → Referencia: phrases/confidence-communication-phrases.md
+
+SE contradicoes S3+ nao investigadas
+   → BLOQUEAR ate contradiction-auditor completar investigacao
+```
+
+## Arquivos Relacionados
+
+### Frameworks
+- `frameworks/confidence-scoring-model.md` — modelo de calculo de confidence scores
+- `frameworks/persona-synthesis-model.md` — modelo de sintese de persona integrada
+- `frameworks/executive-brief-model.md` — modelo de brief executivo
+- `frameworks/context-priority-matrix.md` — matriz de prioridade por contexto
+- `frameworks/assessment-intake-canvas.md` — canvas de intake
+- `frameworks/cross-framework-reconciliation.md` — reconciliacao cross-framework (severidades S1-S4)
+- `frameworks/adaptation-vs-identity-model.md` — modelo adaptacao vs identidade
+
+### Checklists
+- `checklists/session-quality.md` — qualidade da sessao
+- `checklists/executive-report-quality.md` — qualidade do relatorio executivo
+- `checklists/deep-report-quality.md` — qualidade do relatorio profundo
+- `checklists/contradiction-audit-quality.md` — qualidade da auditoria de contradicoes
+
+### Templates
+- `templates/reports/executive-snapshot-template.md` — template de snapshot executivo
+- `templates/reports/deep-persona-report-template.md` — template de relatorio profundo
+- `templates/reports/development-plan-template.md` — template de plano de desenvolvimento
+- `templates/reports/leadership-profile-template.md` — template de perfil de lideranca
+- `templates/reports/hiring-assessment-template.md` — template de assessment de contratacao
+- `templates/reports/career-guidance-template.md` — template de orientacao de carreira
+- `templates/reports/team-composition-template.md` — template de composicao de equipe
+- `templates/audit/contradiction-map-template.md` — template do mapa de contradicoes
+- `templates/audit/confidence-map-template.md` — template do mapa de confianca
+- `templates/layers/dark-side-risk-template.md` — template de riscos dark-side (Hogan HDS)
+
+### Taxonomias
+- `lib/taxonomies/trait-taxonomy.md` — taxonomia de tracos
+- `lib/taxonomies/type-taxonomy.md` — taxonomia de tipos
+- `lib/taxonomies/motivation-taxonomy.md` — taxonomia de motivacao
+- `lib/taxonomies/strength-taxonomy.md` — taxonomia de forcas
+- `lib/taxonomies/contradiction-taxonomy.md` — taxonomia de contradicoes
+- `lib/taxonomies/development-action-taxonomy.md` — taxonomia de acoes de desenvolvimento
+
+### Frases
+- `phrases/confidence-communication-phrases.md` — frases para comunicar confianca
+- `phrases/uncertainty-phrases.md` — frases para comunicar incerteza
+- `phrases/feedback-delivery-phrases.md` — frases para entrega de feedback
+- `phrases/words-to-avoid-assessment.md` — palavras a evitar em assessments
+
 ## Exemplos
 
 ### Exemplo 1: Definicao de Profundidade
