@@ -2,73 +2,117 @@
 type: checklist
 level: macro
 squad: human-mapping
-version: "3.0.0"
+version: "2.0.0"
 gate: mandatory
+related_files:
+  - squads/human-mapping/checklists/intake/intake-quality.md
+  - squads/human-mapping/checklists/calibration/calibration-quality.md
+  - squads/human-mapping/checklists/contradiction/contradiction-audit-quality.md
+  - squads/human-mapping/checklists/synthesis/barnum-prevention-quality.md
+  - squads/human-mapping/checklists/synthesis/narrative-coherence-quality.md
+  - squads/human-mapping/checklists/chief/chief-report-approval-quality.md
 ---
-
-# Checklist: Qualidade da Sessao Completa
+# Checklist: Session Quality
 
 ## Proposito
-Verificar que a sessao de mapeamento foi conduzida do inicio ao fim com todas as etapas cumpridas, thresholds atingidos e integridade garantida.
+Verificar que a sessao de mapeamento foi conduzida do inicio ao fim com todas as etapas cumpridas, thresholds numericos atingidos e integridade do resultado garantida.
 
-## Criterios de Aprovacao
+## Criterios Obrigatorios
 
-### Obrigatorios — Todos devem passar
+- [ ] **Intake Completed** — Intake realizado e registrado antes do inicio da sessao
+  - Threshold: Intake record exists with timestamp, objective, context, and scope fields all populated
+  - Evidence: Intake artifact with timestamp; ref: `intake/intake-quality.md` with PASS status
+  - Fail action: Session must restart from intake
 
-#### Intake e Calibracao
-- [ ] Intake realizado e registrado antes do inicio — Evidencia: registro de intake com timestamp; campos objetivo, contexto e escopo preenchidos; ref: `intake/intake-quality.md`
-- [ ] Calibracao do respondente aprovada — Evidencia: resultado da calibracao com status "aprovado"; score de consistencia >= 0.60; ref: `calibration/calibration-quality.md`
+- [ ] **Calibration Approved** — Calibracao do respondente aprovada com confidence suficiente
+  - Threshold: Calibration confidence >= 0.50; calibration status = "approved"; consistency score >= 0.60
+  - Evidence: Calibration result artifact with numeric scores; ref: `calibration/calibration-quality.md`
+  - Fail action: Respondent must be recalibrated before proceeding
 
-#### Execucao de Camadas
-- [ ] Todas as camadas definidas no escopo foram completadas — Evidencia: lista de camadas com status "concluida" para cada uma; contagem concluidas = contagem planejadas; delta = 0
-- [ ] Nenhuma camada ignorada ou parcialmente preenchida sem justificativa — Evidencia: campo "camadas_incompletas" vazio OU cada camada incompleta tem justificativa com >= 2 frases
+- [ ] **All Layers Completed** — Todas as camadas definidas no escopo foram completadas
+  - Threshold: Count of completed layers = count of planned layers; delta = 0
+  - Evidence: Layer status list showing each layer as "completed" or "skipped with justification"
+  - Fail action: Complete missing layers or provide >= 2 sentence justification for each exclusion
 
-#### Auditoria de Contradicoes
-- [ ] Auditoria de contradicoes executada — Evidencia: relatorio de auditoria presente com lista de contradicoes identificadas (pode ser lista vazia); ref: `contradiction/contradiction-audit-quality.md`
-- [ ] Contradicoes classificadas e reconciliadas — Evidencia: >= 80% das contradicoes com status "resolvida" ou "tensao valida"; 0 contradicoes de alta severidade em aberto
+- [ ] **No Silent Layer Omission** — Nenhuma camada ignorada sem justificativa
+  - Threshold: Field "camadas_incompletas" empty OR each incomplete layer has >= 2 sentence justification
+  - Evidence: Session log completude field
+  - Fail action: Provide justification or complete the layer
 
-#### Confidence
-- [ ] Confianca media da sessao >= 0.50 — Evidencia: media aritmetica dos confidence scores de todas as camadas >= 0.50; valor numerico documentado
-- [ ] Nenhuma camada com confianca < 0.30 sem tratamento — Evidencia: camadas com confidence < 0.30 marcadas como "inconclusiva" no relatorio OU re-avaliadas com dados adicionais
-- [ ] Confianca por camada documentada — Evidencia: tabela com confidence score para cada camada presente no relatorio
+- [ ] **Contradiction Audit Completed** — Auditoria de contradicoes executada sobre os resultados
+  - Threshold: Audit report exists with findings list (may be empty); >= 80% of contradictions resolved or classified as "valid tension"; 0 high-severity contradictions unresolved
+  - Evidence: Contradiction audit artifact; ref: `contradiction/contradiction-audit-quality.md`
+  - Fail action: Execute contradiction audit before generating report
 
-#### Relatorio Final
-- [ ] Relatorio gerado com mapa de confianca — Evidencia: relatorio final presente com secao de confidence map mostrando score por camada e score global
-- [ ] Teste Barnum passou — Evidencia: checklist `synthesis/barnum-prevention-quality.md` com status "PASSA"
-- [ ] Coerencia narrativa verificada — Evidencia: checklist `synthesis/narrative-coherence-quality.md` com status "PASSA"
+- [ ] **Global Confidence >= 0.50** — Confianca media da sessao atinge limiar minimo
+  - Threshold: Arithmetic mean of all layer confidence scores >= 0.50; no layer below 0.30 without "inconclusive" label
+  - Evidence: Confidence map with per-layer and global scores; numeric values documented
+  - Fail action: Investigate low-confidence layers; consider re-evaluation for layers < 0.30
 
-#### Integridade
-- [ ] Tempo da sessao dentro do intervalo — Evidencia: duracao entre 45min e 180min; timestamps de inicio e fim registrados; desvios justificados
-- [ ] Dados brutos preservados para auditoria — Evidencia: artefatos brutos arquivados com referencia/path documentado
-- [ ] Aprovacao do Chief registrada — Evidencia: checklist `chief/chief-report-approval-quality.md` com status "APROVADO" e data
+- [ ] **Per-Layer Confidence Documented** — Confianca por camada registrada
+  - Threshold: Every completed layer has a confidence score in [0.0, 1.0] in the confidence map
+  - Evidence: Confidence map artifact with complete per-layer scores
+  - Fail action: Chief assigns confidence scores to unscored layers
 
-### Desejaveis — Aumentam confianca
-- [ ] Respondente confirmou conforto durante a sessao (feedback qualitativo)
-- [ ] Nenhum indicador de fadiga severa nas respostas finais (consistencia mantida)
-- [ ] Sessao sem interrupcoes significativas (> 15min)
-- [ ] Revisao por pares do relatorio realizada
-- [ ] Feedback qualitativo do respondente coletado ao final
+- [ ] **Barnum Test Passed** — Teste Barnum executado e aprovado
+  - Threshold: barnum-prevention-quality checklist status = PASS
+  - Evidence: Reference to completed `synthesis/barnum-prevention-quality.md` checklist
+  - Fail action: Return to respondent-quality-auditor for anti-Barnum rework
+
+- [ ] **Narrative Coherence Verified** — Coerencia narrativa verificada
+  - Threshold: narrative-coherence-quality checklist status = PASS
+  - Evidence: Reference to completed `synthesis/narrative-coherence-quality.md` checklist
+  - Fail action: Return to report-writer for coherence corrections
+
+- [ ] **Report Approved by Chief** — Relatorio aprovado pelo Chief
+  - Threshold: chief-report-approval-quality checklist status = PASS or CONDITIONAL PASS; approval record with Chief name and date
+  - Evidence: Reference to completed `chief/chief-report-approval-quality.md` checklist
+  - Fail action: Submit report to Chief for approval review
+
+- [ ] **Session Duration Within Range** — Tempo total da sessao dentro do intervalo aceitavel
+  - Threshold: Duration between 45 and 180 minutes; start and end timestamps recorded
+  - Evidence: Timestamps of session start and end; calculated duration
+  - Fail action: Document justification for out-of-range duration
+
+- [ ] **Raw Data Preserved** — Dados brutos preservados para auditoria futura
+  - Threshold: All raw artifacts archived with documented path/reference
+  - Evidence: Archive location documented; artifacts accessible
+  - Fail action: Reconstruct from available artifacts; document any data gaps
+
+## Criterios Desejaveis
+- [ ] Respondent confirmed comfort during session (qualitative feedback collected)
+- [ ] No severe fatigue indicators in final responses (consistency maintained)
+- [ ] Session conducted without significant interruptions (> 15min)
+- [ ] Peer review of report completed
+- [ ] Respondent qualitative feedback collected at session end
 
 ## Metricas Resumo da Sessao
 
 | Metrica | Threshold Minimo | Valor |
-|---------|-----------------|-------|
-| Confianca media global | >= 0.50 | [valor] |
-| Contradicoes resolvidas | >= 80% | [valor] |
-| Camadas completas | 100% (ou justificadas) | [valor] |
-| Teste Barnum | PASSA | [status] |
-| Tempo total | 45-180 min | [valor] |
+|---|---|---|
+| Global confidence mean | >= 0.50 | [value] |
+| Contradictions resolved | >= 80% | [value] |
+| Layers complete | 100% (or justified) | [value] |
+| Barnum test | PASS | [status] |
+| Session duration | 45-180 min | [value] |
+| Calibration confidence | >= 0.50 | [value] |
+
+## Decisao
+- **PASS**: Todos criterios obrigatorios atendem threshold
+- **CONDITIONAL PASS**: >=80% criterios, gaps documentados
+- **FAIL**: <50% criterios -> session rework required
 
 ## Acao se Falhar
-- Intake nao feito: reiniciar desde o intake
-- Calibracao falhou: recalibrar antes de prosseguir
-- Camadas incompletas: completar ou justificar exclusao
-- Contradicoes nao auditadas: executar auditoria antes do relatorio
-- Confianca < 0.50: investigar camadas fracas; considerar re-avaliacao
-- Dados nao preservados: reconstruir a partir dos artefatos disponiveis
-- Barnum falhou: retornar ao respondent-quality-auditor
+- Intake missing: restart from intake
+- Calibration failed: recalibrate before proceeding
+- Layers incomplete: complete or justify exclusion
+- Contradictions not audited: execute audit before report
+- Confidence < 0.50: investigate weak layers; consider re-evaluation
+- Raw data not preserved: reconstruct from available artifacts
+- Barnum failed: return to respondent-quality-auditor
+- Chief approval missing: submit for Chief review
 
 ## Agente Responsavel
-- **Principal**: human-mapping-chief
+- **Principal**: human-mapping-chief — Arquivo: `agents/human-mapping-chief.md`
 - **Suporte**: calibration-agent, contradiction-auditor, synthesis-architect
 - **Aprovador**: human-mapping-chief
