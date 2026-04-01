@@ -3,10 +3,18 @@ type: template
 squad: human-mapping
 version: "3.0.0"
 used_by: [report-agent, synthesis-agent]
+related_files:
+  - frameworks/confidence-scoring-model.md
+  - frameworks/cross-framework-reconciliation.md
+  - templates/layers/trait-map-template.md
+  - templates/layers/motivation-map-template.md
+  - templates/audit/contradiction-map-template.md
+  - templates/audit/confidence-map-template.md
+  - templates/reports/executive-snapshot-template.md
 ---
 # Deep Persona Report — Fillable Template
 
-> Instrucoes: Report completo e detalhado do assessment. Cada secao tem definicao, formato e fontes. Recomendado para profundidade /deep. Total esperado: 3000-5000 palavras.
+> Instrucoes: Este e o report completo e detalhado do assessment. Preencha cada secao com base nos dados das layers individuais. Recomendado para profundidade /deep. Cada secao tem orientacao de conteudo, comprimento e criterios de qualidade.
 
 ---
 
@@ -17,264 +25,422 @@ used_by: [report-agent, synthesis-agent]
 | Respondente | Nome completo | Texto, max 60 chars | _______________ |
 | Session ID | Identificador unico | HMS-YYYY-MMDD-NNN | _______________ |
 | Data | Data do assessment | YYYY-MM-DD | _______________ |
-| Assessor | Agente ou pessoa responsavel | ID do agente ou nome | _______________ |
+| Assessor | Agente ou profissional responsavel | Texto | _______________ |
 | Profundidade | Nivel executado | /fast / /start / /deep | _______________ |
-| Instrumentos | Todos os frameworks aplicados | Lista completa separada por virgula | _______________ |
-| Confidence geral | Score agregado | Decimal 0.00-1.00 | ___/1.0 |
+| Instrumentos utilizados | Lista completa de todos os frameworks aplicados | Lista separada por virgula | _______________ |
+| Confidence geral | Score agregado do confidence-map | Decimal 0.00-1.00 | ___/1.0 |
 
 ---
 
 ## 1. Executive Summary
 
-**DEFINICAO:** Resumo autonomo que captura a essencia do perfil completo.
-**FORMATO:** MAX 300 palavras. Deve conter obrigatoriamente:
-1. Top 3 findings mais relevantes para o contexto do assessment
-2. Confidence geral e eventuais ressalvas criticas
-3. Recomendacao principal (1 frase)
+**ORIENTACAO:**
+- **Comprimento:** Max 200 words
+- **Conteudo obrigatorio:** (1) Confidence geral do assessment, (2) Top 3 findings mais relevantes para o contexto, (3) Principal limitacao ou ressalva
+- **O que incluir:** Sintese dos achados mais impactantes; visao holistica da pessoa; contexto do assessment
+- **O que excluir:** Detalhes de scores individuais; jargao de frameworks; recomendacoes (vem na secao 13)
+- **Tom:** Claro, direto, acessivel a qualquer stakeholder
 
-**ESTRUTURA:**
-> [Paragrafo 1 — 2-3 frases]: Quem e esta pessoa em essencia (tracos + tipo dominante).
-> [Paragrafo 2 — 2-3 frases]: Como age e o que a move (comportamento + motivacao).
-> [Paragrafo 3 — 2-3 frases]: Principais forcas, riscos e recomendacao.
-> [Linha final]: "Confidence geral: X.XX/1.0 — [Classificacao]. [Ressalva se houver]."
+> **FORMATO:** 1 paragrafo de contexto (2-3 frases) + 3 bullet points de findings + 1 frase de limitacao.
 
-[Inserir Executive Summary aqui — MAX 300 palavras]
+**Paragrafo de contexto:**
+_______________
+
+**Top 3 Findings:**
+1. _______________
+2. _______________
+3. _______________
+
+**Principal limitacao:**
+_______________
 
 ---
 
 ## 2. Trait Profile (Perfil de Tracos)
 
-**FONTE:** `templates/layers/trait-map-template.md`
-**FORMATO POR SUBSECAO:**
+**ORIENTACAO:**
+- **Comprimento:** 300-500 words total para a secao
+- **Fonte:** `templates/layers/trait-map-template.md`
+- **Formato por subsecao:** Finding + Evidencia (score/percentil) + Confidence + Limitacoes
 
 ### Big Five Overview
+**Comprimento:** 150-200 words. Apresentar as 5 dimensoes com scores, destacando as 2-3 mais extremas.
 
-| Dimensao | Score (percentil) | Confidence | Descricao comportamental (2-3 frases) |
+| Dimensao | Score (percentil) | Confidence | Classificacao |
 |---|---|---|---|
-| Openness | ___/100 | ___/1.0 | _______________ |
-| Conscientiousness | ___/100 | ___/1.0 | _______________ |
-| Extraversion | ___/100 | ___/1.0 | _______________ |
-| Agreeableness | ___/100 | ___/1.0 | _______________ |
-| Neuroticism | ___/100 | ___/1.0 | _______________ |
+| Openness | ___/100 | ___/1.0 | Muito Alta / Alta / Moderada / Baixa / Muito Baixa |
+| Conscientiousness | ___/100 | ___/1.0 | Muito Alta / Alta / Moderada / Baixa / Muito Baixa |
+| Extraversion | ___/100 | ___/1.0 | Muito Alta / Alta / Moderada / Baixa / Muito Baixa |
+| Agreeableness | ___/100 | ___/1.0 | Muito Alta / Alta / Moderada / Baixa / Muito Baixa |
+| Neuroticism | ___/100 | ___/1.0 | Muito Alta / Alta / Moderada / Baixa / Muito Baixa |
+
+**Narrativa:** _______________
+
+**Limitacoes desta layer:** _______________
 
 ### Facetas Destaque
+**Comprimento:** 50-100 words. Listar apenas facetas extremas (top 3 HIGH + top 3 LOW across all dimensions).
 
-**REGRA:** Incluir apenas facetas que desviam >15 percentis do fator (per trait-map-template). Formato: tabela com faceta, score, desvio, interpretacao.
+| Faceta | Dimensao | Score | Destaque |
+|---|---|---|---|
+| _______________ | _______________ | ___ | HIGH/LOW |
+| _______________ | _______________ | ___ | HIGH/LOW |
+| _______________ | _______________ | ___ | HIGH/LOW |
 
-| Faceta | Fator | Score | Desvio | Interpretacao |
-|---|---|---|---|---|
-| | | | | |
+**Implicacao das facetas extremas:** _______________
 
 ### HEXACO Additions
+**Comprimento:** 50-100 words. Preencher SOMENTE se instrumento HEXACO aplicado.
+**REGRA DE DECISAO:** Se nao disponivel, escrever: "HEXACO nao aplicado neste assessment."
 
-**REGRA CONDICIONAL:** Incluir somente se HEXACO foi aplicado. Caso contrario, escrever "HEXACO nao aplicado nesta avaliacao."
+_______________
 
 ### Implicacoes Comportamentais
+**Comprimento:** 50-100 words. Sintese de como os tracos se manifestam em comportamentos observaveis.
 
-**FORMATO:** Narrativa de 150-250 palavras integrando os tracos em um retrato comportamental coerente. Nao repetir scores — focar em padroes e interacoes entre tracos.
-
-[Inserir narrativa aqui]
+_______________
 
 ---
 
 ## 3. Type/Style Profile (Perfil Tipologico)
 
-**FONTE:** Type/Style Map template
+**ORIENTACAO:**
+- **Comprimento:** 250-400 words total
+- **Formato:** Para cada tipo/estilo: resultado + interpretacao + convergencia com outros frameworks + limitacao
 
 ### Tipologia Primaria
-**FORMATO:** Nome do tipo + framework + descricao de 2-3 frases.
+**Comprimento:** 80-120 words. Resultado do MBTI ou equivalente + interpretacao.
+
+| Campo | Valor |
+|---|---|
+| Tipo | _______________ |
+| Framework | _______________ |
+| Confidence | ___/1.0 |
+| Descricao | _______________ (max 60 words) |
 
 ### Cross-Framework Summary
-**FORMATO:** Tabela mostrando convergencia/divergencia entre frameworks tipologicos.
+**Comprimento:** 80-120 words. Como os diferentes frameworks tipologicos convergem ou divergem.
 
-| Framework | Tipo/Resultado | Convergencia com outros? |
+| Framework | Resultado | Convergencia com tipologia primaria |
 |---|---|---|
-| MBTI | _______________ | _______________ |
-| DISC | _______________ | _______________ |
-| Enneagrama | _______________ | _______________ |
+| _______________ | _______________ | Alta / Media / Baixa |
+| _______________ | _______________ | Alta / Media / Baixa |
+
+**Narrativa de convergencia:** _______________
 
 ### Estilo de Comunicacao
-**FORMATO:** 3-5 bullet points com comportamentos observaveis.
+**Comprimento:** 50-80 words. Como a pessoa prefere comunicar-se, baseado em evidencia.
+
+_______________
 
 ### Estilo de Trabalho
-**FORMATO:** 3-5 bullet points com comportamentos observaveis.
+**Comprimento:** 50-80 words. Ritmo, estrutura e preferencias de trabalho.
+
+_______________
 
 ---
 
 ## 4. Motivation Profile (Perfil Motivacional)
 
-**FONTE:** `templates/layers/motivation-map-template.md`
+**ORIENTACAO:**
+- **Comprimento:** 200-350 words total
+- **Fonte:** `templates/layers/motivation-map-template.md`
+- **Formato:** Finding + evidencia + confidence + limitacoes
 
 ### Motivacoes Centrais
-**FORMATO:** Top 3 motivacoes rankeadas com framework de origem e evidencia.
+**Comprimento:** 80-120 words. Top 2-3 motivacoes intrinsecas com evidencia.
+
+| Motivacao | Framework | Evidencia | Confidence |
+|---|---|---|---|
+| _______________ | _______________ | _______________ | ___/1.0 |
+| _______________ | _______________ | _______________ | ___/1.0 |
+
+**Narrativa:** _______________
 
 ### Valores Fundamentais
-**FORMATO:** Top 3-5 valores com definicao operacional (como se manifesta).
+**Comprimento:** 50-80 words. Top 2-3 valores com framework de origem.
+
+_______________
 
 ### O que Energiza vs O que Drena
-**FORMATO:** Tabela de 2 colunas, 3-5 itens cada.
+**Comprimento:** 50-80 words. Formato: 2-3 pares de energiza/drena.
 
 | Energiza | Drena |
 |---|---|
-| | |
+| _______________ | _______________ |
+| _______________ | _______________ |
 
 ### Implicacoes para Engajamento
-**FORMATO:** 2-3 frases com recomendacoes actionaveis para gestores.
+**Comprimento:** 50-80 words. O que o ambiente precisa oferecer para manter esta pessoa engajada.
+
+_______________
 
 ---
 
 ## 5. Strength Profile (Perfil de Forcas)
 
-**FONTE:** Strength Map template
+**ORIENTACAO:**
+- **Comprimento:** 200-300 words total
+- **Formato:** Cada finding deve citar framework + score/rank + implicacao
 
 ### Top Strengths
-**FORMATO:** Top 5 forcas com framework de origem. Incluir rank e score quando disponivel.
+**Comprimento:** 80-100 words. Top 3-5 forcas com framework de origem.
+
+| Rank | Forca | Framework | Score/Posicao | Implicacao |
+|---|---|---|---|---|
+| 1 | _______________ | _______________ | _______________ | _______________ |
+| 2 | _______________ | _______________ | _______________ | _______________ |
+| 3 | _______________ | _______________ | _______________ | _______________ |
 
 ### Power Pairs
-**DEFINICAO:** Combinacoes de 2 forcas que juntas criam capacidade unica.
-**FORMATO:** 1-2 power pairs com descricao de 1 frase cada.
+**Comprimento:** 40-60 words. Combinacoes de forcas que se potencializam.
+
+_______________
 
 ### Forcas Subutilizadas
-**DEFINICAO:** Forcas com alto score mas baixa frequencia de uso no contexto atual.
-**FORMATO:** 1-2 forcas com sugestao de aplicacao.
+**Comprimento:** 40-60 words. Forcas presentes mas nao exploradas no contexto atual.
+
+_______________
 
 ### Sombra das Forcas
-**DEFINICAO:** Como cada top strength pode se tornar risco quando em excesso.
-**FORMATO:** Tabela: Forca -> Sombra -> Trigger.
+**Comprimento:** 40-60 words. Como forcas podem se tornar riscos em excesso.
+
+_______________
 
 ---
 
-## 6-9. Layers Adicionais
+## 6. Team Role (Papel de Equipe)
 
-**REGRA CONDICIONAL:** Secoes 6-9 sao obrigatorias para /deep, opcionais para /start, omitidas em /fast.
+**ORIENTACAO:**
+- **Comprimento:** 150-250 words total
+- **REGRA DE DECISAO:** Secao obrigatoria para /deep. Para /start, incluir apenas Roles Preferidos. Para /fast, omitir secao.
 
-### 6. Team Role
-**FONTE:** Team Role Map. **FORMATO:** Role primario + contribuicao + dinamicas. 150-200 palavras.
+### Roles Preferidos
+**Comprimento:** 50-80 words. Top 2-3 roles com framework (Belbin, Team Management Wheel, etc.).
 
-### 7. Career Fit
-**FONTE:** Career Fit analysis. **FORMATO:** Interesses + ambientes + recomendacoes. 150-200 palavras.
+| Role | Framework | Score | Descricao (max 15 words) |
+|---|---|---|---|
+| _______________ | _______________ | _______________ | _______________ |
+| _______________ | _______________ | _______________ | _______________ |
 
-### 8. Mode of Action
-**FONTE:** Mode of Action map. **FORMATO:** MO natural + condicoes otimas + riscos. 150-200 palavras.
+### Contribuicao para Equipe
+**Comprimento:** 40-60 words. O que esta pessoa agrega em um time.
 
-### 9. Conflict & Stress
-**FONTE:** Conflict Sequence analysis. **FORMATO:** Comportamento sob pressao + triggers + recovery. 150-200 palavras.
+_______________
+
+### Dinamicas Interpessoais
+**Comprimento:** 40-60 words. Como interage, potenciais de conflito, complementaridade.
+
+_______________
+
+---
+
+## 7. Career Fit (Adequacao de Carreira)
+
+**ORIENTACAO:**
+- **Comprimento:** 150-250 words total
+- **REGRA DE DECISAO:** Secao obrigatoria para /deep e contextos Profissional/Hiring/Lideranca. Omitir para contexto Pessoal se nao solicitado.
+
+### Perfil de Interesses
+**Comprimento:** 50-80 words. RIASEC ou equivalente com interpretacao.
+
+_______________
+
+### Best-Fit Environments
+**Comprimento:** 50-80 words. Tipos de organizacao, cultura e funcao onde a pessoa prospera.
+
+_______________
+
+### Recomendacoes de Carreira
+**Comprimento:** 50-80 words. 2-3 direcoes de carreira fundamentadas nos dados.
+**REGRA:** Cada recomendacao deve citar ao menos 1 evidencia (trait, strength, interest, ou motivation).
+
+_______________
+
+---
+
+## 8. Mode of Action (Modo de Acao)
+
+**ORIENTACAO:**
+- **Comprimento:** 150-250 words total
+- **Fonte:** Kolbe, ou outros frameworks de acao
+
+### MO Natural
+**Comprimento:** 50-80 words. Modo de acao instintivo com scores.
+
+_______________
+
+### Melhores Condicoes de Trabalho
+**Comprimento:** 40-60 words. Condicoes que alinham com o MO natural.
+
+_______________
+
+### Riscos de Burnout Conativo
+**Comprimento:** 40-60 words. Condicoes que forcam contra o MO natural.
+
+_______________
+
+---
+
+## 9. Conflict & Stress (Conflito e Estresse)
+
+**ORIENTACAO:**
+- **Comprimento:** 150-250 words total
+
+### Comportamento Sob Pressao
+**Comprimento:** 50-80 words. Como a pessoa reage quando estressada. Comportamentos observaveis.
+
+_______________
+
+### Triggers
+**Comprimento:** 40-60 words. Situacoes que ativam estresse/conflito. Lista de 3-5 triggers.
+
+1. _______________
+2. _______________
+3. _______________
+
+### Estrategias de Recovery
+**Comprimento:** 40-60 words. O que ajuda esta pessoa a se recuperar. Baseado em dados do assessment.
+
+_______________
 
 ---
 
 ## 10. Contradicoes Detectadas
 
-**FONTE OBRIGATORIA:** `templates/audit/contradiction-map-template.md` — deve estar preenchido ANTES desta secao.
-**FORMATO:**
+**ORIENTACAO:**
+- **Comprimento:** 100-200 words total
+- **Fonte:** `templates/audit/contradiction-map-template.md`
+- **REGRA:** DEVE listar TODAS as contradicoes detectadas, mesmo as resolvidas. Mostrar resolucao e impacto.
+- **O que incluir:** ID, frameworks envolvidos, severidade, status, impacto
+- **O que excluir:** Detalhes completos da analise (referir ao contradiction-map para detalhes)
 
-### Contradicoes Principais
-**Incluir:** Tabela resumo do contradiction map (ID, frameworks, severidade, status).
+| ID | Frameworks | Severidade | Status | Impacto |
+|---|---|---|---|---|
+| _______________ | _______________ | S_ | _______________ | -___ |
+| _______________ | _______________ | S_ | _______________ | -___ |
 
-| ID | Frameworks | Severidade | Status |
-|---|---|---|---|
-| | | | |
+**Narrativa:** _______________
 
-### Explicacoes
-**FORMATO:** Para cada contradicao S2+, incluir paragrafo de 2-3 frases com a explicacao documentada.
-
-### Impacto na Interpretacao
-**FORMATO:** 1-2 frases por contradicao explicando como ela afeta as conclusoes do report.
+**REGRA DE DECISAO:** Se nenhuma contradicao detectada, escrever: "Nenhuma contradicao inter-framework detectada. Todos os frameworks convergem dentro dos limites esperados."
 
 ---
 
 ## 11. Reconciliacao
 
+**ORIENTACAO:**
+- **Comprimento:** 100-200 words total
+- **O que incluir:** Como as contradicoes foram integradas na narrativa do perfil; decisoes tomadas
+- **O que excluir:** Repeticao dos detalhes ja apresentados na secao 10
+
 ### Narrativa Integrada
-**DEFINICAO:** Como o perfil faz sentido como um todo, INCLUINDO as contradicoes resolvidas.
-**FORMATO:** 150-300 palavras. Deve tecer tracos, tipos, motivacoes e forcas em uma narrativa coerente.
+**Comprimento:** 60-120 words. Como o perfil final reconcilia achados divergentes.
+
+_______________
 
 ### Areas de Ambiguidade Restante
-**DEFINICAO:** Aspectos do perfil que permanecem incertos apos reconciliacao.
-**FORMATO:** Lista com bullet points. Se nenhuma, escrever "Nenhuma ambiguidade significativa restante."
+**Comprimento:** 40-80 words. O que permanece incerto e como isso afeta interpretacao.
+**REGRA:** Se todas as contradicoes foram resolvidas, escrever: "Sem ambiguidades restantes significativas."
+
+_______________
 
 ---
 
 ## 12. Confidence Map
 
-**FONTE OBRIGATORIA:** `templates/audit/confidence-map-template.md` — deve estar preenchido ANTES desta secao.
+**ORIENTACAO:**
+- **Comprimento:** Tabela + 2-3 frases de narrativa (max 60 words)
+- **Fonte:** `templates/audit/confidence-map-template.md`
+- **Classificacao:** Verde >= 0.70 | Amarelo 0.50-0.69 | Vermelho < 0.50
 
-| Layer | Confidence | Status | Nota |
+| Layer | Confidence | Status | Flags |
 |---|---|---|---|
-| Traits | ___/1.0 | Verde/Amarelo/Vermelho | |
-| Types/Styles | ___/1.0 | Verde/Amarelo/Vermelho | |
-| Motivation | ___/1.0 | Verde/Amarelo/Vermelho | |
-| Strengths | ___/1.0 | Verde/Amarelo/Vermelho | |
-| Team Role | ___/1.0 | Verde/Amarelo/Vermelho | |
-| Career Fit | ___/1.0 | Verde/Amarelo/Vermelho | |
-| Mode of Action | ___/1.0 | Verde/Amarelo/Vermelho | |
-| Conflict/Stress | ___/1.0 | Verde/Amarelo/Vermelho | |
-| **Overall** | **___/1.0** | | |
+| Traits | ___/1.0 | Verde/Amarelo/Vermelho | _______________ |
+| Types/Styles | ___/1.0 | Verde/Amarelo/Vermelho | _______________ |
+| Motivation | ___/1.0 | Verde/Amarelo/Vermelho | _______________ |
+| Strengths | ___/1.0 | Verde/Amarelo/Vermelho | _______________ |
+| Team Role | ___/1.0 | Verde/Amarelo/Vermelho | _______________ |
+| Career Fit | ___/1.0 | Verde/Amarelo/Vermelho | _______________ |
+| Mode of Action | ___/1.0 | Verde/Amarelo/Vermelho | _______________ |
+| Conflict/Stress | ___/1.0 | Verde/Amarelo/Vermelho | _______________ |
+| **Overall** | **___/1.0** | **Verde/Amarelo/Vermelho** | _______________ |
 
-**Classificacao:** Verde >= 0.70 | Amarelo 0.50-0.69 | Vermelho < 0.50
+**Narrativa:** _______________
 
 ---
 
 ## 13. Recomendacoes de Desenvolvimento
 
-**FONTE OBRIGATORIA:** Deve linkar para `templates/reports/development-plan-template.md` para detalhamento.
-**FORMATO:** 3 prioridades, cada uma com:
-
-| Campo | Formato |
-|---|---|
-| Area | Nome da area de desenvolvimento |
-| Base | Qual finding do assessment suporta esta recomendacao |
-| Acao sugerida | 1-2 frases com acao concreta |
-| Prazo | Curto (1-3 meses) / Medio (3-6 meses) / Longo (6-12 meses) |
+**ORIENTACAO:**
+- **Comprimento:** 150-250 words total (50-80 words por prioridade)
+- **REGRA:** Cada recomendacao DEVE rastrear ate evidencia especifica do assessment. Formato: Recomendacao + Evidencia + Acao sugerida.
+- **Limite:** Max 3 prioridades. Se mais de 3 areas de desenvolvimento, priorizar por impacto.
 
 ### Prioridade 1:
+
 | Campo | Valor |
 |---|---|
-| Area | _______________ |
-| Base | _______________ |
-| Acao sugerida | _______________ |
-| Prazo | _______________ |
+| Area de desenvolvimento | _______________ |
+| Evidencia que suporta | _______________ (citar layer + score + finding especifico) |
+| Acao sugerida | _______________ (max 40 words, acionavel e mensuravel) |
+| Urgencia | Alta / Media / Baixa |
 
 ### Prioridade 2:
+
 | Campo | Valor |
 |---|---|
-| Area | _______________ |
-| Base | _______________ |
+| Area de desenvolvimento | _______________ |
+| Evidencia que suporta | _______________ |
 | Acao sugerida | _______________ |
-| Prazo | _______________ |
+| Urgencia | Alta / Media / Baixa |
 
 ### Prioridade 3:
+
 | Campo | Valor |
 |---|---|
-| Area | _______________ |
-| Base | _______________ |
+| Area de desenvolvimento | _______________ |
+| Evidencia que suporta | _______________ |
 | Acao sugerida | _______________ |
-| Prazo | _______________ |
-
-> Para plano de desenvolvimento detalhado, ver: `templates/reports/development-plan-template.md`
+| Urgencia | Alta / Media / Baixa |
 
 ---
 
-## Appendix
+## Section-by-Section Length Guide (Referencia Rapida)
 
-### A. Raw Data References
-**DEFINICAO:** Lista de todos os instrumentos aplicados com referencia aos dados brutos.
-**FORMATO:** Tabela com framework, versao, data de aplicacao, localizacao dos dados.
-
-| Framework | Versao | Data | Referencia |
+| Secao | Min Words | Max Words | Obrigatoria? |
 |---|---|---|---|
-| | | | |
-
-### B. Methodology Notes
-**DEFINICAO:** Descricao da metodologia de integracao multi-framework.
-**FORMATO:** 3-5 frases descrevendo como os dados foram coletados, normalizados e integrados.
-
-### C. Disclaimer
-**TEXTO PADRAO (usar como esta):**
-> Este report e baseado em instrumentos psicometricos e frameworks de personalidade que fornecem aproximacoes probabilisticas, nao diagnósticos definitivos. Resultados devem ser interpretados em conjunto com observacoes contextuais, entrevistas e outros dados relevantes. Nenhuma decisao de alto impacto (contratacao, demissao, promocao) deve ser baseada exclusivamente neste report. Validade estimada: 12-18 meses, dependendo de mudancas significativas de vida ou carreira.
+| 1. Executive Summary | 150 | 200 | Sim, sempre |
+| 2. Trait Profile | 300 | 500 | Sim, sempre |
+| 3. Type/Style Profile | 250 | 400 | Sim, sempre |
+| 4. Motivation Profile | 200 | 350 | Sim, sempre |
+| 5. Strength Profile | 200 | 300 | Sim, sempre |
+| 6. Team Role | 150 | 250 | /deep e /start |
+| 7. Career Fit | 150 | 250 | /deep + contexto profissional |
+| 8. Mode of Action | 150 | 250 | /deep |
+| 9. Conflict & Stress | 150 | 250 | /deep |
+| 10. Contradicoes | 100 | 200 | Sim, sempre |
+| 11. Reconciliacao | 100 | 200 | Sim, sempre |
+| 12. Confidence Map | — | 60 (narrativa) | Sim, sempre |
+| 13. Desenvolvimento | 150 | 250 | Sim, sempre |
+| **TOTAL** | **~2050** | **~3450** | — |
 
 ---
 
 **Assessor:** _______________
 **Revisado por:** _______________
 **Data do report:** YYYY-MM-DD
-**Versao do report:** 1.0
+
+---
+
+## QUALITY CRITERIA
+
+Um deep persona report preenchido corretamente atende a TODOS os seguintes criterios:
+
+1. **Completude:** Todas as secoes obrigatorias preenchidas; secoes condicionais preenchidas/omitidas corretamente
+2. **Comprimento:** Cada secao respeita os limites min/max de words
+3. **Rastreabilidade:** Todo finding cita framework + score + layer de origem
+4. **Contradicoes completas:** Secao 10 lista TODAS as contradicoes, nao apenas as nao resolvidas
+5. **Desenvolvimento rastreavel:** Cada recomendacao da secao 13 cita evidencia especifica
+6. **Confidence integrada:** Tabela da secao 12 consistente com confidence-map; narrativa menciona limitacoes
+7. **Executive summary autonomo:** Secao 1 e compreensivel isoladamente, sem referencia as demais
+8. **Sem jargao nao explicado:** Todo termo tecnico de framework e contextualizado na primeira ocorrencia
