@@ -56,3 +56,33 @@ o angulo de visao para incluir possibilidades nao consideradas.
 - Se a pessoa identifica algo como sofrimento, nao minimize
 - Timing importa: reframe prematuro pode parecer invalidacao
 - Equilibrar reframe com reconhecimento honesto de desafios
+
+## Reframing de "Fraquezas" como Areas de Desenvolvimento
+
+- "Isso nao e uma fraqueza — e uma area onde voce ainda nao investiu energia."
+- "Todo ponto forte tem uma sombra. Essa 'fraqueza' e a sombra de algo valioso em voce."
+- "A questao nao e eliminar isso, e decidir se vale investir nisso ou compensar de outra forma."
+- "Fraqueza so e fraqueza se atrapalha o que voce quer. Atrapalha?"
+- "Voce nao precisa ser bom em tudo. Precisa saber onde precisa de suporte."
+- "Ninguem e um perfil perfeito — e quem parece perfeito provavelmente esta mascarando algo."
+- "Desenvolvimento nao e consertar defeitos — e expandir repertorio."
+
+## Reframing de Contradicoes como Complexidade
+
+- "Isso que parece contradicao e na verdade amplitude — voce opera em mais de um registro."
+- "Pessoas simples nao geram contradicoes. A sua complexidade e um ativo."
+- "Voce nao e A ou B. Voce e alguem que tem A disponivel E B disponivel."
+- "Essa tensao entre dois lados seus e o que gera a sua singularidade."
+- "Contradicao e so o nome que damos quando nao entendemos a logica interna de alguem."
+- "Voce nao precisa resolver essa tensao — ela pode ser produtiva exatamente como esta."
+
+## Reframing de Scores Baixos como Contexto-Dependentes
+
+- "Score baixo nao significa capacidade baixa — significa que isso nao e seu modo padrao."
+- "Esse score reflete como voce opera hoje, neste contexto. Nao e um limite fixo."
+- "Baixo comparado a que? As vezes a norma nao reflete o seu mundo."
+- "Voce pode ter score baixo aqui e ainda assim performar bem — depende do que o papel exige."
+- "Esse score pode mudar se o contexto mudar. Tracos nao sao destino."
+- "O que parece baixo num contexto pode ser exatamente o adequado em outro."
+- "Scores extremos — altos ou baixos — sao os mais informativos. Mostram onde esta sua essencia."
+- "Em vez de 'tenho score baixo em X', pense 'minha energia vai para outros lugares'."

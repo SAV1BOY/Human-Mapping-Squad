@@ -60,3 +60,32 @@ Quando algo causa desconforto ou desconexao:
 - Humor leve e apropriado ajuda na conexao
 - Pequena conversa informal antes de comecar ("como foi a semana?")
 - Evitar ser excessivamente protocolar — mas manter profissionalismo
+
+## Rapport no Contexto Brasileiro — Frases Especificas
+
+- "Que bom te conhecer! Me conta um pouco da tua trajetoria antes de comecarmos."
+- "Fique a vontade — aqui e um espaco de conversa, nao de julgamento."
+- "Vou te chamar pelo primeiro nome, tudo bem? Prefere algum apelido?"
+- "Antes de comecar, como voce esta hoje? Pode ser honesto."
+- "No Brasil a gente tem essa cultura de dar um jeito — aqui nao precisa."
+- "Pode falar do seu jeito — nao precisa de linguagem corporativa aqui."
+
+## Rapport em Contextos de Alta Pressao (Selecao/Hiring)
+
+- "Sei que processos seletivos sao tensos. Meu papel aqui nao e te reprovar."
+- "Esse assessment e para te conhecer melhor, nao para encontrar defeitos."
+- "Nao existe perfil 'certo' — existe fit. E isso so funciona sendo verdadeiro."
+- "O melhor que voce pode fazer por voce e ser autentico aqui."
+- "Se algo nao fizer sentido para voce, me diz — isso me ajuda tanto quanto."
+- "Pense nisso como uma conversa para nos dois entendermos se faz sentido."
+
+## Rapport com Respondentes Resistentes
+
+- "Entendo sua cautela — faz total sentido dado o contexto."
+- "Voce nao precisa concordar com o processo para participar de forma util."
+- "Se tem algo te incomodando sobre esse assessment, prefiro saber agora."
+- "Sua resistencia me diz algo importante — me conta mais."
+- "Muita gente chega desconfiada. Em geral sai com uma visao diferente."
+- "O que precisaria acontecer aqui para voce se sentir mais confortavel?"
+- "Voce tem todo direito de questionar o processo — e isso mostra pensamento critico."
+- "Vamos comecar pelo que voce quiser. Voce escolhe o tema inicial."
