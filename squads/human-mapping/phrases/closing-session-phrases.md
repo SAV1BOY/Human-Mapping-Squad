@@ -88,3 +88,34 @@ e deixa a pessoa com sensacao positiva e senso de direcao.
 - "Reacoes emocionais a assessment sao dados tambem — e dos mais valiosos."
 - "Leve o que fizer sentido, deixe o resto. Com o tempo voce decide."
 - "Obrigado por confiar em mim com essas emocoes. Isso enriquece muito o processo."
+
+## Quando o Respondente Esta Emocionado
+
+- "Eu vejo que isso te tocou profundamente. Nao precisa se desculpar — isso e material valioso."
+- "Vamos fazer uma pausa aqui. Respira. Quando voce estiver pronto, a gente continua ou encerra — voce decide."
+- "Emocao no assessment e sinal de que estamos tocando em algo real, nao superficial."
+- "O que voce esta sentindo agora provavelmente e mais verdadeiro do que qualquer score. Vamos honrar isso."
+- "Se quiser, podemos encerrar por aqui e retomar em outro momento. Sem nenhum prejuizo."
+
+## Quando a Sessao Foi Dificil
+
+- "Sei que nao foi uma sessao facil. Quero que saiba que a dificuldade nao significa problema — significa profundidade."
+- "Nem toda sessao flui. As vezes o desconforto e exatamente onde esta a informacao mais rica."
+- "Se voce saiu com mais perguntas do que respostas, isso e um bom sinal — significa que o processo funcionou."
+- "Agradeco especialmente sua persistencia hoje. Sessoes dificeis costumam gerar os melhores relatorios."
+- "Se algo ficou incompleto, nao se preocupe — vamos resolver na devolutiva."
+
+## Quando os Resultados Sao Surpreendentes
+
+- "Sei que alguns resultados nao bateram com a imagem que voce tem de si. Isso e normal e valioso."
+- "Surpresa e dado. Se o resultado te surpreendeu, vamos investigar por que — pode ser que o instrumento captou algo que voce nao acessa conscientemente."
+- "Nao precisa aceitar tudo agora. Deixa decantar. Muita gente volta semanas depois dizendo 'agora faz sentido'."
+- "O perfil nao e um espelho perfeito — e mais como um raio-X. Mostra coisas que nem sempre a gente ve por fora."
+
+## Variacoes Culturais — Contexto Brasileiro
+
+- "Fica tranquilo — nao tem nota, nao tem certo ou errado. Isso aqui nao e vestibular."
+- "Voce foi demais. Serio, raramente vejo alguem se abrir assim na primeira sessao."
+- "Qualquer coisa, me manda um WhatsApp. Nao precisa esperar a devolutiva formal."
+- "Vai leve. O mais importante ja foi feito — agora e comigo."
+- "Se bater aquela ansiedade de 'sera que falei demais' — relaxa. Quanto mais voce trouxe, melhor fica o mapeamento."

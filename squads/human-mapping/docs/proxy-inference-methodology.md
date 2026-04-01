@@ -35,6 +35,54 @@ as dimensões de ambos os instrumentos.
 - Risco de circularidade se múltiplas inferências são encadeadas
 - Viés de confirmação ao interpretar resultados inferidos
 
+---
+
+## Quando Usar Proxy vs Avaliação Direta
+
+### Use proxy-inference quando:
+- O instrumento alvo não está disponível (licença, custo, tempo)
+- O respondente já completou múltiplos instrumentos e fadiga é um risco
+- O projeto precisa de cobertura ampla mas o orçamento é limitado
+- A dimensão alvo é complementar (não central) ao objetivo do projeto
+
+### Nunca use proxy-inference quando:
+- A decisão é de alto impacto (contratação executiva, promoção sênior)
+- O framework alvo é central ao objetivo do projeto
+- A confiança do mapeamento fonte → alvo é baixa (< 0.40)
+- O cliente solicitou explicitamente avaliação direta
+
+## Ajustes de Confiança por Tipo de Proxy
+
+| Tipo de proxy | Penalidade na confiança | Confiança máxima possível |
+|--------------|------------------------|--------------------------|
+| Mapeamento direto validado (ex: HPI → Big Five) | -0.10 a -0.15 | 0.70 |
+| Mapeamento por correlação teórica (ex: Big Five → MBTI) | -0.20 a -0.30 | 0.60 |
+| Inferência por padrão comportamental (ex: CliftonStrengths → Belbin) | -0.30 a -0.40 | 0.45 |
+| Proxy encadeado (fonte → intermediário → alvo) | -0.40 a -0.50 | 0.35 |
+
+> **Regra**: nunca encadeie mais de 2 proxies. Proxy de proxy de proxy tem
+> confiança tão baixa que não agrega valor ao relatório.
+
+## Design de Indicadores Comportamentais
+
+Quando proxy formal não existe, é possível inferir dimensões a partir de
+indicadores comportamentais observáveis. O processo é:
+
+1. **Definir a dimensão-alvo**: qual traço, tipo ou motivação queremos estimar?
+2. **Listar comportamentos correlacionados**: baseado em literatura, quais
+   comportamentos observáveis se correlacionam com a dimensão?
+3. **Criar checklist de evidências**: para cada comportamento, definir evidência
+   observável (ex: "frequentemente voluntaria-se para apresentações" → Extroversão)
+4. **Atribuir pesos**: comportamentos com maior correlação recebem peso maior
+5. **Calcular score e confiança**: somar evidências ponderadas e atribuir confiança
+   proporcional à quantidade e qualidade das evidências (máximo 0.50)
+6. **Documentar**: registrar indicadores usados, pesos e fontes de evidência
+
+> Para o guia completo de proxy-inference com todos os mapeamentos validados e
+> indicadores comportamentais padronizados, consulte
+> `authority/guides/proxy-inference-mode-guide.md`.
+
 ## Referências
 - `data/registries/methodology-registry.yaml` — Registro de metodologias
 - `docs/confidence-scoring-guide.md` — Sistema de confiança
+- `authority/guides/proxy-inference-mode-guide.md` — Guia completo de proxy

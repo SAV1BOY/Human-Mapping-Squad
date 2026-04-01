@@ -86,3 +86,29 @@ o angulo de visao para incluir possibilidades nao consideradas.
 - "O que parece baixo num contexto pode ser exatamente o adequado em outro."
 - "Scores extremos — altos ou baixos — sao os mais informativos. Mostram onde esta sua essencia."
 - "Em vez de 'tenho score baixo em X', pense 'minha energia vai para outros lugares'."
+
+## Reframing de Contradicoes como Profundidade
+
+- "Quando dois frameworks dizem coisas diferentes sobre voce, nao e erro — e que voce e mais complexo do que um unico modelo consegue capturar."
+- "Essa contradicao entre seu DISC e seu Enneagram me diz que voce opera em registros diferentes dependendo do contexto — e isso e sofisticacao, nao incoerencia."
+- "Pessoas que geram zero contradicoes em assessment multi-framework geralmente sao simples demais ou estao performando. Suas contradicoes sao sinal de autenticidade."
+- "Cada framework e uma lente. Quando duas lentes mostram imagens diferentes, o problema nao e com voce — e com a resolucao da lente."
+- "Contradicao e o que acontece quando alguem tem amplitude suficiente para nao caber em uma unica caixa."
+- "Ao inves de 'meus resultados nao batem', tente 'eu funciono de formas diferentes em contextos diferentes'. Isso e adaptabilidade."
+
+## Reframing de Confianca Baixa como Oportunidade
+
+- "Confianca abaixo de 0.7 nao significa que o resultado e errado — significa que temos espaco para investigar mais. Isso e oportunidade, nao problema."
+- "Score de baixa confianca e o assessment sendo honesto com voce. Prefira isso a um numero bonito sem base."
+- "Quando a confianca e baixa, significa que voce provavelmente e mais nuancado do que o instrumento consegue capturar. Vamos explorar isso juntos."
+- "Baixa confianca num framework especifico pode significar que esse nao e o melhor modelo para voce — e saber disso ja e informacao valiosa."
+- "Uma confianca de 0.55 nao e um fracasso. E um convite para uma conversa mais profunda."
+
+## Reframing de "Fraquezas" como Forcas Contexto-Dependentes
+
+- "Baixa Conscienciosidade e 'fraqueza' num escritorio de contabilidade e 'forca' numa startup em estagio inicial que precisa de pivots rapidos."
+- "Alto Neuroticismo e exaustivo no dia a dia mas pode ser a razao pela qual voce e a primeira pessoa a detectar problemas antes de todo mundo."
+- "Voce diz que e 'controlador demais'. Num papel de gestao de risco, isso e exatamente o que a organizacao precisa."
+- "Sua 'indecisao' pode ser na verdade processamento profundo. O mundo precisa de pessoas que pensam antes de agir."
+- "O que voce chama de 'falta de ambicao' pode ser que seus valores simplesmente nao estao organizados ao redor de hierarquia corporativa — e isso e tao valido quanto qualquer carreira tradicional."
+- "Toda forca tem um custo e toda 'fraqueza' tem um contexto onde e exatamente o que se precisa. A questao nunca e 'isso e bom ou ruim?' — e 'bom ou ruim para que?'"

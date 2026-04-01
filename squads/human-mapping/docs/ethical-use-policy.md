@@ -32,7 +32,63 @@ e colaboradores antes de iniciar qualquer operação.
 - Retenção máxima de 3 anos sem reavaliação
 - Direito do indivíduo de solicitar exclusão de seus dados
 
+---
+
+## 5 Princípios Éticos Detalhados
+
+### 1. Autonomia e Consentimento Informado
+O respondente tem direito de saber exatamente o que será avaliado, por quais
+instrumentos e quem terá acesso aos resultados. O consentimento deve ser:
+- **Específico**: para cada propósito de uso (contratação, desenvolvimento, etc.)
+- **Revogável**: o respondente pode retirar consentimento a qualquer momento
+- **Documentado**: registrado com data e escopo no intake do projeto
+
+### 2. Minimização de Dados
+Coletar e compartilhar apenas os dados estritamente necessários para o propósito
+declarado. Não avaliar dimensões irrelevantes ao objetivo. Exemplo: para hiring
+assessment, não é necessário mapear motivações profundas (Eneagrama/Reiss) se o
+objetivo é apenas fit comportamental.
+
+### 3. Precisão e Transparência
+Toda afirmação no relatório deve incluir nível de confiança. Resultados de
+proxy-inference devem ser marcados como [proxy]. Limitações metodológicas devem
+ser explicitadas na seção de disclaimers do relatório.
+
+### 4. Não-Maleficência
+Avaliações não devem causar dano ao avaliado. Isso inclui: não patologizar traços
+normais, não rotular pessoas de forma reducionista, não usar resultados para
+exclusão arbitrária.
+
+### 5. Justiça e Equidade
+Considerar vieses culturais dos instrumentos. Adaptar interpretações para o
+contexto cultural do respondente. Não comparar resultados entre culturas sem
+normalização adequada.
+
+## Conformidade com a LGPD
+- **Base legal**: consentimento explícito do titular (Art. 7, I da LGPD)
+- **Direito de acesso**: o respondente pode solicitar cópia de todos os dados
+- **Direito de exclusão**: dados devem ser eliminados em até 15 dias após solicitação
+- **Encarregado**: toda comunicação sobre dados passa pelo DPO designado
+- **Relatório de Impacto**: projetos com dados sensíveis requerem RIPD prévio
+
+## Retenção de Dados
+| Tipo de dado | Retenção máxima | Ação após vencimento |
+|-------------|----------------|---------------------|
+| Dados brutos de instrumentos | 1 ano | Exclusão definitiva |
+| Perfil integrado (relatório) | 3 anos | Solicitar renovação de consentimento |
+| Dados agregados/anonimizados | Indefinido | Manter para calibração |
+| Registros de consentimento | 5 anos | Arquivamento legal |
+
+## Quando Recusar um Assessment
+O squad deve recusar ou interromper uma avaliação quando:
+1. O respondente não deu consentimento informado
+2. O propósito declarado é discriminatório ou punitivo
+3. O solicitante quer usar o perfil para demissão sem base legítima
+4. Há conflito de interesse não declarado entre solicitante e respondente
+5. Os dados disponíveis são insuficientes para atingir confiança mínima (0.50)
+
 ## Referências
 - Código de Ética do CRP (Conselho Regional de Psicologia)
 - APA Ethical Principles of Psychologists
 - LGPD (Lei Geral de Proteção de Dados)
+- `docs/confidence-scoring-guide.md` — Threshold de confiança mínima

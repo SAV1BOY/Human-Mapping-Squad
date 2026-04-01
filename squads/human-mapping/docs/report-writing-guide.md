@@ -31,7 +31,49 @@ acionabilidade em todos os documentos produzidos pelo squad.
 - **Para RH**: linguagem técnica moderada com recomendações
 - **Para coaching**: foco em desenvolvimento e potencial
 
+---
+
+## Regras Anti-Barnum
+
+O efeito Barnum é quando uma descrição é tão genérica que qualquer pessoa se
+identificaria. Para evitar:
+
+| Proibido (Barnum) | Correto (Específico) |
+|-------------------|---------------------|
+| "Você é uma pessoa que valoriza relacionamentos" | "Sua Amabilidade no percentil 82 indica que prioriza harmonia interpessoal, frequentemente cedendo em conflitos para manter o grupo coeso (confiança: 0.85)" |
+| "Às vezes é extrovertido, às vezes introvertido" | "Extroversão moderada (percentil 48): energiza-se socialmente em grupos pequenos mas precisa de tempo solo para processamento — padrão consistente com faceta Gregarismo baixa e Assertividade alta (confiança: 0.80)" |
+| "Tem potencial para liderança" | "Perfil HDS mostra baixo risco de Excitable e Bold, combinado com HPI Ambition alto — indicando liderança estável mas com tendência a evitar decisões impopulares (confiança: 0.75)" |
+
+### Regra dos 3 filtros
+Antes de incluir qualquer afirmação no relatório, passe pelos filtros:
+1. **Filtro de especificidade**: essa frase se aplicaria a menos de 30% da população?
+2. **Filtro de evidência**: há dado específico (score, percentil, fonte) sustentando?
+3. **Filtro de confiança**: o nível de confiança está explícito?
+
+## Comunicação de Confiança no Relatório
+
+| Nível | Como comunicar ao leitor |
+|-------|-------------------------|
+| 0.85+ | Afirmação direta: "Apresenta consistentemente..." |
+| 0.70-0.84 | Com qualificação: "Os dados indicam que tende a..." |
+| 0.50-0.69 | Com ressalva: "Há indícios moderados de que..." |
+| 0.35-0.49 | Com alerta: "Dados preliminares sugerem, mas recomenda-se avaliação adicional..." |
+| < 0.35 | Não incluir no corpo. Mencionar em nota de rodapé se relevante. |
+
+## Seleção de Tom por Público
+
+| Público | Tom | Foco | Evitar |
+|---------|-----|------|--------|
+| **Avaliado** | Empático, construtivo, encorajador | Autoconhecimento, pontos fortes primeiro | Jargão técnico, linguagem determinista |
+| **Gestor/Líder** | Pragmático, direto, orientado a ação | Implicações para gestão, riscos, recomendações | Teoria excessiva, ambiguidade |
+| **RH** | Técnico moderado, objetivo | Fit cultural, gaps de competência, desenvolvimento | Linguagem informal, generalizações |
+| **Coach** | Aprofundado, exploratório | Padrões, motivações profundas, áreas de crescimento | Simplificações, rótulos fixos |
+
+> Para guias de linguagem e voz completos por framework e por público, consulte
+> `authority/voice/` e `authority/language-guides/`.
+
 ## Referências
 - `docs/naming-conventions.md` — Convenções de nomenclatura
 - `docs/confidence-scoring-guide.md` — Sistema de confiança
 - `docs/glossary.md` — Glossário de termos
+- `authority/voice/` — Guias de voz por contexto

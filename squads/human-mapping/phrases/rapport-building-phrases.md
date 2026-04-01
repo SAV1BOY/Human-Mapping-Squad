@@ -89,3 +89,30 @@ Quando algo causa desconforto ou desconexao:
 - "O que precisaria acontecer aqui para voce se sentir mais confortavel?"
 - "Voce tem todo direito de questionar o processo — e isso mostra pensamento critico."
 - "Vamos comecar pelo que voce quiser. Voce escolhe o tema inicial."
+
+## Rapport com Respondentes Altamente Resistentes (Escalacao)
+
+- "Voce nao precisa acreditar no processo para que funcione. So precisa ser honesto."
+- "Se voce acha que isso tudo e bobagem, me diz. Isso em si ja me conta algo sobre voce — e e valido."
+- "Eu prefiro um respondente resistente e sincero a um respondente colaborativo e falso."
+- "Sua desconfianca me mostra pensamento critico. Vamos usar isso a seu favor?"
+- "Me diz: o que precisaria ser verdade sobre esse processo para voce se engajar?"
+- "Se ao final voce achar que nao valeu, me diga. Sua avaliacao do processo tambem e dado."
+- "Muita gente que comecou desconfiada me mandou mensagem depois dizendo que foi util. Mas voce nao precisa acreditar nisso agora."
+
+## Rapport em Contextos de Alta Pressao — Promocao e Selecao Interna
+
+- "Eu entendo o peso disso — sei que tem muita coisa em jogo para voce."
+- "Meu papel nao e decidir se voce vai ou nao vai ser promovido. Meu papel e garantir que quem decide tenha o retrato mais justo possivel de voce."
+- "Ser genuino aqui e a sua melhor estrategia. Perfis 'perfeitos demais' levantam mais bandeiras vermelhas do que imperfeicoes."
+- "Se voce esta nervoso, tudo bem. Eu levo isso em conta na analise."
+- "O assessment nao define seu valor profissional — define fit com um contexto especifico."
+
+## Rapport com Respondentes Retornando (/resume)
+
+- "Que bom te ver de novo. Da ultima vez voce trouxe reflexoes muito ricas."
+- "Desde a nossa ultima sessao, mudou alguma coisa na sua percepcao sobre si mesmo?"
+- "Vamos retomar de onde paramos. Voce lembra do ultimo tema que estivamos explorando?"
+- "Respondentes que voltam costumam trazer insights muito mais profundos na segunda rodada."
+- "Dessa vez podemos ir mais fundo — ja temos uma base solida da sessao anterior."
+- "Se voce pensou em algo entre as sessoes, esse e o momento perfeito para trazer."
